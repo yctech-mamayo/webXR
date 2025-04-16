@@ -10,7 +10,7 @@
 
 // import data from "../../scripts/DefaultResource.js";
 // import data from "@/js/scripts/DefaultResource.js";
-import data from "/js/scripts/DefaultResource.js";
+import data from "../../scripts/DefaultResource.js";
 
 
 // let data = import('/scripts/DefaultResource.json', {
