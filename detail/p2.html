@@ -3,12 +3,12 @@
 <head>
 	<title> makarVR	</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=1">
-	<link rel="icon" type="image/png" href="/favicon.png" />
+	<link rel="icon" type="image/png" href="../favicon.png" />
 	<!-- <script type="text/javascript" src="reveal/jquery-1.4.4.min.js"></script> -->
 
-	<link href="/styles/style.css" rel="stylesheet" type="text/css">
-	<link href="/styles/dragon.css" rel="stylesheet" type="text/css">
-	<link href="/styles/step.css" rel="stylesheet" type="text/css">
+	<link href="../styles/style.css" rel="stylesheet" type="text/css">
+	<link href="../styles/dragon.css" rel="stylesheet" type="text/css">
+	<link href="../styles/step.css" rel="stylesheet" type="text/css">
 
 	<script>
 		
@@ -32,14 +32,14 @@
 
 </head>
 <body>
-	<script src="/lib/vconsole.min.js"></script>
+	<script src="../lib/vconsole.min.js"></script>
 
 	
 	<!-- 指定專案對應的資料 -->
 	<!-- <script type="module" src="./data/proj1/p1.js"></script> -->
 
 	<script type="module">
-		import projData from "/data/proj1/p2_a2.js";		
+		import projData from "../data/proj1/p2_a2.js";		
 		window.custProject = projData;
 		
 	</script>
@@ -237,7 +237,7 @@
 	<script src = "js/aframe-extras.js"></script> -->
 
 	
-	<script src="/lib/testWebpack/aframe-v1.0.4.min.js"></script>
+	<script src="../lib/testWebpack/aframe-v1.0.4.min.js"></script>
 	
 	<!-- <script src = "js/checkBrowser.js"></script>
 	<script src = "js/networkAgentVR.js"></script>
@@ -245,8 +245,8 @@
 	<!-- <script src = "js/gif-animator.js"></script> -->
 
 	<!-- minify by webpack -->
-	<script src = "/lib/whiteList.min.js"></script>             <!-- 用webpack包完之後全域變數不再是全域，例如 Module，原先想直接在檔案裡加上 Window.Module = Module，但結論是不去動它 -->
-	<script src="/lib/testWebpack/makarUtilities.js"></script>
+	<script src = "../lib/whiteList.min.js"></script>             <!-- 用webpack包完之後全域變數不再是全域，例如 Module，原先想直接在檔案裡加上 Window.Module = Module，但結論是不去動它 -->
+	<script src="../lib/testWebpack/makarUtilities.js"></script>
 
 	<!-- 原本的 -->
 	<!-- <script src = "js/VRFunc.js"></script> -->
@@ -256,7 +256,7 @@
 
 
 	<!-- develop -->
-	<script type="module" src="/js/VRMain/vrVersionControl.js"></script>	
+	<script type="module" src="../js/VRMain/vrVersionControl.js"></script>	
 	<!-- minify by webpack -->
 	<!-- <script type="module" src="./lib/testWebpack/vrIndex.min.js"></script>	 -->
 	
@@ -273,22 +273,22 @@
 	<script src = "/lib/logicSystem/debug.js"></script> -->
 
 	<!-- minify by webpack -->
-	<script src = "/lib/testWebpack/logic.min.js"></script> 
+	<script src = "../lib/testWebpack/logic.min.js"></script> 
 
 
-	<script src = "/lib/GSAP/gsap.js"></script>
-	<script src = "/lib/GSAP/ScrollTrigger.js"></script>
-	<script src = "/lib/GSAP/ScrollToPlugin.js"></script>
-	<script src = "/lib/GSAP/TextPlugin.js"></script>
+	<script src = "../lib/GSAP/gsap.js"></script>
+	<script src = "../lib/GSAP/ScrollTrigger.js"></script>
+	<script src = "../lib/GSAP/ScrollToPlugin.js"></script>
+	<script src = "../lib/GSAP/TextPlugin.js"></script>
 
-	<script src="/lib/orbitControls_customize.js"></script>
+	<script src="../lib/orbitControls_customize.js"></script>
 	
-	<script src = "/lib/chromaShader.js"></script>
-	<script src = "/lib/anime/anime.min.js"></script>
+	<script src = "../lib/chromaShader.js"></script>
+	<script src = "../lib/anime/anime.min.js"></script>
 
 	<!-- <script src = "js/UI.js"></script> -->
 	<!-- <script src = "lib/UI.min.js"></script> -->
-	<script src = "/lib/testWebpack/UI.min.js"></script>
+	<script src = "../lib/testWebpack/UI.min.js"></script>
 
 
 

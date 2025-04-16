@@ -57,19 +57,22 @@ import { verionControl as VC } from "./version3_5/MakarWebXRVersionControl.js";
 
             console.log('_showVRProjListWithVersionControl: _custProject ');
 
-            Promise.resolve().then(  async function( ){
-                await import("./version3_5/VRFunc_cust.js");
+            if ( location.hostname == 'localhost' || 'yctech-mamayo.github.io' ){
+                Promise.resolve().then(  async function( ){
+                    await import("./version3_5/VRFunc_cust.js");
+                    if ( window.loadCustVRProjData){
+                        //// 建置 3D 場景
+                        loadCustVRProjData( window.custProject );
+    
+                    }else{
+                        console.log('_showVRProjListWithVersionControl: No _loadCustVRProjData');
+                    }
+                })
+            }else{
+                console.log( ' Hostname not allow, please contact MIFLY Fei ' );
+            }
 
-                
-
-                if ( window.loadCustVRProjData){
-                    //// 建置 3D 場景
-                    loadCustVRProjData( window.custProject );
-
-                }else{
-                    console.log('_showVRProjListWithVersionControl: No _loadCustVRProjData');
-                }
-            })
+            
             
 
         }
