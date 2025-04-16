@@ -25,8 +25,8 @@ let projData = {
                     scene_skybox_res_id: "1bfa00c43fe108e103841345a86e786f",
                     sceneSky_info:{
                         main_type: 'spherical_image',
-                        res_url: '/resource/sky/gray2.jpg',
-                        // res_url: '/resource/sky/VR01.jpg',
+                        res_url: '../resource/sky/gray2.jpg',
+                        // res_url: '../resource/sky/VR01.jpg',
                     }
                 },
                 objs: [
@@ -100,7 +100,7 @@ let projData = {
                         main_type: 'model',
                         sub_type:'glb',
                         // res_url:'/resource/model/p2/elephant(無渲染).glb',
-                        res_url:'/resource/model/p2/elephant(無渲染A2-3).glb',
+                        res_url:'../resource/model/p2/elephant(無渲染A2-3).glb',
                         behav:[{type:'showData'}],
                         generalAttr: {
                             logic: false,
