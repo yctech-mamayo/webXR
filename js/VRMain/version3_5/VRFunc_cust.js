@@ -1037,8 +1037,8 @@ import net from './networkAgent.js';
                             vrController.loadScene(sceneIndex);
                             vrController.userStartTime = new Date().getTime();
         
-                            checkHost_tick();
-                            Module.checkMifly();
+                            // checkHost_tick();
+                            // Module.checkMifly();
                             //// 20201029 為了解決 iphone上畫面卡住問題
                             // 假如先執行 video.play() 等待 一段時間 再執行 tick 則畫面高機率卡住
                             // 假如先執行 tick 再執行 video.play() 則畫面高機率順暢（沒遇到卡住）
@@ -1134,8 +1134,8 @@ import net from './networkAgent.js';
                         vrController.userStartTime = new Date().getTime();
                         
                         // vrController.update();
-                        checkHost_tick();
-                        Module.checkMifly();
+                        // checkHost_tick();
+                        // Module.checkMifly();
 
                     }
 
