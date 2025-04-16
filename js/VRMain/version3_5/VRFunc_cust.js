@@ -45,8 +45,8 @@ import net from './networkAgent.js';
 		});
 
         //[start-20191111-fei0079-add]//
-        checkHost_tick();
-        Module.checkMifly();
+        // checkHost_tick();
+        // Module.checkMifly();
         //[end---20191111-fei0079-add]//
     
         window.showVRProjList = function( oneProjData ){
