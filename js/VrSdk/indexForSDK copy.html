@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="zh">
+<head>
+	<title> makarVR	SDK 樣板 </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=1">
+
+	<!-- <link href="./styles/style.css" rel="stylesheet" type="text/css"> -->
+	<!-- <link href="./styles/dragon.css" rel="stylesheet" type="text/css"> -->
+
+    <link rel="shortcut icon" href="#">
+
+	<style>
+		html body{
+			margin: 0;
+			padding: 0;
+			background-color: #333;
+		}
+
+		#sdkContainer{
+			margin: 0px 0px 0px 5px;
+			width: 75svw;
+			height: 50svh;
+			background-color: #444;
+		}
+
+		#flipTheTable{
+			position: relative;
+			top: 0;
+			left: 70%;
+		}
+
+		.container{
+			position: absolute;
+			margin: 0px 0px 0px 5px;
+			width: 20svw;
+			height: 20svh;
+			background-color: #444;
+		}
+	</style>
+
+
+	<script type="importmap">
+		{
+			"imports": {
+				"three/addons/": "https://esm.sh/three@0.163.0/examples/jsm/",
+				"@dimforge/rapier3d-compat": "https://esm.sh/@dimforge/rapier3d-compat@0.12.0",
+				"@monogrid/gainmap-js": "https://esm.sh/@monogrid/gainmap-js@3.0.5"
+			}
+		}
+	</script>
+
+
+</head>
+<body>
+
+    <h1>webpack EVRYTHING to ONE js file</h1>
+
+	<p style="margin: 0;top: 0;color: #666;">這個br不應該縮短 當前做法(css selector)有可能改動到user的頁面</p>
+
+    <br>
+    <hr>
+    <h2 id="anime-animate-anything-css">install animeJS by npm</h2>
+    <h2 id="gsap-animate-anything-css">install GSAP by npm</h2>
+
+	<div id="sdkContainer"> 
+		<div id="bar">
+			test
+			<button id="flipTheTable">flipTheTable</button>
+		</div>
+	</div>
+
+	<div class="container" style="top: 15svh; left: 100px; width: 15svw;">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam voluptate doloremque vero</div>
+
+	<!-- <div class="container">test</div> -->
+
+	<!-- <div class="container">test</div> -->
+
+
+    <!-- <script type="module" src="./index.js"></script> -->
+
+	<!-- 以下script都放在 webpack 裡直接打包起來 -->
+	<!-- <script src="./src/VR/lib/vconsole.min.js"></script> -->
+	<script src="../../lib/vconsole.min.js"></script>
+	<script src="../../lib/testWebpack/aframe-v1.0.4.min.js"></script>
+	<script src="./whiteList.min.js"></script>
+	<script src="../../js/checkBrowser.js"></script>
+	<script src="../../js/networkAgentVR.js"></script>
+
+	<!-- 只要能確定 webXR sdk 只支援 v3.5 以上 就可以不把gif-animator包進來 -->
+	<!-- <script src="../../js/gif-animator.js"></script>    -->
+
+	<!-- <script src="./src/makar/scripts/mIndexedDB.js"></script> -->
+	<script src="../../../scripts//mIndexedDB.js"></script>
+	<script type="module" src="./vrVersionControl.js"></script>
+	<script src="../../lib/testWebpack/logic.min.js"></script>
+	<script src="../../lib/orbitControls_customize.js"></script>
+	<script src="../../lib/chromaShader.js"></script>
+	<script src="../../lib/testWebpack/UI.min.js"></script>
+
+
+	<script type="module" src="./makarSDK.js"></script>
+
+	<script>
+		//// 只是為了方便觀看而做的mouse click event move
+		const sdkContainer = document.getElementById("sdkContainer")
+		const bar = document.getElementById("bar")
+
+		let mousePosition;
+		let offset = [0,0];
+		let div = bar;
+		let isDown = false;
+
+		div.addEventListener('mousedown', function(e) {
+			isDown = true;
+			let rect = bar.getBoundingClientRect();
+			offset = [
+				rect.left - e.clientX,
+				rect.top - e.clientY
+			];
+		}, true);
+
+		document.addEventListener('mouseup', function() {
+			isDown = false;
+		}, true);
+
+		document.addEventListener('mousemove', function(event) {
+			event.preventDefault();
+			if (isDown) {
+				sdkContainer.style.position = "absolute";
+				mousePosition = {
+
+					x : event.clientX,
+					y : event.clientY
+
+				};
+				sdkContainer.style.left = (mousePosition.x + offset[0]) + 'px';
+				sdkContainer.style.top  = (mousePosition.y + offset[1]) + 'px';
+			}
+		}, true);
+	</script>
+
+    <script>
+		// const sdkContainer = document.getElementById("sdkContainer")
+        
+		window.addEventListener("load", (event) => {
+			console.log("page is fully loaded");
+
+			//// 預想的SDK使用方式
+			// const config = { proj_id: "5d6f66e5-1eb8-40c3-8951-558ee450dc34" }   //// 老實說可以考慮"跳過user_id" 例如設定專門給SDK的user_id   由此跳過了註冊 應該會讓體驗web SDK的人更廣泛
+			const config = { 
+				"proj_id": "eb5b3293-1ebb-439c-b31b-585200d4ac10",
+				// "proj_id": "5d6f66e5-1eb8-40c3-8951-558ee450dc34",
+				// user_id: "76ad6ef7-e89e-4f35-9c8d-0f40617f64a1"
+			}
+
+			makarSDK.init(config, sdkContainer)
+
+
+			//// 模擬user在html使用 makarSDK 的功能
+			const flipTheTable = document.getElementById('flipTheTable')
+			flipTheTable.addEventListener("click", ()=>{
+				makarSDK.flipTheTable()
+			})
+
+			makarSDK.vrDiv.addEventListener("vrSceneLoaded", e=>{
+				console.log("user html vrSceneLoaded", e)
+
+				// console.log("應該是北極熊", makarSDK.sceneObjs3D_arr[2].obj)
+
+
+				
+				window.addEventListener('click', () => {
+					console.log("click")
+					// 狀態配置
+					const stateConfig = {
+						stateMap: [
+							{
+								stateName: "bearMove1",
+								obj_id: makarSDK.sceneObjs3D_arr[2].obj_id,
+								behavType: "transform",
+								typeAttr: {
+									position: {y: 5},
+									// rotation: {y: 5},
+								},
+							},	
+							{ 
+								stateName: "bearMove2",
+								obj_id: makarSDK.sceneObjs3D_arr[2].obj_id, 
+								behavType: "transform",
+								typeAttr: {
+									position: {x: 5},
+									// rotation: {y: 0},
+								},
+							},
+							{ 
+								stateName: "penguinMove",
+								obj_id: makarSDK.sceneObjs3D_arr[3].obj_id,      
+								behavType: "transform",
+								typeAttr: {
+									position: {x: -4}, 
+									// rotation: {x: 2},
+								},
+							},
+							{ 
+								stateName: "lightLookAt",
+								obj_id: makarSDK.sceneObjs3D_arr[1].obj_id,      
+								behavType: "lookAt",
+								typeAttr: {
+									// position: {x: 0, y: -2, z: -1}, 
+									targetObjId: makarSDK.sceneObjs3D_arr[2].obj_id, 
+								},
+								color: 'red' 
+							},
+							{ 
+								stateName: "bearMove3",
+								obj_id: makarSDK.sceneObjs3D_arr[2].obj_id, 
+								behavType: "transform",
+								typeAttr: {
+									position: {y: 0},
+									// rotation: {x: 0},									
+								},
+							},
+							{ 
+								stateName: "bearMove4",
+								obj_id: makarSDK.sceneObjs3D_arr[2].obj_id, 
+								behavType: "transform",
+								typeAttr: {
+									position: {x: 0},
+									// rotation: {x: 0},									
+								},
+							},	
+							{ 
+								stateName: "penguinMove2",
+								obj_id: makarSDK.sceneObjs3D_arr[3].obj_id,      
+								behavType: "transform",
+								typeAttr: {
+									position: {x: -5}, 
+									// rotation: {x: 2},
+								},
+							},					
+						],
+						// stateNames: ['bearMove', 'bearMove2', 'penguinLookAt', 'bearMove3'],
+						// startIndex: 1  // 從state2開始,
+						startIndex: 0  // 從state1開始
+					};
+					// makarSDK.startEventList( stateConfig )
+				});
+
+
+			})
+
+		});
+
+    </script>
+
+	<script type="module" src="./indexForSDKcopy_testRapier.js"></script>
+
+
+</body>
+</html>
