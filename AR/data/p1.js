@@ -69,7 +69,7 @@ let projData = {
             {
                 target_id: "f7636dbd-7dd5-4b24-8fb0-fb774ba6d8c6",
                 // gcss_url: "https://s3-ap-northeast-1.amazonaws.com/mifly0makar0assets/Users/a8b05d24-e6ea-4d4f-a8f0-f6a3f41c90b5/ImageTarget/118e23394f0a454e9e6b36b63812cae3_256.gcss",
-                gcss_url: "../../resource/ARtarget/elephant_1.gcss",
+                gcss_url: "../resource/ARtarget/elephant_1.gcss",
                 image_url: "https://s3-ap-northeast-1.amazonaws.com/mifly0makar0assets/Users/a8b05d24-e6ea-4d4f-a8f0-f6a3f41c90b5/ImageTarget/118e23394f0a454e9e6b36b63812cae3_256.jpg"
             },
             // {
@@ -105,7 +105,7 @@ let projData = {
             "9bd689f7-2fe3-4a05-b7ba-5dade414cadc":{
                 res_id: "9bd689f7-2fe3-4a05-b7ba-5dade414cadc",
                 res_name: "elephant",
-                res_url: "../../resource/model/p2/elephant(無渲染A2-3).glb",
+                res_url: "../resource/model/p2/elephant(無渲染A2-3).glb",
                 main_type: "model",
                 sub_type: "glb",
                 size: "48704 bytes",
