@@ -1093,7 +1093,7 @@ import net from './networkAgent.js';
 
                             //// 客製化 大象滾球遊樂 
                             //// 有 mesh 名稱重複，客製化調整
-                            if ( location.pathname.includes('/makarVR_p2.html') ){
+                            if ( location.pathname.includes('/p2.html') ){
                                 let obj_1 = document.getElementById('obj_1');
                                 if ( obj_1 && obj_1.object3D ){
                                     obj_1.object3D.traverse( (c,i)=>{
