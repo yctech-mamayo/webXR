@@ -88,17 +88,21 @@ import { verionControl as VC } from "./v3_5/MakarWebXRVersionControl.js";
         }else if ( window.custProject && window.custProject.proj_id ){
             console.log(' _startARWithVersionControl_ : custProject ' , window.custProject );
 
-            Promise.resolve().then(  async function( ){
-                await import("./v3_5/ARFunc_cust.js");
-
-                if ( window.startARWithoutMakar){
-                    //// 建置 3D 場景
-                    startARWithoutMakar( window.custProject );
-
-                }else{
-                    console.log('_arVersionControl: No _startARWithoutMakar');
-                }
-            })
+            if ( location.hostname == 'localhost' || 'yctech-mamayo.github.io' ){
+                Promise.resolve().then(  async function( ){
+                    await import("./v3_5/ARFunc_cust.js");
+    
+                    if ( window.startARWithoutMakar){
+                        //// 建置 3D 場景
+                        startARWithoutMakar( window.custProject );
+                    }else{
+                        console.log('_arVersionControl: No _startARWithoutMakar');
+                    }
+                })
+            }else{
+                console.log( ' Hostname not allow, please contact MIFLY Fei ' );
+            }
+            
 
         }   
 

@@ -1,3 +1,18 @@
+#### 2025 04 18
+測試確認 VR AR 皆可於 github 基底使用
+流量上，貌似比較緩慢，未來建議外接 AWS S3
+
+AR:
+    https://yctech-mamayo.github.io/webXR/AR/p2.html
+VR:
+    https://yctech-mamayo.github.io/webXR/detail/p2.html
+
+後續預計的使用網址延續上面規則:
+    首頁: 
+    
+    https://yctech-mamayo.github.io/webXR/detail/p1 ~ p8.html
+    https://yctech-mamayo.github.io/webXR/AR/p1 ~ p8.html
+
 
 #### 2025 04 16
 
