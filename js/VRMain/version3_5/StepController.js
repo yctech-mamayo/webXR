@@ -114,9 +114,16 @@ class StepController {
 
         //// 新步驟資料
         let new_step = this.steps[ step_idx ];
-        if ( new_step.cameraAttr && new_step.cameraAttr.p ){
+        if ( new_step.cameraAttr && new_step.cameraAttr.p && new_step.cameraAttr.target ){
             let p = new_step.cameraAttr.p;
             let t = new_step.cameraAttr.t? new_step.cameraAttr.t : 1;
+
+            //// 先設中心位置
+            let oCamera = document.getElementById('oCamera');
+            if ( oCamera && oCamera.components['orbit-controls'] && oCamera.components['orbit-controls'].target ){
+                let tp = new_step.cameraAttr.target;
+                oCamera.components['orbit-controls'].target.set( tp[0], tp[1], tp[2] );
+            }
 
             this.GsapZoomInOutCamera(new THREE.Vector3( p[0], p[1], p[2] ) , t ).then(() => { });
         }
