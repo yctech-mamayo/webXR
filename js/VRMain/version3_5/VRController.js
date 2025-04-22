@@ -3127,7 +3127,7 @@ class VRController {
             if (intersects.length != 0 ){
                 // console.log("VRFunc.js: _setupFunction: 1 endEvent, intersects=", intersects );
     
-                //// 測試用: 點擊到 Mesh
+                //// 客製化 磁力片 測試用: 點擊到 Mesh
                 for (let i =0, l = intersects.length; i < l ; i++){
                     let e = intersects[i];
                     if ( e.object && e.object.visible ){
@@ -3171,7 +3171,9 @@ class VRController {
                                         // }
 
                                     }else if ( event.button == 2 ){
-                                        p.visible=false;
+
+                                        // p.visible=false;
+
                                     }
                                 }
                             }

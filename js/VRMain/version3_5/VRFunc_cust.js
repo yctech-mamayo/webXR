@@ -214,6 +214,7 @@ import net from './networkAgent.js';
         //// 使用本地的專案資料，完全不從雲端取得。
         window.loadCustVRProjData = function( projData ){
 
+            //// custProject = projData
             console.log('VRFunc_cust.js: _loadVRProjData: _projData=', projData );
             
             //// projData 等同於 custProject
@@ -256,7 +257,27 @@ import net from './networkAgent.js';
             ){
                 let scene_id = projData.scenesData.scenes[0].info.id;
                 let sceneSky_info = projData.scenesData.scenes[0].environment.sceneSky_info
-                pSky = self.loadSky( self.vrScene, scene_id, sceneSky_info, self.loadSceneCount);
+                
+                if ( sceneSky_info.res_url  ){
+                    pSky = self.loadSky( self.vrScene, scene_id, sceneSky_info, self.loadSceneCount);
+                }else if ( sceneSky_info.color ){
+                    pSky = new Promise( function ( resolve ){
+                        let aSky = document.createElement('a-sky');
+                        aSky.setAttribute('id', "sky" );
+                        aSky.setAttribute('color', sceneSky_info.color );
+                        self.vrScene.appendChild(aSky);
+                        
+                        resolve( aSky );
+                    });
+                }else{
+                    pSky = new Promise( function ( resolve ){
+                        let aSky = document.createElement('a-sky');
+                        aSky.setAttribute('id', "sky" );
+                        self.vrScene.appendChild(aSky);
+                        
+                        resolve( aSky );
+                    });
+                }
             }
 
             return pSky;
@@ -440,7 +461,7 @@ import net from './networkAgent.js';
 
             const size = 20;
             const divisions = 20;
-            const gridHelper = new THREE.GridHelper( size, divisions );
+            const gridHelper = new THREE.GridHelper( size, divisions , 0x444444 , 0xa3a3a3 );
             if ( vrController && vrController.vrScene && vrController.vrScene.object3D ){
                 vrController.vrScene.object3D.add( gridHelper );
             }
