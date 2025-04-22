@@ -232,6 +232,20 @@ import ARWrapper from './ARWrapper.js'
 					){
 						let scenes = custProject.makarUserData.scenesData.scenes;
 						scenes.forEach( scene =>{
+
+							//// 設定 環境
+							if ( scene.environment ){
+								if ( scene.environment.ambientLight && scene.environment.ambientLight.intensity ){
+									let ambientLight = document.getElementById('ambientLight');
+									if ( ambientLight ){
+										let int = scene.environment.ambientLight.intensity;
+										ambientLight.setAttribute('intensity' , int )
+									}
+								}
+
+							}
+
+							//// 載入 場景物件
 							if ( Array.isArray(scene.objs )  ){
 								let objs = scene.objs;
 								objs.forEach( obj =>{

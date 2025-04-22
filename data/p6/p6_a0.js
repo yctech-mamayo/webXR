@@ -25,8 +25,16 @@ let projData = {
                     scene_skybox_res_id: "1bfa00c43fe108e103841345a86e786f",
                     sceneSky_info:{
                         main_type: 'spherical_image',
-                        res_url: '../resource/sky/gray2.jpg',
+                        // res_url: '../resource/sky/gray2.jpg',
+                        color: '#ffffff',
                         // res_url: '../resource/sky/VR01.jpg',
+                    },
+                    oCameraInfo:{
+                        position:[ 0.74 , 4.45 , -6.92 ],
+                        target: [ 0.25 , 1,5 , 0.6 ],
+                    },
+                    ambientLight:{
+                        intensity: 1.7 ,
                     }
                 },
                 objs: [
@@ -54,7 +62,7 @@ let projData = {
                         },
                         typeAttr: {
                             color: "1,1,1",
-                            intensity: 0.6,
+                            intensity: 1,
                             light_type: "directional",
                             shadow: "Soft",
                             shadow_strength: 1,

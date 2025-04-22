@@ -1085,6 +1085,42 @@ import net from './networkAgent.js';
                         //// 這邊的 載入場景 並非 MAKAR 的官方流程，是客製化專案 額外撰寫
                         let pAll = loadScene( 0, projData );
                         
+                        //// 調整 起始的相機設定
+                        let tID = setInterval( function(){
+                            if ( projData.scenesData && Array.isArray( projData.scenesData.scenes ) && 
+                                projData.scenesData.scenes[0] && projData.scenesData.scenes[0].environment &&
+                                projData.scenesData.scenes[0].environment.oCameraInfo
+                            ){
+                                let cp = projData.scenesData.scenes[0].environment.oCameraInfo.position;
+                                let ct = projData.scenesData.scenes[0].environment.oCameraInfo.target;
+
+                                let oCamera = document.getElementById('oCamera');
+                                if ( oCamera && oCamera.components['orbit-controls'] && 
+                                    oCamera.components['orbit-controls'].target &&
+                                    oCamera.object3D && oCamera.object3D.children && oCamera.object3D.children[0]
+                                ){
+                                    oCamera.components['orbit-controls'].target.set( ct[0], ct[1], ct[2] );
+                                    oCamera.object3D.children[0].position.set( cp[0], cp[1], cp[2] );
+                                    clearInterval( tID );
+                                }
+                                
+                            }
+
+                        }, 300 );
+
+                        //// 調整環境光 的亮度
+                        if ( projData.scenesData && Array.isArray( projData.scenesData.scenes ) && 
+                                projData.scenesData.scenes[0] && projData.scenesData.scenes[0].environment &&
+                                projData.scenesData.scenes[0].environment.ambientLight
+                        ){
+                            let ambientLight = document.getElementById('ambientLight');
+                            if ( ambientLight ){
+                                let int = projData.scenesData.scenes[0].environment.ambientLight.intensity
+                                ambientLight.setAttribute('intensity' , int )
+                            }
+
+                        }
+                        
 
                         Promise.all(pAll).then( function( ret ){
                             console.log('VRFunc_cust.js: _loadScene: ret=', ret );

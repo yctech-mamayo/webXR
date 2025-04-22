@@ -11,7 +11,7 @@ let projData = {
     makarUserData:{
         oneProjData: {
             proj_id: "541820ff-3a92-470f-96f2-189dc0ca0fa2",
-            proj_name: "坡度の多元宇宙- 三合一 (1)",
+            proj_name: "火車",
             proj_type: "ar",
             proj_descr: "遊戲說明：\n「遊戲計時1分鐘，透過「點擊雨滴」方式，防止降雨量持續增高，幫助小山度過這場危機吧！\n\n新北市土石流守護神：\nhttps://lin.ee/bETMrJb\r",
             user_id: "a8b05d24-e6ea-4d4f-a8f0-f6a3f41c90b5",
@@ -148,7 +148,7 @@ let projData = {
                             },
                             typeAttr: {
                                 color: "1,1,1",
-                                intensity: 0.6,
+                                intensity: 1.0 ,
                                 light_type: "directional",
                                 shadow: "Soft",
                                 shadow_strength: 1,
@@ -421,13 +421,16 @@ let projData = {
                         "00000006-7dd5-4b24-8fb0-fb774ba6d8c6"
                     ],
                     environment: {
-                        "shader": "Skybox/Panoramic",
-                        "ground_shadow": true,
-                        "ground_shadow_color": "0,0,0,0.6",
-                        "scene_skybox_res_id": "",
-                        "scene_skybox_snapshot_1024": "",
-                        "scene_skybox_snapshot_2048": "",
-                        "scene_skybox_snapshot_4096": ""
+                        shader: "Skybox/Panoramic",
+                        ground_shadow: true,
+                        ground_shadow_color: "0,0,0,0.6",
+                        scene_skybox_res_id: "",
+                        scene_skybox_snapshot_1024: "",
+                        scene_skybox_snapshot_2048: "",
+                        scene_skybox_snapshot_4096: "",
+                        ambientLight:{
+                            intensity: 1.7 ,
+                        }
                     },
                     material_ids: []
                 }

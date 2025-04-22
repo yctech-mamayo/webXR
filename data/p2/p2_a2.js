@@ -26,7 +26,14 @@ let projData = {
                     sceneSky_info:{
                         main_type: 'spherical_image',
                         // res_url: '../resource/sky/gray2.jpg',
-                        color: '#e3e3e3',
+                        color: '#ffffff',
+                    },
+                    oCameraInfo:{
+                        position:[ 4.1 , 6.69 , -4.91 ],
+                        target: [ -1.35 , 1.79 , 0.56 ],
+                    },
+                    ambientLight:{
+                        intensity: 1.5,
                     }
                 },
                 objs: [
@@ -54,7 +61,7 @@ let projData = {
                         },
                         typeAttr: {
                             color: "1,1,1",
-                            intensity: 0.6,
+                            intensity: 1,
                             light_type: "directional",
                             shadow: "Soft",
                             shadow_strength: 1,

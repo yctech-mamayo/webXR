@@ -2,6 +2,18 @@
 
 #### 2025 04 22
 
+* 製作 AR,VR 完成:
+
+    1. 城堡:
+    AR: https://yctech-mamayo.github.io/webXR/AR/p5.html
+    VR: https://yctech-mamayo.github.io/webXR/detail/p5.html
+    
+    火車:
+    AR: https://yctech-mamayo.github.io/webXR/AR/p6.html
+    VR: https://yctech-mamayo.github.io/webXR/detail/p6.html
+        
+
+
 3D 模型提供紀錄:
     大象: 
         2025 04 14 
@@ -40,7 +52,7 @@
     恐龍: 
         「 52-1 」、「 54-1 」
 
-    
+
 
 
 
