@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="zh">
+<head>
+	<title>MAKAR webAR submodule</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=1">
+	<link rel="icon" type="image/png" href="../favicon.png" />
+
+	<link href="../styles_AR/style.css" rel="stylesheet" type="text/css">
+	<link href="../styles_AR/dragon.css" rel="stylesheet" type="text/css">
+
+	<script>
+		
+		//// 增加預先載入圖片功能，目前只做用在「載入中圖片」
+		let imageBase = 'https://mifly0makar0assets.s3.ap-northeast-1.amazonaws.com/DefaultResource/2D/Loading_20220630/Loading_An000';
+		for (let i = 0; i < 30; i++ ){
+			let strIndex = '';
+			if (i < 10){
+				strIndex = String( '0'+ i ) ;
+			}else{
+				strIndex = String( i );
+			}
+			let linkElement = document.createElement('link');
+			linkElement.setAttribute('as', 'image');
+			linkElement.setAttribute('rel', 'preload');
+			linkElement.setAttribute('href', imageBase + strIndex + '.png' );
+			document.head.appendChild( linkElement );
+		}
+
+	</script>
+
+</head>
+<body>
+
+	<script type="module">
+		import projData from "./data/p1.js";		
+		window.custProject = projData;
+		
+	</script>
+
+<div id = 'interactDMPBG'>
+	
+	<div id = 'interactDMPMain'>
+		<div id = 'interactDMPTextDiv'>
+			<div id = 'interactDMPText'>
+				MAKAR WEB AR 想要取得您的動作和方向
+			</div>
+		</div>
+
+		<div id = "homeStartButton"> 
+			<p id="homeStartP">
+				允許
+			</p>
+		</div>
+	</div>
+
+</div>
+
+<script src="../js/vconsole.min.js"></script>
+<script>
+	if ( window.navigator.userAgent.toLowerCase().indexOf("mobile") >= 0){
+		// var vConsole = new VConsole();	
+		console.log("The system is mobile: ", window.navigator.userAgent.toLowerCase() );
+	}else{
+		console.log("The system is PC: ", window.navigator.userAgent.toLowerCase() );
+		// switchLens.style.display = "none";
+	}
+</script>
+
+<!-- choose the develop or release version -->
+<script src="../lib/makarWebAR.min.js"></script>
+<!-- <script src="../build/artoolkit.min.js"></script> -->
+
+<script> 
+	//////
+	////// set the version of server, will also change the function in networkAgent.js
+	//////
+	window.serverVersion = "3.0.0";
+	window.webARVersion = "3.1.3"; ////// 作為 webAR 的版本控管，20200812 開始，目前用於溝通後端   
+
+	switch(serverVersion){
+		case "3.0.0":
+				// window.serverUrl = "https://ssl-api-makar-v3-apps.miflyservice.com:8081/Makar/"; // official V3 makar server.
+				// window.serverUrl = "https://ssl-api-makar-v3-apps.miflyservice.com/Makar/"; // official V3 makar server.
+				window.serverUrl = "https://test1.makar.app/Makar/"; // AWS test V3 makar server.
+				// window.serverUrl = "https://makar.app/Makar/";	// local test server 20200316
+		break;
+	}
+
+	//// 從「 母頁面取得 MAKAR server api 位址」
+	if ( parent && parent.serverUrl ){
+		console.log(' makarAR.html: use parent server url ', parent.serverUrl );
+		window.serverUrl = parent.serverUrl;
+	}
+
+	var getDMP = false;
+	window.getDMP = getDMP;
+
+	window.requestDeviceMotionPermission = function ( cb ){
+		console.log("makarAR.html: requestDeviceMotionPermission  " , typeof(DeviceMotionEvent)  );
+		if (typeof(DeviceMotionEvent) !== 'undefined' && typeof(DeviceMotionEvent.requestPermission) === 'function') {
+			DeviceMotionEvent.requestPermission().then(response => {
+				console.log("makarAR.html: requestPermission response =", response );
+				if ( cb ){
+					cb( response );
+				}
+				if (response == 'granted') {
+					getDMP = true;
+					window.addEventListener('devicemotion', (e) => {
+						// but.style.visibility='hidden';
+					})
+				}
+			}).catch(console.error)
+		}else {
+			// alert('DeviceMotionEvent is not defined');
+			console.log("makarAR.html: requestPermission: DeviceMotionEvent is not defined "  );
+			getDMP = true;
+		}
+	}
+	requestDeviceMotionPermission();
+
+
+
+</script>
+
+
+<!-- 起始載入頁面 -->
+<div id = "homePage" style = "display: block;">
+	<div id = 'homeImageContainer'></div>
+</div>
+
+
+<div id="freeUserWarnDiv">
+	<div id = 'freeUserWarnContent'>
+		<p id="pUserInfo" >  info  </p>
+		<div id = "leaveIframe">
+			返回
+		</div>
+	</div>
+</div>
+
+<!-- <canvas id="mycanvas"  style="position:relative; left:0px; top:0px; "></canvas> -->
+<!-- <canvas id="bgcanvas"  style="position:relative; left:0px; top:0px; "></canvas> -->
+
+
+<!-- <div id = "bottomProjs" class="collapsed"  >
+	<h4> 
+		作者專案 &ensp;
+		<i id="bottomArrow" class="collapsed" ></i>
+	</h4>
+</div>
+<div id = "projsInfo" class="collapsed" >
+	<table id = projsTable  >
+		<tr id="proj_snapshot"></tr>
+		<tr id="proj_name"></tr>
+	</table>
+</div> -->
+
+<div id="warnModal" >
+	<div id="warnModalContent"  >
+		<p id = "warnModalInfo"> 
+			GPS info
+		</p>
+		<div id = "warnModalButton">
+			<p id = "warnButtonTitle"> 確認 </p>
+		</div>
+
+	</div>
+</div>
+
+<div id = "clickToPlayAudio">
+	請點擊畫面來播放聲音
+</div>
+
+
+<div id = "timerDiv"  style="display: none" >
+	<p id = "timerContent" class="centerText"> 答題計時 </p>
+</div>
+
+<div id = "tipButtonDiv"  style="display: none" >
+	<p id = "tipButtonContent" class="centerText"> 提示 </p>
+</div>
+
+<div id = "tipDiv" class="modal" style="display: none">
+	<div id="tipModalContent" class="modal-content" >
+		<div id="tipContentDiv">
+			<p id = "tipContent" class="centerText"> 提示內文 </p>
+		</div>
+		<div id = "tipConfirmButton">
+			<p id = "tipConfirmConetent" class="centerText"> 確認 </p>
+		</div>
+	</div>
+</div>
+
+<div id = "startQuiz" style="display: none">
+	<div id="QuizModalContent" >
+		<div id="QuizStartContentDiv">
+			<p id = "QuizStartContent" class="centerText"> 點擊開始問答 </p>
+		</div>
+		<div id = "QuizStartButton">
+			<p id = "QuizstartTitle" class="centerText"> 確認 </p>
+		</div>
+	</div>
+</div>
+
+<div id = 'makarDragonWholeMaskDiv'></div>
+
+<div id = "makarDragon" style="display: none">
+	<img id = "mdTail" src = "https://mifly0makar0assets.s3-ap-northeast-1.amazonaws.com/DefaultResource/2D/MD/tail.png"></img>
+	<img id = "mdBody" src = "https://mifly0makar0assets.s3-ap-northeast-1.amazonaws.com/DefaultResource/2D/MD/body.png"></img>
+	<div id = "leftEye">
+	<img id = "leftCloseEye" src = "https://mifly0makar0assets.s3-ap-northeast-1.amazonaws.com/DefaultResource/2D/MD/close eyes.png"></img>
+	<img id = "leftOpenEye" src = "https://mifly0makar0assets.s3-ap-northeast-1.amazonaws.com/DefaultResource/2D/MD/open eyes.png"></img>
+	</div>
+	<img id = "mdOpenEye2" src = "https://mifly0makar0assets.s3-ap-northeast-1.amazonaws.com/DefaultResource/2D/MD/open eyes.png"></img>
+	<img id = "mdCloseEye" src = "https://mifly0makar0assets.s3-ap-northeast-1.amazonaws.com/DefaultResource/2D/MD/close eyes.png"></img>
+	<img id = "mdSign" src = "https://mifly0makar0assets.s3-ap-northeast-1.amazonaws.com/DefaultResource/2D/MD/sign.png"></img>
+
+	<img id = "imgRight" src = "https://mifly0makar0assets.s3-ap-northeast-1.amazonaws.com/DefaultResource/2D/MD/right.png" style="display: none"></img>
+	<img id = "imgWrong" src = "https://mifly0makar0assets.s3-ap-northeast-1.amazonaws.com/DefaultResource/2D/MD/wrong.png" style="display: none"></img>
+
+	<!-- <span class="circle"></span>
+	<div id = "cross"></div> -->
+	<img id = "mdRightHand" src = "https://mifly0makar0assets.s3-ap-northeast-1.amazonaws.com/DefaultResource/2D/MD/right hand.png"></img>
+	<img id = "mdLeftHand" src = "https://mifly0makar0assets.s3-ap-northeast-1.amazonaws.com/DefaultResource/2D/MD/left hand.png"></img>
+</div>
+
+
+<div id="quizEndDiv" class="blocker" style="display: none">
+	<img id ="quizEndImg" src = "https://mifly0makar0assets.s3-ap-northeast-1.amazonaws.com/DefaultResource/2D/modules/quiz/bg_quiz_zh.png"></img>
+</div>
+
+<div id="scoreDiv" class="blocker" style="display: none">
+	<img id ="scoreImg" src = "https://mifly0makar0assets.s3-ap-northeast-1.amazonaws.com/DefaultResource/2D/modules/quiz/bg_quiz_score.png"></img>
+	<div id = scoreContentDiv>
+		<p id = "scoreContent"> 目前分數 </p>
+	</div>
+	<div id ="scoreNumDiv">
+		<p id = "score"> 0 </p>
+	</div>
+</div>
+
+
+<div id="projectModal" class="modal" >
+	<!-- Modal content -->
+	<div id="projectModalContent" class="modal-content" >
+		<span class="close">&times;</span>
+		
+		<div id = "projectTypeDiv">
+			<img id = projectTypeImg src="https://mifly0makar0assets.s3.ap-northeast-1.amazonaws.com/DefaultResource/2D/icon/ar+target/ar+target.png"></img>
+			<span id="projectTypeInfo">proj_type</span>
+		</div>
+		<div id = "projectNameDiv" >
+			<p id="projectNameInfo">proj_name</p>
+			<img id="projectUserImage" src="https://mifly0makar0assets.s3.ap-northeast-1.amazonaws.com/DefaultResource/2D/icon/me2.png" alt="This will be the user's photo.">
+			<span id="projectUserName">name</span>
+			<span id="projectLastUpdateDate">last_update_date</span>
+		</div>
+		<hr id="projectNameDivEndLine">
+		<div id="scanList">
+			<p id = "scanListTitle">辨識圖</p>
+			<div id="projectPicture"></div>
+		</div>
+		<hr id="scanListEndLine">
+		<div id="projectGPSDiv">
+		  <p id="projectGPStitle">GPS地點</p>
+		  <div id="projectGPSInfo"> 123, 456</div>
+		</div>
+		<hr id="projectGPSDivEndLine">
+
+		<div id = "projectUsageDiv" >
+			<p id = "projectUsageTitle">專案玩法</p>
+			<p id="projectUsageInfo"></p>
+		</div>
+		<hr>
+		<div id = "projectDescriptionDiv">
+			<p id = "projectDescriptionTitle">專案介紹</p>
+			<p id="projectDescription">proj_descr</p>
+		</div>
+		<div id = "projectStartButton">
+			<img id = "startBGImage" src="https://mifly0makar0assets.s3.ap-northeast-1.amazonaws.com/DefaultResource/2D/icon/start/start.png" alt="Background image" >
+			<p id = "startTitle"> 開始體驗 </p>
+		</div>
+		
+	</div>
+</div>
+
+
+<script>
+	//// set loading page.
+	// var bgcanvas = document.getElementById("bgcanvas");
+	// bgcanvas.style.display = "inline";
+	// var ctx = bgcanvas.getContext("2d");
+	// //// image part
+	// var img = new Image(); 
+	// img.onload = function(){
+	// 	if (window.Browser){
+	// 		if (window.Browser.mobile){
+	// 			console.log("makarAR.html: Browse.mobiler=", img.width, img.height, innerWidth, innerHeight );
+	// 			var w = window.innerWidth;
+	// 			var h = (window.innerWidth/480) * 640;
+				
+	// 			var w = window.innerWidth;
+	// 			var h = window.innerHeight;
+				
+	// 			bgcanvas.width = w;
+	// 			bgcanvas.height = h;
+	// 			// ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, w, h );
+	// 			// ctx.drawImage(img, 0, (img.height-img.width/480*640)/2 , img.width, img.width/480*640 , 0, 0, w, h );
+	// 			ctx.drawImage(img, 0, 50 , img.width, img.width/w*h , 0, 0, w, h );
+
+	// 		}
+	// 		if (window.Browser.desktop){
+	// 			// console.log("nft_MAKAR.html: Browse.desktop=", window.Browser , img.width, img.height);
+	// 			bgcanvas.width = 640;
+	// 			bgcanvas.height = 480;
+	// 			ctx.drawImage(img, 0, 400, 720, 600, 0, 0, 640, 480 );
+	// 		}
+	// 	}
+	// }
+	// img.src =  "https://s3-ap-northeast-1.amazonaws.com/makar.webar.defaultobject/makar_default_objects/2D/makar-v3-loading.png";
+	
+	//// set webGL canvas.
+	// var mycanvas = document.getElementById("mycanvas");
+	// mycanvas.style.display = "none";
+
+	
+
+</script>
+
+<!-- develop aframe -->
+<!-- <script src="../js/aframe-v1.0.4.js"></script>
+<script src = "../js/aframe-gif-shader.js"></script>
+<script src = "../js/aframe-extras.js"></script> -->
+
+<!-- release aframe -->
+<script src="../lib/webpack/aframe-v1.0.4.min.js"></script>
+
+<!-- develop GSAP -->
+<script src = "../lib/GSAP/gsap.js"></script>
+<script src = "../lib/GSAP/ScrollTrigger.js"></script>
+<script src = "../lib/GSAP/ScrollToPlugin.js"></script>
+<script src = "../lib/GSAP/TextPlugin.js"></script>
+
+<!-- release GSAP 建議不用使用 -->
+<!-- <script src="../lib/webpack/GSAP.min.js"></script> -->
+
+
+<!-- develop three and AR -->
+<!-- <script src = "../js/scratchCard.js"></script>
+<script src="../js/checkBrowser.js"></script>
+<script src="../js/networkAgent.js"></script>
+<script src="../js/artoolkit.proxy.js"></script>
+<script src="../js/gif-animator.js"></script>
+<script src="../lib/orbitControls_customize.js"></script>
+
+<script src = '../lib/TGALoader.js'></script>
+<script src="../lib/chromaShader.js"></script>
+<script src="../lib/ObjectControls.js"></script> -->
+<script src = "../lib/anime/anime.min.js"></script>
+
+
+
+<!-- release three and AR -->
+<script src="../lib/webpack/appAR.module.min.js"></script>
+
+
+
+<!-- 轉入 版本控制之後載入 -->
+<!-- <script src="../js/artoolkit.three.js"></script> -->
+
+
+
+<!-- develop 版本控制流程 -->
+<script type="module" src="../js/ARMain/arVersionControl.js"></script>	
+
+<!-- release 版本控制流程 -->
+<!-- <script type="module" src="../lib/webpack/arIndex.min.js"></script>	 -->
+
+
+
+
+<script src = "../lib/logicSystem/logicSystem.js"></script>
+<script src = "../lib/logicSystem/transform.js"></script>
+<script src = "../lib/logicSystem/actions.js"></script>
+<script src = "../lib/logicSystem/controls.js"></script>
+<script src = "../lib/logicSystem/operators.js"></script>
+<script src = "../lib/logicSystem/items.js"></script>
+<script src = "../lib/logicSystem/data.js"></script>
+<script src = "../lib/logicSystem/variables.js"></script>
+<script src = "../lib/logicSystem/event.js"></script>
+<script src = "../lib/logicSystem/debug.js"></script> 
+
+<!-- <script src="../lib/webpack/logicAR.min.js"></script> -->
+
+
+<!-- all in one  -->
+<!-- <script src="../lib/appAR.module.min.js"></script>
+<script src="../lib/logicAR.min.js"></script> -->
+
+
+
+<script>
+
+
+	/////// do something when document ready
+
+	window.onload = function(){
+
+		setTimeout(function(){
+
+			console.log("makarAR.html: window onload ");
+			// var mdb = window.mdb = new mIndexedDB(); //// 為了括括卡 集點卡，假如直接執行此頁面，則需要，假如從 官方界面呼叫 iframe 則不用。
+			if (getDMP == true){
+				interactDMPBG.style.display = "none";
+
+				// startARProcess();
+				startARWithVersionControl();
+
+				startLoaingPage();
+
+			}else{
+				
+				interactDMPBG.style.display = "block";
+				homeStartButton.addEventListener("click", function(){
+					console.log("makarVR_directUrl.html: call requestDMP");
+					requestDeviceMotionPermission( function(){
+						interactDMPBG.style.display = "none";
+
+						// startARProcess();
+						startARWithVersionControl();
+
+						startLoaingPage();
+					} );
+
+				});
+			}
+
+			function startLoaingPage (){
+				//// 建制「起始載入動畫」
+				// let imageBase = 'https://mifly0makar0assets.s3.ap-northeast-1.amazonaws.com/DefaultResource/2D/Loading_20220630/Loading_An000';
+				let homeImageContainer = document.getElementById('homeImageContainer');
+				let hicw = homeImageContainer.clientWidth;
+				let hich = homeImageContainer.clientHeight;
+				let imgW = ( hicw > 210 ) ?  210 : hicw;
+				let imgH = ( hich > 240 ) ?  240 : hich;
+				
+				console.log('_makarVR.html: hicw h = ', hicw , hich );
+
+				for( let i = 0; i < 30; i++ ){
+					let strIndex = '';
+					if (i < 10){
+						strIndex = String( '0'+ i ) ;
+					}else{
+						strIndex = String( i );
+					}
+					let imgElement = document.createElement('img');
+					//// 調整位置大小
+					imgElement.style.top = (hich - imgH)/2 + 'px' ; 
+					imgElement.style.left = (hicw - imgW)/2 + 'px' ; 
+					imgElement.style.width = imgW + 'px' ;
+					imgElement.style.height = imgH + 'px' ;
+					
+					imgElement.setAttribute('src', imageBase + strIndex + '.png' );
+					imgElement.classList.add('homePlayImage');
+					homeImageContainer.appendChild( imgElement );
+
+				}
+				let homePlayImages = document.getElementsByClassName('homePlayImage');
+				// console.log(' homePlayImages length ' , homePlayImages.length  );
+
+				homeTickOn = true;
+				let homeImageCount = 0;
+				let playHomeImageTick = function(){
+
+					//// 假如累積播放到最後一張，則記數歸零
+					if ( homeImageCount > homePlayImages.length - 1 ){
+						homeImageCount = 0;
+					}
+
+					if ( homePlayImages[ homeImageCount ] ){
+
+						homePlayImages[ homeImageCount ].classList.add('show');
+
+						if ( homeImageCount > 0 ){
+							homePlayImages[ homeImageCount - 1 ].classList.remove('show');
+						}else{
+							homePlayImages[ homePlayImages.length - 1 ].classList.remove('show');
+						}
+
+						if ( homeImageCount < homePlayImages.length - 1 ){
+							homePlayImages[ homeImageCount + 1 ].classList.remove('show');
+						}else{
+							homePlayImages[ 0 ].classList.remove('show');
+						}
+					}
+
+					homeImageCount++;
+
+					//// 起始畫面，只要載入完成，就不會再使用了
+					if ( homeTickOn == true ){
+						setTimeout( playHomeImageTick , 50 );
+					}
+					
+					// requestAnimationFrame(playHomeImageTick); 
+				}
+				playHomeImageTick(); //// 執行
+			}
+
+
+			}, 500 );
+
+		}
+
+
+		if ( window.top != window.self  ){ //// check if in iframe
+			window.makarID = parent.selectedProject.user_id; //// must be the only one place to set window.makarID, if remove it, the process will not work.
+			// window.makarID = "fefe";
+
+			// Get the modal
+			let projectModal = document.getElementById("projectModal");
+			// Get the <span> element that closes the modal
+			let span = document.getElementsByClassName("close")[0];
+			// When the user clicks on <span> (x), close the modal
+			span.addEventListener("click", function(){
+				projectModal.style.display = "none";
+			});
+
+		} else {
+			window.makarID = "fefe";
+			// window.makarID = "thonsha";
+			// window.makarID = "df7693bb-c7b7-4b61-baad-9ae517531c6f";
+		}
+
+
+
+</script>
+
+<div id = 'gsapEmpty'></div>
+<a href = "tel:666666" id ="phoneCall"></a>
+<a href = "https://www.miflydesign.com" id ="openWebBrowser" target="_blank" ></a>
+<a href="mailto:infomakar@miflydesign.com" id ="sendEmail"></a>
+
+
+<!-- <p>&larr; <a href="../index.html">Back to examples</a> &rarr; </p> -->
+<!-- <br> -->
+</body>
+</html>

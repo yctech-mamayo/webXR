@@ -3,8 +3,8 @@
 let projData = {
     proj_id: "p1",
     name: {
-        tw: "專案 1",
-        en: "Project 1"
+        tw: "專案 天鵝 1",
+        en: "Project swan 1"
     },
 
     //// 以下為 MAKAR 基底資料 原則上不使用。 但因為使用引擎的關係，所以必須要有。

@@ -3303,7 +3303,7 @@ class VRController {
             }
     
             //// 假如「點擊觸發事件」跟「邏輯點擊」都沒有執行則判斷是否「點擊地板移動」
-            console.log(' event logic check: ', objectWithLogicEvent , objectWithClickEvent );
+            // console.log(' event logic check: ', objectWithLogicEvent , objectWithClickEvent );
             if (  objectWithLogicEvent == false && objectWithClickEvent == false ){
                 // console.log(' both pass ', self.walkingStatus , self.viewMode );
                 //// 先判斷是否有使用走動功能
@@ -3374,7 +3374,7 @@ class VRController {
                 }
     
             }else{
-                console.log(' _entEvent:  touch somethong ', eventTriggered );
+                // console.log(' _entEvent:  touch somethong ', eventTriggered );
             }
     
         }  
@@ -4150,7 +4150,7 @@ class VRController {
                 break;
 
             default:
-                console.log("VRFunc.js: triggerEvent: default: event=", event );	
+                // console.log("VRFunc.js: triggerEvent: default: event=", event );	
     
                 break;
         }
