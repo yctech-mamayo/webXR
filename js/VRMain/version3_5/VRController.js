@@ -3172,7 +3172,8 @@ class VRController {
 
                                     }else if ( event.button == 2 ){
 
-                                        // p.visible=false;
+                                        //// 客製化，右鍵隱藏 mesh object，記得上線時候。關閉。
+                                        p.visible=false;
 
                                     }
                                 }

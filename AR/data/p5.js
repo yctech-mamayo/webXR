@@ -104,7 +104,7 @@ let projData = {
             //// 客製化 直接指定類型 位址 
             "9bd689f7-2fe3-4a05-b7ba-5dade414cadc":{
                 res_id: "9bd689f7-2fe3-4a05-b7ba-5dade414cadc",
-                res_name: "elephant",
+                res_name: "castle",
                 res_url: "../resource/model/castle/城堡(a0).glb",
                 main_type: "model",
                 sub_type: "glb",

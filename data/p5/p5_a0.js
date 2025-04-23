@@ -678,12 +678,14 @@ function test(){
     //// 檢查名稱是否重複
     let names = [];
     obj_1.object3D.traverse( (c,i)=>{
-        if ( c.name != '' ){
+        if ( c.name != '' || c.name != ' ' ){
             if ( names.includes( c.name ) ){
                 console.log( '重複名稱:', c.name , c );
             }else{
                 names.push( c.name );
             }
+        }else{
+            console.log( '空白名稱:', c.name , c );
         }
     })
     
@@ -722,7 +724,7 @@ function test(){
     })
     
     obj_1.object3D.traverse( c=>{
-        if ( c.isMesh && c.name == '50-1'  ){
+        if ( c.isMesh && c.name == '58-2'  ){
             console.log(  c.id, c );
         }
     })

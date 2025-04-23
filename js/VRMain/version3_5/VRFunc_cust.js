@@ -1170,6 +1170,21 @@ import net from './networkAgent.js';
                                 }
 
                             }
+
+                            //// 客製化 拱門 
+                            //// 有 mesh 名稱重複
+                            if ( location.pathname.includes('/p7') ){
+                                let obj_1 = document.getElementById('obj_1');
+                                if ( obj_1 && obj_1.object3D ){
+                                    obj_1.object3D.traverse( (c,i)=>{
+                                        if ( c.isMesh && c.name == '58-2' ){
+                                            if ( c.parent && c.parent.name == '57' ){
+                                                c.name = '57-2';
+                                            }
+                                        }
+                                    })
+                                }
+                            }
                             
 
 

@@ -226,6 +226,7 @@ import ARWrapper from './ARWrapper.js'
 				console.log(' _message' , e , JSON.parse( e.data ) );
 				if ( messageData.type == "cust_proj_scene_done" ){
 					
+					console.log('_cust_proj_scene_done_: ', e );
 					//// 場景載入完成
 					if (custProject.makarUserData && custProject.makarUserData.scenesData && 
 						Array.isArray( custProject.makarUserData.scenesData.scenes) 
@@ -257,7 +258,7 @@ import ARWrapper from './ARWrapper.js'
 
 										//// 客製化 大象滾球遊樂 
 										//// 有 mesh 名稱重複，客製化調整
-										if ( true ){
+										if ( location.pathname.includes( '/p2' ) ){
 											let obj_1 = document.getElementById('obj_1');
 											if ( obj_1 && obj_1.object3D ){
 												obj_1.object3D.traverse( (c,i)=>{
@@ -278,9 +279,21 @@ import ARWrapper from './ARWrapper.js'
 
 										}
 
-										// 執行 客製化 模型材質 調整
-										setModelMaterial( custProject.makarUserData );
-										
+										//// 客製化 拱門 
+			                            //// 有 mesh 名稱重複
+										if ( location.pathname.includes('/p7') ){
+											let obj_1 = document.getElementById('obj_1');
+											if ( obj_1 && obj_1.object3D ){
+												obj_1.object3D.traverse( (c,i)=>{
+													if ( c.isMesh && c.name == '58-2' ){
+														if ( c.parent && c.parent.name == '57' ){
+															c.name = '57-2';
+														}
+													}
+												})
+											}
+										}
+
 
 									}
 								})
@@ -291,7 +304,11 @@ import ARWrapper from './ARWrapper.js'
 
 					}
 					
-					
+					//// 執行 客製化 平移模型物件
+					setObjectOffset( custProject.makarUserData );
+
+					// 執行 客製化 模型材質 調整
+					setModelMaterial( custProject.makarUserData );
 
 
 				}
@@ -302,6 +319,39 @@ import ARWrapper from './ARWrapper.js'
 
     };
 	
+
+	function setObjectOffset( projData ){
+		if ( projData && projData.scenesData && projData.scenesData.scenes && projData.scenesData.scenes[0] && 
+			Array.isArray( projData.scenesData.scenes[0].objs)
+		){
+			let scene_objs = projData.scenesData.scenes[0].objs;
+			scene_objs.forEach( (obj, i) => {
+				if ( obj.generalAttr && obj.generalAttr.obj_id &&
+					obj.transformAttr && obj.transformAttr.offsetPosition
+				){
+					let _op = obj.transformAttr.offsetPosition;
+
+					let op = _op.split(',');
+					if ( op.length == 3 && 
+						Number.isFinite( Number(op[0]) ) &&
+						Number.isFinite( Number(op[1]) ) &&
+						Number.isFinite( Number(op[2]) ) 
+					){
+						let _model = document.getElementById(  obj.generalAttr.obj_id );
+						if ( _model && _model.object3D){
+							let _root = _model.getObject3D( 'mesh' );
+							if ( _root && _root.position && _root.ModelJson ){
+								_root.position.add( new THREE.Vector3( Number(op[0]) , Number(op[1]) , Number(op[2]) ) );
+							}
+						}
+					}
+
+
+				}
+			})
+		}
+
+	}
 	
 	function setModelMaterial( projData ){
 		if ( projData && projData.scenesData && projData.scenesData.scenes && projData.scenesData.scenes[0] && 

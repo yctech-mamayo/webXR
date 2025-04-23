@@ -11,7 +11,7 @@ let projData = {
     makarUserData:{
         oneProjData: {
             proj_id: "541820ff-3a92-470f-96f2-189dc0ca0fa2",
-            proj_name: "坡度の多元宇宙- 三合一 (1)",
+            proj_name: "拱門",
             proj_type: "ar",
             proj_descr: "遊戲說明：\n「遊戲計時1分鐘，透過「點擊雨滴」方式，防止降雨量持續增高，幫助小山度過這場危機吧！\n\n新北市土石流守護神：\nhttps://lin.ee/bETMrJb\r",
             user_id: "a8b05d24-e6ea-4d4f-a8f0-f6a3f41c90b5",
@@ -42,7 +42,7 @@ let projData = {
             loc: [],
             target_ids: [
                 // "982583e1-db3b-4fd1-bb8e-973eb59a611a",
-                "f7636dbd-7dd5-4b24-8fb0-fb774ba6d8c6",
+                "00000007-7dd5-4b24-8fb0-fb774ba6d8c6",
                 // "b26eb4d4-0356-4d58-95ec-69df8a93b610"
             ],
             use_gyro_instead_slam: false,
@@ -67,9 +67,9 @@ let projData = {
             //     image_url: "https://s3-ap-northeast-1.amazonaws.com/mifly0makar0assets/Users/a8b05d24-e6ea-4d4f-a8f0-f6a3f41c90b5/ImageTarget/cabfdb20-87cd-401d-b4f9-5bc51d5992e8_256.jpg"
             // },
             {
-                target_id: "f7636dbd-7dd5-4b24-8fb0-fb774ba6d8c6",
+                target_id: "00000007-7dd5-4b24-8fb0-fb774ba6d8c6",
                 // gcss_url: "https://s3-ap-northeast-1.amazonaws.com/mifly0makar0assets/Users/a8b05d24-e6ea-4d4f-a8f0-f6a3f41c90b5/ImageTarget/118e23394f0a454e9e6b36b63812cae3_256.gcss",
-                gcss_url: "../resource/ARtarget/elephant_1.gcss",
+                gcss_url: "../resource/ARtarget/arch.gcss",
                 image_url: "https://s3-ap-northeast-1.amazonaws.com/mifly0makar0assets/Users/a8b05d24-e6ea-4d4f-a8f0-f6a3f41c90b5/ImageTarget/118e23394f0a454e9e6b36b63812cae3_256.jpg"
             },
             // {
@@ -104,8 +104,8 @@ let projData = {
             //// 客製化 直接指定類型 位址 
             "9bd689f7-2fe3-4a05-b7ba-5dade414cadc":{
                 res_id: "9bd689f7-2fe3-4a05-b7ba-5dade414cadc",
-                res_name: "elephant",
-                res_url: "../resource/model/p2/elephant(無渲染A2-3).glb",
+                res_name: "arch",
+                res_url: "../resource/model/arch/拱門(a0).glb",
                 main_type: "model",
                 sub_type: "glb",
                 size: "48704 bytes",
@@ -151,7 +151,7 @@ let projData = {
                             transformAttr: {
                                 transform: [
                                     "0,7.228968,2.956055",
-                                    "0.247,0,0,0.968",
+                                    "0.222, 0.421, -0.107 , 0.876 ",
                                     "1,1,1"
                                 ],
                                 rect_transform: [],
@@ -159,7 +159,7 @@ let projData = {
                             },
                             typeAttr: {
                                 color: "1,1,1",
-                                intensity: 0.6,
+                                intensity: 0.9,
                                 light_type: "directional",
                                 shadow: "Soft",
                                 shadow_strength: 1,
@@ -184,7 +184,7 @@ let projData = {
                                 active: true,
                                 isFold: false,
                                 obj_id: "obj_1", //// 必須為 專案內 唯一
-                                obj_name: "大象",
+                                obj_name: "拱門",
                                 obj_type: "3d",
                                 interactable: true,
                                 obj_parent_id: ""
@@ -196,7 +196,7 @@ let projData = {
                             transformAttr: {
                                 "transform": [
                                     "0,0,0",
-                                    "0,0,0,1",
+                                    "0, -0.7071 , 0 , 0.7071 ",
                                     "6,6,6"
                                 ],
                                 "rect_transform": [
@@ -211,13 +211,6 @@ let projData = {
                                 "simulated_rotation": "0,0,0"
                             },
                             cust_materials:[
-                                //// 要隱藏的物件
-                                {
-                                    id:'mHide', 
-                                    visible: false,
-                                    names:[ '7-1','7-2','42-1','42-2','26-1',,'26-2','28-1','28-2' ]
-                                },
-                                //// 磁力片 磁鐵 金屬 棒
                                 { 
                                     id:'mag_stick', 
                                     trans: false, 
@@ -226,18 +219,13 @@ let projData = {
                                     roughness: 0.2, 
                                     metalness: 1,
                                     names:[
-                                        '1-2','2-2',
-                                        '3-1','4-1','5-1','8-1','9-1','10-1',
-                                        '11-1',
-                                        '12-2','14-2','15-2','16-2','20-1',
-    
-                                        '21-1','22-1','24-1','25-1','27-1','30-1',
-                                        '33-1','34-1','35-1','36-1','37-2',
-                                        '39-1','40-1',
-                                        '41-1','43-1','44-1','45-1','46-2','47-1','48-1','49-1','50-1',
-                                        '51-1','52-1','53-1','54-1','55-1','56-1','57-1','58-1','59-1','60-1',
-                                        '61-1','62-1','63-1','68-1',
-                                        '64-2',
+                                        '01-2','02-2','04-2','05-2','06-2','07-2','08-2','09-2','10-2',
+                                        '11-2','12-2','14-2','15-2','16-2','17-2','18-2','19-2','20-2',
+                                        '21-2','22-2','24-2','25-2','26-2','27-2','28-2','29-2','40-2',
+                                        '41-2','42-2','44-2','45-2','46-2','47-2','48-2','49-2','50-2',
+                                        '51-2','52-2','54-2','55-2','56-2','57-2','58-2','59-2','60-2',
+                                        '61-2','62-2','64-2','65-2','66-2','67-2','68-2',
+
                                     ]
                                 },
                                 //// 透明管 
@@ -250,13 +238,10 @@ let projData = {
                                     metalness: 0.1,
                                     depthWrite: false,
                                     names:[
-                                        '19-1',
-                                        '31-1','32-1','38-1',
-                                        '66-1','67-1',
-                                        '65-0','17-1','18-1','13-1'
+                                        
                                     ]
                                 },
-                                //// 紫色磁力片 面 步驟一 大象底部兩層
+                                //// 紫色磁力片 面 
                                 {
                                     id:'purple_plane', 
                                     trans: true, 
@@ -266,12 +251,11 @@ let projData = {
                                     metalness: 0.25,
                                     depthWrite: false,
                                     names:[
-                                        '20-2','54-2',
-                                        '22-2','51-2',
-                                        '14-1','15-1',
+                                        '45-1','46-1',
+                                        '14-1','15-1','54-1',
                                     ]
                                 },
-                                //// 藍色磁力片 面 步驟一 大象第二層
+                                //// 藍色磁力片 面 
                                 {
                                     id:'blue_plane', 
                                     trans: true, 
@@ -281,11 +265,13 @@ let projData = {
                                     metalness: 0.25,
                                     depthWrite: false,
                                     names:[
-                                        '24-2','59-2','47-2',
-                                        '21-2','30-2','27-2',
+                                        '10-1','11-1','17-1','18-1',
+                                        '44-1','47-1',
+                                        '12-1','16-1',
+
                                     ]
                                 },
-                                //// 綠色磁力片 面 步驟二 大象上部 1 層
+                                //// 綠色磁力片 面 
                                 { 
                                     id:'green_plane', 
                                     trans: true, 
@@ -295,41 +281,74 @@ let projData = {
                                     metalness: 0.25,
                                     depthWrite: false,
                                     names:[
-                                        '25-2','52-2','53-2','16-2','29-2','50-2','49-2','48-2',
-                                        '46-1',
-                                        '16-1','29-1',
+                                        '09-1','19-1','42-1','48-1',
+
+
                                     ]
                                 },
-                                //// 黃色磁力片 面 步驟三、四、七 大小象 上方 
+                                //// 紅色磁力片 面  
+                                {
+                                    id:'red_plane', 
+                                    trans: true, 
+                                    color: [ 255, 10, 10 ], 
+                                    opacity: 0.65, 
+                                    roughness: 0.5, 
+                                    metalness: 0.25,
+                                    depthWrite: false,
+                                    names:[
+                                        '26-1','27-1','52-1',
+                                        '01-1','02-1','28-1',
+                                        
+                                    ]
+                                },
+                                //// 橘色磁力片 面  
+                                {
+                                    id:'orange_plane', 
+                                    trans: true, 
+                                    color: [ 235, 116, 30 ], 
+                                    opacity: 0.65, 
+                                    roughness: 0.5, 
+                                    metalness: 0.25,
+                                    depthWrite: false,
+                                    names:[
+                                        '24-1','25-1','51-1',
+                                        '04-1','05-1','29-1',
+
+
+                                    ]
+                                },
+                                //// 黃色磁力片 面 
                                 {
                                     id:'yallow_plane', 
                                     trans: true, 
-                                    color: [ 247, 156, 27 ], 
+                                    color: [ 247, 214, 27 ], 
                                     opacity: 0.65, 
                                     roughness: 0.5, 
                                     metalness: 0.25,
                                     depthWrite: false,
                                     names:[
-                                        '37-1','56-2','33-2','34-2','57-2','35-2','36-2','41-2','40-2','55-2',
-                                        '39-2','58-2','9-2','10-2',
+                                        '06-1','22-1','40-1','50-1',
+                                        '07-1','08-1','20-1','21-1',
+                                        '41-1','49-1',
+
                                     ]
                                 },
-                                //// 粉紅色磁力片 面 步驟五 六 小象 粉紅色 
+                                //// 粉紅色磁力片 面 
                                 {
                                     id:'pink_plane', 
                                     trans: true, 
-                                    color: [ 240, 91, 91 ], 
+                                    color: [ 255, 102, 102 ], 
                                     opacity: 0.65, 
                                     roughness: 0.5, 
                                     metalness: 0.25,
                                     depthWrite: false,
                                     names:[
-                                        '1-1','2-1','64-1','68-1',
-                                        '12-1',
-                                        '3-2','4-2','44-2','45-2'
+                                        '58-1','67-1','68-1',
+                                        '55-1','65-1','66-1',
+
                                     ]
                                 },
-                                //// 白色磁力片 面 步驟六 小象 白色 
+                                //// 白色磁力片 面 
                                 {
                                     id:'white_plane', 
                                     trans: true, 
@@ -339,7 +358,11 @@ let projData = {
                                     metalness: 0.3,
                                     depthWrite: false,
                                     names:[
-                                        '8-2','5-2','11-2','43-2',
+                                        '57-1','64-1',
+                                        '59-1','62-1',
+                                        '56-1','60-1',
+                                        '61-1',
+
                                     ]
                                 },
                                 
@@ -352,8 +375,7 @@ let projData = {
                                     roughness: 0.5, 
                                     metalness: 0.5,
                                     names:[
-                                        '60-1','61-1',
-                                        '62-1','63-1',
+                                        
                                     ]
                                 },
                                 //// 黑色 眼睛
@@ -365,11 +387,9 @@ let projData = {
                                     roughness: 0.5, 
                                     metalness: 0.5,
                                     names:[
-                                        '60-2','61-2',
-                                        '63-2','62-2',
+
                                     ]
                                 },
-    
                             ],
 
                         }
@@ -387,7 +407,7 @@ let projData = {
                     bezier: [],
                     xml_url: "https://s3-ap-northeast-1.amazonaws.com/mifly0makar0assets/Users/a8b05d24-e6ea-4d4f-a8f0-f6a3f41c90b5/XML/4bc2e559e10f4525923ffd74f06cb954.xml",
                     target_ids: [
-                        "f7636dbd-7dd5-4b24-8fb0-fb774ba6d8c6"
+                        "00000007-7dd5-4b24-8fb0-fb774ba6d8c6"
                     ],
                     environment: {
                         "shader": "Skybox/Panoramic",
@@ -396,7 +416,10 @@ let projData = {
                         "scene_skybox_res_id": "",
                         "scene_skybox_snapshot_1024": "",
                         "scene_skybox_snapshot_2048": "",
-                        "scene_skybox_snapshot_4096": ""
+                        "scene_skybox_snapshot_4096": "",
+                        ambientLight:{
+                            intensity: 1.7 ,
+                        }
                     },
                     material_ids: []
                 }

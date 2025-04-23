@@ -93,7 +93,7 @@ let projData = {
             //// 客製化 直接指定類型 位址 
             "00000006-2fe3-4a05-b7ba-5dade414cadc":{
                 res_id: "00000006-2fe3-4a05-b7ba-5dade414cadc",
-                res_name: "elephant",
+                res_name: "train",
                 res_url: "../resource/model/train/火車(A0).glb",
                 main_type: "model",
                 sub_type: "glb",
