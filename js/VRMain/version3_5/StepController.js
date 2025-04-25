@@ -84,27 +84,80 @@ class StepController {
         
         let self = this;
 
-        if ( this.steps && this.step_length > 0 && this.step_length < 10 ){
+        if ( self.steps && self.step_length > 0 && self.step_length < 10 ){
 
-            let stepContainer = document.createElement('div');
-            stepContainer.id = 'stepContainer';
-            document.body.appendChild( stepContainer );
+            //// 正式版本:
+            //// 「重頭開始」、「上一步」、「下一步」、「完整作品」
+            let step_to_head = document.getElementById('step_to_head');
+            let step_left_container = document.getElementById('step_left_container');
+            let step_text_now = document.getElementById('step_text_now');
+            let step_right_container = document.getElementById('step_right_container');
+            let step_to_end = document.getElementById('step_to_end');
 
-            self.steps.forEach( ( step, idx ) => {
-                let stepItem = document.createElement('div');
-                stepItem.classList.add('stepItem')  
-                stepItem.id = 'stepItem_' + idx;
-                stepItem.innerText = step.name[ this.lang ];
-                
-                if ( idx == 0 ){
-                    stepItem.classList.add('active');
-                }
-                stepItem.onclick = function(){
+            if ( step_to_head && step_left_container && step_text_now && step_right_container && step_to_end ){
+
+                //// 起始設定為【 完整作品 】最後一步
+                // ToStepAndSetText(self.step_length - 1);
+                self.current_step_idx = self.step_length - 1;
+                step_text_now.textContent = self.steps[ self.step_length - 1 ].name[ self.lang ];
+
+                //// 前往步驟 並 設定顯示文字
+                function ToStepAndSetText ( idx ){
                     self.ToStep( idx );
-                };
-                stepContainer.appendChild( stepItem );
+                    step_text_now.textContent = self.steps[idx].name[ self.lang ];
+                }
 
-            });
+                //// 「重頭開始」
+                step_to_head.onclick = function(){
+                    ToStepAndSetText( 0 )
+                }
+
+                //// 「完整作品」
+                step_to_end.onclick = function(){
+                    if ( self.step_length > 0  ){
+                        ToStepAndSetText( self.step_length - 1 );
+                    } 
+                }
+
+                //// 「上一步」
+                step_left_container.onclick = function(){
+                    if ( self.current_step_idx > 0 && self.current_step_idx < self.step_length  ){
+                        ToStepAndSetText( self.current_step_idx - 1 );
+                    }
+                }
+
+                //// 「下一步」
+                step_right_container.onclick = function(){
+                    if ( self.current_step_idx >= 0 && self.current_step_idx < self.step_length - 1 ){
+                        ToStepAndSetText( self.current_step_idx + 1 );
+                    }
+                }
+
+
+            }
+
+
+            //// 簡易版本 已更新
+            // let stepContainer = document.createElement('div');
+            // stepContainer.id = 'stepContainer';
+            // document.body.appendChild( stepContainer );
+
+            // self.steps.forEach( ( step, idx ) => {
+            //     let stepItem = document.createElement('div');
+            //     stepItem.classList.add('stepItem')  
+            //     stepItem.id = 'stepItem_' + idx;
+            //     stepItem.innerText = step.name[ this.lang ];
+                
+            //     if ( idx == 0 ){
+            //         stepItem.classList.add('active');
+            //     }
+            //     stepItem.onclick = function(){
+            //         self.ToStep( idx );
+            //     };
+            //     stepContainer.appendChild( stepItem );
+
+            // });
+
         }
     }
 
@@ -135,7 +188,11 @@ class StepController {
             this.ToStep_model_child( step_idx );
         }
 
-        this.SetStepUI( step_idx );
+        //// 紀錄當前步驟資料
+        this.current_step_idx = step_idx;
+        this.current_step = new_step;
+
+        // this.SetStepUI( step_idx );
 
     }
 
@@ -280,7 +337,7 @@ class StepController {
         }
     }
 
-    //// 切換當前步驟 UI
+    //// 切換當前步驟 UI ，已棄置
     SetStepUI( step_idx ){
         let stepContainer = document.getElementById('stepContainer');
         let stepItems = stepContainer.getElementsByClassName('stepItem');

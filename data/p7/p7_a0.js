@@ -107,7 +107,7 @@ let projData = {
                     {
                         main_type: 'model',
                         sub_type:'glb',
-                        res_url:'../resource/model/arch/拱門(a0).glb',
+                        res_url:'../resource/model/arch/拱門(a1).glb',
                         behav:[{type:'showData'}],
                         generalAttr: {
                             logic: false,

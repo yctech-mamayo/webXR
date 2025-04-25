@@ -1,3 +1,43 @@
+
+
+#### 2025 04 23
+    
+* 今日我會開始進行頁面 UI 建置。以下有些內容跟資料，請評估是否希望加入網頁。
+    1. 背景音樂( 手機裝置下，聲音需要使用者有互動行為才能夠進行播放，我會加在使用者有點擊行為後觸發。 )
+    2. 每個頁面的 meta 內容( SEO跟分享所需 ): 「 標題文字 」「簡介文字」「600x400 的分享圖片」
+    3. 網站的 icon
+    4. 網站的隱私權聲明，建議可小字放於每頁面的右下角
+    5. 網站的擁有者介紹文字 ，建議會放在 首頁跟列表頁的底部
+    6. 你們的社群網址( Line, FB, IG, YT 等等 )，建議會放在 首頁跟列表頁的底部
+    
+補充:
+    1. 網頁載入中( 下載素材、載入場景 )的圖片( 建議 單張圖片 或 GIF 或 連續圖片我來組裝 )
+
+
+對方回應:
+    2. © 2025 Mamayo. All rights reserved.
+        您可視版面調整文字串長短
+
+    3. 每一頁TITLE
+        VR展示列表 - 媽媽友mamayo磁力片
+        XXXXX作品名 - 媽媽友mamayo磁力片
+        右上角的中文與英文名
+        網頁內標題我現在給您
+        天鵝 – Swan
+        火車 – Train
+        城堡 – Castle
+        大象 – Elephant
+        恐龍 – Dinosaur
+        鐘樓 – Clock Tower
+        拱橋 – Arch Bridge
+        森林 – Forest 
+
+    4. 可以不需要有首頁 沒關係 謝謝您
+
+    5. 網站icon 您指的應該是favicon?
+        這邊給您 謝謝
+
+
 #### 2025 04 22
 
 對接 天鵝 恐龍 模型:
@@ -6,6 +46,22 @@
     1. 天鵝的眼睛，貌似只有單一 mesh ，這樣我無法設定「眼白」、「眼黑」 
     2. 天鵝的軀體，看起來中間應該有一片。檔案中沒有看到
     3. 天鵝的頭部， mesh 16, 17 的磁鐵部分，看起來沒有帶到 mesh( 只有16-1, 17-1, 沒有 16-2, 17-2, )
+
+紀錄
+恐龍 天鵝 拱門 的範例 AR VR 網站已經上線
+請觀看後有需要調整的地方再跟我說
+
+1. 恐龍:
+    AR: https://yctech-mamayo.github.io/webXR/AR/p3.html
+    VR: https://yctech-mamayo.github.io/webXR/detail/p3.html
+    
+    天鵝:
+    AR: https://yctech-mamayo.github.io/webXR/AR/p1.html
+    VR: https://yctech-mamayo.github.io/webXR/detail/p1.html
+
+    拱門: 
+    AR: https://yctech-mamayo.github.io/webXR/AR/p7.html
+    VR: https://yctech-mamayo.github.io/webXR/detail/p7.html
 
 #### 2025 04 22
 

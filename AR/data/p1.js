@@ -103,7 +103,7 @@ let projData = {
             "9bd689f7-2fe3-4a05-b7ba-5dade414cadc":{
                 res_id: "9bd689f7-2fe3-4a05-b7ba-5dade414cadc",
                 res_name: "swan",
-                res_url: "../resource/model/swan/天鵝(A1).glb",
+                res_url: "../resource/model/swan/天鵝(A3).glb",
                 main_type: "model",
                 sub_type: "glb",
                 size: "48704 bytes",
@@ -194,7 +194,7 @@ let projData = {
                             transformAttr: {
                                 "transform": [
                                     "0,0,0",
-                                    "0, -0.7071 , 0 , 0.7071 ",
+                                    "0, 0.7071 , 0 , 0.7071 ",
                                     "6,6,6"
                                 ],
                                 "rect_transform": [
@@ -227,6 +227,8 @@ let projData = {
                                     names:[
                                         '01-2','02-2','04-2','05-2','06-2','07-2','08-2','09-2','10-2',
                                         '12-2','14-2','15-2','18-2','19-2','20-2','21-2','22-2','25-2',
+                                        '26-2',
+                                        '16-1_0','17-1_0',
                                     ]
                                 },
                                 //// 透明管 
@@ -242,7 +244,7 @@ let projData = {
                                         '12-1','12-2','11-1','11-2','15-1','15-2',
                                     ]
                                 },
-                                //// 紫色磁力片 面 步驟一 大象底部兩層
+                                //// 紫色磁力片 面 
                                 {
                                     id:'purple_plane', 
                                     trans: true, 
@@ -255,7 +257,7 @@ let projData = {
                                         
                                     ]
                                 },
-                                //// 藍色磁力片 面 步驟一 大象第二層
+                                //// 藍色磁力片 面 
                                 {
                                     id:'blue_plane', 
                                     trans: true, 
@@ -266,10 +268,10 @@ let projData = {
                                     depthWrite: false,
                                     names:[
                                         '02-1','05-1','07-1',
-                                        '08-1',
+                                        '08-1','25-1','26-1',
                                     ]
                                 },
-                                //// 綠色磁力片 面 步驟二 大象上部 1 層
+                                //// 綠色磁力片 面
                                 { 
                                     id:'green_plane', 
                                     trans: true, 
@@ -320,9 +322,9 @@ let projData = {
                                     metalness: 0.25,
                                     depthWrite: false,
                                     names:[
-                                        '14-1','16-1','17-1',
+                                        '14-1','16-1_1','17-1_1',
                                         '18-1','19-1',
-                                        '20-1','21-1','22-1','25-1',
+                                        '20-1','21-1','22-1',
                                     ]
                                 },
                                 //// 粉紅色磁力片 面 
@@ -361,7 +363,7 @@ let projData = {
                                     roughness: 0.5, 
                                     metalness: 0.5,
                                     names:[
-                                        '24-1',
+                                        '24-1_0',
                                     ]
                                 },
                                 //// 黑色 眼睛
@@ -373,9 +375,10 @@ let projData = {
                                     roughness: 0.5, 
                                     metalness: 0.5,
                                     names:[
-
+                                        '24-1_1',
                                     ]
                                 },
+
                             ],
 
                         }

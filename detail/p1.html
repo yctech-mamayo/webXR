@@ -1,32 +1,17 @@
 <!doctype html>
 <html lang="zh">
 <head>
-	<title> makarVR	</title>
+	<title> 媽媽友 磁力片 天鵝 </title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=1">
-	<link rel="icon" type="image/png" href="../favicon.png" />
-	<!-- <script type="text/javascript" src="reveal/jquery-1.4.4.min.js"></script> -->
+	<link rel="icon" type="image/jpg" href="../favicon.jpg" />
 
 	<link href="../styles/style.css" rel="stylesheet" type="text/css">
+	<link href="../styles/VR.css" rel="stylesheet" type="text/css">
 	<link href="../styles/dragon.css" rel="stylesheet" type="text/css">
 	<link href="../styles/step.css" rel="stylesheet" type="text/css">
 
 	<script>
 		
-		//// 增加預先載入圖片功能，目前只做用在「載入中圖片」
-		let imageBase = 'https://mifly0makar0assets.s3.ap-northeast-1.amazonaws.com/DefaultResource/2D/Loading_20220630/Loading_An000';
-		for (let i = 0; i < 30; i++ ){
-			let strIndex = '';
-			if (i < 10){
-				strIndex = String( '0'+ i ) ;
-			}else{
-				strIndex = String( i );
-			}
-			let linkElement = document.createElement('link');
-			linkElement.setAttribute('as', 'image');
-			linkElement.setAttribute('rel', 'preload');
-			linkElement.setAttribute('href', imageBase + strIndex + '.png' );
-			document.head.appendChild( linkElement );
-		}
 
 	</script>
 
@@ -34,7 +19,6 @@
 <body>
 	<script src="../lib/vconsole.min.js"></script>
 
-	
 	<script type="module">
 		import projData from "../data/p1/p1_a0.js";		
 		window.custProject = projData;
@@ -51,46 +35,27 @@
 	</script>
 
 
-	<div id="freeUserWarnDiv">
+	<!-- <div id="freeUserWarnDiv">
 		<div id = 'freeUserWarnContent'>
 			<p id="pUserInfo" >  info  </p>
 			<div id = "leaveIframe">
 				返回
 			</div>
 		</div>
-	</div>
+	</div> -->
 
 	<script>
 		
-
-		// window.serverUrl = "https://ssl-api-makar-apps.miflyservice.com/Makar"; // makar server Amazon 
-		//////
-		////// set the version of server, will also change the function in networkAgent.js
-		//////
 		window.serverVersion = "3.0.0";
-
 		switch(serverVersion){
 			case "2.0.0":
 				window.serverUrl = "https://ssl-api-makar-apps.miflyservice.com/Makar/"; // makar V2 server Amazon 
-				// window.serverUrl = "https://makar-ali-sh-cn.miflyservice.com/Makar" ; // makar V2 server Ali-sh-cn
-			break;
-			
+			break;			
 			case "3.0.0":
-					// window.serverUrl = "https://60.250.125.146:8888/Makar/"; // local V3 makar server.
 					window.serverUrl = "https://ssl-api-makar-v3-apps.miflyservice.com/Makar/"; // official V3 makar server.
-					// window.serverUrl = "https://test1.makar.app/Makar/"; // AWS test V3 makar server.
-					// window.serverUrl = "https://makar.app/Makar/";	// local test server 20200316
-			break;
-			
+			break;			
 		}
 
-		//// 從「 母頁面取得 MAKAR server api 位址」
-		if ( parent && parent.serverUrl ){
-			console.log(' makarXR.html: use parent server url ', parent.serverUrl );
-			window.serverUrl = parent.serverUrl;
-		}
-		
-		
 		var getRandom = function(){
 			return Math.random();
 		}
@@ -114,13 +79,67 @@
             }
 		}
 //20200102-end-thonsha-add
-
-
 	</script>
+
+	<!-- 為了 SEO 跟 正規化網頁的內容，包含 Logo, Header, 等 -->
+	<section id = 'main_section'>
+		<h1  id = 'detail_h1' > 媽媽友 磁力片 天鵝 VR體驗 </h1>
+		<div id = 'detail_logo' ></div>
+
+		<div id = 'page_name'>
+			<h1 > 天鵝 </h1>
+			<h1 > Swan </h1>
+		</div>
+
+		<div id = 'element_container'>
+			
+		</div>
+
+		<div id = 'buy_btn'>
+			<p> 
+				購買
+				磁力片 
+			</p>
+		</div>
+
+		<div id = 'stepContainer_all'>
+			<div id = 'stepContainer_main'>
+				<div id = 'stepContainer_bg'></div>
+
+				<div id = 'step_to_head'>
+					重頭開始
+				</div>
+
+				<div id = 'step_left_container'>
+					<div id = 'left_triangle'></div>
+				</div>
+
+				<div id = 'step_text_now'> 步驟 1 </div>
+
+				<div id = 'step_right_container'>
+					<div id = 'right_triangle'></div>
+				</div>
+
+				<div id = 'step_to_end'>
+					完整作品
+				</div>
+
+			</div>
+
+		</div>
+
+
+	</section>
+
+	<!-- 跳轉到其他連結的區域 -->
+	<nav class="menu">
+
+	</nav>
 
 
 	<div id = "homePage" style = "display: block;">
-		<div id = 'homeImageContainer'></div>
+		<img id = 'loading_img' style="width: 100%;" src="../images/page/VR_loading.gif" alt="loading">
+		<!-- <div id = 'homeImageContainer'></div> -->
 	</div>
 
 	<div id = "loadPage">
@@ -141,133 +160,18 @@
 	<div id = "clickToUnMuteVideo">
 		請點擊來播放影片聲音
 	</div>
-
-	<!-- <div id = "leftTopButton"  >
-		<p>
-			<img id="leftTopArrow" src="https://mifly0makar0assets.s3-ap-northeast-1.amazonaws.com/DefaultResource/2D/icon/left+arrow+long/click.png" > </img>
-			專案標題 
-		</p>
-	</div> -->
-
-	<!-- <div id = "bottomProjs" class="collapsed" style="display: none;"  >
-		<h4> 
-			作者專案 &ensp;
-			<i id="bottomArrow" class="collapsed" ></i>
-		</h4>
-	</div>
-	<div id = "projsInfo" class="collapsed" >
-		<table id = projsTable >
-			<tr id="proj_snapshot"></tr>
-			<tr id="proj_name"></tr>
-		</table>
-	</div> -->
-
-	<div id = "timerDiv"  style="display: none" >
-		<p id = "timerContent" class="centerText"> 答題計時 </p>
-	</div>
-
-	<div id = "tipButtonDiv"  style="display: none" >
-		<p id = "tipButtonContent" class="centerText"> 提示 </p>
-	</div>
-
-	<div id = "tipDiv" class="modal" style="display: none">
-		<div id="tipModalContent" class="modal-content" >
-			<div id="tipContentDiv">
-				<p id = "tipContent" class="centerText"> 提示內文 </p>
-			</div>
-			<div id = "tipConfirmButton">
-				<p id = "tipConfirmConetent" class="centerText"> 確認 </p>
-			</div>
-		</div>
-	</div>
-
-	<div id = "startQuiz" class="modal" style="display: none">
-		<div id="QuizModalContent" class="modal-content" >
-			<div id="QuizStartContentDiv">
-				<p id = "QuizStartContent" class="centerText"> 點擊開始問答 </p>
-			</div>
-			<div id = "QuizStartButton">
-				<p id = "QuizstartTitle" class="centerText"> 確認 </p>
-			</div>
-		</div>
-	</div>
-
-	<div id = "makarDragon" style="display: none">
-		<img id = "mdTail" src = "https://mifly0makar0assets.s3-ap-northeast-1.amazonaws.com/DefaultResource/2D/MD/tail.png"></img>
-		<img id = "mdBody" src = "https://mifly0makar0assets.s3-ap-northeast-1.amazonaws.com/DefaultResource/2D/MD/body.png"></img>
-		<div id = "leftEye">
-		<img id = "leftCloseEye" src = "https://mifly0makar0assets.s3-ap-northeast-1.amazonaws.com/DefaultResource/2D/MD/close eyes.png"></img>
-		<img id = "leftOpenEye" src = "https://mifly0makar0assets.s3-ap-northeast-1.amazonaws.com/DefaultResource/2D/MD/open eyes.png"></img>
-		</div>
-		<img id = "mdOpenEye2" src = "https://mifly0makar0assets.s3-ap-northeast-1.amazonaws.com/DefaultResource/2D/MD/open eyes.png"></img>
-		<img id = "mdCloseEye" src = "https://mifly0makar0assets.s3-ap-northeast-1.amazonaws.com/DefaultResource/2D/MD/close eyes.png"></img>
-		<img id = "mdSign" src = "https://mifly0makar0assets.s3-ap-northeast-1.amazonaws.com/DefaultResource/2D/MD/sign.png"></img>
-
-		<img id = "imgRight" src = "https://mifly0makar0assets.s3-ap-northeast-1.amazonaws.com/DefaultResource/2D/MD/right.png" style="display: none"></img>
-		<img id = "imgWrong" src = "https://mifly0makar0assets.s3-ap-northeast-1.amazonaws.com/DefaultResource/2D/MD/wrong.png" style="display: none"></img>
-
-		<!-- <span class="circle"></span>
-		<div id = "cross"></div> -->
-		<img id = "mdRightHand" src = "https://mifly0makar0assets.s3-ap-northeast-1.amazonaws.com/DefaultResource/2D/MD/right hand.png"></img>
-		<img id = "mdLeftHand" src = "https://mifly0makar0assets.s3-ap-northeast-1.amazonaws.com/DefaultResource/2D/MD/left hand.png"></img>
-	</div>
 	
-
-	<div id="quizEndDiv" class="blocker" style="display: none">
-		<img id ="quizEndImg" src = "https://mifly0makar0assets.s3-ap-northeast-1.amazonaws.com/DefaultResource/2D/modules/quiz/bg_quiz_zh.png"></img>
-	</div>
-
-	<div id="scoreDiv" class="blocker" style="display: none">
-		<img id ="scoreImg" src = "https://mifly0makar0assets.s3-ap-northeast-1.amazonaws.com/DefaultResource/2D/modules/quiz/bg_quiz_score.png"></img>
-		<div id = scoreContentDiv>
-			<p id = "scoreContent"> 目前分數 </p>
-		</div>
-		<div id ="scoreNumDiv">
-			<p id = "score"> 0 </p>
-		</div>
-	</div>
-	
-	<!-- develop -->
-	<!-- <script src = "js/aframe-v1.0.4.js"></script>
-	<script src = "js/TGALoader.js" ></script>
-	<script src = "js/aframe-gif-shader.js"></script>
-	<script src = "js/aframe-extras.js"></script> -->
-
 	
 	<script src="../lib/testWebpack/aframe-v1.0.4.min.js"></script>
-	
-	<!-- <script src = "js/checkBrowser.js"></script>
-	<script src = "js/networkAgentVR.js"></script>
-	<script src = "js/whiteList.min.js"></script> -->
-	<!-- <script src = "js/gif-animator.js"></script> -->
 
 	<!-- minify by webpack -->
 	<script src = "../lib/whiteList.min.js"></script>             <!-- 用webpack包完之後全域變數不再是全域，例如 Module，原先想直接在檔案裡加上 Window.Module = Module，但結論是不去動它 -->
 	<script src="../lib/testWebpack/makarUtilities.js"></script>
 
-	<!-- 原本的 -->
-	<!-- <script src = "js/VRFunc.js"></script> -->
-
-	<!-- 版本更新ver. 3.5 -->
-	<!-- <script src = '../scripts/mIndexedDB.js'></script> -->
-
 
 	<!-- develop -->
 	<script type="module" src="../js/VRMain/vrVersionControl.js"></script>	
-	<!-- minify by webpack -->
-	<!-- <script type="module" src="./lib/testWebpack/vrIndex.min.js"></script>	 -->
-	
-	<!-- develop -->
-	<!-- <script src = "/lib/logicSystem/logicSystem.js"></script>
-	<script src = "/lib/logicSystem/transform.js"></script>
-	<script src = "/lib/logicSystem/actions.js"></script>
-	<script src = "/lib/logicSystem/controls.js"></script>
-	<script src = "/lib/logicSystem/operators.js"></script>
-	<script src = "/lib/logicSystem/items.js"></script>
-	<script src = "/lib/logicSystem/data.js"></script>
-	<script src = "/lib/logicSystem/variables.js"></script>
-	<script src = "/lib/logicSystem/event.js"></script>
-	<script src = "/lib/logicSystem/debug.js"></script> -->
+
 
 	<!-- minify by webpack -->
 	<script src = "../lib/testWebpack/logic.min.js"></script> 
@@ -283,11 +187,6 @@
 	<script src = "../lib/chromaShader.js"></script>
 	<script src = "../lib/anime/anime.min.js"></script>
 
-	<!-- <script src = "js/UI.js"></script> -->
-	<!-- <script src = "lib/UI.min.js"></script> -->
-	<script src = "../lib/testWebpack/UI.min.js"></script>
-
-
 
 	<script> 
 		/////// start the pop note when document ready
@@ -300,93 +199,14 @@
 
 				console.log("makarVR.html: document is ready");
 
-				//// 建制「起始載入動畫」
-				// let imageBase = 'https://mifly0makar0assets.s3.ap-northeast-1.amazonaws.com/DefaultResource/2D/Loading_20220630/Loading_An000';
-				let homeImageContainer = document.getElementById('homeImageContainer');
-				let hicw = homeImageContainer.clientWidth;
-				let hich = homeImageContainer.clientHeight;
-				let imgW = ( hicw > 210 ) ?  210 : hicw;
-				let imgH = ( hich > 240 ) ?  240 : hich;
-
-				console.log('_makarVR.html: hicw h = ', hicw , hich );
-
-				for( let i = 0; i < 30; i++ ){
-					let strIndex = '';
-					if (i < 10){
-						strIndex = String( '0'+ i ) ;
-					}else{
-						strIndex = String( i );
-					}
-					let imgElement = document.createElement('img');
-					//// 調整位置大小
-					imgElement.style.top = (hich - imgH)/2 + 'px' ; 
-					imgElement.style.left = (hicw - imgW)/2 + 'px' ; 
-					imgElement.style.width = imgW + 'px' ;
-					imgElement.style.height = imgH + 'px' ;
-					
-					imgElement.setAttribute('src', imageBase + strIndex + '.png' );
-					imgElement.classList.add('homePlayImage');
-					homeImageContainer.appendChild( imgElement );
-
-				}
-				let homePlayImages = document.getElementsByClassName('homePlayImage');
-				// console.log(' homePlayImages length ' , homePlayImages.length  );
-
-				homeTickOn = true;
-				let homeImageCount = 0;
-				let playHomeImageTick = function(){
-
-					//// 假如累積播放到最後一張，則記數歸零
-					if ( homeImageCount > homePlayImages.length - 1 ){
-						homeImageCount = 0;
-					}
-
-					if ( homePlayImages[ homeImageCount ] ){
-
-						homePlayImages[ homeImageCount ].classList.add('show');
-
-						if ( homeImageCount > 0 ){
-							homePlayImages[ homeImageCount - 1 ].classList.remove('show');
-						}else{
-							homePlayImages[ homePlayImages.length - 1 ].classList.remove('show');
-						}
-
-						if ( homeImageCount < homePlayImages.length - 1 ){
-							homePlayImages[ homeImageCount + 1 ].classList.remove('show');
-						}else{
-							homePlayImages[ 0 ].classList.remove('show');
-						}
-					}
-
-					homeImageCount++;
-
-					//// 起始畫面，只要載入完成，就不會再使用了
-					if ( homeTickOn == true ){
-						setTimeout( playHomeImageTick , 50 );
-					}
-					
-					// requestAnimationFrame(playHomeImageTick); 
-				}
-				playHomeImageTick(); //// 執行
-
-				//[start-20230811-howardhsu-add]//
-				//// 判斷是 3.4 或 3.5 再呼叫對應的 showVRProjectList()
 				showVRProjListWithVersionControl()
-				//[end-20230811-howardhsu-add]//
 
-				// showVRProjList();
-
-				// document.getElementById("testButton").onclick = showVRProjList;
 			}, 50 );
 
 
 		}
 
-		
-
 	</script>
-
-	
 
 	<div id = 'gsapEmpty'></div>
 	<a href = "tel:666666" id ="phoneCall"></a>

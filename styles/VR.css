@@ -1,0 +1,340 @@
+
+#loading_img{
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+}
+
+#main_section{
+    position: absolute;
+    z-index: 1;
+
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+
+    user-select: none;
+    pointer-events: none;
+
+    font-family: Roboto, Source Han Sans TC, 微軟正黑體, sans-serif;
+}
+#detail_h1{
+    position: absolute;
+    visibility: hidden;
+    top: 10px;
+    left: 10px
+    
+}
+
+#detail_logo{
+    position: absolute;
+    
+    background-image: url("../images/icon/mamayo_logo_simple.jpg");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#page_name{
+    position: absolute;
+    z-index: 1;
+}
+
+#page_name > h1 {
+    margin: 0;
+    color: rgb(55, 111, 252);
+    text-align: center;
+}
+
+#element_container{
+    position: absolute;
+    background-color: rgb(188, 188, 188);
+    border-radius: 8px;
+}
+
+#buy_btn{
+    position: absolute;
+    border-radius: 8px;
+    border: 2px solid rgb(254, 62, 129);
+
+    background-color: white;
+}
+
+#buy_btn > p {
+    color: rgb(254, 62, 129);
+    margin: 0;
+}
+
+#stepContainer_all{
+    position: absolute;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    pointer-events: auto;
+}
+
+#stepContainer_main{
+    position: absolute;
+
+    display: flex;
+
+}
+
+#stepContainer_bg{
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    box-shadow: 
+        0px 0px 10px 5px rgba(0, 0, 0, 0.3);
+
+    border: 2px solid black;
+    border-bottom: none;
+
+    border-radius: 100px 100px 0 0;
+
+    background-color: rgb(255,255,255);
+    user-select: none;
+    pointer-events: none;
+}
+
+#step_to_head , #step_left_container , #step_text_now , 
+#step_right_container , #step_to_end {
+    position: relative;
+    top: 6px;
+}
+
+#step_to_head , #step_to_end{
+    border-radius: 50px;
+    border: 1px solid black;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+#step_to_head{
+    color:white;
+    background-color: rgb(188, 188, 188);
+}
+
+#step_to_end{
+    color:white;
+    background: linear-gradient( 17deg, #6ff0c7, #7593f3);
+}
+
+#step_text_now{
+    color: rgb(41, 38, 212);
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#step_left_container , #step_right_container {
+    width: 35px;
+    height: 35px;
+
+    border: 1px solid black;
+    border-radius: 50px;
+
+    background-color: white;
+}
+
+#step_left_container:active , #step_right_container:active {
+    transform: translateY(3px);
+    background-color: rgb(216, 216, 216);
+}
+
+#left_triangle{
+    position: absolute;
+    margin-left: 16px;
+    top: 9px;
+    width: 0;
+    height: 0;
+    border-top: 15px solid black;
+    border-right: 15px solid transparent;
+    transform: scaleX(1.6) rotate( -45deg );
+}
+
+
+
+#right_triangle{
+    position: absolute;
+    margin-left: 4px;
+    top: 9px;
+    width: 0;
+    height: 0;
+    border-top: 15px solid black;
+    border-right: 15px solid transparent;
+    transform: scaleX(1.6) rotate( 135deg );
+}
+
+
+/* 橫版 手機 電腦一般 */
+@media only screen and (orientation: landscape)
+{
+
+    #loading_img{
+        object-fit: cover;
+        object-position: 50% 40%;
+    }
+    
+    #detail_logo{
+        top: 10px;
+        left: 10px;
+    
+        width: 200px;
+        height: 80px;
+        background-position: top left;
+    }
+
+    #page_name{
+        top: 10px;
+        right: 15px;
+        width: 80px;
+        height: 60px;
+    }
+
+    #element_container{
+        top: 80px;
+        right: 15px;
+        width: 80px;
+        height: 300px;
+        max-height: calc( 70vh - 80px ) ;
+
+    }
+
+    #buy_btn{
+        bottom: 20px;
+        right: 15px;
+        width: 80px;
+        height: 60px;
+    }
+
+    #buy_btn > p{
+        word-break: keep-all;
+    }
+
+    
+    #stepContainer_all{
+        bottom: 0px;
+        /* left: 0%; */
+        /* width: 400px;
+        max-width: 96%; */
+        height: 80px;
+
+        width: 100%;
+        
+    }
+
+    #stepContainer_main{
+        
+        width: 400px;
+        max-width: 96%;
+
+        height: 100%;
+        margin: auto;
+
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-content: flex-start;
+        align-items:center;
+        gap: 5px;
+
+    }
+
+}
+
+/* 直版 */
+@media only screen and (orientation: portrait)
+{
+
+    #loading_img{
+        object-fit: cover;
+        object-position: 50% 50%;
+    }
+
+    #detail_logo{
+        top: 10px;
+        /* left: calc( 50% - 20px ); */
+        right: 155px;
+    
+        width: 150px;
+        height: 60px;
+
+    }
+
+    #page_name{
+        top: 80px;
+        left: 20px;
+        width: 80px;
+        height: 60px;
+    }
+
+    
+    #element_container{
+        top: 80px;
+        right: 10px;
+        width: 200px;
+        height: 80px;
+        max-height: 70vh;
+        
+    }
+
+    #buy_btn{
+        top: 25px;
+        right: 10px;
+        width: 140px;
+        height: 32px;
+
+        font-size: 18px;
+    }
+
+    #buy_btn > p{
+        /* word-break: break-all; */
+        white-space: nowrap;
+    }
+
+    #stepContainer_all{
+        bottom: 0px;
+        /* left: 0%; */
+        /* width: 400px;
+        max-width: 96%; */
+        height: 80px;
+
+        width: 100%;
+        
+    }
+
+    #stepContainer_main{
+        
+        width: 400px;
+        max-width: 99%;
+
+        height: 100%;
+        margin: auto;
+
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-content: flex-start;
+        align-items:center;
+        gap: 5px;
+
+    }
+}
+
+
+/* ios Safari 的下方欄位 */
+
+@supports (height: 100dvh) {
+    #main_section {
+      height: 100dvh;
+    }
+}
