@@ -32,7 +32,7 @@
 #detail_logo{
     position: absolute;
     
-    background-image: url("../images/icon/mamayo_logo_simple.jpg");
+    background-image: url("../images/icon/mamayo_logo_simple_2.jpg");
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
@@ -47,6 +47,8 @@
     margin: 0;
     color: rgb(55, 111, 252);
     text-align: center;
+
+    font-size: 28px;
 }
 
 #element_container{
@@ -55,15 +57,14 @@
     border-radius: 8px;
 }
 
-#buy_btn{
+#buy_btn , #all_product_btn {
     position: absolute;
-    border-radius: 8px;
+    border-radius: 15px;
     border: 2px solid rgb(254, 62, 129);
-
     background-color: white;
 }
 
-#buy_btn > p {
+#buy_btn > p , #all_product_btn > p {
     color: rgb(254, 62, 129);
     margin: 0;
 }
@@ -92,7 +93,7 @@
     width: 100%;
     height: 100%;
     box-shadow: 
-        0px 0px 10px 5px rgba(0, 0, 0, 0.3);
+        0px 0px 10px 5px rgba(0, 0, 0, 0.2);
 
     border: 2px solid black;
     border-bottom: none;
@@ -104,7 +105,7 @@
     pointer-events: none;
 }
 
-#step_to_head , #step_left_container , #step_text_now , 
+#step_to_head , #step_left_container , #step_text_container , 
 #step_right_container , #step_to_end {
     position: relative;
     top: 6px;
@@ -117,23 +118,43 @@
     padding-bottom: 5px;
     padding-left: 15px;
     padding-right: 15px;
+    color:white;
+    background-color: rgb(120, 120, 120);
 }
 
-#step_to_head{
-    color:white;
-    background-color: rgb(188, 188, 188);
-}
-
-#step_to_end{
-    color:white;
+#step_to_end:active , #step_to_head:active {
+    transform: translateY(3px);
     background: linear-gradient( 17deg, #6ff0c7, #7593f3);
+
+    /* transition-duration: 1s;
+    transition-property: background-color; */
+}
+
+#step_text_container{
+    color: rgb(41, 38, 212);
+    margin-left: 1px;
+    margin-right: 1px;
+
+    top: 0%;
+    width: 35px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+
+}
+
+#step_text_title{
+    position: relative;
+
 }
 
 #step_text_now{
-    color: rgb(41, 38, 212);
-    margin-left: 5px;
-    margin-right: 5px;
+    position: relative;
 }
+
 
 #step_left_container , #step_right_container {
     width: 35px;
@@ -175,7 +196,7 @@
 }
 
 
-/* 橫版 手機 電腦一般 */
+/* 橫版 手機 */
 @media only screen and (orientation: landscape)
 {
 
@@ -186,23 +207,24 @@
     
     #detail_logo{
         top: 10px;
-        left: 10px;
+        left: 15px;
     
-        width: 200px;
-        height: 80px;
+        width: 145px;
+        height: 40px;
+
         background-position: top left;
     }
 
     #page_name{
         top: 10px;
         right: 15px;
-        width: 80px;
-        height: 60px;
+        width: 130px;
+        height: 80px;
     }
 
     #element_container{
-        top: 80px;
-        right: 15px;
+        top: 110px;
+        right: 30px;
         width: 80px;
         height: 300px;
         max-height: calc( 70vh - 80px ) ;
@@ -210,23 +232,30 @@
     }
 
     #buy_btn{
-        bottom: 20px;
-        right: 15px;
-        width: 80px;
-        height: 60px;
+        top: 100px;
+        left: 15px;
+        width: 140px;
+        height: 32px;
     }
 
-    #buy_btn > p{
-        word-break: keep-all;
+    #buy_btn > p , #all_product_btn > p {
+        white-space: nowrap;
+        padding-top: 3px;
     }
 
+    #all_product_btn{
+        top: 60px;
+        left: 15px;
+        width: 140px;
+        height: 32px;
+    }
     
     #stepContainer_all{
         bottom: 0px;
         /* left: 0%; */
         /* width: 400px;
         max-width: 96%; */
-        height: 80px;
+        height: 70px;
 
         width: 100%;
         
@@ -234,8 +263,8 @@
 
     #stepContainer_main{
         
-        width: 400px;
-        max-width: 96%;
+        width: 500px;
+        max-width: 98%;
 
         height: 100%;
         margin: auto;
@@ -245,13 +274,13 @@
         justify-content: center;
         align-content: flex-start;
         align-items:center;
-        gap: 5px;
+        gap: 15px;
 
     }
 
 }
 
-/* 直版 */
+/* 直版 手機 */
 @media only screen and (orientation: portrait)
 {
 
@@ -261,20 +290,19 @@
     }
 
     #detail_logo{
-        top: 10px;
-        /* left: calc( 50% - 20px ); */
-        right: 155px;
+        top: 12px;
+        left: calc( 50% - 65px );
     
-        width: 150px;
-        height: 60px;
+        width: 130px;
+        height: 37px;
 
     }
 
     #page_name{
         top: 80px;
         left: 20px;
-        width: 80px;
-        height: 60px;
+        width: 130px;
+        height: 80px;
     }
 
     
@@ -288,33 +316,38 @@
     }
 
     #buy_btn{
-        top: 25px;
+        top: 15px;
         right: 10px;
-        width: 140px;
+        width: 110px;
         height: 32px;
-
-        font-size: 18px;
+        font-size: 15px;
+        border-radius: 50px;
     }
 
-    #buy_btn > p{
-        /* word-break: break-all; */
+    #buy_btn > p , #all_product_btn > p{
+        padding-top: 3px;
         white-space: nowrap;
+    }
+
+    #all_product_btn{
+        top: 15px;
+        left: 10px;
+        width: 100px;
+        height: 32px;
+        font-size: 15px;
+        border-radius: 50px;
     }
 
     #stepContainer_all{
         bottom: 0px;
-        /* left: 0%; */
-        /* width: 400px;
-        max-width: 96%; */
         height: 80px;
-
         width: 100%;
         
     }
 
     #stepContainer_main{
         
-        width: 400px;
+        width: 500px;
         max-width: 99%;
 
         height: 100%;
@@ -325,10 +358,167 @@
         justify-content: center;
         align-content: flex-start;
         align-items:center;
-        gap: 5px;
+        gap: 7px;
 
     }
 }
+
+
+/* 平板 直版 */
+@media only screen and (orientation: portrait) and (min-width:700px)
+{
+    #all_product_btn{
+        font-size: 24px;
+        width: 170px;
+        height: 48px;
+        border-radius: 50px;
+    }
+
+    #buy_btn{
+        font-size: 24px;
+        width: 170px;
+        height: 48px;
+        border-radius: 50px;
+    }
+
+    #stepContainer_all{
+        bottom: 0px;
+        height: 100px;
+        width: 100%;
+    }
+
+    #stepContainer_main{
+        width: 700px;
+        max-width: 98%;
+
+        height: 100%;
+        margin: auto;
+
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-content: flex-start;
+        align-items:center;
+        gap: 15px;
+
+    }
+
+    
+    #step_to_head , #step_to_end{
+        font-size: 24px;
+
+        padding-top: 12px;
+        padding-bottom: 12px;
+        padding-left: 24px;
+        padding-right: 24px;
+
+    }
+
+    #step_text_container{
+        width: 50px;
+        font-size: 22px;
+    }
+
+    #step_left_container , #step_right_container {
+        width: 50px;
+        height: 50px;
+    }
+
+    #left_triangle{
+        margin-left: 21px;
+        top: 13px;
+        border-top: 23px solid black;
+        border-right: 23px solid transparent;
+    }
+
+    #right_triangle{
+        margin-left: 4px;
+        top: 13px;
+        border-top: 23px solid black;
+        border-right: 23px solid transparent;
+    }
+
+}
+
+/* 平板 橫版 */
+@media only screen and (orientation: landscape) and (min-width:980px)
+{
+
+    #all_product_btn{
+        font-size: 24px;
+        width: 170px;
+        height: 48px;
+        border-radius: 50px;
+    }
+
+    #buy_btn{
+        top: 120px;
+        font-size: 24px;
+        width: 170px;
+        height: 48px;
+        border-radius: 50px;
+    }
+    
+    #all_product_btn > p , #buy_btn > p{
+        padding-top: 6px;
+    }
+
+    #stepContainer_all{
+        height: 90px;
+    }
+
+    #stepContainer_main{
+        width: 700px;
+        max-width: 98%;
+
+        height: 100%;
+        margin: auto;
+
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-content: flex-start;
+        align-items:center;
+        gap: 30px;
+
+    }
+
+    #step_to_head , #step_to_end{
+        font-size: 24px;
+
+        padding-top: 12px;
+        padding-bottom: 12px;
+        padding-left: 24px;
+        padding-right: 24px;
+
+    }
+
+    #step_text_container{
+        width: 50px;
+        font-size: 22px;
+    }
+
+    #step_left_container , #step_right_container {
+        width: 50px;
+        height: 50px;
+    }
+
+    #left_triangle{
+        margin-left: 21px;
+        top: 13px;
+        border-top: 23px solid black;
+        border-right: 23px solid transparent;
+    }
+
+    #right_triangle{
+        margin-left: 4px;
+        top: 13px;
+        border-top: 23px solid black;
+        border-right: 23px solid transparent;
+    }
+
+}
+
 
 
 /* ios Safari 的下方欄位 */

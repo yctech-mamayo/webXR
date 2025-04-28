@@ -99,12 +99,14 @@ class StepController {
                 //// 起始設定為【 完整作品 】最後一步
                 // ToStepAndSetText(self.step_length - 1);
                 self.current_step_idx = self.step_length - 1;
-                step_text_now.textContent = self.steps[ self.step_length - 1 ].name[ self.lang ];
+                // step_text_now.textContent = self.steps[ self.step_length - 1 ].name[ self.lang ];
+                step_text_now.textContent =  (self.current_step_idx + 1) + '/' + (self.step_length ) ;
 
                 //// 前往步驟 並 設定顯示文字
                 function ToStepAndSetText ( idx ){
                     self.ToStep( idx );
-                    step_text_now.textContent = self.steps[idx].name[ self.lang ];
+                    // step_text_now.textContent = self.steps[idx].name[ self.lang ];
+                    step_text_now.textContent =  ( idx + 1 ) + '/' + (self.step_length ) ;
                 }
 
                 //// 「重頭開始」

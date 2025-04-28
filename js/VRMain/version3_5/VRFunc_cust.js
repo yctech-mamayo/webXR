@@ -461,7 +461,7 @@ import net from './networkAgent.js';
 
             const size = 20;
             const divisions = 20;
-            const gridHelper = new THREE.GridHelper( size, divisions , 0x444444 , 0xa3a3a3 );
+            const gridHelper = new THREE.GridHelper( size, divisions , 0xcccccc , 0xe5e5e5 );
             if ( vrController && vrController.vrScene && vrController.vrScene.object3D ){
                 vrController.vrScene.object3D.add( gridHelper );
             }
