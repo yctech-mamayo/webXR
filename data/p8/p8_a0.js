@@ -1,10 +1,10 @@
 
 
 let projData = {
-    proj_id: "p8",
+    proj_id: "p7",
     name: {
-        tw: "專案 森林 8",
-        en: "Project forest 8"
+        tw: "專案 森林 7",
+        en: "Project forest 7"
     },
 
     scenesData:{
@@ -25,8 +25,16 @@ let projData = {
                     scene_skybox_res_id: "1bfa00c43fe108e103841345a86e786f",
                     sceneSky_info:{
                         main_type: 'spherical_image',
-                        res_url: '../resource/sky/gray2.jpg',
-                        // res_url: '../resource/sky/VR01.jpg',
+                        // res_url: '../resource/sky/gray2.jpg',
+                        color: '#ffffff',
+
+                    },
+                    oCameraInfo:{
+                        position:[ -9.34 , 6.62 , -1.51 ],
+                        target: [ 1.47 , 2.07 , 0.8 ],
+                    },
+                    ambientLight:{
+                        intensity: 1.7 ,
                     }
                 },
                 objs: [
@@ -46,7 +54,7 @@ let projData = {
                         transformAttr: {
                             transform: [
                                 "0,7.228968,2.956055",
-                                "0.247,0,0,0.968",
+                                "0.222, 0.421, -0.107 , 0.876 ",
                                 "1,1,1"
                             ],
                             rect_transform: [],
@@ -99,8 +107,7 @@ let projData = {
                     {
                         main_type: 'model',
                         sub_type:'glb',
-                        // res_url:'/resource/model/p2/elephant(無渲染).glb',
-                        res_url:'../resource/model/p2/elephant(無渲染A2-3).glb',
+                        res_url:'../resource/model/frost/樹樂園(a0).glb',
                         behav:[{type:'showData'}],
                         generalAttr: {
                             logic: false,
@@ -124,11 +131,11 @@ let projData = {
                         //// 由於 此專案的材質為【 多數磁力片 相同顏色 】，故設計為【 材質類別 】 對應【 Mesh 名稱 】
                         cust_materials:[
                             //// 要隱藏的物件
-                            {
-                                id:'mHide', 
-                                visible: false,
-                                names:[ '7-1','7-2','42-1','42-2','26-1',,'26-2','28-1','28-2' ]
-                            },
+                            // {
+                            //     id:'mHide', 
+                            //     visible: false,
+                            //     names:[ '7-1','7-2','42-1','42-2','26-1',,'26-2','28-1','28-2' ]
+                            // },
                             //// 磁力片 磁鐵 金屬 棒
                             { 
                                 id:'mag_stick', 
@@ -138,18 +145,12 @@ let projData = {
                                 roughness: 0.2, 
                                 metalness: 1,
                                 names:[
-                                    '1-2','2-2',
-                                    '3-1','4-1','5-1','8-1','9-1','10-1',
-                                    '11-1',
-                                    '12-2','14-2','15-2','16-2','20-1',
+                                    '01-1-2','01-2-2','01-4-2','01-5-2','01-6-2','01-7-2','01-8-2','01-9-2','01-10-2',
+                                    '01-11-2','01-12-2','01-14-2','01-15-2','01-16-2','01-17-2','01-18-2','01-19-2','01-20-2',
+                                    '01-21-0_0','01-22-0_0','01-24-0_0','01-25-2','01-26-2','01-27-2',
+                                    '02-1-2','02-2-2','02-4-2','02-5-2','02-6-2','02-7-2','02-8-2','02-9-2',
+                                    '03-1-2','03-2-2','04-1-2','04-2-2',
 
-                                    '21-1','22-1','24-1','25-1','27-1','30-1',
-                                    '33-1','34-1','35-1','36-1','37-2',
-                                    '39-1','40-1',
-                                    '41-1','43-1','44-1','45-1','46-2','47-1','48-1','49-1','50-1',
-                                    '51-1','52-1','53-1','54-1','55-1','56-1','57-1','58-1','59-1','60-1',
-                                    '61-1','62-1','63-1','68-1',
-                                    '64-2',
                                 ]
                             },
                             //// 透明管 
@@ -162,13 +163,10 @@ let projData = {
                                 metalness: 0.1,
                                 depthWrite: false,
                                 names:[
-                                    '19-1',
-                                    '31-1','32-1','38-1',
-                                    '66-1','67-1',
-                                    '65-0','17-1','18-1','13-1'
+                                    
                                 ]
                             },
-                            //// 紫色磁力片 面 步驟一 大象底部兩層
+                            //// 紫色磁力片 面 
                             {
                                 id:'purple_plane', 
                                 trans: true, 
@@ -178,12 +176,11 @@ let projData = {
                                 metalness: 0.25,
                                 depthWrite: false,
                                 names:[
-                                    '20-2','54-2',
-                                    '22-2','51-2',
-                                    '14-1','15-1',
+                                    '01-4-1','01-5-1','01-7-1',
+                                    
                                 ]
                             },
-                            //// 藍色磁力片 面 步驟一 大象第二層
+                            //// 藍色磁力片 面 
                             {
                                 id:'blue_plane', 
                                 trans: true, 
@@ -193,11 +190,10 @@ let projData = {
                                 metalness: 0.25,
                                 depthWrite: false,
                                 names:[
-                                    '24-2','59-2','47-2',
-                                    '21-2','30-2','27-2',
+                                    '03-1-1',
                                 ]
                             },
-                            //// 綠色磁力片 面 步驟二 大象上部 1 層
+                            //// 綠色磁力片 面 
                             { 
                                 id:'green_plane', 
                                 trans: true, 
@@ -207,51 +203,87 @@ let projData = {
                                 metalness: 0.25,
                                 depthWrite: false,
                                 names:[
-                                    '25-2','52-2','53-2','16-2','29-2','50-2','49-2','48-2',
-                                    '46-1',
-                                    '16-1','29-1',
+                                    '01-17-1','01-15-1','01-20-1',
+                                    '01-25-1','01-26-1',
+                                    '02-2-1','02-1-1','02-4-1','02-5-4',
+
                                 ]
                             },
-                            //// 黃色磁力片 面 步驟三、四、七 大小象 上方 
+                            //// 紅色磁力片 面  
+                            {
+                                id:'red_plane', 
+                                trans: true, 
+                                color: [ 255, 10, 10 ], 
+                                opacity: 0.65, 
+                                roughness: 0.5, 
+                                metalness: 0.25,
+                                depthWrite: false,
+                                names:[
+
+                                ]
+                            },
+                            //// 橘色磁力片 面  
+                            {
+                                id:'orange_plane', 
+                                trans: true, 
+                                color: [ 235, 116, 30 ], 
+                                opacity: 0.65, 
+                                roughness: 0.5, 
+                                metalness: 0.25,
+                                depthWrite: false,
+                                names:[
+                                    '02-8-1','02-9-1',
+
+                                ]
+                            },
+                            //// 黃色磁力片 面 
                             {
                                 id:'yallow_plane', 
                                 trans: true, 
-                                color: [ 247, 156, 27 ], 
+                                color: [ 247, 214, 27 ], 
                                 opacity: 0.65, 
                                 roughness: 0.5, 
                                 metalness: 0.25,
                                 depthWrite: false,
                                 names:[
-                                    '37-1','56-2','33-2','34-2','57-2','35-2','36-2','41-2','40-2','55-2',
-                                    '39-2','58-2','9-2','10-2',
+                                    '01-1-1','01-2-1','01-6-1',
+                                    '01-8-1','01-9-1','01-10-1',
+                                    '01-11-1','01-12-1','01-14-1',
+                                    '01-27-1',
+                                    '03-2-1','04-2-1',
+
                                 ]
                             },
-                            //// 粉紅色磁力片 面 步驟五 六 小象 粉紅色 
+                            //// 粉紅色磁力片 面 
                             {
                                 id:'pink_plane', 
                                 trans: true, 
-                                color: [ 240, 91, 91 ], 
+                                color: [ 255, 102, 102 ], 
                                 opacity: 0.65, 
                                 roughness: 0.5, 
                                 metalness: 0.25,
                                 depthWrite: false,
                                 names:[
-                                    '1-1','2-1','64-1','68-1',
-                                    '12-1',
-                                    '3-2','4-2','44-2','45-2'
+                                    
+
                                 ]
                             },
-                            //// 白色磁力片 面 步驟六 小象 白色 
+                            //// 白色磁力片 面 
                             {
                                 id:'white_plane', 
                                 trans: true, 
                                 color: [ 204, 204, 204 ], 
                                 opacity: 0.5, 
-                                roughness: 0.6, 
-                                metalness: 0.3,
+                                roughness: 0.5, 
+                                metalness: 0.15,
                                 depthWrite: false,
                                 names:[
-                                    '8-2','5-2','11-2','43-2',
+                                    '01-18-1','01-19-1','01-16-1',
+                                    '01-22-0_1','01-21-0_1','01-24-0_1',
+                                    '02-7-1','02-6-1',
+                                    '02-5-1',
+                                    '04-1-1',
+                                    
                                 ]
                             },
                             
@@ -264,8 +296,7 @@ let projData = {
                                 roughness: 0.5, 
                                 metalness: 0.5,
                                 names:[
-                                    '60-1','61-1',
-                                    '62-1','63-1',
+                                    
                                 ]
                             },
                             //// 黑色 眼睛
@@ -277,8 +308,7 @@ let projData = {
                                 roughness: 0.5, 
                                 metalness: 0.5,
                                 names:[
-                                    '60-2','61-2',
-                                    '63-2','62-2',
+
                                 ]
                             },
 
@@ -291,76 +321,76 @@ let projData = {
                     step_type:'mesh',
                     //// 要控制的所有物件，避免影響到 root 層級
                     controlChildrenNames:[
-                        { o: 'obj_1', n:'1' },
-                        { o: 'obj_1', n:'2' },
-                        { o: 'obj_1', n:'3' },
-                        { o: 'obj_1', n:'4' },
-                        { o: 'obj_1', n:'5' },
-                        { o: 'obj_1', n:'6' },
-                        { o: 'obj_1', n:'7' },
-                        { o: 'obj_1', n:'8' },
-                        { o: 'obj_1', n:'9' },
-                        { o: 'obj_1', n:'10' },
-                        { o: 'obj_1', n:'11' },
-                        { o: 'obj_1', n:'12' },
-                        { o: 'obj_1', n:'13' },
-                        { o: 'obj_1', n:'14' },
-                        { o: 'obj_1', n:'15' },
-                        { o: 'obj_1', n:'16' },
-                        { o: 'obj_1', n:'17' },
-                        { o: 'obj_1', n:'18' },
-                        { o: 'obj_1', n:'19' },
-                        { o: 'obj_1', n:'20' },
-                        { o: 'obj_1', n:'21' },
-                        { o: 'obj_1', n:'22' },
-                        { o: 'obj_1', n:'23' },
-                        { o: 'obj_1', n:'24' },
-                        { o: 'obj_1', n:'25' },
-                        { o: 'obj_1', n:'26' },
-                        { o: 'obj_1', n:'27' },
-                        { o: 'obj_1', n:'28' },
-                        { o: 'obj_1', n:'29' },
-                        { o: 'obj_1', n:'30' },
-                        { o: 'obj_1', n:'31' },
-                        { o: 'obj_1', n:'32' },
-                        { o: 'obj_1', n:'33' },
-                        { o: 'obj_1', n:'34' },
-                        { o: 'obj_1', n:'35' },
-                        { o: 'obj_1', n:'36' },
-                        { o: 'obj_1', n:'37' },
-                        { o: 'obj_1', n:'38' },
-                        { o: 'obj_1', n:'39' },
-                        { o: 'obj_1', n:'40' },
-                        { o: 'obj_1', n:'41' },
-                        { o: 'obj_1', n:'42' },
-                        { o: 'obj_1', n:'43' },
-                        { o: 'obj_1', n:'44' },
-                        { o: 'obj_1', n:'45' },
-                        { o: 'obj_1', n:'46' },
-                        { o: 'obj_1', n:'47' },
-                        { o: 'obj_1', n:'48' },
-                        { o: 'obj_1', n:'49' },
-                        { o: 'obj_1', n:'50' },
-                        { o: 'obj_1', n:'51' },
-                        { o: 'obj_1', n:'52' },
-                        { o: 'obj_1', n:'53' },
-                        { o: 'obj_1', n:'54' },
-                        { o: 'obj_1', n:'55' },
-                        { o: 'obj_1', n:'56' },
-                        { o: 'obj_1', n:'57' },
-                        { o: 'obj_1', n:'58' },
-                        { o: 'obj_1', n:'59' },
-                        { o: 'obj_1', n:'60' },
-                        { o: 'obj_1', n:'61' },
-                        { o: 'obj_1', n:'62' },
-                        { o: 'obj_1', n:'63' },
-                        { o: 'obj_1', n:'64' },
-                        { o: 'obj_1', n:'65' },
-                        { o: 'obj_1', n:'66' },
-                        { o: 'obj_1', n:'67' },
-                        { o: 'obj_1', n:'68' },
-                        { o: 'obj_1', n:'69' },
-                        { o: 'obj_1', n:'70' },
+                        { o: 'obj_1', n:'01-1' },
+                        { o: 'obj_1', n:'01-2' },
+                        { o: 'obj_1', n:'01-4' },
+                        { o: 'obj_1', n:'01-5' },
+                        { o: 'obj_1', n:'01-6' },
+                        { o: 'obj_1', n:'01-7' },
+                        { o: 'obj_1', n:'01-8' },
+                        { o: 'obj_1', n:'01-9' },
+                        { o: 'obj_1', n:'01-10' },
+                        { o: 'obj_1', n:'01-11' },
+                        { o: 'obj_1', n:'01-12' },
+                        { o: 'obj_1', n:'01-13' },
+                        { o: 'obj_1', n:'01-14' },
+                        { o: 'obj_1', n:'01-15' },
+                        { o: 'obj_1', n:'01-16' },
+                        { o: 'obj_1', n:'01-17' },
+                        { o: 'obj_1', n:'01-18' },
+                        { o: 'obj_1', n:'01-19' },
+                        { o: 'obj_1', n:'01-20' },
+                        { o: 'obj_1', n:'01-21' },
+                        // { o: 'obj_1', n:'01-21-0_triangles' },
+                        { o: 'obj_1', n:'01-22' },
+                        // { o: 'obj_1', n:'01-22-0_triangles' },
+                        { o: 'obj_1', n:'01-24' },
+                        // { o: 'obj_1', n:'01-24-0_triangles' },
+                        { o: 'obj_1', n:'01-25' },
+                        { o: 'obj_1', n:'01-26' },
+                        { o: 'obj_1', n:'01-27' },
+                        { o: 'obj_1', n:'02-1' },
+                        { o: 'obj_1', n:'02-2' },
+                        { o: 'obj_1', n:'02-4' },
+                        { o: 'obj_1', n:'02-5' },
+                        { o: 'obj_1', n:'02-6' },
+                        { o: 'obj_1', n:'02-7' },
+                        { o: 'obj_1', n:'02-8' },
+                        { o: 'obj_1', n:'02-9' },
+                        { o: 'obj_1', n:'03-1' },
+                        { o: 'obj_1', n:'03-2' },
+                        { o: 'obj_1', n:'04-1' },
+                        { o: 'obj_1', n:'04-2' },
+                        // { o: 'obj_1', n:'41' },
+                        // { o: 'obj_1', n:'42' },
+                        // { o: 'obj_1', n:'43' },
+                        // { o: 'obj_1', n:'44' },
+                        // { o: 'obj_1', n:'45' },
+                        // { o: 'obj_1', n:'46' },
+                        // { o: 'obj_1', n:'47' },
+                        // { o: 'obj_1', n:'48' },
+                        // { o: 'obj_1', n:'49' },
+                        // { o: 'obj_1', n:'50' },
+                        // { o: 'obj_1', n:'51' },
+                        // { o: 'obj_1', n:'52' },
+                        // { o: 'obj_1', n:'53' },
+                        // { o: 'obj_1', n:'54' },
+                        // { o: 'obj_1', n:'55' },
+                        // { o: 'obj_1', n:'56' },
+                        // { o: 'obj_1', n:'57' },
+                        // { o: 'obj_1', n:'58' },
+                        // { o: 'obj_1', n:'59' },
+                        // { o: 'obj_1', n:'60' },
+                        // { o: 'obj_1', n:'61' },
+                        // { o: 'obj_1', n:'62' },
+                        // { o: 'obj_1', n:'63' },
+                        // { o: 'obj_1', n:'64' },
+                        // { o: 'obj_1', n:'65' },
+                        // { o: 'obj_1', n:'66' },
+                        // { o: 'obj_1', n:'67' },
+                        // { o: 'obj_1', n:'68' },
+                        // { o: 'obj_1', n:'69' },
+                        // { o: 'obj_1', n:'70' },
 
                     ],
                     steps:[
@@ -373,18 +403,13 @@ let projData = {
                             scene_id:'s1',
                             obj_id: 'obj_1',
                             show_objs: [
-                                { obj_id: 'obj_1', name: '20', type: 'direct'},
-                                { obj_id: 'obj_1', name: '54', type: 'direct'},
-                                { obj_id: 'obj_1', name: '51', type: 'direct'},
-                                { obj_id: 'obj_1', name: '22', type: 'direct'},
+                                { obj_id: 'obj_1', name: '01-7', type: 'direct'},
+                                { obj_id: 'obj_1', name: '01-1', type: 'direct'},
+                                { obj_id: 'obj_1', name: '01-2', type: 'direct'},
+                                { obj_id: 'obj_1', name: '01-6', type: 'direct'},
+                                { obj_id: 'obj_1', name: '01-5', type: 'direct'},
+                                { obj_id: 'obj_1', name: '01-4', type: 'direct'},
 
-                                { obj_id: 'obj_1', name: '24', type: 'direct'},
-                                { obj_id: 'obj_1', name: '47', type: 'direct'},
-                                { obj_id: 'obj_1', name: '59', type: 'direct'},
-
-                                { obj_id: 'obj_1', name: '27', type: 'direct'},
-                                { obj_id: 'obj_1', name: '21', type: 'direct'},
-                                { obj_id: 'obj_1', name: '30', type: 'direct'},
 
                             ],
 
@@ -398,18 +423,13 @@ let projData = {
                             scene_id:'s1',
                             obj_id: 'obj_1',
                             show_objs: [
-                                { obj_id: 'obj_1', name: '16', type: 'direct'},
-                                { obj_id: 'obj_1', name: '25', type: 'direct'},
-                                { obj_id: 'obj_1', name: '48', type: 'direct'},
-                                { obj_id: 'obj_1', name: '49', type: 'direct'},
+                                { obj_id: 'obj_1', name: '01-14', type: 'direct'},
+                                { obj_id: 'obj_1', name: '01-8', type: 'direct'},
+                                { obj_id: 'obj_1', name: '01-9', type: 'direct'},
+                                { obj_id: 'obj_1', name: '01-11', type: 'direct'},
                                 
-                                { obj_id: 'obj_1', name: '50', type: 'direct'},
-                                { obj_id: 'obj_1', name: '52', type: 'direct'},
-                                { obj_id: 'obj_1', name: '53', type: 'direct'},
-                                { obj_id: 'obj_1', name: '29', type: 'direct'},
-
-                                { obj_id: 'obj_1', name: '31', type: 'direct'},
-                                { obj_id: 'obj_1', name: '32', type: 'direct'},
+                                { obj_id: 'obj_1', name: '01-12', type: 'direct'},
+                                { obj_id: 'obj_1', name: '01-10', type: 'direct'},
 
 
                             ],
@@ -425,8 +445,13 @@ let projData = {
                             scene_id:'s1',
                             obj_id: 'obj_1',
                             show_objs: [
-                                { obj_id: 'obj_1', name: '38', type: 'direct'},
-                                { obj_id: 'obj_1', name: '37', type: 'direct'},
+                                { obj_id: 'obj_1', name: '01-15', type: 'direct'},
+                                { obj_id: 'obj_1', name: '01-19', type: 'direct'},
+                                { obj_id: 'obj_1', name: '01-20', type: 'direct'},
+                                { obj_id: 'obj_1', name: '01-18', type: 'direct'},
+                                
+                                { obj_id: 'obj_1', name: '01-16', type: 'direct'},
+                                { obj_id: 'obj_1', name: '01-17', type: 'direct'},
                                 
                             ],
 
@@ -440,22 +465,15 @@ let projData = {
                             scene_id:'s1',
                             obj_id: 'obj_1',
                             show_objs: [
-                                { obj_id: 'obj_1', name: '40', type: 'direct'},
-                                { obj_id: 'obj_1', name: '41', type: 'direct'},
+                                // { obj_id: 'obj_1', name: '01-21-0_triangles', type: 'direct'},
+                                // { obj_id: 'obj_1', name: '01-22-0_triangles', type: 'direct'},
+                                // { obj_id: 'obj_1', name: '01-24-0_triangles', type: 'direct'},
 
-                                { obj_id: 'obj_1', name: '34', type: 'direct'},
-                                { obj_id: 'obj_1', name: '57', type: 'direct'},
-                                
-                                { obj_id: 'obj_1', name: '33', type: 'direct'},
-                                { obj_id: 'obj_1', name: '35', type: 'direct'},
+                                { obj_id: 'obj_1', name: '01-21', type: 'direct'},
+                                { obj_id: 'obj_1', name: '01-22', type: 'direct'},
+                                { obj_id: 'obj_1', name: '01-24', type: 'direct'},
 
-                                { obj_id: 'obj_1', name: '36', type: 'direct'},
-                                { obj_id: 'obj_1', name: '56', type: 'direct'},
 
-                                { obj_id: 'obj_1', name: '60', type: 'direct'},
-                                { obj_id: 'obj_1', name: '61', type: 'direct'},
-
-                                { obj_id: 'obj_1', name: '55', type: 'direct'},
                             ],
 
                         },
@@ -468,15 +486,10 @@ let projData = {
                             scene_id:'s1',
                             obj_id: 'obj_1',
                             show_objs: [
-                                { obj_id: 'obj_1', name: '1', type: 'direct'},
-                                { obj_id: 'obj_1', name: '2', type: 'direct'},
-                                { obj_id: 'obj_1', name: '19', type: 'direct'},
-                                
-                                { obj_id: 'obj_1', name: '66', type: 'direct'},
-                                { obj_id: 'obj_1', name: '64', type: 'direct'},
-                                { obj_id: 'obj_1', name: '67', type: 'direct'},
-                                { obj_id: 'obj_1', name: '68', type: 'direct'},
-                                { obj_id: 'obj_1', name: '46', type: 'direct'},
+                                { obj_id: 'obj_1', name: '01-25', type: 'direct'},
+                                { obj_id: 'obj_1', name: '01-26', type: 'direct'},
+                                { obj_id: 'obj_1', name: '01-27', type: 'direct'},
+
                             ],
                             // cameraAttr:{
                             //     p: [ 1.16, 4.51,  -6.80],
@@ -494,19 +507,10 @@ let projData = {
                             scene_id:'s1',
                             obj_id: 'obj_1',
                             show_objs: [
-                                { obj_id: 'obj_1', name: '8', type: 'direct'},
-                                { obj_id: 'obj_1', name: '5', type: 'direct'},
-                                
-                                { obj_id: 'obj_1', name: '11', type: 'direct'},
-                                { obj_id: 'obj_1', name: '43', type: 'direct'},
-
-                                { obj_id: 'obj_1', name: '3', type: 'direct'},
-                                { obj_id: 'obj_1', name: '4', type: 'direct'},
-
-                                { obj_id: 'obj_1', name: '44', type: 'direct'},
-                                { obj_id: 'obj_1', name: '45', type: 'direct'},
-
-                                { obj_id: 'obj_1', name: '46', type: 'direct'},
+                                { obj_id: 'obj_1', name: '02-2', type: 'direct'},
+                                { obj_id: 'obj_1', name: '02-1', type: 'direct'},
+                                { obj_id: 'obj_1', name: '02-4', type: 'direct'},
+                                { obj_id: 'obj_1', name: '02-5', type: 'direct'},
 
                             ],
 
@@ -520,15 +524,11 @@ let projData = {
                             scene_id:'s1',
                             obj_id: 'obj_1',
                             show_objs: [
-                                { obj_id: 'obj_1', name: '9', type: 'direct'},
-                                { obj_id: 'obj_1', name: '10', type: 'direct'},
-
-                                { obj_id: 'obj_1', name: '39', type: 'direct'},
-                                { obj_id: 'obj_1', name: '58', type: 'direct'},
+                                { obj_id: 'obj_1', name: '02-6', type: 'direct'},
+                                { obj_id: 'obj_1', name: '02-7', type: 'direct'},
+                                { obj_id: 'obj_1', name: '02-8', type: 'direct'},
+                                { obj_id: 'obj_1', name: '02-9', type: 'direct'},
                                 
-                                { obj_id: 'obj_1', name: '62', type: 'direct'},
-                                { obj_id: 'obj_1', name: '63', type: 'direct'},
-
 
                             ],
 
@@ -542,15 +542,10 @@ let projData = {
                             scene_id:'s1',
                             obj_id: 'obj_1',
                             show_objs: [
-                                { obj_id: 'obj_1', name: '65', type: 'direct'},
-                                { obj_id: 'obj_1', name: '12', type: 'direct'},
-                                { obj_id: 'obj_1', name: '17', type: 'direct'},
-                                
-                                { obj_id: 'obj_1', name: '14', type: 'direct'},
-                                { obj_id: 'obj_1', name: '18', type: 'direct'},
-                                
-                                { obj_id: 'obj_1', name: '15', type: 'direct'},
-                                { obj_id: 'obj_1', name: '13', type: 'direct'},
+                                { obj_id: 'obj_1', name: '03-1', type: 'direct'},
+                                { obj_id: 'obj_1', name: '03-2', type: 'direct'},
+                                { obj_id: 'obj_1', name: '04-1', type: 'direct'},
+                                { obj_id: 'obj_1', name: '04-2', type: 'direct'},
                      
                             ],
 
@@ -635,12 +630,14 @@ function test(){
     //// 檢查名稱是否重複
     let names = [];
     obj_1.object3D.traverse( (c,i)=>{
-        if ( c.name != '' ){
+        if ( c.name != '' || c.name != ' ' ){
             if ( names.includes( c.name ) ){
                 console.log( '重複名稱:', c.name , c );
             }else{
                 names.push( c.name );
             }
+        }else{
+            console.log( '空白名稱:', c.name , c );
         }
     })
     
@@ -648,9 +645,9 @@ function test(){
         if ( c.type == 'Mesh'){
             console.log('M:', c.name );
         }
-        if ( c.type == 'Object3D'){
-            console.log('O:', c.name );
-        }
+        // if ( c.type == 'Object3D'){
+        //     console.log('O:', c.name );
+        // }
         // if ( c.type == 'Scene'){
         //     console.log('S:', c.name );
         // }
@@ -679,10 +676,12 @@ function test(){
     })
     
     obj_1.object3D.traverse( c=>{
-        if ( c.isMesh && c.name == '50-1'  ){
+        if ( c.isMesh && c.name == '01-21-0_triangles'  ){
             console.log(  c.id, c );
         }
     })
+
+    obj_1.object3D.getObjectByName('01-22-0_triangles') 
 
     // 266  268
     

@@ -30,8 +30,8 @@ let projData = {
                         // res_url: '../resource/sky/VR01.jpg',
                     },
                     oCameraInfo:{
-                        position:[ 6.8 , 5 , 2.1 ],
-                        target: [ -2 , 2.3 , 0.25 ],
+                        position:[ 9.91 , 6.71 , 1.86 ],
+                        target: [ -2.14 , 3.046 , -0.167 ],
                     },
                     ambientLight:{
                         intensity: 1.7 ,

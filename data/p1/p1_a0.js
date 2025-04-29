@@ -29,8 +29,8 @@ let projData = {
                         color: '#ffffff',
                     },
                     oCameraInfo:{
-                        position:[ -4.6 , 4.14 , -1.92 ],
-                        target: [ 0.33 , 1.93 , -0.38 ],
+                        position:[ -7.52 , 6.33 , -2.26 ],
+                        target: [ 0.5 , 2.74 , 0.23 ],
                     },
                     ambientLight:{
                         intensity: 1.5 ,

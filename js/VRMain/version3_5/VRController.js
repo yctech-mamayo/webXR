@@ -3137,7 +3137,10 @@ class VRController {
                         //// 找上層 數字代號的物件，假如有的話，則隱藏
                         let gotN = false;
                         e.object.traverseAncestors( function( p ) {
-                            if ( gotN == false && p && p.type == 'Object3D' && p.name && Number.isInteger( Number(p.name) )  ){
+                            if ( gotN == false && p && p.type == 'Object3D' && p.name && 
+                                ( Number.isInteger( Number(p.name) ) || Number.isInteger( Number(p.name.split('-')[0] ))  ) 
+                                
+                            ){
                                 console.log('p :', p.type, p.name, p );
                                 window.p = p;
 
