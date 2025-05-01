@@ -294,6 +294,25 @@ import ARWrapper from './ARWrapper.js'
 											}
 										}
 
+										//// 客製化 森林 08
+										if ( location.pathname.includes('/p8') ){
+											let obj_1 = document.getElementById('obj_1');
+											if ( obj_1 && obj_1.object3D ){
+												obj_1.object3D.traverse( (c,i)=>{
+													if ( c.type == 'Object3D' && c.name == '04-1' ){
+														if ( c.parent && c.parent.name == '樹樂園04' ){
+															c.name = '04_1';
+														}
+													}
+													if ( c.type == 'Object3D' && c.name == '04-2' ){
+														if ( c.parent && c.parent.name == '樹樂園04' ){
+															c.name = '04_2';
+														}
+													}
+												})
+											}
+										}
+
 
 									}
 								})

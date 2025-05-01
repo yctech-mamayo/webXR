@@ -91,12 +91,17 @@ body {
 }
 
 #homePage{
-  display: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
+
   position: absolute;
   top:0px;
   width:100vw;
   height:100vh;
-  background-color: rgba(128,128,128,0.5);
+  background-color: rgba( 180 , 180 , 180 , 0.75 );
   z-index: 1;
   text-align: center;
   font-size: 32pt;

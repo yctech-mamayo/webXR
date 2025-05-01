@@ -83,6 +83,13 @@
 
 	<!-- 為了 SEO 跟 正規化網頁的內容，包含 Logo, Header, 等 -->
 	<section id = 'main_section'>
+
+		<div id = 'help_container'>
+			<img id = 'help_img_arrow' src = '../images/icon/app素材-01.png' alt="arrow" >
+			<div id = 'help_text_1'> 可直接360度拖曳縮放模型 </div>
+			<img id = 'help_img_confirm' src = '../images/icon/app素材-08.png'>
+		</div>
+
 		<h1  id = 'detail_h1' > 媽媽友 磁力片 城堡 VR體驗 </h1>
 		<div id = 'detail_logo' ></div>
 
@@ -92,7 +99,30 @@
 		</div>
 
 		<div id = 'element_container'>
-			
+			<div id = 'element_title'>
+				使用片數
+			</div>
+
+			<div id = 'element_square_container'>
+				<div id = 'element_square_img'></div>
+				<div id = 'element_square_number'> 48 </div>
+			</div>
+
+			<div id = 'element_window_container'>
+				<div id = 'element_window_img'></div>
+				<div id = 'element_window_number'> 2 </div>
+			</div>
+
+			<div id = 'element_triangle_container'>
+				<div id = 'element_triangle_img'></div>
+				<div id = 'element_triangle_number'> 8 </div>
+			</div>
+
+			<div id = 'element_rectangle_container'>
+				<div id = 'element_rectangle_img'></div>
+				<div id = 'element_rectangle_number'> 4 </div>
+			</div>
+
 		</div>
 
 		<a href = "https://www.mamayo.tw/products/mamayo%E7%A3%81%E5%8A%9B%E6%96%B9%E5%A1%8A%E6%8B%BC%E5%9C%96-%E4%B8%89%E6%AC%BE%E5%8F%AF%E9%81%B8%E5%B9%BE%E7%B1%B3%E6%AD%A3%E7%89%88%E6%8E%88%E6%AC%8A%E9%99%84%E7%89%8C%E5%8D%A1%E5%A4%9A%E7%A8%AE%E7%8E%A9%E6%B3%95" 
@@ -107,6 +137,12 @@
 				<p> < 所有作品 </p>
 			</div>
 		</a>
+
+		<div id = 'stepTextContainer'>
+			<h3 id = 'stepTextMain'>
+				步驟流程說明
+			</h3>
+		</div>
 
 		<div id = 'stepContainer_all'>
 			<div id = 'stepContainer_main'>
@@ -146,8 +182,16 @@
 	</nav>
 
 
-	<div id = "homePage" style = "display: block;">
-		<img id = 'loading_img' style="width: 100%;" src="../images/page/VR_loading.gif" alt="loading">
+	<div id = "homePage" style = "display: flex;">
+		<img id = 'loading_img'  src="../images/icon/app素材-09.png" alt="loading">
+
+		<div id = 'loading_text'>手握磁力片，創造大世界！</div>
+
+		<div id="dot_container">
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
 		<!-- <div id = 'homeImageContainer'></div> -->
 	</div>
 
@@ -211,10 +255,22 @@
 				showVRProjListWithVersionControl()
 
 			}, 50 );
-
-
 		}
 
+		//// 判斷是否看過 【 介紹視窗 】，
+		let isWatchhelper = localStorage.getItem("isWatchhelper") ;
+		if ( isWatchhelper == 1 ){
+
+		}else{
+			let help_container = document.getElementById("help_container");
+			help_container.classList.add('active');
+			let help_img_confirm = document.getElementById("help_img_confirm");
+			help_img_confirm.onclick = function(){
+				help_container.classList.remove('active');
+				localStorage.setItem("isWatchhelper", 1 );
+			}
+		}
+		
 	</script>
 
 	<div id = 'gsapEmpty'></div>

@@ -377,6 +377,10 @@ let projData = {
                                 tw:'步驟 1',
                                 en:'Step 1'
                             },
+                            des:{
+                                tw:'步驟說明: 1 的說明',
+                                en:'Step description: 1 ',
+                            },
                             scene_id:'s1',
                             obj_id: 'obj_1',
                             show_objs: [
@@ -401,6 +405,10 @@ let projData = {
                             name:{
                                 tw:'步驟 2',
                                 en:'Step 2'
+                            },
+                            des:{
+                                tw:'步驟說明: 2 的說明',
+                                en:'Step description: 2 ',
                             },
                             scene_id:'s1',
                             obj_id: 'obj_1',
@@ -429,6 +437,10 @@ let projData = {
                                 tw:'步驟 3',
                                 en:'Step 3'
                             },
+                            des:{
+                                tw:'步驟說明: 3 的說明',
+                                en:'Step description: 3 ',
+                            },
                             scene_id:'s1',
                             obj_id: 'obj_1',
                             show_objs: [
@@ -443,6 +455,10 @@ let projData = {
                             name:{
                                 tw:'步驟 4',
                                 en:'Step 4'
+                            },
+                            des:{
+                                tw:'步驟說明: 4 的說明',
+                                en:'Step description: 4 ',
                             },
                             scene_id:'s1',
                             obj_id: 'obj_1',
@@ -472,6 +488,10 @@ let projData = {
                                 tw:'步驟 5',
                                 en:'Step 5'
                             },
+                            des:{
+                                tw:'步驟說明: 5 的說明',
+                                en:'Step description: 5 ',
+                            },
                             scene_id:'s1',
                             obj_id: 'obj_1',
                             show_objs: [
@@ -497,6 +517,10 @@ let projData = {
                             name:{
                                 tw:'步驟 6',
                                 en:'Step 6'
+                            },
+                            des:{
+                                tw:'步驟說明: 6 的說明',
+                                en:'Step description: 6 ',
                             },
                             scene_id:'s1',
                             obj_id: 'obj_1',
@@ -524,6 +548,10 @@ let projData = {
                                 tw:'步驟 7',
                                 en:'Step 7'
                             },
+                            des:{
+                                tw:'步驟說明: 7 的說明',
+                                en:'Step description: 7 ',
+                            },
                             scene_id:'s1',
                             obj_id: 'obj_1',
                             show_objs: [
@@ -546,6 +574,10 @@ let projData = {
                                 tw:'步驟 8',
                                 en:'Step 8'
                             },
+                            des:{
+                                tw:'步驟說明: 8 的說明',
+                                en:'Step description: 8 ',
+                            },
                             scene_id:'s1',
                             obj_id: 'obj_1',
                             show_objs: [
@@ -562,29 +594,7 @@ let projData = {
                             ],
 
                         },
-                        // {
-                        //     id:'step_9', //// 必須為 專案內唯一
-                        //     name:{
-                        //         tw:'步驟 9',
-                        //         en:'Step 9'
-                        //     },
-                        //     scene_id:'s1',
-                        //     obj_id: 'obj_1',
-                        //     show_objs: [
-                        //         { obj_id: 'obj_1', name: '13', type: 'direct'},
-                        //         { obj_id: 'obj_1', name: '12', type: 'direct'},
-                        //         { obj_id: 'obj_1', name: '51', type: 'direct'},
-                        //         { obj_id: 'obj_1', name: '18', type: 'direct'},
-                        //         { obj_id: 'obj_1', name: '19', type: 'direct'},
-                        //         { obj_id: 'obj_1', name: '15', type: 'direct'},
-
-                        //         { obj_id: 'obj_1', name: '14', type: 'direct'},
-                        //         { obj_id: 'obj_1', name: '16', type: 'direct'},
-                        //         { obj_id: 'obj_1', name: '44', type: 'direct'},
-                        //         { obj_id: 'obj_1', name: '45', type: 'direct'},
-                        //     ],
-
-                        // },
+                        
                     ],
                 },
                 

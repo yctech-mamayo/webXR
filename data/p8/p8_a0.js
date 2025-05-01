@@ -31,7 +31,7 @@ let projData = {
                     },
                     oCameraInfo:{
                         position:[ -9.34 , 6.62 , -1.51 ],
-                        target: [ 1.47 , 2.07 , 0.8 ],
+                        target: [ 1.47 , 1.57 , 0.8 ],
                     },
                     ambientLight:{
                         intensity: 1.7 ,
@@ -107,7 +107,7 @@ let projData = {
                     {
                         main_type: 'model',
                         sub_type:'glb',
-                        res_url:'../resource/model/frost/樹樂園(a0).glb',
+                        res_url:'../resource/model/forest/樹樂園(a2).glb',
                         behav:[{type:'showData'}],
                         generalAttr: {
                             logic: false,
@@ -145,11 +145,11 @@ let projData = {
                                 roughness: 0.2, 
                                 metalness: 1,
                                 names:[
-                                    '01-1-2','01-2-2','01-4-2','01-5-2','01-6-2','01-7-2','01-8-2','01-9-2','01-10-2',
-                                    '01-11-2','01-12-2','01-14-2','01-15-2','01-16-2','01-17-2','01-18-2','01-19-2','01-20-2',
-                                    '01-21-0_0','01-22-0_0','01-24-0_0','01-25-2','01-26-2','01-27-2',
-                                    '02-1-2','02-2-2','02-4-2','02-5-2','02-6-2','02-7-2','02-8-2','02-9-2',
                                     '03-1-2','03-2-2','04-1-2','04-2-2',
+                                    '01-2','02-2','04-2','05-2','06-2','07-2','08-2','09-2','10-2',
+                                    '11-2','12-2','14-2','15-2','16-2','17-2','18-2','19-2','20-2',
+                                    '21-0_0','22-0_0','24-0_0','25-2','26-2','27-2','28-2','29-2','40-2',
+                                    '41-2','42-2','44-2','45-2','46-2','47-2','48-2','49-2','50-2',
 
                                 ]
                             },
@@ -176,7 +176,7 @@ let projData = {
                                 metalness: 0.25,
                                 depthWrite: false,
                                 names:[
-                                    '01-4-1','01-5-1','01-7-1',
+                                    '04-1','07-1','01-1',
                                     
                                 ]
                             },
@@ -191,21 +191,24 @@ let projData = {
                                 depthWrite: false,
                                 names:[
                                     '03-1-1',
+                                    '48-1','49-1','50-1',
+
                                 ]
                             },
                             //// 綠色磁力片 面 
                             { 
                                 id:'green_plane', 
                                 trans: true, 
-                                color: [ 40 , 199 , 199 ], 
+                                color: [ 15, 252, 82 ], 
                                 opacity: 0.65, 
                                 roughness: 0.5, 
                                 metalness: 0.25,
                                 depthWrite: false,
                                 names:[
-                                    '01-17-1','01-15-1','01-20-1',
-                                    '01-25-1','01-26-1',
-                                    '02-2-1','02-1-1','02-4-1','02-5-4',
+                                    '25-1','26-1','28-1',
+                                    '29-1','40-1','41-1',
+                                    '42-4',
+                                    '18-1','16-1','19-1',
 
                                 ]
                             },
@@ -232,8 +235,8 @@ let projData = {
                                 metalness: 0.25,
                                 depthWrite: false,
                                 names:[
-                                    '02-8-1','02-9-1',
-
+                                    '46-1','47-1',
+                                    
                                 ]
                             },
                             //// 黃色磁力片 面 
@@ -246,10 +249,10 @@ let projData = {
                                 metalness: 0.25,
                                 depthWrite: false,
                                 names:[
-                                    '01-1-1','01-2-1','01-6-1',
-                                    '01-8-1','01-9-1','01-10-1',
-                                    '01-11-1','01-12-1','01-14-1',
-                                    '01-27-1',
+                                    '02-1','05-1','06-1',
+                                    '08-1','09-1','10-1',
+                                    '11-1','12-1','14-1',
+                                    '27-1',
                                     '03-2-1','04-2-1',
 
                                 ]
@@ -278,10 +281,10 @@ let projData = {
                                 metalness: 0.15,
                                 depthWrite: false,
                                 names:[
-                                    '01-18-1','01-19-1','01-16-1',
-                                    '01-22-0_1','01-21-0_1','01-24-0_1',
-                                    '02-7-1','02-6-1',
-                                    '02-5-1',
+                                    '15-1','17-1','20-1',
+                                    '22-0_1','21-0_1','24-0_1',
+                                    '42-1',
+                                    '44-1','45-1',
                                     '04-1-1',
                                     
                                 ]
@@ -321,50 +324,48 @@ let projData = {
                     step_type:'mesh',
                     //// 要控制的所有物件，避免影響到 root 層級
                     controlChildrenNames:[
-                        { o: 'obj_1', n:'01-1' },
-                        { o: 'obj_1', n:'01-2' },
-                        { o: 'obj_1', n:'01-4' },
-                        { o: 'obj_1', n:'01-5' },
-                        { o: 'obj_1', n:'01-6' },
-                        { o: 'obj_1', n:'01-7' },
-                        { o: 'obj_1', n:'01-8' },
-                        { o: 'obj_1', n:'01-9' },
-                        { o: 'obj_1', n:'01-10' },
-                        { o: 'obj_1', n:'01-11' },
-                        { o: 'obj_1', n:'01-12' },
-                        { o: 'obj_1', n:'01-13' },
-                        { o: 'obj_1', n:'01-14' },
-                        { o: 'obj_1', n:'01-15' },
-                        { o: 'obj_1', n:'01-16' },
-                        { o: 'obj_1', n:'01-17' },
-                        { o: 'obj_1', n:'01-18' },
-                        { o: 'obj_1', n:'01-19' },
-                        { o: 'obj_1', n:'01-20' },
-                        { o: 'obj_1', n:'01-21' },
-                        // { o: 'obj_1', n:'01-21-0_triangles' },
-                        { o: 'obj_1', n:'01-22' },
-                        // { o: 'obj_1', n:'01-22-0_triangles' },
-                        { o: 'obj_1', n:'01-24' },
-                        // { o: 'obj_1', n:'01-24-0_triangles' },
-                        { o: 'obj_1', n:'01-25' },
-                        { o: 'obj_1', n:'01-26' },
-                        { o: 'obj_1', n:'01-27' },
-                        { o: 'obj_1', n:'02-1' },
-                        { o: 'obj_1', n:'02-2' },
-                        { o: 'obj_1', n:'02-4' },
-                        { o: 'obj_1', n:'02-5' },
-                        { o: 'obj_1', n:'02-6' },
-                        { o: 'obj_1', n:'02-7' },
-                        { o: 'obj_1', n:'02-8' },
-                        { o: 'obj_1', n:'02-9' },
+                        { o: 'obj_1', n:'01' },
+                        { o: 'obj_1', n:'02' },
+                        { o: 'obj_1', n:'04' },
+                        { o: 'obj_1', n:'05' },
+                        { o: 'obj_1', n:'06' },
+                        { o: 'obj_1', n:'07' },
+                        { o: 'obj_1', n:'08' },
+                        { o: 'obj_1', n:'09' },
+                        { o: 'obj_1', n:'10' },
+                        { o: 'obj_1', n:'11' },
+                        { o: 'obj_1', n:'12' },
+                        { o: 'obj_1', n:'13' },
+                        { o: 'obj_1', n:'14' },
+                        { o: 'obj_1', n:'15' },
+                        { o: 'obj_1', n:'16' },
+                        { o: 'obj_1', n:'17' },
+                        { o: 'obj_1', n:'18' },
+                        { o: 'obj_1', n:'19' },
+                        { o: 'obj_1', n:'20' },
+                        { o: 'obj_1', n:'21' },
+                        { o: 'obj_1', n:'22' },
+                        { o: 'obj_1', n:'24' },
+                        { o: 'obj_1', n:'25' },
+                        { o: 'obj_1', n:'26' },
+                        { o: 'obj_1', n:'27' },
+                        { o: 'obj_1', n:'28' },
+                        { o: 'obj_1', n:'29' },
+                        { o: 'obj_1', n:'40' },
+                        { o: 'obj_1', n:'41' },
+                        { o: 'obj_1', n:'42' },
+                        { o: 'obj_1', n:'42' },
+                        { o: 'obj_1', n:'44' },
+                        { o: 'obj_1', n:'45' },
+                        { o: 'obj_1', n:'46' },
+                        { o: 'obj_1', n:'47' },
+                        { o: 'obj_1', n:'48' },
+                        { o: 'obj_1', n:'49' },
+                        { o: 'obj_1', n:'50' },
+                        { o: 'obj_1', n:'04_1' },
+                        { o: 'obj_1', n:'04_2' },
                         { o: 'obj_1', n:'03-1' },
                         { o: 'obj_1', n:'03-2' },
-                        { o: 'obj_1', n:'04-1' },
-                        { o: 'obj_1', n:'04-2' },
-                        // { o: 'obj_1', n:'41' },
-                        // { o: 'obj_1', n:'42' },
-                        // { o: 'obj_1', n:'43' },
-                        // { o: 'obj_1', n:'44' },
                         // { o: 'obj_1', n:'45' },
                         // { o: 'obj_1', n:'46' },
                         // { o: 'obj_1', n:'47' },
@@ -400,15 +401,19 @@ let projData = {
                                 tw:'步驟 1',
                                 en:'Step 1'
                             },
+                            des:{
+                                tw:'步驟說明: 1 的說明',
+                                en:'Step description: 1',
+                            },
                             scene_id:'s1',
                             obj_id: 'obj_1',
                             show_objs: [
-                                { obj_id: 'obj_1', name: '01-7', type: 'direct'},
-                                { obj_id: 'obj_1', name: '01-1', type: 'direct'},
-                                { obj_id: 'obj_1', name: '01-2', type: 'direct'},
-                                { obj_id: 'obj_1', name: '01-6', type: 'direct'},
-                                { obj_id: 'obj_1', name: '01-5', type: 'direct'},
-                                { obj_id: 'obj_1', name: '01-4', type: 'direct'},
+                                { obj_id: 'obj_1', name: '01', type: 'direct'},
+                                { obj_id: 'obj_1', name: '02', type: 'direct'},
+                                { obj_id: 'obj_1', name: '04', type: 'direct'},
+                                { obj_id: 'obj_1', name: '05', type: 'direct'},
+                                { obj_id: 'obj_1', name: '06', type: 'direct'},
+                                { obj_id: 'obj_1', name: '07', type: 'direct'},
 
 
                             ],
@@ -420,16 +425,19 @@ let projData = {
                                 tw:'步驟 2',
                                 en:'Step 2'
                             },
+                            des:{
+                                tw:'步驟說明: 2 的說明',
+                                en:'Step description: 2',
+                            },
                             scene_id:'s1',
                             obj_id: 'obj_1',
                             show_objs: [
-                                { obj_id: 'obj_1', name: '01-14', type: 'direct'},
-                                { obj_id: 'obj_1', name: '01-8', type: 'direct'},
-                                { obj_id: 'obj_1', name: '01-9', type: 'direct'},
-                                { obj_id: 'obj_1', name: '01-11', type: 'direct'},
-                                
-                                { obj_id: 'obj_1', name: '01-12', type: 'direct'},
-                                { obj_id: 'obj_1', name: '01-10', type: 'direct'},
+                                { obj_id: 'obj_1', name: '08', type: 'direct'},
+                                { obj_id: 'obj_1', name: '09', type: 'direct'},
+                                { obj_id: 'obj_1', name: '10', type: 'direct'},
+                                { obj_id: 'obj_1', name: '11', type: 'direct'},
+                                { obj_id: 'obj_1', name: '12', type: 'direct'},
+                                { obj_id: 'obj_1', name: '14', type: 'direct'},
 
 
                             ],
@@ -442,16 +450,20 @@ let projData = {
                                 tw:'步驟 3',
                                 en:'Step 3'
                             },
+                            des:{
+                                tw:'步驟說明: 3 的說明',
+                                en:'Step description: 3',
+                            },
                             scene_id:'s1',
                             obj_id: 'obj_1',
                             show_objs: [
-                                { obj_id: 'obj_1', name: '01-15', type: 'direct'},
-                                { obj_id: 'obj_1', name: '01-19', type: 'direct'},
-                                { obj_id: 'obj_1', name: '01-20', type: 'direct'},
-                                { obj_id: 'obj_1', name: '01-18', type: 'direct'},
+                                { obj_id: 'obj_1', name: '15', type: 'direct'},
+                                { obj_id: 'obj_1', name: '19', type: 'direct'},
+                                { obj_id: 'obj_1', name: '20', type: 'direct'},
+                                { obj_id: 'obj_1', name: '18', type: 'direct'},
                                 
-                                { obj_id: 'obj_1', name: '01-16', type: 'direct'},
-                                { obj_id: 'obj_1', name: '01-17', type: 'direct'},
+                                { obj_id: 'obj_1', name: '16', type: 'direct'},
+                                { obj_id: 'obj_1', name: '17', type: 'direct'},
                                 
                             ],
 
@@ -462,6 +474,10 @@ let projData = {
                                 tw:'步驟 4',
                                 en:'Step 4'
                             },
+                            des:{
+                                tw:'步驟說明: 4 的說明',
+                                en:'Step description: 4',
+                            },
                             scene_id:'s1',
                             obj_id: 'obj_1',
                             show_objs: [
@@ -469,9 +485,9 @@ let projData = {
                                 // { obj_id: 'obj_1', name: '01-22-0_triangles', type: 'direct'},
                                 // { obj_id: 'obj_1', name: '01-24-0_triangles', type: 'direct'},
 
-                                { obj_id: 'obj_1', name: '01-21', type: 'direct'},
-                                { obj_id: 'obj_1', name: '01-22', type: 'direct'},
-                                { obj_id: 'obj_1', name: '01-24', type: 'direct'},
+                                { obj_id: 'obj_1', name: '21', type: 'direct'},
+                                { obj_id: 'obj_1', name: '22', type: 'direct'},
+                                { obj_id: 'obj_1', name: '24', type: 'direct'},
 
 
                             ],
@@ -483,12 +499,17 @@ let projData = {
                                 tw:'步驟 5',
                                 en:'Step 5'
                             },
+                            des:{
+                                tw:'步驟說明: 5 的說明',
+                                en:'Step description: 5',
+                            },
                             scene_id:'s1',
                             obj_id: 'obj_1',
                             show_objs: [
-                                { obj_id: 'obj_1', name: '01-25', type: 'direct'},
-                                { obj_id: 'obj_1', name: '01-26', type: 'direct'},
-                                { obj_id: 'obj_1', name: '01-27', type: 'direct'},
+                                { obj_id: 'obj_1', name: '25', type: 'direct'},
+                                { obj_id: 'obj_1', name: '26', type: 'direct'},
+                                { obj_id: 'obj_1', name: '27', type: 'direct'},
+                                { obj_id: 'obj_1', name: '28', type: 'direct'},
 
                             ],
                             // cameraAttr:{
@@ -504,13 +525,17 @@ let projData = {
                                 tw:'步驟 6',
                                 en:'Step 6'
                             },
+                            des:{
+                                tw:'步驟說明: 6 的說明',
+                                en:'Step description: 6',
+                            },
                             scene_id:'s1',
                             obj_id: 'obj_1',
                             show_objs: [
-                                { obj_id: 'obj_1', name: '02-2', type: 'direct'},
-                                { obj_id: 'obj_1', name: '02-1', type: 'direct'},
-                                { obj_id: 'obj_1', name: '02-4', type: 'direct'},
-                                { obj_id: 'obj_1', name: '02-5', type: 'direct'},
+                                { obj_id: 'obj_1', name: '29', type: 'direct'},
+                                { obj_id: 'obj_1', name: '40', type: 'direct'},
+                                { obj_id: 'obj_1', name: '41', type: 'direct'},
+                                { obj_id: 'obj_1', name: '42', type: 'direct'},
 
                             ],
 
@@ -521,13 +546,17 @@ let projData = {
                                 tw:'步驟 7',
                                 en:'Step 7'
                             },
+                            des:{
+                                tw:'步驟說明: 7 的說明',
+                                en:'Step description: 7',
+                            },
                             scene_id:'s1',
                             obj_id: 'obj_1',
                             show_objs: [
-                                { obj_id: 'obj_1', name: '02-6', type: 'direct'},
-                                { obj_id: 'obj_1', name: '02-7', type: 'direct'},
-                                { obj_id: 'obj_1', name: '02-8', type: 'direct'},
-                                { obj_id: 'obj_1', name: '02-9', type: 'direct'},
+                                { obj_id: 'obj_1', name: '44', type: 'direct'},
+                                { obj_id: 'obj_1', name: '45', type: 'direct'},
+                                { obj_id: 'obj_1', name: '46', type: 'direct'},
+                                { obj_id: 'obj_1', name: '47', type: 'direct'},
                                 
 
                             ],
@@ -539,40 +568,26 @@ let projData = {
                                 tw:'步驟 8',
                                 en:'Step 8'
                             },
+                            des:{
+                                tw:'步驟說明: 8 的說明',
+                                en:'Step description: 8',
+                            },
                             scene_id:'s1',
                             obj_id: 'obj_1',
                             show_objs: [
                                 { obj_id: 'obj_1', name: '03-1', type: 'direct'},
                                 { obj_id: 'obj_1', name: '03-2', type: 'direct'},
-                                { obj_id: 'obj_1', name: '04-1', type: 'direct'},
-                                { obj_id: 'obj_1', name: '04-2', type: 'direct'},
+                                { obj_id: 'obj_1', name: '04_1', type: 'direct'},
+                                { obj_id: 'obj_1', name: '04_2', type: 'direct'},
+
+                                { obj_id: 'obj_1', name: '48', type: 'direct'},
+                                { obj_id: 'obj_1', name: '49', type: 'direct'},
+                                { obj_id: 'obj_1', name: '50', type: 'direct'},
                      
                             ],
 
                         },
-                        // {
-                        //     id:'step_9', //// 必須為 專案內唯一
-                        //     name:{
-                        //         tw:'步驟 9',
-                        //         en:'Step 9'
-                        //     },
-                        //     scene_id:'s1',
-                        //     obj_id: 'obj_1',
-                        //     show_objs: [
-                        //         { obj_id: 'obj_1', name: '13', type: 'direct'},
-                        //         { obj_id: 'obj_1', name: '12', type: 'direct'},
-                        //         { obj_id: 'obj_1', name: '51', type: 'direct'},
-                        //         { obj_id: 'obj_1', name: '18', type: 'direct'},
-                        //         { obj_id: 'obj_1', name: '19', type: 'direct'},
-                        //         { obj_id: 'obj_1', name: '15', type: 'direct'},
-
-                        //         { obj_id: 'obj_1', name: '14', type: 'direct'},
-                        //         { obj_id: 'obj_1', name: '16', type: 'direct'},
-                        //         { obj_id: 'obj_1', name: '44', type: 'direct'},
-                        //         { obj_id: 'obj_1', name: '45', type: 'direct'},
-                        //     ],
-
-                        // },
+                        
                     ],
                 },
                 
@@ -670,13 +685,13 @@ function test(){
     })
 
     obj_1.object3D.traverse( c=>{
-        if ( c.isMesh && c.name == 'Part1'  ){
+        if (  c.name == '04-1'  ){
             window.c = c ;      
         }
     })
     
     obj_1.object3D.traverse( c=>{
-        if ( c.isMesh && c.name == '01-21-0_triangles'  ){
+        if (  c.name == '04-2'  ){
             console.log(  c.id, c );
         }
     })

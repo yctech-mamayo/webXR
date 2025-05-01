@@ -14,6 +14,9 @@ class StepController {
         this.rotateCameraGsap;
         this.rotateGsap;
 
+        // 步驟解說的 gsap
+        this.stepTextGsap = gsap.timeline();
+
         //// 步驟資訊
         this.steps = [];
         this.step_length = 0;
@@ -61,6 +64,43 @@ class StepController {
 
 
         }
+
+        //// 步驟解說 動畫控制
+        let stepTextContainer = document.getElementById('stepTextContainer');
+        this.stepTextGsap.pause();
+        this.stepTextGsap.to(stepTextContainer, {
+            duration: 0.001,
+            opacity: 0 ,
+            visibility: 'visible',
+            onComplete: () => {
+                console.log('stepTextGsap: 1' );
+            },
+        })
+        this.stepTextGsap.to(stepTextContainer, {
+            duration: 0.5,
+            opacity: 1 ,
+            onComplete: () => {
+                console.log('stepTextGsap: 2' );
+            },
+        });
+        this.stepTextGsap.to(stepTextContainer, {
+            duration: 2,
+            opacity: 1 ,
+            visibility: 'visible',
+            onComplete: () => {
+                console.log('stepTextGsap: 3' );
+            },
+        });
+        this.stepTextGsap.to(stepTextContainer, {
+            duration: 0.5,
+            opacity: 0 ,
+            visibility: 'visible',
+            onComplete: () => {
+                console.log('stepTextGsap: 4' );
+            },
+        });
+
+
     }
 
     //// 有鑑於 不想要讓 原始資料太過冗長，固個別步驟只記錄【 當前步驟新增的物件 】
@@ -93,8 +133,13 @@ class StepController {
             let step_text_now = document.getElementById('step_text_now');
             let step_right_container = document.getElementById('step_right_container');
             let step_to_end = document.getElementById('step_to_end');
+            let stepTextContainer = document.getElementById('stepTextContainer');
+            let stepTextMain = document.getElementById('stepTextMain');
 
-            if ( step_to_head && step_left_container && step_text_now && step_right_container && step_to_end ){
+
+            if ( step_to_head && step_left_container && step_text_now && step_right_container && step_to_end 
+                && stepTextContainer && stepTextMain
+            ){
 
                 //// 起始設定為【 完整作品 】最後一步
                 // ToStepAndSetText(self.step_length - 1);
@@ -107,6 +152,17 @@ class StepController {
                     self.ToStep( idx );
                     // step_text_now.textContent = self.steps[idx].name[ self.lang ];
                     step_text_now.textContent =  ( idx + 1 ) + '/' + (self.step_length ) ;
+
+                    
+                    if (self.stepTextGsap._time > 0.5 && self.stepTextGsap._time < 2.5 ) {
+                        self.stepTextGsap.seek(0.5);
+                        self.stepTextGsap.play();
+                    }else{
+                        self.stepTextGsap.seek(0);
+                        self.stepTextGsap.play();
+                    }
+                    
+                    stepTextMain.textContent = self.steps[idx].des[ self.lang ];
                 }
 
                 //// 「重頭開始」
