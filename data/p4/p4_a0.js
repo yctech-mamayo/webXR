@@ -62,7 +62,7 @@ let projData = {
                         },
                         typeAttr: {
                             color: "1,1,1",
-                            intensity: 0.6,
+                            intensity: 1,
                             light_type: "directional",
                             shadow: "Soft",
                             shadow_strength: 1,
@@ -430,7 +430,7 @@ let projData = {
                                 en:'Step 2'
                             },
                             des:{
-                                tw:'步驟說明: 2 的說明',
+                                tw:'蓋高樓前每層背後要有2片磁力片支撐才穩',
                                 en:'Step description: 2 ',
                             },
                             scene_id:'s1',

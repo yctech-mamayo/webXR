@@ -483,7 +483,11 @@ let projData = {
                                 { obj_id: 'obj_1', name: '17', type: 'direct'},
 
                             ],
-                            
+                            cameraAttr:{
+                                p: [ -0.9 , 4.9,  -6.5 ],
+                                target:[ -0.11 , 0.572 , 1.739 ],
+                                t: 1.5 ,
+                            }
 
                         },
                         {
@@ -551,10 +555,7 @@ let projData = {
                                 { obj_id: 'obj_1', name: '48', type: 'direct'},
 
                             ],
-                            // cameraAttr:{
-                            //     p: [ 1.16, 4.51,  -6.80],
-                            //     t: 1,
-                            // }
+                            
 
                         },
                         {

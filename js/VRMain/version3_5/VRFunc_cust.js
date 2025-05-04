@@ -401,6 +401,13 @@ import net from './networkAgent.js';
                                         //// 透明
                                         if ( cm.hasOwnProperty('trans') ){
                                             first_material_clone.transparent = cm.trans;
+
+                                            //// 設定為 透明的 加強發光度
+                                            if ( cm.trans ){
+                                                //// 發光顏色: 統一調整 0.2
+                                                first_material_clone.emissive.setRGB(0.2, 0.2, 0.2);
+                                            }
+
                                         }
                                         if ( cm.hasOwnProperty('trans') ){
                                             first_material_clone.opacity = cm.opacity;
@@ -417,6 +424,9 @@ import net from './networkAgent.js';
                                         if ( cm.hasOwnProperty('roughness') ){
                                             first_material_clone.roughness = cm.roughness;
                                         }
+
+                                       
+
 
                                         //// 
                                         // if ( cm.hasOwnProperty('depthWrite') ){

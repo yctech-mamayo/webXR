@@ -103,7 +103,7 @@
     height: 100%;
 
     background-color: rgb( 0 , 0 , 0 );
-    opacity: 0.65;
+    opacity: 0.8;
     z-index: 2;
 }
 
@@ -114,7 +114,7 @@
 
 #help_img_arrow{
     position: relative;
-    width: 50px;
+    width: 90px;
     height: auto;
 
     object-fit: contain;
@@ -125,16 +125,17 @@
 #help_text_1{
     position: relative;
     width: 90%;
-    height: 30px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    height: 40px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    white-space: pre-line;
 
     color: white;
 }
 
 #help_img_confirm{
     position: relative;
-    width: 100px;
+    width: 150px;
     height: auto;
     object-fit: contain;
     object-position: 50% 50%;
@@ -176,7 +177,8 @@
 
 #element_container{
     position: absolute;
-    background-color: rgb(225, 225, 225);
+    background-color: rgb( 140 , 197 , 201 );
+    color: white;
     border-radius: 8px;
 
     display: flex;
@@ -203,7 +205,7 @@
     
 }
 
-
+/* 圖片使用 */
 #element_square_img , #element_window_img , 
 #element_triangle_img , #element_rectangle_img 
 {
@@ -228,6 +230,44 @@
 #element_rectangle_img {
     background-image: url("../images/icon/app素材-06.png");
 }
+
+/* mask 使用 */
+/* #element_square_img , #element_window_img , 
+#element_triangle_img , #element_rectangle_img 
+{
+    position: absolute;
+    width: 100%;
+    height: 60%;
+    margin: 0;
+
+    -webkit-mask-position: center;
+    -webkit-mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+
+    mask-position: center;
+    mask-size: contain;
+    mask-repeat: no-repeat;
+
+    background-color: white;
+
+}
+
+#element_square_img {
+    -webkit-mask: url("../images/icon/app素材-02.png");
+    mask: url("../images/icon/app素材-02.png");
+}
+#element_window_img {
+    -webkit-mask: url("../images/icon/app素材-03.png");
+    mask: url("../images/icon/app素材-03.png");
+}
+#element_triangle_img {
+    -webkit-mask: url("../images/icon/app素材-04.png");
+    mask: url("../images/icon/app素材-04.png");
+}
+#element_rectangle_img {
+    -webkit-mask: url("../images/icon/app素材-06.png");
+    mask: url("../images/icon/app素材-06.png");
+} */
 
 #element_square_number , #element_window_number ,
 #element_triangle_number , #element_rectangle_number 
@@ -308,7 +348,7 @@
     box-shadow: 
         0px 0px 10px 5px rgba(0, 0, 0, 0.2);
 
-    border: 2px solid black;
+    /* border: 2px solid black; */
     border-bottom: none;
 
     border-radius: 100px 100px 0 0;
@@ -326,13 +366,15 @@
 
 #step_to_head , #step_to_end{
     border-radius: 50px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 15px;
     padding-right: 15px;
     color:white;
-    background-color: rgb(120, 120, 120);
+    
+    background: linear-gradient( 17deg, #6ff0c7, #7593f3);
+
 }
 
 #step_to_end:active , #step_to_head:active {
@@ -503,9 +545,10 @@
     }
     
     #stepTextContainer{
-        bottom: 63px;
-        width: 100%;
-        height: 30px;
+        bottom: 68px;
+        left: 5%;
+        width: 90%;
+        height: 54px;
     }
 
     #stepTextMain{
@@ -641,10 +684,10 @@
     }
 
     #stepTextContainer{
-        bottom: 73px;
-        width: 100%;
-        height: 30px;
-        max-width: 99%;
+        bottom: 78px;
+        left: 5%;
+        width: 90%;
+        height: 54px;
     }
 
     #stepTextMain{
@@ -849,7 +892,7 @@
         top: 110px;
         right: 30px;
         width: 90px;
-        height: 250px;
+        height: 270px;
         max-height: calc( 70vh - 80px ) ;
 
         align-items: center;
@@ -881,9 +924,10 @@
     }
 
     #stepTextContainer{
-        bottom: 100px;
-        width: 100%;
-        height: 30px;
+        bottom: 110px;
+        left: 5%;
+        width: 90%;
+        height: 54px;
     }
 
     #stepTextMain{

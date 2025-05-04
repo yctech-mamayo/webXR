@@ -91,14 +91,14 @@ class StepController {
                 console.log('stepTextGsap: 3' );
             },
         });
-        this.stepTextGsap.to(stepTextContainer, {
-            duration: 0.5,
-            opacity: 0 ,
-            visibility: 'visible',
-            onComplete: () => {
-                console.log('stepTextGsap: 4' );
-            },
-        });
+        // this.stepTextGsap.to(stepTextContainer, {
+        //     duration: 0.5,
+        //     opacity: 0 ,
+        //     visibility: 'visible',
+        //     onComplete: () => {
+        //         console.log('stepTextGsap: 4' );
+        //     },
+        // });
 
 
     }
@@ -275,6 +275,9 @@ class StepController {
                         y: positionValue.y,
                         z: positionValue.z,
                         // duration: durationValue,
+                        onUpdate: () => {
+                            console.log('_G_: ', camera.position.x, camera.position.y, camera.position.z );
+                        },
                         onComplete: () => {
                             resolve();
                         }

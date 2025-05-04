@@ -665,9 +665,9 @@ function test(){
         if ( c.type == 'Mesh'){
             console.log('M:', c.name );
         }
-        if ( c.type == 'Object3D'){
-            console.log('O:', c.name );
-        }
+        // if ( c.type == 'Object3D'){
+        //     console.log('O:', c.name );
+        // }
         // if ( c.type == 'Scene'){
         //     console.log('S:', c.name );
         // }

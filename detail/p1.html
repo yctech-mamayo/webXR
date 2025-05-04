@@ -86,7 +86,9 @@
 
 		<div id = 'help_container'>
 			<img id = 'help_img_arrow' src = '../images/icon/app素材-01.png' alt="arrow" >
-			<div id = 'help_text_1'> 可直接360度拖曳縮放模型 </div>
+			<div id = 'help_text_1'> 可直接用單指旋轉及雙指平移縮放模型
+				即可以360度來瀏覽磁力片作品
+			</div>
 			<img id = 'help_img_confirm' src = '../images/icon/app素材-08.png'>
 		</div>
 
@@ -274,14 +276,14 @@
 		}
 
 		// 測試用，讓 介紹視窗可以顯示
-		page_name.onclick = function(){
-			help_container.classList.add('active');
-		}
+		// page_name.onclick = function(){
+		// 	help_container.classList.add('active');
+		// }
 
-		help_img_confirm.onclick = function(){
-			help_container.classList.remove('active');
-			localStorage.setItem("isWatchhelper", 1 );
-		}
+		// help_img_confirm.onclick = function(){
+		// 	help_container.classList.remove('active');
+		// 	localStorage.setItem("isWatchhelper", 1 );
+		// }
 
 
 	</script>

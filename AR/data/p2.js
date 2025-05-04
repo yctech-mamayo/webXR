@@ -105,7 +105,7 @@ let projData = {
             "9bd689f7-2fe3-4a05-b7ba-5dade414cadc":{
                 res_id: "9bd689f7-2fe3-4a05-b7ba-5dade414cadc",
                 res_name: "elephant",
-                res_url: "../resource/model/p2/elephant(無渲染A2-3).glb",
+                res_url: "../resource/model/p2/elephant(無渲染A3).glb",
                 main_type: "model",
                 sub_type: "glb",
                 size: "48704 bytes",
@@ -211,165 +211,172 @@ let projData = {
                                 "simulated_rotation": "0,0,0"
                             },
                             cust_materials:[
-                                //// 要隱藏的物件
-                                {
-                                    id:'mHide', 
-                                    visible: false,
-                                    names:[ '7-1','7-2','42-1','42-2','26-1',,'26-2','28-1','28-2' ]
-                                },
-                                //// 磁力片 磁鐵 金屬 棒
-                                { 
-                                    id:'mag_stick', 
-                                    trans: false, 
-                                    opacity: 1, 
-                                    color: [20, 20, 20], 
-                                    roughness: 0.2, 
-                                    metalness: 1,
-                                    names:[
-                                        '1-2','2-2',
-                                        '3-1','4-1','5-1','8-1','9-1','10-1',
-                                        '11-1',
-                                        '12-2','14-2','15-2','16-2','20-1',
-    
-                                        '21-1','22-1','24-1','25-1','27-1','30-1',
-                                        '33-1','34-1','35-1','36-1','37-2',
-                                        '39-1','40-1',
-                                        '41-1','43-1','44-1','45-1','46-2','47-1','48-1','49-1','50-1',
-                                        '51-1','52-1','53-1','54-1','55-1','56-1','57-1','58-1','59-1','60-1',
-                                        '61-1','62-1','63-1','68-1',
-                                        '64-2',
-                                    ]
-                                },
-                                //// 透明管 
-                                { 
-                                    id:'trans_tube', 
-                                    trans: true, 
-                                    opacity: 0.5, 
-                                    color: [235, 235, 235], 
-                                    roughness: 0.2, 
-                                    metalness: 0.1,
-                                    depthWrite: false,
-                                    names:[
-                                        '19-1',
-                                        '31-1','32-1','38-1',
-                                        '66-1','67-1',
-                                        '65-0','17-1','18-1','13-1'
-                                    ]
-                                },
-                                //// 紫色磁力片 面 步驟一 大象底部兩層
-                                {
-                                    id:'purple_plane', 
-                                    trans: true, 
-                                    color: [ 135, 52, 237 ], 
-                                    opacity: 0.65, 
-                                    roughness: 0.5, 
-                                    metalness: 0.25,
-                                    depthWrite: false,
-                                    names:[
-                                        '20-2','54-2',
-                                        '22-2','51-2',
-                                        '14-1','15-1',
-                                    ]
-                                },
-                                //// 藍色磁力片 面 步驟一 大象第二層
-                                {
-                                    id:'blue_plane', 
-                                    trans: true, 
-                                    color: [ 31 , 28 , 217 ], 
-                                    opacity: 0.65, 
-                                    roughness: 0.5, 
-                                    metalness: 0.25,
-                                    depthWrite: false,
-                                    names:[
-                                        '24-2','59-2','47-2',
-                                        '21-2','30-2','27-2',
-                                    ]
-                                },
-                                //// 綠色磁力片 面 步驟二 大象上部 1 層
-                                { 
-                                    id:'green_plane', 
-                                    trans: true, 
-                                    color: [ 40 , 199 , 199 ], 
-                                    opacity: 0.65, 
-                                    roughness: 0.5, 
-                                    metalness: 0.25,
-                                    depthWrite: false,
-                                    names:[
-                                        '25-2','52-2','53-2','16-2','29-2','50-2','49-2','48-2',
-                                        '46-1',
-                                        '16-1','29-1',
-                                    ]
-                                },
-                                //// 黃色磁力片 面 步驟三、四、七 大小象 上方 
-                                {
-                                    id:'yallow_plane', 
-                                    trans: true, 
-                                    color: [ 247, 156, 27 ], 
-                                    opacity: 0.65, 
-                                    roughness: 0.5, 
-                                    metalness: 0.25,
-                                    depthWrite: false,
-                                    names:[
-                                        '37-1','56-2','33-2','34-2','57-2','35-2','36-2','41-2','40-2','55-2',
-                                        '39-2','58-2','9-2','10-2',
-                                    ]
-                                },
-                                //// 粉紅色磁力片 面 步驟五 六 小象 粉紅色 
-                                {
-                                    id:'pink_plane', 
-                                    trans: true, 
-                                    color: [ 240, 91, 91 ], 
-                                    opacity: 0.65, 
-                                    roughness: 0.5, 
-                                    metalness: 0.25,
-                                    depthWrite: false,
-                                    names:[
-                                        '1-1','2-1','64-1','68-1',
-                                        '12-1',
-                                        '3-2','4-2','44-2','45-2'
-                                    ]
-                                },
-                                //// 白色磁力片 面 步驟六 小象 白色 
-                                {
-                                    id:'white_plane', 
-                                    trans: true, 
-                                    color: [ 204, 204, 204 ], 
-                                    opacity: 0.5, 
-                                    roughness: 0.6, 
-                                    metalness: 0.3,
-                                    depthWrite: false,
-                                    names:[
-                                        '8-2','5-2','11-2','43-2',
-                                    ]
-                                },
                                 
-                                //// 白色 眼睛
-                                { 
-                                    id:'white_circle', 
-                                    trans: false, 
-                                    opacity: 0.5, 
-                                    color: [ 250, 250, 250 ], 
-                                    roughness: 0.5, 
-                                    metalness: 0.5,
-                                    names:[
-                                        '60-1','61-1',
-                                        '62-1','63-1',
-                                    ]
-                                },
-                                //// 黑色 眼睛
-                                { 
-                                    id:'black_circle', 
-                                    trans: false, 
-                                    opacity: 0.5, 
-                                    color: [ 20, 20, 20 ], 
-                                    roughness: 0.5, 
-                                    metalness: 0.5,
-                                    names:[
-                                        '60-2','61-2',
-                                        '63-2','62-2',
-                                    ]
-                                },
-    
+                            //// 要隱藏的物件
+                            {
+                                id:'mHide', 
+                                visible: false,
+                                names:[ 
+                                    '08_1',
+                                ]
+                            },
+                            //// 磁力片 磁鐵 金屬 棒
+                            { 
+                                id:'mag_stick', 
+                                trans: false, 
+                                opacity: 1, 
+                                color: [20, 20, 20], 
+                                roughness: 0.2, 
+                                metalness: 1,
+                                names:[
+                                    '01-1','02-1','04_0','05_0','06_0','07_0','08_0','09_0','10_0',
+                                    '11_0','12_0','14-1','15-1','16-1','17-1','18-1',
+                                           '22_0','24_0','25_0','26_0','27_0','28_0','29_0','40_0',
+                                    '41-1','42-1','44_0',              '47_0','48_0','49_0','50_0',
+                                    '51-1',       '54_0','55_0','56_0','57_0','58_0','59_0','60_0',
+                                    '61-1','62_0','64_0','65_0','66_0','67_0','68_0','69_0','70_0',
+                                    '71_0','72_0','74_0','75_0','76_0',              '79_0','80_0',
+                                    '81-1',       
+
+                                ]
+                            },
+                            //// 透明管 
+                            { 
+                                id:'trans_tube', 
+                                trans: true, 
+                                opacity: 0.5, 
+                                color: [235, 235, 235], 
+                                roughness: 0.2, 
+                                metalness: 0.1,
+                                depthWrite: false,
+                                names:[
+                                    '46-0','46-1',
+                                    '45-0','45-1',
+                                    '52-0','52-1',
+                                    '21-0','21-1',
+                                    '85-0','85-1',
+                                    '84-0','84-1',
+                                    '82-0','82-1',
+                                    '19-0','19-1',
+                                    '20-0','20-1',
+                                    '15-0','15-1',
+
+                                ]
+                            },
+                            //// 紫色磁力片 面 步驟一 大象底部兩層
+                            {
+                                id:'purple_plane', 
+                                trans: true, 
+                                color: [ 135, 52, 237 ], 
+                                opacity: 0.65, 
+                                roughness: 0.5, 
+                                metalness: 0.25,
+                                depthWrite: false,
+                                names:[
+                                    '67_1','25_1','22_1','70_1',
+                                    '16-0','17-0',
+                                ]
+                            },
+                            //// 藍色磁力片 面 步驟一 大象第二層
+                            {
+                                id:'blue_plane', 
+                                trans: true, 
+                                color: [ 31 , 28 , 217 ], 
+                                opacity: 0.65, 
+                                roughness: 0.5, 
+                                metalness: 0.25,
+                                depthWrite: false,
+                                names:[
+                                    '26_1','27_1','62_1','76_1',
+                                    '57_1','24_1','44_1','40_1','42-0',
+                                ]
+                            },
+                            //// 綠色磁力片 面 步驟二 大象上部 1 層
+                            { 
+                                id:'green_plane', 
+                                trans: true, 
+                                color: [ 40 , 199 , 199 ], 
+                                opacity: 0.65, 
+                                roughness: 0.5, 
+                                metalness: 0.25,
+                                depthWrite: false,
+                                names:[
+                                    '28_1','69_1','68_1','64_1',
+                                    '65_1','66_1','41-0','18-0',
+                                    '61-0',
+
+                                ]
+                            },
+                            //// 黃色磁力片 面 步驟三、四、七 大小象 上方 
+                            {
+                                id:'yallow_plane', 
+                                trans: true, 
+                                color: [ 247, 156, 27 ], 
+                                opacity: 0.65, 
+                                roughness: 0.5, 
+                                metalness: 0.25,
+                                depthWrite: false,
+                                names:[
+                                    '51-0',
+                                    '50_1','55_1','56_1','72_1',
+                                    '47_1','49_1','71_1','48_1','74_1',
+                                    '10_1','11_1','54_1','75_1',
+
+                                ]
+                            },
+                            //// 粉紅色磁力片 面 步驟五 六 小象 粉紅色 
+                            {
+                                id:'pink_plane', 
+                                trans: true, 
+                                color: [ 240, 91, 91 ], 
+                                opacity: 0.65, 
+                                roughness: 0.5, 
+                                metalness: 0.25,
+                                depthWrite: false,
+                                names:[
+                                    '01-0','02-0','04_1','05_1',
+                                    '59_1','60_1',
+                                    '14-0',
+                                ]
+                            },
+                            //// 白色磁力片 面 步驟六 小象 白色 
+                            {
+                                id:'white_plane', 
+                                trans: true, 
+                                color: [ 204, 204, 204 ], 
+                                opacity: 0.5, 
+                                roughness: 0.6, 
+                                metalness: 0.3,
+                                depthWrite: false,
+                                names:[
+                                    '12_1','58_1','06_1','09_1','07_1',
+                                ]
+                            },
+                            
+                            //// 白色 眼睛
+                            { 
+                                id:'white_circle', 
+                                trans: false, 
+                                opacity: 0.5, 
+                                color: [ 250, 250, 250 ], 
+                                roughness: 0.5, 
+                                metalness: 0.5,
+                                names:[
+                                    '77_0','78_0',
+                                ]
+                            },
+                            //// 黑色 眼睛
+                            { 
+                                id:'black_circle', 
+                                trans: false, 
+                                opacity: 0.5, 
+                                color: [ 20, 20, 20 ], 
+                                roughness: 0.5, 
+                                metalness: 0.5,
+                                names:[
+                                    '77_1','78_1',
+                                ]
+                            },
                             ],
 
                         }
