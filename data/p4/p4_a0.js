@@ -203,7 +203,7 @@ let projData = {
                             { 
                                 id:'green_plane', 
                                 trans: true, 
-                                color: [ 40 , 199 , 199 ], 
+                                color: [ 15, 252, 82 ], 
                                 opacity: 0.65, 
                                 roughness: 0.5, 
                                 metalness: 0.25,
@@ -391,7 +391,7 @@ let projData = {
                         { o: 'obj_1', n:'67' },
                         { o: 'obj_1', n:'68' },
                         { o: 'obj_1', n:'69' },
-                        { o: 'obj_1', n:'70' },
+                        // { o: 'obj_1', n:'70' },
 
                     ],
                     steps:[

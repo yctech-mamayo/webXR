@@ -1,16 +1,16 @@
 
 html, body{
-    background-color: #d0a456;
+    background-color: #E4C050;
     min-height: 100vh;
 }
 
 #main{
-    background-color: #d0a456;
+    background-color: #E4C050;
     text-align: center;
 }
 
 #header{
-    background-color: #e87e37;
+    background-color: #E1A64A;
     color: white;
     padding: 1rem;
     display: flex;

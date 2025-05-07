@@ -411,8 +411,13 @@ import ARWrapper from './ARWrapper.js'
 									//// 透明
 									if ( cm.hasOwnProperty('trans') ){
 										first_material_clone.transparent = cm.trans;
+										
+										if ( cm.trans ){
+											//// 發光顏色: 統一調整 0.2
+											first_material_clone.emissive.setRGB(0.2, 0.2, 0.2);
+										}
 									}
-									if ( cm.hasOwnProperty('trans') ){
+									if ( cm.hasOwnProperty('opacity') ){
 										first_material_clone.opacity = cm.opacity;
 									}
 									//// 顏色

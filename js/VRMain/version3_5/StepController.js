@@ -1,6 +1,9 @@
 
 class StepController {
     constructor( projData ){
+        
+        this.stepStatus = 0; //// 0: 預備中 , 1. 執行中 
+        
         this.projData = projData || {};
         
         //// 所有被控制的物件名稱 ( 單一模型 內部 物件 )
@@ -116,6 +119,13 @@ class StepController {
                     self.stepCombineChildrenData[ i ] = _countData;
                 }
             })
+
+            //// 起始將 所有 部件 加上【 狀態 】
+            self.controlChildrenNames.forEach( e => {
+                e.active = true ;
+            })
+
+
         }
     }
 
@@ -149,6 +159,16 @@ class StepController {
 
                 //// 前往步驟 並 設定顯示文字
                 function ToStepAndSetText ( idx ){
+
+                    //// 判斷狀態 ， 還在執行中的話，就 pass           
+                    if ( self.stepStatus == 1 ){
+                        console.log('_ToStep: status 1, pass ' );
+                        return;
+                    }else{
+                        self.stepStatus = 1;
+                    }
+                    
+
                     self.ToStep( idx );
                     // step_text_now.textContent = self.steps[idx].name[ self.lang ];
                     step_text_now.textContent =  ( idx + 1 ) + '/' + (self.step_length ) ;
@@ -221,7 +241,9 @@ class StepController {
 
     //// 前往特定步驟
     ToStep( step_idx ){
-        console.log('ToStep: ', step_idx );
+        console.log('_ToStep: ', step_idx );
+
+        let self = this;
 
         //// 新步驟資料
         let new_step = this.steps[ step_idx ];
@@ -236,14 +258,24 @@ class StepController {
                 oCamera.components['orbit-controls'].target.set( tp[0], tp[1], tp[2] );
             }
 
-            this.GsapZoomInOutCamera(new THREE.Vector3( p[0], p[1], p[2] ) , t ).then(() => { });
+            this.GsapZoomInOutCamera(new THREE.Vector3( p[0], p[1], p[2] ) , t ).then(() => { 
+
+                self.stepStatus = 0;
+
+            });
+        }else{
+            self.stepStatus = 0;
         }
         // 
 
         if( this.step_type == 'model' ){
             this.ToStep_model( step_idx );
         } else if ( this.step_type == 'mesh' ){
-            this.ToStep_model_child( step_idx );
+            // this.ToStep_model_child( step_idx );
+
+            //// 新方式，多判斷 【 mesh 狀態 】再進行顯示或隱藏
+            this.ToStep_model_child_check( step_idx );
+
         }
 
         //// 紀錄當前步驟資料
@@ -276,7 +308,7 @@ class StepController {
                         z: positionValue.z,
                         // duration: durationValue,
                         onUpdate: () => {
-                            console.log('_G_: ', camera.position.x, camera.position.y, camera.position.z );
+                            // console.log('_G_: ', camera.position.x, camera.position.y, camera.position.z );
                         },
                         onComplete: () => {
                             resolve();
@@ -396,6 +428,173 @@ class StepController {
             // }
 
         }
+    }
+
+
+    ToStep_model_child_check( step_idx ){
+        let self = this;
+
+        //// 原本步驟資料
+        let old_step = self.steps[ self.current_step_idx ];
+        let old_step_children = self.stepCombineChildrenData[ self.current_step_idx ] || [];
+
+        //// 新步驟資料
+        let new_step = self.steps[ step_idx ];
+
+        let new_step_children = self.stepCombineChildrenData[ step_idx ] || [];
+
+        let checkStatus = true;
+        if ( new_step && new_step.obj_id && new_step.show_objs && new_step.show_objs.length > 0 && 
+            new_step_children && new_step_children.length > 0 &&
+            window.vrController && vrController.makarObjects
+        ){
+
+            //// 紀錄【 需要飛入的物件 】
+            let show_flyin_objs = [];
+
+
+            //// 找出【 所有控制的名稱 】內 排除掉不需要的物件名稱
+            self.controlChildrenNames.forEach( e => {
+                //// 先找到 新步驟資料內的物件
+                let findC = new_step_children.find( e2 => e2.obj_id == e.o && e2.name == e.n ); 
+
+                //// 判斷是否是 當前 步驟下已經為【 顯示狀態 】的物件
+                // let findO = old_step_children.find( e2 => e2.obj_id == e.o && e2.name == e.n );
+                
+                // console.log( 'findC: ', findC );
+                //// 包含在步驟內的 物件 執行顯示
+                //// 不包含在步驟內的 物件 執行隱藏
+                if ( findC ){
+
+                    let obj = document.getElementById( findC.obj_id );
+                    //// 資料中的 模型中心 取得世界座標
+                    let model_w_c_p = obj.object3D.localToWorld( obj.object3D.makarCenter );
+                    //// 資料中的 模型半徑 取得世界座標
+                    let model_w_r = obj.object3D.localToWorld( new THREE.Vector3(obj.object3D.makarXYRaduis,0,0) ).x ;
+
+                    //// 假如原本就已經是顯示狀態，則不需要進行顯示
+                    //// 假如原本是【 未啟動狀態 】，則進行顯示(依照顯示方式)
+                    if ( e.active == true  ){
+                        
+                    }else{
+                        
+                        if ( obj && obj.object3D ){
+                            let c = obj.object3D.getObjectByName( findC.name );
+                            if ( c ){
+
+                                //// 顯示的處理方式 目前區分為 【 直接 】【 飛入 】
+                                if ( findC.type == 'direct' ){
+                                    c.visible = true;
+                                }else if ( findC.type == 'flyin' ){
+
+                                    
+                                    //// 部件 的世界座標
+                                    let mesh_w_p = c.getWorldPosition( new THREE.Vector3() );
+                                    //// 模型中心 到 部件 的向量
+
+                                    let v_om = new THREE.Vector3( 
+                                        mesh_w_p.x - model_w_c_p.x , 
+                                        0, 
+                                        mesh_w_p.z - model_w_c_p.z
+                                    );
+                                                                        
+                                    //// 模型放在 環圈上面的 世界座標位置
+                                    let p_w_r = model_w_c_p.clone().add(  v_om.clone().normalize().multiplyScalar( model_w_r ) );
+                                    //// 模型放在 環圈上面的 本地座標位置
+                                    let m_p_local = c.parent.worldToLocal( p_w_r.clone() ); 
+
+                                    //// 資料: 物件、原始位置、大小
+                                    let data = {
+                                        // o_scale: c.scale.clone(),
+                                        o_pos: c.position.clone(),                                        
+                                        obj: c,
+                                    }
+                                    show_flyin_objs.push( data );
+
+
+                                    c.position.copy( m_p_local );
+
+                                    // show_flyin_objs.push( c );
+                                    // let e_os = c.scale;
+                                    // c.scale.copy( e_os.multiplyScalar(0.001) );
+                                    c.visible = true;
+
+                                }else{
+                                    c.visible = true;
+                                }
+
+                            }
+                        }
+                        //// 將狀態改為【 啟動 】
+                        e.active = true;
+
+                    }
+
+                }else{
+                    //// 不包含在步驟內的 物件 執行隱藏
+
+                    //// 假如原本是顯示狀態，則需要進行隱藏
+                    //// 假如原本已經是【 未啟動狀態 】，則不用動作
+                    if ( e.active == true  ){
+                        let obj = document.getElementById( e.o );
+                        if ( obj && obj.object3D ){
+                            let c = obj.object3D.getObjectByName( e.n );
+                            if ( c ){
+                                c.visible = false;
+                            }
+                        }
+                        e.active = false;
+                    }else{
+
+                    }
+
+                    
+                }
+            })
+
+
+            if ( show_flyin_objs.length > 0 ){
+
+                show_flyin_objs.forEach( e => {
+                    console.log( '2 _show_flyin_objs: ' , e );
+                    if ( e.o_pos && e.obj  ){
+                        let o_pos = e.o_pos;
+                        gsap.to( e.obj.position, {
+                            duration: 1,
+                            delay: 2,
+                            x: o_pos.x,
+                            y: o_pos.y,
+                            z: o_pos.z,
+                            onUpdate: () => {
+                                // console.log('_G_: ', camera.position.x, camera.position.y, camera.position.z );
+                            },
+                            onComplete: () => {
+                                // resolve();
+                            }
+                        })
+                    }
+                })
+
+                // show_flyin_objs.forEach( e => {
+                //     let e_os = e.scale;
+                //     gsap.to( e.scale, {
+                //         duration: 1,
+                //         x: e_os.x * 1000 ,
+                //         y: e_os.y * 1000,
+                //         z: e_os.z * 1000,
+                //         onUpdate: () => {
+                //             // console.log('_G_: ', camera.position.x, camera.position.y, camera.position.z );
+                //         },
+                //         onComplete: () => {
+                //             // resolve();
+                //         }
+                //     });
+                // })
+
+            }
+
+        }
+
     }
 
     //// 切換當前步驟 UI ，已棄置

@@ -128,6 +128,11 @@ let projData = {
                         },
                         materialAttr:{},
                         //// 由於 此專案的材質為【 多數磁力片 相同顏色 】，故設計為【 材質類別 】 對應【 Mesh 名稱 】
+                        custModelAttr:{
+                            center: [ 0 , 0 , 0 ],
+                            xyRaduis: 0.25,
+
+                        },
                         cust_materials:[
                             //// 要隱藏的物件
                             // {
@@ -194,7 +199,7 @@ let projData = {
                             { 
                                 id:'green_plane', 
                                 trans: true, 
-                                color: [ 40 , 199 , 199 ], 
+                                color: [ 15, 252, 82 ], 
                                 opacity: 0.65, 
                                 roughness: 0.5, 
                                 metalness: 0.25,
@@ -333,50 +338,50 @@ let projData = {
                         { o: 'obj_1', n:'24' },
                         { o: 'obj_1', n:'25' },
                         { o: 'obj_1', n:'26' },
-                        { o: 'obj_1', n:'27' },
-                        { o: 'obj_1', n:'28' },
-                        { o: 'obj_1', n:'29' },
-                        { o: 'obj_1', n:'30' },
-                        { o: 'obj_1', n:'31' },
-                        { o: 'obj_1', n:'32' },
-                        { o: 'obj_1', n:'33' },
-                        { o: 'obj_1', n:'34' },
-                        { o: 'obj_1', n:'35' },
-                        { o: 'obj_1', n:'36' },
-                        { o: 'obj_1', n:'37' },
-                        { o: 'obj_1', n:'38' },
-                        { o: 'obj_1', n:'39' },
-                        { o: 'obj_1', n:'40' },
-                        { o: 'obj_1', n:'41' },
-                        { o: 'obj_1', n:'42' },
-                        { o: 'obj_1', n:'43' },
-                        { o: 'obj_1', n:'44' },
-                        { o: 'obj_1', n:'45' },
-                        { o: 'obj_1', n:'46' },
-                        { o: 'obj_1', n:'47' },
-                        { o: 'obj_1', n:'48' },
-                        { o: 'obj_1', n:'49' },
-                        { o: 'obj_1', n:'50' },
-                        { o: 'obj_1', n:'51' },
-                        { o: 'obj_1', n:'52' },
-                        { o: 'obj_1', n:'53' },
-                        { o: 'obj_1', n:'54' },
-                        { o: 'obj_1', n:'55' },
-                        { o: 'obj_1', n:'56' },
-                        { o: 'obj_1', n:'57' },
-                        { o: 'obj_1', n:'58' },
-                        { o: 'obj_1', n:'59' },
-                        { o: 'obj_1', n:'60' },
-                        { o: 'obj_1', n:'61' },
-                        { o: 'obj_1', n:'62' },
-                        { o: 'obj_1', n:'63' },
-                        { o: 'obj_1', n:'64' },
-                        { o: 'obj_1', n:'65' },
-                        { o: 'obj_1', n:'66' },
-                        { o: 'obj_1', n:'67' },
-                        { o: 'obj_1', n:'68' },
-                        { o: 'obj_1', n:'69' },
-                        { o: 'obj_1', n:'70' },
+                        // { o: 'obj_1', n:'27' },
+                        // { o: 'obj_1', n:'28' },
+                        // { o: 'obj_1', n:'29' },
+                        // { o: 'obj_1', n:'30' },
+                        // { o: 'obj_1', n:'31' },
+                        // { o: 'obj_1', n:'32' },
+                        // { o: 'obj_1', n:'33' },
+                        // { o: 'obj_1', n:'34' },
+                        // { o: 'obj_1', n:'35' },
+                        // { o: 'obj_1', n:'36' },
+                        // { o: 'obj_1', n:'37' },
+                        // { o: 'obj_1', n:'38' },
+                        // { o: 'obj_1', n:'39' },
+                        // { o: 'obj_1', n:'40' },
+                        // { o: 'obj_1', n:'41' },
+                        // { o: 'obj_1', n:'42' },
+                        // { o: 'obj_1', n:'43' },
+                        // { o: 'obj_1', n:'44' },
+                        // { o: 'obj_1', n:'45' },
+                        // { o: 'obj_1', n:'46' },
+                        // { o: 'obj_1', n:'47' },
+                        // { o: 'obj_1', n:'48' },
+                        // { o: 'obj_1', n:'49' },
+                        // { o: 'obj_1', n:'50' },
+                        // { o: 'obj_1', n:'51' },
+                        // { o: 'obj_1', n:'52' },
+                        // { o: 'obj_1', n:'53' },
+                        // { o: 'obj_1', n:'54' },
+                        // { o: 'obj_1', n:'55' },
+                        // { o: 'obj_1', n:'56' },
+                        // { o: 'obj_1', n:'57' },
+                        // { o: 'obj_1', n:'58' },
+                        // { o: 'obj_1', n:'59' },
+                        // { o: 'obj_1', n:'60' },
+                        // { o: 'obj_1', n:'61' },
+                        // { o: 'obj_1', n:'62' },
+                        // { o: 'obj_1', n:'63' },
+                        // { o: 'obj_1', n:'64' },
+                        // { o: 'obj_1', n:'65' },
+                        // { o: 'obj_1', n:'66' },
+                        // { o: 'obj_1', n:'67' },
+                        // { o: 'obj_1', n:'68' },
+                        // { o: 'obj_1', n:'69' },
+                        // { o: 'obj_1', n:'70' },
 
                     ],
                     steps:[
@@ -583,12 +588,12 @@ function test(){
     })
     
     obj_1.object3D.traverse( (c,i)=>{
-        if ( c.type == 'Mesh'){
-            console.log('M:', c.name );
-        }
-        // if ( c.type == 'Object3D'){
-        //     console.log('O:', c.name );
+        // if ( c.type == 'Mesh'){
+        //     console.log('M:', c.name );
         // }
+        if ( c.type == 'Object3D'){
+            console.log('O:', c.name );
+        }
         // if ( c.type == 'Scene'){
         //     console.log('S:', c.name );
         // }

@@ -314,6 +314,32 @@ import net from './networkAgent.js';
                         switch( scene_objs[i].main_type ){  
                             case 'model':
                                 let pModel = self.loadGLTFModel(scene_objs[i], position, rotation, scale , self.cubeTex );
+
+                                pModel.then( function( model ){
+                                    if (model && model.object3D){                                        
+                                        if ( scene_objs[i].custModelAttr &&  
+                                            Array.isArray( scene_objs[i].custModelAttr.center ) &&
+                                            scene_objs[i].custModelAttr.xyRaduis 
+                                        ){
+                                            model.object3D.makarCenter = new THREE.Vector3().fromArray(scene_objs[i].custModelAttr.center);
+                                            model.object3D.makarXYRaduis =  scene_objs[i].custModelAttr.xyRaduis;
+                                        
+                                        }else{
+                                            model.object3D.makarCenter = new THREE.Vector3(0,0,0)
+                                            model.object3D.makarXYRaduis = 0.3 ;
+                                        }
+
+                                        //// 測試用 客製化的 方塊物件 對位置使用
+                                        // let geometry = new THREE.BoxGeometry( 1, 1, 1 ); 
+                                        // let material = new THREE.MeshBasicMaterial( {color: 0xffff00} ); 
+                                        // let tcube = new THREE.Mesh( geometry, material ); 
+                                        // tcube.scale.set( 0.02, 0.02, 0.02 );
+                                        // model.object3D.add( tcube );
+
+                                    }
+                                });
+
+
                                 pObjs.push( pModel );
                                 break;
 
@@ -409,7 +435,7 @@ import net from './networkAgent.js';
                                             }
 
                                         }
-                                        if ( cm.hasOwnProperty('trans') ){
+                                        if ( cm.hasOwnProperty('opacity') ){
                                             first_material_clone.opacity = cm.opacity;
                                         }
                                         //// 顏色

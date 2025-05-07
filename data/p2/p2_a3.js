@@ -246,7 +246,7 @@ let projData = {
                             { 
                                 id:'green_plane', 
                                 trans: true, 
-                                color: [ 40 , 199 , 199 ], 
+                                color: [ 15, 252, 82 ], 
                                 opacity: 0.65, 
                                 roughness: 0.5, 
                                 metalness: 0.25,

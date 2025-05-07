@@ -1,4 +1,53 @@
 
+#### 2025 05 07
+
+* 在對照 使用片數 的時候。
+1. 城堡 看起來缺少: 網格、方塊中間有半圓、
+2. 恐龍 看起來缺少: 眼睛、
+3. 大象 看起來缺少: 眼睛、
+4. 火車 看起來缺少: 網格、
+5. 森林的「基底物件」沒有找到對應的 圖片內容。
+
+
+#### 2025 05 06
+調整:
+1. VR 使用片數 顏色，標題顏色。按鈕顏色 done
+2. 列表頁: 上方顏色、本體顏色 done
+3. FlyIn 功能初步完成 done
+4. 大象/鐘樓 圖片更新 done
+5. 
+
+
+#### 2025 05 05
+
+* 列表頁面:
+    https://yctech-mamayo.github.io/webXR/list.html?openExternalBrowser=1
+
+* VR: 
+    天鵝 https://yctech-mamayo.github.io/webXR/detail/p1.html?openExternalBrowser=1
+    大象 https://yctech-mamayo.github.io/webXR/detail/p2.html?openExternalBrowser=1
+    恐龍 https://yctech-mamayo.github.io/webXR/detail/p3.html?openExternalBrowser=1
+    鐘樓 https://yctech-mamayo.github.io/webXR/detail/p4.html?openExternalBrowser=1
+    城堡 https://yctech-mamayo.github.io/webXR/detail/p5.html?openExternalBrowser=1
+    火車 https://yctech-mamayo.github.io/webXR/detail/p6.html?openExternalBrowser=1
+    拱門 https://yctech-mamayo.github.io/webXR/detail/p7.html?openExternalBrowser=1
+    森林 https://yctech-mamayo.github.io/webXR/detail/p8.html?openExternalBrowser=1
+
+* AR: 
+    天鵝 https://yctech-mamayo.github.io/webXR/AR/p1.html?openExternalBrowser=1
+    大象 https://yctech-mamayo.github.io/webXR/AR/p2.html?openExternalBrowser=1
+    恐龍 https://yctech-mamayo.github.io/webXR/AR/p3.html?openExternalBrowser=1
+    鐘樓 https://yctech-mamayo.github.io/webXR/AR/p4.html?openExternalBrowser=1
+    城堡 https://yctech-mamayo.github.io/webXR/AR/p5.html?openExternalBrowser=1
+    火車 https://yctech-mamayo.github.io/webXR/AR/p6.html?openExternalBrowser=1
+    拱門 https://yctech-mamayo.github.io/webXR/AR/p7.html?openExternalBrowser=1
+    森林 https://yctech-mamayo.github.io/webXR/AR/p8.html?openExternalBrowser=1
+
+
+    建議所有網址後面加上 ?openExternalBrowser=1 是因為可以讓用戶從 line 連結直接開啟 預設瀏覽器
+
+
+    
 #### 2025 05 02
 
 1. 載入畫面 全白 0.9 done

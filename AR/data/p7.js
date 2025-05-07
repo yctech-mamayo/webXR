@@ -69,7 +69,7 @@ let projData = {
             {
                 target_id: "00000007-7dd5-4b24-8fb0-fb774ba6d8c6",
                 // gcss_url: "https://s3-ap-northeast-1.amazonaws.com/mifly0makar0assets/Users/a8b05d24-e6ea-4d4f-a8f0-f6a3f41c90b5/ImageTarget/118e23394f0a454e9e6b36b63812cae3_256.gcss",
-                gcss_url: "../resource/ARtarget/arch.gcss",
+                gcss_url: "../resource/ARtarget/20250506/bridge.gcss",
                 image_url: "https://s3-ap-northeast-1.amazonaws.com/mifly0makar0assets/Users/a8b05d24-e6ea-4d4f-a8f0-f6a3f41c90b5/ImageTarget/118e23394f0a454e9e6b36b63812cae3_256.jpg"
             },
             // {
@@ -105,7 +105,7 @@ let projData = {
             "9bd689f7-2fe3-4a05-b7ba-5dade414cadc":{
                 res_id: "9bd689f7-2fe3-4a05-b7ba-5dade414cadc",
                 res_name: "arch",
-                res_url: "../resource/model/arch/拱門(a0).glb",
+                res_url: "../resource/model/arch/拱門(a1).glb",
                 main_type: "model",
                 sub_type: "glb",
                 size: "48704 bytes",
@@ -275,7 +275,7 @@ let projData = {
                                 { 
                                     id:'green_plane', 
                                     trans: true, 
-                                    color: [ 40 , 199 , 199 ], 
+                                    color: [ 15, 252, 82 ], 
                                     opacity: 0.65, 
                                     roughness: 0.5, 
                                     metalness: 0.25,
