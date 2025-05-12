@@ -161,6 +161,12 @@ let projData = {
                             simulated_rotation: "0,0,0"
                         },
                         materialAttr:{},
+                        //// 客製化 模型中心 與 希望涵蓋半徑
+                        custModelAttr:{
+                            center: [ 0 , 0 , 0 ],
+                            xyRaduis: 0.5,
+
+                        },
                         //// 由於 此專案的材質為【 多數磁力片 相同顏色 】，故設計為【 材質類別 】 對應【 Mesh 名稱 】
                         cust_materials:[
                             //// 要隱藏的物件
@@ -187,7 +193,7 @@ let projData = {
                                     '41-2','42-2','44-2','45-2','46-2','47-2','48-1_0','49-2','50_0',
                                     '51-2','52-2','54_0','55-2','56-2','57-2','58-2','59-2','60-2',
                                     '61-2','62-2','64-2','65-2','66-2','67-2','68-2','69-2','70-2',
-                                    '71-2','72_0','74_0','75_0','76-2',              '79_0','80_0',
+                                    '71-2','72_0','74_0','75_0','76-2',                     
                                     '81-2','82-2','84-2',
 
                                 ]
@@ -306,29 +312,30 @@ let projData = {
                                     '12-1','58-1','06-1','09-1',
                                 ]
                             },
-                            
                             //// 白色 眼睛
                             { 
                                 id:'white_circle', 
                                 trans: false, 
-                                opacity: 0.5, 
+                                opacity: 1, 
                                 color: [ 250, 250, 250 ], 
                                 roughness: 0.5, 
                                 metalness: 0.5,
                                 names:[
-                                    '77-0','78_0',
+                                    '77_0','78_0',
+                                    '80_0','79_0',
                                 ]
                             },
                             //// 黑色 眼睛
                             { 
                                 id:'black_circle', 
                                 trans: false, 
-                                opacity: 0.5, 
+                                opacity: 1, 
                                 color: [ 20, 20, 20 ], 
                                 roughness: 0.5, 
                                 metalness: 0.5,
                                 names:[
                                     '77_1','78_1',
+                                    '79_1','80_1',
                                 ]
                             },
 
@@ -436,25 +443,25 @@ let projData = {
                                 en:'Step 1'
                             },
                             des:{
-                                tw:'步驟說明: 1 的說明',
+                                tw:'兩片著地，前面加一片膝蓋就不倒',
                                 en:'Step description: 1 ',
                             },
                             scene_id:'s1',
                             obj_id: 'obj_1',
                             show_objs: [
-                                { obj_id: 'obj_1', name: '67', type: 'direct'},
-                                { obj_id: 'obj_1', name: '25', type: 'direct'},
-                                { obj_id: 'obj_1', name: '40', type: 'direct'},
-                                { obj_id: 'obj_1', name: '44', type: 'direct'},
-                                { obj_id: 'obj_1', name: '24', type: 'direct'},
-                                { obj_id: 'obj_1', name: '57', type: 'direct'},
+                                { obj_id: 'obj_1', name: '67', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '25', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '40', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '44', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '24', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '57', type: 'flyin'},
 
-                                { obj_id: 'obj_1', name: '70', type: 'direct'},
-                                { obj_id: 'obj_1', name: '22', type: 'direct'},
-                                { obj_id: 'obj_1', name: '27', type: 'direct'},
-                                { obj_id: 'obj_1', name: '76', type: 'direct'},
-                                { obj_id: 'obj_1', name: '62', type: 'direct'},
-                                { obj_id: 'obj_1', name: '26', type: 'direct'},
+                                { obj_id: 'obj_1', name: '70', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '22', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '27', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '76', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '62', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '26', type: 'flyin'},
 
                             ],
 
@@ -466,25 +473,25 @@ let projData = {
                                 en:'Step 2'
                             },
                             des:{
-                                tw:'步驟說明: 2 的說明',
+                                tw:'圓環扣住軌道頭尾，球不怕掉',
                                 en:'Step description: 2 ',
                             },
                             scene_id:'s1',
                             obj_id: 'obj_1',
                             show_objs: [
-                                { obj_id: 'obj_1', name: '28', type: 'direct'},
-                                { obj_id: 'obj_1', name: '69', type: 'direct'},
-                                { obj_id: 'obj_1', name: '68', type: 'direct'},
-                                { obj_id: 'obj_1', name: '42', type: 'direct'},
+                                { obj_id: 'obj_1', name: '28', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '69', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '68', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '42', type: 'flyin'},
                                 
-                                { obj_id: 'obj_1', name: '66', type: 'direct'},
-                                { obj_id: 'obj_1', name: '65', type: 'direct'},
-                                { obj_id: 'obj_1', name: '64', type: 'direct'},
-                                { obj_id: 'obj_1', name: '18', type: 'direct'},
+                                { obj_id: 'obj_1', name: '66', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '65', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '64', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '18', type: 'flyin'},
 
-                                { obj_id: 'obj_1', name: '41', type: 'direct'},
-                                { obj_id: 'obj_1', name: '46', type: 'direct'},
-                                { obj_id: 'obj_1', name: '52', type: 'direct'},
+                                { obj_id: 'obj_1', name: '41', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '46', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '52', type: 'flyin'},
 
 
                             ],
@@ -498,14 +505,14 @@ let projData = {
                                 en:'Step 3'
                             },
                             des:{
-                                tw:'步驟說明: 3 的說明',
+                                tw:'3段軌道，蓋出大象長鼻子',
                                 en:'Step description: 3 ',
                             },
                             scene_id:'s1',
                             obj_id: 'obj_1',
                             show_objs: [
-                                { obj_id: 'obj_1', name: '51', type: 'direct'},
-                                { obj_id: 'obj_1', name: '82', type: 'direct'},
+                                { obj_id: 'obj_1', name: '51', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '82', type: 'flyin'},
                                 
                             ],
 
@@ -517,24 +524,24 @@ let projData = {
                                 en:'Step 4'
                             },
                             des:{
-                                tw:'步驟說明: 4 的說明',
+                                tw:'幫大象加頭、眼睛和耳朵',
                                 en:'Step description: 4 ',
                             },
                             scene_id:'s1',
                             obj_id: 'obj_1',
                             show_objs: [
-                                { obj_id: 'obj_1', name: '50', type: 'direct'},
-                                { obj_id: 'obj_1', name: '49', type: 'direct'},
-                                { obj_id: 'obj_1', name: '74', type: 'direct'},
-                                { obj_id: 'obj_1', name: '72', type: 'direct'},                                
-                                { obj_id: 'obj_1', name: '47', type: 'direct'},
-                                { obj_id: 'obj_1', name: '71', type: 'direct'},
-                                { obj_id: 'obj_1', name: '48', type: 'direct'},
+                                { obj_id: 'obj_1', name: '50', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '49', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '74', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '72', type: 'flyin'},                                
+                                { obj_id: 'obj_1', name: '47', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '71', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '48', type: 'flyin'},
 
-                                { obj_id: 'obj_1', name: '56', type: 'direct'},
-                                { obj_id: 'obj_1', name: '77', type: 'direct'},
-                                { obj_id: 'obj_1', name: '78', type: 'direct'},
-                                { obj_id: 'obj_1', name: '55', type: 'direct'},
+                                { obj_id: 'obj_1', name: '56', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '77', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '78', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '55', type: 'flyin'},
                             ],
 
                         },
@@ -545,26 +552,26 @@ let projData = {
                                 en:'Step 5'
                             },
                             des:{
-                                tw:'步驟說明: 5 的說明',
+                                tw:'蓋小象，軌道當穩固磁力片的橋樑',
                                 en:'Step description: 5 ',
                             },
                             scene_id:'s1',
                             obj_id: 'obj_1',
                             show_objs: [
-                                { obj_id: 'obj_1', name: '01', type: 'direct'},
-                                { obj_id: 'obj_1', name: '02', type: 'direct'},
-                                { obj_id: 'obj_1', name: '07', type: 'direct'},
-                                { obj_id: 'obj_1', name: '81', type: 'direct'},
-                                { obj_id: 'obj_1', name: '84', type: 'direct'},
-                                { obj_id: 'obj_1', name: '61', type: 'direct'},
-                                { obj_id: 'obj_1', name: '45', type: 'direct'},
+                                { obj_id: 'obj_1', name: '01', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '02', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '07', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '81', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '84', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '61', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '45', type: 'flyin'},
 
                             ],
-                            cameraAttr:{
-                                p: [ 1.16, 4.51,  -6.80],
-                                target:[ 0 , 0 , 0 ],
-                                t: 1.5,
-                            }
+                            // cameraAttr:{
+                            //     p: [ 1.16, 4.51,  -6.80],
+                            //     target:[ 0 , 0 , 0 ],
+                            //     t: 1.5,
+                            // }
 
                         },
                         {
@@ -574,23 +581,23 @@ let projData = {
                                 en:'Step 6'
                             },
                             des:{
-                                tw:'步驟說明: 6 的說明',
+                                tw:'側邊貼上小腳和身體',
                                 en:'Step description: 6 ',
                             },
                             scene_id:'s1',
                             obj_id: 'obj_1',
                             show_objs: [
-                                { obj_id: 'obj_1', name: '04', type: 'direct'},
-                                { obj_id: 'obj_1', name: '05', type: 'direct'},
-                                { obj_id: 'obj_1', name: '06', type: 'direct'},
-                                { obj_id: 'obj_1', name: '09', type: 'direct'},
+                                { obj_id: 'obj_1', name: '04', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '05', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '06', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '09', type: 'flyin'},
 
-                                { obj_id: 'obj_1', name: '24', type: 'direct'},
-                                { obj_id: 'obj_1', name: '58', type: 'direct'},
-                                { obj_id: 'obj_1', name: '59', type: 'direct'},
-                                { obj_id: 'obj_1', name: '60', type: 'direct'},
-                                { obj_id: 'obj_1', name: '12', type: 'direct'},
-                                { obj_id: 'obj_1', name: '44', type: 'direct'},
+                                { obj_id: 'obj_1', name: '24', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '58', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '59', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '60', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '12', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '44', type: 'flyin'},
 
 
                             ],
@@ -603,18 +610,18 @@ let projData = {
                                 en:'Step 7'
                             },
                             des:{
-                                tw:'步驟說明: 7 的說明',
+                                tw:'幫小象加頭、眼睛和耳朵',
                                 en:'Step description: 7 ',
                             },
                             scene_id:'s1',
                             obj_id: 'obj_1',
                             show_objs: [
-                                { obj_id: 'obj_1', name: '54', type: 'direct'},
-                                { obj_id: 'obj_1', name: '75', type: 'direct'},
-                                { obj_id: 'obj_1', name: '10', type: 'direct'},
-                                { obj_id: 'obj_1', name: '11', type: 'direct'},
-                                { obj_id: 'obj_1', name: '79', type: 'direct'},
-                                { obj_id: 'obj_1', name: '80', type: 'direct'},
+                                { obj_id: 'obj_1', name: '54', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '75', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '10', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '11', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '79', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '80', type: 'flyin'},
                                 
 
 
@@ -628,21 +635,21 @@ let projData = {
                                 en:'Step 8'
                             },
                             des:{
-                                tw:'步驟說明: 8 的說明',
+                                tw:'把4段軌道接好再一起裝到大小象身上',
                                 en:'Step description: 8 ',
                             },
                             scene_id:'s1',
                             obj_id: 'obj_1',
                             show_objs: [
-                                { obj_id: 'obj_1', name: '82', type: 'direct'},
-                                { obj_id: 'obj_1', name: '14', type: 'direct'},
-                                { obj_id: 'obj_1', name: '19', type: 'direct'},
-                                { obj_id: 'obj_1', name: '16', type: 'direct'},
-                                { obj_id: 'obj_1', name: '20', type: 'direct'},
-                                { obj_id: 'obj_1', name: '15', type: 'direct'},
-                                { obj_id: 'obj_1', name: '17', type: 'direct'},
-                                { obj_id: 'obj_1', name: '21', type: 'direct'},
-                                { obj_id: 'obj_1', name: '85', type: 'direct'},
+                                { obj_id: 'obj_1', name: '82', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '14', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '19', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '16', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '20', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '15', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '17', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '21', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '85', type: 'flyin'},
 
                             ],
 

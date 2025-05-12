@@ -623,8 +623,8 @@ class ARWrapper {
                 self.editor_version = editor_version;
                     
                 //// 如果以後 AR 要清除遊玩中的 Quiz 物件 應該可以加在這裡
-                window.aQuizAR.clear();
-                window.aQuizAR.scene3DRoot = scene3DRoot
+                // window.aQuizAR.clear();
+                // window.aQuizAR.scene3DRoot = scene3DRoot
         
                 ///// 20231220 推測放在這裡可以   載入相機完成之後，設定對應 物件放大比例
                 let  sr2D = this.get2DScaleRatio();
@@ -1353,7 +1353,7 @@ class ARWrapper {
                                 
                                 //// 圖像辨識到，第一次，開啟載入中畫面
                                 let homePage = document.getElementById('homePage');
-                                homePage.style.display = 'block';
+                                homePage.style.display = 'flex';
 
                                 let pXML = self.parseLogicXMLBySceneIndex( sceneIndex );
                                 if ( isPromise( pXML ) ){
@@ -1517,9 +1517,9 @@ class ARWrapper {
                                     //[end-20240614-renhaohsu-add]//
                                     
                                     //// v3.5.0.0 為 "點擊物件開啟"的quiz 的啟動物件 加上 behav
-                                    this.addBehavToQuizTriggerObj()
+                                    // this.addBehavToQuizTriggerObj()
                                     //// v3.5.0.0 如果有quiz是"直接顯示" 則顯示 html UI (startQuiz)
-                                    aQuizAR.checkIfQuizOpenDirectly()
+                                    // aQuizAR.checkIfQuizOpenDirectly()
         
                                 }).catch((err) => {
                                     console.warn('ARController.js  load scene  error:', err)
@@ -5397,7 +5397,8 @@ class ARWrapper {
                 //////  set the temporary empty object, will replace it by the touchstart(cell phone)/mouseDown(PC)
                 var objectControls = new THREE.ObjectControls( GLRenderer.domElement, new THREE.Object3D() );  
                 objectControls.enableVerticalRotation();
-                objectControls.setRotationSpeed( 0.1 ); // for PC 
+                // objectControls.setRotationSpeed( 0.1 ); // for PC 
+                objectControls.setRotationSpeed( 0.05 ); // for PC 
                 objectControls.setRotationSpeedTouchDevices( 0.05 ); // for cell phone
                 // objectControls.setDistance( -1000, 1000); // set min - max distance for zoom
                 // objectControls.setZoomSpeed( 2 ); // set zoom speed

@@ -85,6 +85,8 @@
     pointer-events: none;
 
     font-family: Roboto, Source Han Sans TC, 微軟正黑體, sans-serif;
+
+    background-color: rgba(0, 0, 0, 0.01 );
 }
 
 #help_container{
@@ -739,10 +741,10 @@
 
     #detail_logo{
         top: 12px;
-        left: calc( 50% - 125px );
+        left: calc( 50% - 65px );
     
-        width: 250px;
-        height: 70px;
+        width: 130px;
+        height: 37px;
 
     }
 
@@ -750,19 +752,9 @@
         top: 80px;
         left: 20px;
         width: 130px;
-        height: 65px;
+        height: 80px;
     }
 
-    
-    #page_name > h1 {
-        margin: 0;
-        color: #5A77A8;
-        text-align: center;
-
-        height: 50%;
-        font-size: 28px;
-        line-height: 32px;
-    }
     
     #element_container{
         top: 80px;
@@ -857,7 +849,7 @@
         justify-content: center;
         align-content: flex-start;
         align-items:center;
-        gap: 10px;
+        gap: 7px;
 
     }
 }
@@ -894,7 +886,7 @@
     #element_container{
         top: 80px;
         right: 10px;
-        width: 299px;
+        width: 290px;
         height: 70px;
         max-height: 30vh;
         
@@ -944,23 +936,10 @@
         font-size: 16px;
     }
 
-    #stepTextContainer{
-        bottom: 110px;
-        left: 5%;
-        width: 90%;
-        height: 64px;
-    }
-
-    #stepTextMain{
-        width: 90%;
-        max-width: 98%;
-        font-size: 28px;
-    }
-
     #all_product_btn{
         font-size: 24px;
         width: 170px;
-        height: 50px;
+        height: 48px;
         border-radius: 50px;
     }
 
@@ -989,13 +968,13 @@
         justify-content: center;
         align-content: flex-start;
         align-items:center;
-        gap: 20px;
+        gap: 15px;
 
     }
 
     
     #step_to_head , #step_to_end{
-        font-size: 28px;
+        font-size: 24px;
 
         padding-top: 12px;
         padding-bottom: 12px;
@@ -1005,8 +984,8 @@
     }
 
     #step_text_container{
-        width: 70px;
-        font-size: 28px;
+        width: 50px;
+        font-size: 22px;
     }
 
     #step_left_container , #step_right_container {
@@ -1069,7 +1048,7 @@
         top: 110px;
         right: 30px;
         width: 90px;
-        height: 306px;
+        height: 270px;
         max-height: calc( 70vh - 80px ) ;
 
         align-items: center;
@@ -1118,16 +1097,16 @@
     }
 
     #stepTextContainer{
-        bottom: 100px;
+        bottom: 110px;
         left: 5%;
         width: 90%;
-        height: 70px;
+        height: 54px;
     }
 
     #stepTextMain{
-        width: 90%;
+        width: 700px;
         max-width: 98%;
-        font-size: 28px;
+        font-size: 20px;
     }
 
     #all_product_btn{

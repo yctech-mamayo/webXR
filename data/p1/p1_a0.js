@@ -127,12 +127,13 @@ let projData = {
                             simulated_rotation: "0,0,0"
                         },
                         materialAttr:{},
-                        //// 由於 此專案的材質為【 多數磁力片 相同顏色 】，故設計為【 材質類別 】 對應【 Mesh 名稱 】
+                        //// 客製化 模型中心 與 希望涵蓋半徑
                         custModelAttr:{
                             center: [ 0 , 0 , 0 ],
                             xyRaduis: 0.25,
 
                         },
+                        //// 由於 此專案的材質為【 多數磁力片 相同顏色 】，故設計為【 材質類別 】 對應【 Mesh 名稱 】
                         cust_materials:[
                             //// 要隱藏的物件
                             // {
@@ -282,7 +283,7 @@ let projData = {
                             { 
                                 id:'white_circle', 
                                 trans: false, 
-                                opacity: 0.5, 
+                                opacity: 1, 
                                 color: [ 250, 250, 250 ], 
                                 roughness: 0.5, 
                                 metalness: 0.5,
@@ -294,7 +295,7 @@ let projData = {
                             { 
                                 id:'black_circle', 
                                 trans: false, 
-                                opacity: 0.5, 
+                                opacity: 1, 
                                 color: [ 20, 20, 20 ], 
                                 roughness: 0.5, 
                                 metalness: 0.5,
@@ -392,18 +393,18 @@ let projData = {
                                 en:'Step 1'
                             },
                             des:{
-                                tw:'步驟說明: 1 的說明',
+                                tw:'兩個ㄇ字貼一起，是身體和滾球通道',
                                 en:'Step description: 1 ',
                             },
                             scene_id:'s1',
                             obj_id: 'obj_1',
                             show_objs: [
-                                { obj_id: 'obj_1', name: '01', type: 'direct'},
-                                { obj_id: 'obj_1', name: '02', type: 'direct'},
-                                { obj_id: 'obj_1', name: '04', type: 'direct'},
-                                { obj_id: 'obj_1', name: '05', type: 'direct'},
-                                { obj_id: 'obj_1', name: '06', type: 'direct'},
-                                { obj_id: 'obj_1', name: '07', type: 'direct'},
+                                { obj_id: 'obj_1', name: '01', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '02', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '04', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '05', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '06', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '07', type: 'flyin'},
 
                             ],
 
@@ -415,15 +416,15 @@ let projData = {
                                 en:'Step 2'
                             },
                             des:{
-                                tw:'步驟說明: 2 的說明',
+                                tw:'蓋脖子，前後用圓環扣住，球不會掉',
                                 en:'Step description: 2 ',
                             },
                             scene_id:'s1',
                             obj_id: 'obj_1',
                             show_objs: [
-                                { obj_id: 'obj_1', name: '08', type: 'direct'},
-                                { obj_id: 'obj_1', name: '09', type: 'direct'},
-                                { obj_id: 'obj_1', name: '12', type: 'direct'},
+                                { obj_id: 'obj_1', name: '08', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '09', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '12', type: 'flyin'},
 
 
                             ],
@@ -437,14 +438,14 @@ let projData = {
                                 en:'Step 3'
                             },
                             des:{
-                                tw:'步驟說明: 3 的說明',
+                                tw:'最長的軌道當長脖子',
                                 en:'Step description: 3 ',
                             },
                             scene_id:'s1',
                             obj_id: 'obj_1',
                             show_objs: [
-                                { obj_id: 'obj_1', name: '10', type: 'direct'},
-                                { obj_id: 'obj_1', name: '11', type: 'direct'},
+                                { obj_id: 'obj_1', name: '10', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '11', type: 'flyin'},
                                 
                             ],
 
@@ -456,14 +457,14 @@ let projData = {
                                 en:'Step 4'
                             },
                             des:{
-                                tw:'步驟說明: 4 的說明',
+                                tw:'半圓軌道軌道先扣一邊，再接脖子才會穩',
                                 en:'Step description: 4 ',
                             },
                             scene_id:'s1',
                             obj_id: 'obj_1',
                             show_objs: [
-                                { obj_id: 'obj_1', name: '14', type: 'direct'},
-                                { obj_id: 'obj_1', name: '15', type: 'direct'},
+                                { obj_id: 'obj_1', name: '14', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '15', type: 'flyin'},
 
                             ],
 
@@ -475,15 +476,15 @@ let projData = {
                                 en:'Step 5'
                             },
                             des:{
-                                tw:'步驟說明: 5 的說明',
+                                tw:'加眼睛和三角形嘴巴',
                                 en:'Step description: 5 ',
                             },
                             scene_id:'s1',
                             obj_id: 'obj_1',
                             show_objs: [
-                                { obj_id: 'obj_1', name: '16', type: 'direct'},
-                                { obj_id: 'obj_1', name: '17', type: 'direct'},
-                                { obj_id: 'obj_1', name: '24', type: 'direct'},
+                                { obj_id: 'obj_1', name: '16', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '17', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '24', type: 'flyin', lp:[ -220 , -450 , -20 ] },
                                 
                             ],
                             // cameraAttr:{
@@ -500,20 +501,20 @@ let projData = {
                                 en:'Step 6'
                             },
                             des:{
-                                tw:'步驟說明: 6 的說明',
+                                tw:' 用兩種三角形，做漂亮翅膀',
                                 en:'Step description: 6 ',
                             },
                             scene_id:'s1',
                             obj_id: 'obj_1',
                             show_objs: [
-                                { obj_id: 'obj_1', name: '18', type: 'direct'},
-                                { obj_id: 'obj_1', name: '19', type: 'direct'},
+                                { obj_id: 'obj_1', name: '18', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '19', type: 'flyin'},
                                 
-                                { obj_id: 'obj_1', name: '20', type: 'direct'},
-                                { obj_id: 'obj_1', name: '21', type: 'direct'},
+                                { obj_id: 'obj_1', name: '20', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '21', type: 'flyin'},
 
-                                { obj_id: 'obj_1', name: '22', type: 'direct'},
-                                { obj_id: 'obj_1', name: '25', type: 'direct'},
+                                { obj_id: 'obj_1', name: '22', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '25', type: 'flyin'},
 
                             ],
 

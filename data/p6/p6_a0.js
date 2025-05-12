@@ -128,6 +128,12 @@ let projData = {
                             simulated_rotation: "0,0,0"
                         },
                         materialAttr:{},
+                        //// 客製化 模型中心 與 希望涵蓋半徑
+                        custModelAttr:{
+                            center: [ 0.0 , 0.0 , 0 ],
+                            xyRaduis: 0.3,
+
+                        },
                         //// 由於 此專案的材質為【 多數磁力片 相同顏色 】，故設計為【 材質類別 】 對應【 Mesh 名稱 】
                         cust_materials:[
                             //// 要隱藏的物件
@@ -435,26 +441,26 @@ let projData = {
                                 en:'Step 1'
                             },
                             des:{
-                                tw:'步驟說明: 1 的說明',
+                                tw:'三色軌道先鋪好',
                                 en:'Step description: 1',
                             },
                             scene_id:'s1',
                             obj_id: 'obj_1',
                             show_objs: [
-                                { obj_id: 'obj_1', name: '26', type: 'direct'},
-                                { obj_id: 'obj_1', name: '27', type: 'direct'},
-                                { obj_id: 'obj_1', name: '24', type: 'direct'},
-                                { obj_id: 'obj_1', name: '25', type: 'direct'},
+                                { obj_id: 'obj_1', name: '26', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '27', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '24', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '25', type: 'flyin'},
 
-                                { obj_id: 'obj_1', name: '05', type: 'direct'},
-                                { obj_id: 'obj_1', name: '09', type: 'direct'},
-                                { obj_id: 'obj_1', name: '08', type: 'direct'},
-                                { obj_id: 'obj_1', name: '04', type: 'direct'},
-                                { obj_id: 'obj_1', name: '02', type: 'direct'},
-                                { obj_id: 'obj_1', name: '07', type: 'direct'},
+                                { obj_id: 'obj_1', name: '05', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '09', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '08', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '04', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '02', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '07', type: 'flyin'},
                                 
-                                { obj_id: 'obj_1', name: '01', type: 'direct'},
-                                { obj_id: 'obj_1', name: '06', type: 'direct'},
+                                { obj_id: 'obj_1', name: '01', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '06', type: 'flyin'},
 
                             ],
 
@@ -466,28 +472,28 @@ let projData = {
                                 en:'Step 2'
                             },
                             des:{
-                                tw:'步驟說明: 2 的說明',
+                                tw:'車身兩側一片片立起',
                                 en:'Step description: 2',
                             },
                             scene_id:'s1',
                             obj_id: 'obj_1',
                             show_objs: [
-                                { obj_id: 'obj_1', name: '10', type: 'direct'},
-                                { obj_id: 'obj_1', name: '11', type: 'direct'},
-                                { obj_id: 'obj_1', name: '12', type: 'direct'},
-                                { obj_id: 'obj_1', name: '14', type: 'direct'},
+                                { obj_id: 'obj_1', name: '10', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '11', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '12', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '14', type: 'flyin'},
                                 
-                                { obj_id: 'obj_1', name: '21', type: 'direct'},
-                                { obj_id: 'obj_1', name: '22', type: 'direct'},
-                                { obj_id: 'obj_1', name: '18', type: 'direct'},
-                                { obj_id: 'obj_1', name: '17', type: 'direct'},
+                                { obj_id: 'obj_1', name: '21', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '22', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '18', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '17', type: 'flyin'},
 
                             ],
-                            cameraAttr:{
-                                p: [ -0.9 , 4.9,  -6.5 ],
-                                target:[ -0.11 , 0.572 , 1.739 ],
-                                t: 1.5 ,
-                            }
+                            // cameraAttr:{
+                            //     p: [ -0.9 , 4.9,  -6.5 ],
+                            //     target:[ -0.11 , 0.572 , 1.739 ],
+                            //     t: 1.5 ,
+                            // }
 
                         },
                         {
@@ -497,16 +503,16 @@ let projData = {
                                 en:'Step 3'
                             },
                             des:{
-                                tw:'步驟說明: 3 的說明',
+                                tw:'車身前後吸上去車底好穩固',
                                 en:'Step description: 3',
                             },
                             scene_id:'s1',
                             obj_id: 'obj_1',
                             show_objs: [
-                                { obj_id: 'obj_1', name: '15', type: 'direct'},
-                                { obj_id: 'obj_1', name: '16', type: 'direct'},
-                                { obj_id: 'obj_1', name: '19', type: 'direct'},
-                                { obj_id: 'obj_1', name: '20', type: 'direct'},
+                                { obj_id: 'obj_1', name: '15', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '16', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '19', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '20', type: 'flyin'},
                                 
                             ],
 
@@ -518,20 +524,20 @@ let projData = {
                                 en:'Step 4'
                             },
                             des:{
-                                tw:'步驟說明: 4 的說明',
+                                tw:'車尾蓋個ㄇ',
                                 en:'Step description: 4',
                             },
                             scene_id:'s1',
                             obj_id: 'obj_1',
                             show_objs: [
-                                { obj_id: 'obj_1', name: '40', type: 'direct'},
-                                { obj_id: 'obj_1', name: '29', type: 'direct'},
+                                { obj_id: 'obj_1', name: '40', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '29', type: 'flyin'},
 
-                                { obj_id: 'obj_1', name: '28', type: 'direct'},
-                                { obj_id: 'obj_1', name: '44', type: 'direct'},
+                                { obj_id: 'obj_1', name: '28', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '44', type: 'flyin'},
                                 
-                                { obj_id: 'obj_1', name: '41', type: 'direct'},
-                                { obj_id: 'obj_1', name: '42', type: 'direct'},
+                                { obj_id: 'obj_1', name: '41', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '42', type: 'flyin'},
 
                             ],
 
@@ -543,16 +549,16 @@ let projData = {
                                 en:'Step 5'
                             },
                             des:{
-                                tw:'步驟說明: 5 的說明',
+                                tw:'車頭蓋蓋子',
                                 en:'Step description: 5',
                             },
                             scene_id:'s1',
                             obj_id: 'obj_1',
                             show_objs: [
-                                { obj_id: 'obj_1', name: '45', type: 'direct'},
-                                { obj_id: 'obj_1', name: '46', type: 'direct'},
-                                { obj_id: 'obj_1', name: '47', type: 'direct'},
-                                { obj_id: 'obj_1', name: '48', type: 'direct'},
+                                { obj_id: 'obj_1', name: '45', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '46', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '47', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '48', type: 'flyin'},
 
                             ],
                             
@@ -565,20 +571,20 @@ let projData = {
                                 en:'Step 6'
                             },
                             des:{
-                                tw:'步驟說明: 6 的說明',
+                                tw:'車尾第三層，加點窗更有趣',
                                 en:'Step description: 6',
                             },
                             scene_id:'s1',
                             obj_id: 'obj_1',
                             show_objs: [
-                                { obj_id: 'obj_1', name: '54', type: 'direct'},
-                                { obj_id: 'obj_1', name: '49', type: 'direct'},
+                                { obj_id: 'obj_1', name: '54', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '49', type: 'flyin'},
                                 
-                                { obj_id: 'obj_1', name: '50', type: 'direct'},
-                                { obj_id: 'obj_1', name: '52', type: 'direct'},
+                                { obj_id: 'obj_1', name: '50', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '52', type: 'flyin'},
 
-                                { obj_id: 'obj_1', name: '51', type: 'direct'},
-                                { obj_id: 'obj_1', name: '55', type: 'direct'},
+                                { obj_id: 'obj_1', name: '51', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '55', type: 'flyin'},
 
                             ],
 
@@ -590,20 +596,20 @@ let projData = {
                                 en:'Step 7'
                             },
                             des:{
-                                tw:'步驟說明: 7 的說明',
+                                tw:'車尾蓋蓋子，前面兩片可以讓下一步更穩固',
                                 en:'Step description: 7',
                             },
                             scene_id:'s1',
                             obj_id: 'obj_1',
                             show_objs: [
-                                { obj_id: 'obj_1', name: '56', type: 'direct'},
-                                { obj_id: 'obj_1', name: '57', type: 'direct'},
+                                { obj_id: 'obj_1', name: '56', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '57', type: 'flyin'},
 
-                                { obj_id: 'obj_1', name: '58', type: 'direct'},
-                                { obj_id: 'obj_1', name: '59', type: 'direct'},
+                                { obj_id: 'obj_1', name: '58', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '59', type: 'flyin'},
                                 
-                                { obj_id: 'obj_1', name: '60', type: 'direct'},
-                                { obj_id: 'obj_1', name: '61', type: 'direct'},
+                                { obj_id: 'obj_1', name: '60', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '61', type: 'flyin'},
 
 
                             ],
@@ -616,20 +622,20 @@ let projData = {
                                 en:'Step 8'
                             },
                             des:{
-                                tw:'步驟說明: 8 的說明',
+                                tw:'車頭五角型，直接在車身上操作比較穩',
                                 en:'Step description: 8',
                             },
                             scene_id:'s1',
                             obj_id: 'obj_1',
                             show_objs: [
-                                { obj_id: 'obj_1', name: '67', type: 'direct'},
-                                { obj_id: 'obj_1', name: '68', type: 'direct'},
+                                { obj_id: 'obj_1', name: '67', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '68', type: 'flyin'},
                                 
-                                { obj_id: 'obj_1', name: '64', type: 'direct'},
-                                { obj_id: 'obj_1', name: '62', type: 'direct'},
+                                { obj_id: 'obj_1', name: '64', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '62', type: 'flyin'},
                                 
-                                { obj_id: 'obj_1', name: '65', type: 'direct'},
-                                { obj_id: 'obj_1', name: '66', type: 'direct'},
+                                { obj_id: 'obj_1', name: '65', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '66', type: 'flyin'},
                      
                             ],
 
@@ -641,26 +647,26 @@ let projData = {
                                 en:'Step 9'
                             },
                             des:{
-                                tw:'步驟說明: 9 的說明',
+                                tw:'蓋上4面小煙囪和三角輪胎',
                                 en:'Step description: 9',
                             },
                             scene_id:'s1',
                             obj_id: 'obj_1',
                             show_objs: [
-                                { obj_id: 'obj_1', name: '69', type: 'direct'},
-                                { obj_id: 'obj_1', name: '70', type: 'direct'},
-                                { obj_id: 'obj_1', name: '71', type: 'direct'},
-                                { obj_id: 'obj_1', name: '72', type: 'direct'},
+                                { obj_id: 'obj_1', name: '69', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '70', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '71', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '72', type: 'flyin'},
 
-                                { obj_id: 'obj_1', name: '78', type: 'direct'},
-                                { obj_id: 'obj_1', name: '79', type: 'direct'},
-                                { obj_id: 'obj_1', name: '80', type: 'direct'},
-                                { obj_id: 'obj_1', name: '81', type: 'direct'},
+                                { obj_id: 'obj_1', name: '78', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '79', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '80', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '81', type: 'flyin'},
 
-                                { obj_id: 'obj_1', name: '74', type: 'direct'},
-                                { obj_id: 'obj_1', name: '75', type: 'direct'},
-                                { obj_id: 'obj_1', name: '76', type: 'direct'},
-                                { obj_id: 'obj_1', name: '77', type: 'direct'},
+                                { obj_id: 'obj_1', name: '74', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '75', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '76', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '77', type: 'flyin'},
                             ],
 
                         },

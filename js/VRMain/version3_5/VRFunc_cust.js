@@ -325,16 +325,18 @@ import net from './networkAgent.js';
                                             model.object3D.makarXYRaduis =  scene_objs[i].custModelAttr.xyRaduis;
                                         
                                         }else{
-                                            model.object3D.makarCenter = new THREE.Vector3(0,0,0)
-                                            model.object3D.makarXYRaduis = 0.3 ;
+                                            model.object3D.makarCenter = new THREE.Vector3(0,0,0);
+                                            model.object3D.makarXYRaduis = 0.5 ;
                                         }
 
                                         //// 測試用 客製化的 方塊物件 對位置使用
-                                        // let geometry = new THREE.BoxGeometry( 1, 1, 1 ); 
-                                        // let material = new THREE.MeshBasicMaterial( {color: 0xffff00} ); 
-                                        // let tcube = new THREE.Mesh( geometry, material ); 
-                                        // tcube.scale.set( 0.02, 0.02, 0.02 );
-                                        // model.object3D.add( tcube );
+                                        let geometry = new THREE.BoxGeometry( 1, 1, 1 ); 
+                                        let material = new THREE.MeshBasicMaterial( {color: 0x00ff00} ); 
+                                        let tcube = new THREE.Mesh( geometry, material ); 
+                                        tcube.scale.set( 0.02, 0.02, 0.02 );
+
+                                        tcube.position.copy( model.object3D.makarCenter );
+                                        model.object3D.add( tcube );
 
                                     }
                                 });
@@ -405,6 +407,9 @@ import net from './networkAgent.js';
                                 //// 必須要有超過一個【 名稱 】 
                                 //// 拿第一個名稱來做材質的複製
                                 if ( Array.isArray(cm.names) && cm.names.length > 0 ){
+
+                                    // console.log(' +++++ ' , cm.name , cm );
+
                                     let first_material_clone = null;
                                     let first_mesh_name = cm.names[0];
                                     let first_mesh = _model.object3D.getObjectByName( first_mesh_name );

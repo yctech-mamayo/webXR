@@ -21,6 +21,8 @@
 
 	<script type="module">
 		import projData from "../data/p3/p3_a0.js";
+		// import projData from "../data/p3/p3_a0_flyin.js";
+		// import projData from "../data/p3/p3_a0_grow.js";
 		window.custProject = projData;
 		
 	</script>
@@ -305,6 +307,15 @@
 				showVRProjListWithVersionControl()
 
 			}, 50 );
+		}
+		
+		window.addEventListener("resize", checkWindowSize ); 
+		function checkWindowSize(){
+			console.log('_checkWindowSize_: ', window.innerWidth, window.innerHeight );
+			let element_container = document.getElementById('element_container');
+			if ( element_container ){
+				element_container.scrollTo( 0, 0 );
+			}
 		}
 
 		//// 判斷是否看過 【 介紹視窗 】，

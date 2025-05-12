@@ -1,12 +1,13 @@
 <!doctype html>
 <html lang="zh">
 <head>
-	<title>MAKAR webAR submodule</title>
+	<title>媽媽友 磁力片 AR 火車</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=1">
 	<link rel="icon" type="image/png" href="../favicon.jpg" />
 
 	<link href="../styles_AR/style.css" rel="stylesheet" type="text/css">
 	<link href="../styles_AR/dragon.css" rel="stylesheet" type="text/css">
+	<link href="../styles_AR/AR.css" rel="stylesheet" type="text/css">
 
 	<script>
 		
@@ -122,10 +123,24 @@
 
 </script>
 
+<!-- 為了 SEO 跟 正規化網頁的內容，包含 Logo, Header, 等 -->
+<section id = 'main_section'>
+
+	<div id = 'footer_'></div>
+</section>
+
 
 <!-- 起始載入頁面 -->
-<div id = "homePage" style = "display: block;">
-	<div id = 'homeImageContainer'></div>
+<div id = "homePage" style = "display: flex;">
+	<img id = 'loading_img'  src="../images/icon/app素材-09.png" alt="loading">
+
+	<div id = 'loading_text'>手握磁力片，創造大世界！</div>
+
+	<div id="dot_container">
+		<div></div>
+		<div></div>
+		<div></div>
+	</div>
 </div>
 
 
@@ -138,22 +153,6 @@
 	</div>
 </div>
 
-<!-- <canvas id="mycanvas"  style="position:relative; left:0px; top:0px; "></canvas> -->
-<!-- <canvas id="bgcanvas"  style="position:relative; left:0px; top:0px; "></canvas> -->
-
-
-<!-- <div id = "bottomProjs" class="collapsed"  >
-	<h4> 
-		作者專案 &ensp;
-		<i id="bottomArrow" class="collapsed" ></i>
-	</h4>
-</div>
-<div id = "projsInfo" class="collapsed" >
-	<table id = projsTable  >
-		<tr id="proj_snapshot"></tr>
-		<tr id="proj_name"></tr>
-	</table>
-</div> -->
 
 <div id="warnModal" >
 	<div id="warnModalContent"  >
@@ -191,98 +190,6 @@
 	</div>
 </div>
 
-<div id = "startQuiz" style="display: none">
-	<div id="QuizModalContent" >
-		<div id="QuizStartContentDiv">
-			<p id = "QuizStartContent" class="centerText"> 點擊開始問答 </p>
-		</div>
-		<div id = "QuizStartButton">
-			<p id = "QuizstartTitle" class="centerText"> 確認 </p>
-		</div>
-	</div>
-</div>
-
-<div id = 'makarDragonWholeMaskDiv'></div>
-
-<div id = "makarDragon" style="display: none">
-	<img id = "mdTail" src = "https://mifly0makar0assets.s3-ap-northeast-1.amazonaws.com/DefaultResource/2D/MD/tail.png"></img>
-	<img id = "mdBody" src = "https://mifly0makar0assets.s3-ap-northeast-1.amazonaws.com/DefaultResource/2D/MD/body.png"></img>
-	<div id = "leftEye">
-	<img id = "leftCloseEye" src = "https://mifly0makar0assets.s3-ap-northeast-1.amazonaws.com/DefaultResource/2D/MD/close eyes.png"></img>
-	<img id = "leftOpenEye" src = "https://mifly0makar0assets.s3-ap-northeast-1.amazonaws.com/DefaultResource/2D/MD/open eyes.png"></img>
-	</div>
-	<img id = "mdOpenEye2" src = "https://mifly0makar0assets.s3-ap-northeast-1.amazonaws.com/DefaultResource/2D/MD/open eyes.png"></img>
-	<img id = "mdCloseEye" src = "https://mifly0makar0assets.s3-ap-northeast-1.amazonaws.com/DefaultResource/2D/MD/close eyes.png"></img>
-	<img id = "mdSign" src = "https://mifly0makar0assets.s3-ap-northeast-1.amazonaws.com/DefaultResource/2D/MD/sign.png"></img>
-
-	<img id = "imgRight" src = "https://mifly0makar0assets.s3-ap-northeast-1.amazonaws.com/DefaultResource/2D/MD/right.png" style="display: none"></img>
-	<img id = "imgWrong" src = "https://mifly0makar0assets.s3-ap-northeast-1.amazonaws.com/DefaultResource/2D/MD/wrong.png" style="display: none"></img>
-
-	<!-- <span class="circle"></span>
-	<div id = "cross"></div> -->
-	<img id = "mdRightHand" src = "https://mifly0makar0assets.s3-ap-northeast-1.amazonaws.com/DefaultResource/2D/MD/right hand.png"></img>
-	<img id = "mdLeftHand" src = "https://mifly0makar0assets.s3-ap-northeast-1.amazonaws.com/DefaultResource/2D/MD/left hand.png"></img>
-</div>
-
-
-<div id="quizEndDiv" class="blocker" style="display: none">
-	<img id ="quizEndImg" src = "https://mifly0makar0assets.s3-ap-northeast-1.amazonaws.com/DefaultResource/2D/modules/quiz/bg_quiz_zh.png"></img>
-</div>
-
-<div id="scoreDiv" class="blocker" style="display: none">
-	<img id ="scoreImg" src = "https://mifly0makar0assets.s3-ap-northeast-1.amazonaws.com/DefaultResource/2D/modules/quiz/bg_quiz_score.png"></img>
-	<div id = scoreContentDiv>
-		<p id = "scoreContent"> 目前分數 </p>
-	</div>
-	<div id ="scoreNumDiv">
-		<p id = "score"> 0 </p>
-	</div>
-</div>
-
-
-<div id="projectModal" class="modal" >
-	<!-- Modal content -->
-	<div id="projectModalContent" class="modal-content" >
-		<span class="close">&times;</span>
-		
-		<div id = "projectTypeDiv">
-			<img id = projectTypeImg src="https://mifly0makar0assets.s3.ap-northeast-1.amazonaws.com/DefaultResource/2D/icon/ar+target/ar+target.png"></img>
-			<span id="projectTypeInfo">proj_type</span>
-		</div>
-		<div id = "projectNameDiv" >
-			<p id="projectNameInfo">proj_name</p>
-			<img id="projectUserImage" src="https://mifly0makar0assets.s3.ap-northeast-1.amazonaws.com/DefaultResource/2D/icon/me2.png" alt="This will be the user's photo.">
-			<span id="projectUserName">name</span>
-			<span id="projectLastUpdateDate">last_update_date</span>
-		</div>
-		<hr id="projectNameDivEndLine">
-		<div id="scanList">
-			<p id = "scanListTitle">辨識圖</p>
-			<div id="projectPicture"></div>
-		</div>
-		<hr id="scanListEndLine">
-		<div id="projectGPSDiv">
-		  <p id="projectGPStitle">GPS地點</p>
-		  <div id="projectGPSInfo"> 123, 456</div>
-		</div>
-		<hr id="projectGPSDivEndLine">
-
-		<div id = "projectUsageDiv" >
-			<p id = "projectUsageTitle">專案玩法</p>
-			<p id="projectUsageInfo"></p>
-		</div>
-		<hr>
-		<div id = "projectDescriptionDiv">
-			<p id = "projectDescriptionTitle">專案介紹</p>
-			<p id="projectDescription">proj_descr</p>
-		</div>
-		<div id = "projectStartButton">
-			<img id = "startBGImage" src="https://mifly0makar0assets.s3.ap-northeast-1.amazonaws.com/DefaultResource/2D/icon/start/start.png" alt="Background image" >
-			<p id = "startTitle"> 開始體驗 </p>
-		</div>
-		
-	</div>
-</div>
 
 
 <script>
@@ -416,7 +323,7 @@
 				// startARProcess();
 				startARWithVersionControl();
 
-				startLoaingPage();
+				// startLoaingPage();
 
 			}else{
 				
@@ -429,81 +336,10 @@
 						// startARProcess();
 						startARWithVersionControl();
 
-						startLoaingPage();
+						// startLoaingPage();
 					} );
 
 				});
-			}
-
-			function startLoaingPage (){
-				//// 建制「起始載入動畫」
-				// let imageBase = 'https://mifly0makar0assets.s3.ap-northeast-1.amazonaws.com/DefaultResource/2D/Loading_20220630/Loading_An000';
-				let homeImageContainer = document.getElementById('homeImageContainer');
-				let hicw = homeImageContainer.clientWidth;
-				let hich = homeImageContainer.clientHeight;
-				let imgW = ( hicw > 210 ) ?  210 : hicw;
-				let imgH = ( hich > 240 ) ?  240 : hich;
-				
-				console.log('_makarVR.html: hicw h = ', hicw , hich );
-
-				for( let i = 0; i < 30; i++ ){
-					let strIndex = '';
-					if (i < 10){
-						strIndex = String( '0'+ i ) ;
-					}else{
-						strIndex = String( i );
-					}
-					let imgElement = document.createElement('img');
-					//// 調整位置大小
-					imgElement.style.top = (hich - imgH)/2 + 'px' ; 
-					imgElement.style.left = (hicw - imgW)/2 + 'px' ; 
-					imgElement.style.width = imgW + 'px' ;
-					imgElement.style.height = imgH + 'px' ;
-					
-					imgElement.setAttribute('src', imageBase + strIndex + '.png' );
-					imgElement.classList.add('homePlayImage');
-					homeImageContainer.appendChild( imgElement );
-
-				}
-				let homePlayImages = document.getElementsByClassName('homePlayImage');
-				// console.log(' homePlayImages length ' , homePlayImages.length  );
-
-				homeTickOn = true;
-				let homeImageCount = 0;
-				let playHomeImageTick = function(){
-
-					//// 假如累積播放到最後一張，則記數歸零
-					if ( homeImageCount > homePlayImages.length - 1 ){
-						homeImageCount = 0;
-					}
-
-					if ( homePlayImages[ homeImageCount ] ){
-
-						homePlayImages[ homeImageCount ].classList.add('show');
-
-						if ( homeImageCount > 0 ){
-							homePlayImages[ homeImageCount - 1 ].classList.remove('show');
-						}else{
-							homePlayImages[ homePlayImages.length - 1 ].classList.remove('show');
-						}
-
-						if ( homeImageCount < homePlayImages.length - 1 ){
-							homePlayImages[ homeImageCount + 1 ].classList.remove('show');
-						}else{
-							homePlayImages[ 0 ].classList.remove('show');
-						}
-					}
-
-					homeImageCount++;
-
-					//// 起始畫面，只要載入完成，就不會再使用了
-					if ( homeTickOn == true ){
-						setTimeout( playHomeImageTick , 50 );
-					}
-					
-					// requestAnimationFrame(playHomeImageTick); 
-				}
-				playHomeImageTick(); //// 執行
 			}
 
 
@@ -511,6 +347,12 @@
 
 		}
 
+
+		window.addEventListener("resize", checkWindowSize ); 
+		function checkWindowSize(){
+			console.log('_checkWindowSize_: ', window.innerWidth, window.innerHeight );
+
+		}
 
 		if ( window.top != window.self  ){ //// check if in iframe
 			window.makarID = parent.selectedProject.user_id; //// must be the only one place to set window.makarID, if remove it, the process will not work.

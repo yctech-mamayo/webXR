@@ -199,6 +199,16 @@ let projData = {
                                 ],
                                 "simulated_rotation": "0,0,0"
                             },
+                            cust_transform_attr:{
+                                start:{
+                                    type: 'rotate',
+                                    duration: 6,
+                                    delay: 0.5,
+                                    repeat: 0,
+                                    axis:[ 0.15 , 1 , 0],
+                                    angle: 6.2831,
+                                }
+                            },
                             cust_materials:[
                                 //// 要隱藏的物件
                                 {

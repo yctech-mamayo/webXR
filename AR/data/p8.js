@@ -210,8 +210,19 @@ let projData = {
                                 ],
                                 "simulated_rotation": "0,0,0"
                             },
+                            cust_transform_attr:{
+                                start:{
+                                    type: 'rotate',
+                                    duration: 6,
+                                    delay: 0.5,
+                                    repeat: 0,
+                                    axis:[ 0.15 , 1 , 0],
+                                    angle: 6.2831,
+                                }
+                            },
                             cust_materials:[
                                 
+                                //// 磁力片 磁鐵 金屬 棒
                                 { 
                                     id:'mag_stick', 
                                     trans: false, 
@@ -369,7 +380,7 @@ let projData = {
                                 { 
                                     id:'white_circle', 
                                     trans: false, 
-                                    opacity: 0.5, 
+                                    opacity: 1, 
                                     color: [ 250, 250, 250 ], 
                                     roughness: 0.5, 
                                     metalness: 0.5,
@@ -381,7 +392,7 @@ let projData = {
                                 { 
                                     id:'black_circle', 
                                     trans: false, 
-                                    opacity: 0.5, 
+                                    opacity: 1, 
                                     color: [ 20, 20, 20 ], 
                                     roughness: 0.5, 
                                     metalness: 0.5,

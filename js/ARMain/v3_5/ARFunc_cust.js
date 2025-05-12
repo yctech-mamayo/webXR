@@ -321,13 +321,19 @@ import ARWrapper from './ARWrapper.js'
 
 						});
 
-					}
-					
-					//// 執行 客製化 平移模型物件
-					setObjectOffset( custProject.makarUserData );
+						
+						//// 執行 客製化 平移模型物件
+						setObjectOffset( custProject.makarUserData );
 
-					// 執行 客製化 模型材質 調整
-					setModelMaterial( custProject.makarUserData );
+						// 執行 客製化 模型材質 調整
+						setModelMaterial( custProject.makarUserData );
+
+						//// 執行「 旋轉物體 兩圈 」
+						autoRotateSceneObj( custProject.makarUserData );
+
+						arController.autoRotateSceneObj = autoRotateSceneObj;
+
+					}
 
 
 				}
@@ -338,6 +344,102 @@ import ARWrapper from './ARWrapper.js'
 
     };
 	
+	function autoRotateSceneObj(  ){
+
+		let projData = custProject.makarUserData;
+		if ( projData && projData.scenesData && projData.scenesData.scenes && projData.scenesData.scenes[0] && 
+			Array.isArray( projData.scenesData.scenes[0].objs)
+		){
+			let scene_objs = projData.scenesData.scenes[0].objs;
+			scene_objs.forEach( ( s_obj, i) => {
+				if ( s_obj.generalAttr && s_obj.generalAttr.obj_id &&
+					s_obj.cust_transform_attr && s_obj.cust_transform_attr.start
+				){
+					//// 由於目前 結構不好搞，只旋轉特定物件。
+					let obj = document.getElementById( s_obj.generalAttr.obj_id );
+
+					let _root = obj.getObject3D( 'mesh' );
+					
+
+					if ( _root && _root.position && _root.ModelJson &&
+						window.arController && window.arController.objectControls
+					){
+						if (s_obj.cust_transform_attr.start.type == 'rotate' &&
+							s_obj.cust_transform_attr.start.duration
+						){
+
+							//// 關閉手指操控
+							window.arController.objectControls.enable = false;
+
+							//// 調整物件設定
+							
+							//// 旋轉角度
+							let r_angle = s_obj.cust_transform_attr.start.angle ? s_obj.cust_transform_attr.start.angle : Math.PI * 2;
+							//// 旋轉軸向
+							let r_axis = s_obj.cust_transform_attr.start.axis ? 
+								new THREE.Vector3().fromArray(s_obj.cust_transform_attr.start.axis).normalize() :
+								new THREE.Vector3( 0.1 , 1 , 0 ).normalize() ;
+							let _dt = s_obj.cust_transform_attr.start.duration ? s_obj.cust_transform_attr.start.duration: 3;
+							let _delay = s_obj.cust_transform_attr.start.delay ? s_obj.cust_transform_attr.start.delay: 0.5 ;
+							let _repeat = s_obj.cust_transform_attr.start.repeat ? s_obj.cust_transform_attr.start.repeat: 0 ;
+
+							let t_now = _delay;
+							let t_diff = 0;
+							let _r_angle_now = 0;
+
+							let tl = gsap.timeline();
+							tl.to( obj.object3D.rotation , {
+								duration: _dt,
+								delay: _delay,
+								repeat: _repeat , 
+								onUpdate: function(){
+
+									//// 與上一次所差距的時間
+									t_diff = tl._time - t_now;
+									//// 當前時間
+									t_now = tl._time;
+
+									//// 預估還有的步數: 剩餘時間 除以 時間差距
+									let Remaining_step = ( _dt - (tl._time - _delay )  ) / t_diff   ;
+									//// 當前的時間比例
+									// let t_ratio = ( tl._time - _delay ) / _dt;
+
+									if ( (r_angle - _r_angle_now)/r_angle < 0.02 ){
+										
+										//// 要旋轉的角度:  剩下要轉的角度 除以 預估還有的步數
+										let rot_angle = ( r_angle - _r_angle_now ) ;
+										//// 紀錄 當前旋轉角度
+										_r_angle_now += rot_angle;
+										_root.rotateOnAxis( r_axis , rot_angle );
+										console.log( '1: ', tl._time , _r_angle_now );
+
+									}else{
+											
+										//// 要旋轉的角度:  剩下要轉的角度 除以 預估還有的步數
+										let rot_angle = ( r_angle - _r_angle_now ) / Remaining_step ;
+
+										//// 紀錄 當前旋轉角度
+										_r_angle_now += rot_angle;
+										_root.rotateOnAxis( r_axis , rot_angle );
+										console.log( '2: ', Remaining_step , _r_angle_now );
+									}
+
+								},
+								onComplete: function(){
+									window.arController.objectControls.enable = true;
+								}
+							})
+						}
+					}
+				}
+			})
+		}
+
+		
+
+
+
+	}
 
 	function setObjectOffset( projData ){
 		if ( projData && projData.scenesData && projData.scenesData.scenes && projData.scenesData.scenes[0] && 
@@ -348,7 +450,8 @@ import ARWrapper from './ARWrapper.js'
 				if ( obj.generalAttr && obj.generalAttr.obj_id &&
 					obj.transformAttr && obj.transformAttr.offsetPosition
 				){
-					let _op = obj.transformAttr.offsetPosition;
+					let _op = obj.transformAttr.offsetPosition.p;
+					let obj_name = obj.transformAttr.offsetPosition.obj_name ;
 
 					let op = _op.split(',');
 					if ( op.length == 3 && 
@@ -358,8 +461,11 @@ import ARWrapper from './ARWrapper.js'
 					){
 						let _model = document.getElementById(  obj.generalAttr.obj_id );
 						if ( _model && _model.object3D){
-							let _root = _model.getObject3D( 'mesh' );
-							if ( _root && _root.position && _root.ModelJson ){
+							// let _root = _model.getObject3D( 'mesh' );
+
+							let _root = _model.object3D.getObjectByName( obj_name );
+							
+							if ( _root && _root.position  ){
 								_root.position.add( new THREE.Vector3( Number(op[0]) , Number(op[1]) , Number(op[2]) ) );
 							}
 						}

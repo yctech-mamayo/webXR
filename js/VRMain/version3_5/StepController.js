@@ -76,14 +76,14 @@ class StepController {
             opacity: 0 ,
             visibility: 'visible',
             onComplete: () => {
-                console.log('stepTextGsap: 1' );
+                // console.log('stepTextGsap: 1' );
             },
         })
         this.stepTextGsap.to(stepTextContainer, {
             duration: 0.5,
             opacity: 1 ,
             onComplete: () => {
-                console.log('stepTextGsap: 2' );
+                // console.log('stepTextGsap: 2' );
             },
         });
         this.stepTextGsap.to(stepTextContainer, {
@@ -91,7 +91,7 @@ class StepController {
             opacity: 1 ,
             visibility: 'visible',
             onComplete: () => {
-                console.log('stepTextGsap: 3' );
+                // console.log('stepTextGsap: 3' );
             },
         });
         // this.stepTextGsap.to(stepTextContainer, {
@@ -134,7 +134,7 @@ class StepController {
         
         let self = this;
 
-        if ( self.steps && self.step_length > 0 && self.step_length < 10 ){
+        if ( self.steps && self.step_length > 0 && self.step_length < 20 ){
 
             //// 正式版本:
             //// 「重頭開始」、「上一步」、「下一步」、「完整作品」
@@ -245,6 +245,9 @@ class StepController {
 
         let self = this;
 
+        let isCameraDone = false;
+        let isStepModelDone = false;
+
         //// 新步驟資料
         let new_step = this.steps[ step_idx ];
         if ( new_step.cameraAttr && new_step.cameraAttr.p && new_step.cameraAttr.target ){
@@ -260,22 +263,56 @@ class StepController {
 
             this.GsapZoomInOutCamera(new THREE.Vector3( p[0], p[1], p[2] ) , t ).then(() => { 
 
-                self.stepStatus = 0;
+                // console.log(' has stepCamra done ,  ' , isStepModelDone );
+                //// 相機 設定 動畫 完成
+                isCameraDone = true;
+                if ( isStepModelDone == true ){
+                    self.stepStatus = 0;
+                    console.log(' has stepCamra done , get Model done, set status 0  ' );
+                }
 
             });
         }else{
-            self.stepStatus = 0;
+            
+            // console.log(' no stepCamra done ,  ' , isStepModelDone );
+            isCameraDone = true;
+            if ( isStepModelDone == true ){
+                self.stepStatus = 0;
+                console.log(' no stepCamra done , get Model done, set status 0  ' );
+            }
+
         }
         // 
 
+        let pStepModel;
         if( this.step_type == 'model' ){
             this.ToStep_model( step_idx );
         } else if ( this.step_type == 'mesh' ){
             // this.ToStep_model_child( step_idx );
 
             //// 新方式，多判斷 【 mesh 狀態 】再進行顯示或隱藏
-            this.ToStep_model_child_check( step_idx );
+            pStepModel = this.ToStep_model_child_check( step_idx );
 
+        }
+
+        if ( pStepModel ){
+            pStepModel.then( ()=>{
+
+                console.log(' has stepModel done ,  ' , isCameraDone );
+                isStepModelDone = true;
+                if ( isCameraDone == true ){
+                    self.stepStatus = 0;
+
+                    console.log(' has stepModel done , get camera done, set status 0  ' );
+                }
+            });
+        }else{
+
+            // console.log(' no stepModel done, ' , isCameraDone );
+            if ( isCameraDone == true ){
+                self.stepStatus = 0;
+                console.log(' no stepModel done , get camera done, set status 0  ' );
+            }
         }
 
         //// 紀錄當前步驟資料
@@ -434,166 +471,230 @@ class StepController {
     ToStep_model_child_check( step_idx ){
         let self = this;
 
-        //// 原本步驟資料
-        let old_step = self.steps[ self.current_step_idx ];
-        let old_step_children = self.stepCombineChildrenData[ self.current_step_idx ] || [];
-
-        //// 新步驟資料
-        let new_step = self.steps[ step_idx ];
-
-        let new_step_children = self.stepCombineChildrenData[ step_idx ] || [];
-
-        let checkStatus = true;
-        if ( new_step && new_step.obj_id && new_step.show_objs && new_step.show_objs.length > 0 && 
-            new_step_children && new_step_children.length > 0 &&
-            window.vrController && vrController.makarObjects
-        ){
-
-            //// 紀錄【 需要飛入的物件 】
-            let show_flyin_objs = [];
+        
+        let pStepMesh = new Promise( ( pStepMesh_resolve , reject) => {
 
 
-            //// 找出【 所有控制的名稱 】內 排除掉不需要的物件名稱
-            self.controlChildrenNames.forEach( e => {
-                //// 先找到 新步驟資料內的物件
-                let findC = new_step_children.find( e2 => e2.obj_id == e.o && e2.name == e.n ); 
+            //// 原本步驟資料
+            let old_step = self.steps[ self.current_step_idx ];
+            let old_step_children = self.stepCombineChildrenData[ self.current_step_idx ] || [];
 
-                //// 判斷是否是 當前 步驟下已經為【 顯示狀態 】的物件
-                // let findO = old_step_children.find( e2 => e2.obj_id == e.o && e2.name == e.n );
-                
-                // console.log( 'findC: ', findC );
-                //// 包含在步驟內的 物件 執行顯示
-                //// 不包含在步驟內的 物件 執行隱藏
-                if ( findC ){
+            //// 新步驟資料
+            let new_step = self.steps[ step_idx ];
 
-                    let obj = document.getElementById( findC.obj_id );
-                    //// 資料中的 模型中心 取得世界座標
-                    let model_w_c_p = obj.object3D.localToWorld( obj.object3D.makarCenter );
-                    //// 資料中的 模型半徑 取得世界座標
-                    let model_w_r = obj.object3D.localToWorld( new THREE.Vector3(obj.object3D.makarXYRaduis,0,0) ).x ;
+            let new_step_children = self.stepCombineChildrenData[ step_idx ] || [];
 
-                    //// 假如原本就已經是顯示狀態，則不需要進行顯示
-                    //// 假如原本是【 未啟動狀態 】，則進行顯示(依照顯示方式)
-                    if ( e.active == true  ){
-                        
-                    }else{
-                        
-                        if ( obj && obj.object3D ){
-                            let c = obj.object3D.getObjectByName( findC.name );
-                            if ( c ){
+            let checkStatus = true;
+            if ( new_step && new_step.obj_id && new_step.show_objs && new_step.show_objs.length > 0 && 
+                new_step_children && new_step_children.length > 0 &&
+                window.vrController && vrController.makarObjects
+            ){
 
-                                //// 顯示的處理方式 目前區分為 【 直接 】【 飛入 】
-                                if ( findC.type == 'direct' ){
-                                    c.visible = true;
-                                }else if ( findC.type == 'flyin' ){
+                //// 紀錄【 需要飛入的物件 】
+                let show_flyin_objs = [];
 
-                                    
-                                    //// 部件 的世界座標
-                                    let mesh_w_p = c.getWorldPosition( new THREE.Vector3() );
-                                    //// 模型中心 到 部件 的向量
+                //// 紀錄【 需要放大出現的物件 】
+                let show_growupin_objs = [];
 
-                                    let v_om = new THREE.Vector3( 
-                                        mesh_w_p.x - model_w_c_p.x , 
-                                        0, 
-                                        mesh_w_p.z - model_w_c_p.z
-                                    );
-                                                                        
-                                    //// 模型放在 環圈上面的 世界座標位置
-                                    let p_w_r = model_w_c_p.clone().add(  v_om.clone().normalize().multiplyScalar( model_w_r ) );
-                                    //// 模型放在 環圈上面的 本地座標位置
-                                    let m_p_local = c.parent.worldToLocal( p_w_r.clone() ); 
+                //// 找出【 所有控制的名稱 】內 排除掉不需要的物件名稱
+                self.controlChildrenNames.forEach( e => {
+                    //// 先找到 新步驟資料內的物件
+                    let findC = new_step_children.find( e2 => e2.obj_id == e.o && e2.name == e.n ); 
 
-                                    //// 資料: 物件、原始位置、大小
-                                    let data = {
-                                        // o_scale: c.scale.clone(),
-                                        o_pos: c.position.clone(),                                        
-                                        obj: c,
-                                    }
-                                    show_flyin_objs.push( data );
-
-
-                                    c.position.copy( m_p_local );
-
-                                    // show_flyin_objs.push( c );
-                                    // let e_os = c.scale;
-                                    // c.scale.copy( e_os.multiplyScalar(0.001) );
-                                    c.visible = true;
-
-                                }else{
-                                    c.visible = true;
-                                }
-
-                            }
-                        }
-                        //// 將狀態改為【 啟動 】
-                        e.active = true;
-
-                    }
-
-                }else{
-                    //// 不包含在步驟內的 物件 執行隱藏
-
-                    //// 假如原本是顯示狀態，則需要進行隱藏
-                    //// 假如原本已經是【 未啟動狀態 】，則不用動作
-                    if ( e.active == true  ){
-                        let obj = document.getElementById( e.o );
-                        if ( obj && obj.object3D ){
-                            let c = obj.object3D.getObjectByName( e.n );
-                            if ( c ){
-                                c.visible = false;
-                            }
-                        }
-                        e.active = false;
-                    }else{
-
-                    }
-
+                    //// 判斷是否是 當前 步驟下已經為【 顯示狀態 】的物件
+                    // let findO = old_step_children.find( e2 => e2.obj_id == e.o && e2.name == e.n );
                     
-                }
-            })
+                    // console.log( 'findC: ', findC );
+                    //// 包含在步驟內的 物件 執行顯示
+                    //// 不包含在步驟內的 物件 執行隱藏
+                    if ( findC ){
+
+                        let obj = document.getElementById( findC.obj_id );
+                        //// 資料中的 模型中心 取得世界座標
+                        let model_w_c_p = obj.object3D.localToWorld( obj.object3D.makarCenter.clone() );
+                        //// 資料中的 模型半徑 取得世界座標
+                        let model_w_r = obj.object3D.localToWorld( new THREE.Vector3(obj.object3D.makarXYRaduis,0,0) ).x ;
+
+                        //// 假如原本就已經是顯示狀態，則不需要進行顯示
+                        //// 假如原本是【 未啟動狀態 】，則進行顯示(依照顯示方式)
+                        if ( e.active == true  ){
+                            
+                        }else{
+                            
+                            if ( obj && obj.object3D ){
+                                let c = obj.object3D.getObjectByName( findC.name );
+                                if ( c ){
+
+                                    //// 顯示的處理方式 目前區分為 【 直接 】【 飛入 】
+                                    if ( findC.type == 'direct' ){
+                                        c.visible = true;
+                                    }else if ( findC.type == 'flyin' ){
+
+                                        //// 假如有加上 【 起始相對座標 】就直接使用，否則用計算的
+                                        let m_p_local;
+                                        if ( Array.isArray(findC.lp) && findC.lp.length == 3 ){
+                                            m_p_local = new THREE.Vector3().fromArray( findC.lp );
+                                        }else{
+                                            //// 部件 的世界座標
+                                            let mesh_w_p = c.getWorldPosition( new THREE.Vector3() );
+                                            //// 模型中心 到 部件 的向量
+
+                                            //// 基本貼地，由於各 mesh 會因為模型中心 不在 y=0 範圍。而太下方。
+                                            //// 固計算完座標後，無條件 加上 部件的世界座標的 y
+                                            let v_om = new THREE.Vector3( 
+                                                mesh_w_p.x - model_w_c_p.x , 
+                                                0, 
+                                                mesh_w_p.z - model_w_c_p.z
+                                            );
+                    
+                                            //// 模型放在 環圈上面的 世界座標位置 : 模型中心 位置 加上 兩點向量的單位向量乘與圓環倍數
+                                            let p_w_r = model_w_c_p.clone().add(  
+                                                v_om.clone().normalize().multiplyScalar( model_w_r )
+                                                .add( new THREE.Vector3( 0, mesh_w_p.y, 0 ) )
+                                            );
+                                            //// 模型放在 環圈上面的 本地座標位置
+                                            m_p_local = c.parent.worldToLocal( p_w_r.clone() ); 
+
+                                            console.log(' _fliyin:  ', c.name  , m_p_local , p_w_r );
+
+                                        }
+                                        
+                                        //// 資料: 物件、原始位置、大小
+                                        let data = {
+                                            // o_scale: c.scale.clone(),
+                                            o_pos: c.position.clone(),
+                                            obj: c,
+                                        }
+                                        show_flyin_objs.push( data );
+
+                                        c.position.copy( m_p_local );
 
 
-            if ( show_flyin_objs.length > 0 ){
+                                        
+                                        c.visible = true;
 
-                show_flyin_objs.forEach( e => {
-                    console.log( '2 _show_flyin_objs: ' , e );
-                    if ( e.o_pos && e.obj  ){
-                        let o_pos = e.o_pos;
-                        gsap.to( e.obj.position, {
-                            duration: 1,
-                            delay: 2,
-                            x: o_pos.x,
-                            y: o_pos.y,
-                            z: o_pos.z,
-                            onUpdate: () => {
-                                // console.log('_G_: ', camera.position.x, camera.position.y, camera.position.z );
-                            },
-                            onComplete: () => {
-                                // resolve();
+                                    }
+                                    else if ( findC.type == 'growupin' ){
+                                        //// 放大出現
+                                        let sn = 1000 ;
+                                        let data = {
+                                            sn: sn,
+                                            obj: c,
+                                        }
+                                        show_growupin_objs.push( data );
+                                        let e_os = c.scale;
+                                        c.scale.copy( e_os.multiplyScalar( 1/sn ) );
+                                        c.visible = true;
+                                    }
+                                    else{
+                                        c.visible = true;
+                                    }
+
+                                }
                             }
-                        })
+                            //// 將狀態改為【 啟動 】
+                            e.active = true;
+
+                        }
+
+                    }else{
+                        //// 不包含在步驟內的 物件 執行隱藏
+
+                        //// 假如原本是顯示狀態，則需要進行隱藏
+                        //// 假如原本已經是【 未啟動狀態 】，則不用動作
+                        if ( e.active == true  ){
+                            let obj = document.getElementById( e.o );
+                            if ( obj && obj.object3D ){
+                                let c = obj.object3D.getObjectByName( e.n );
+                                if ( c ){
+                                    c.visible = false;
+                                }
+                            }
+                            e.active = false;
+                        }else{
+
+                        }
+
+                        
                     }
                 })
 
-                // show_flyin_objs.forEach( e => {
-                //     let e_os = e.scale;
-                //     gsap.to( e.scale, {
-                //         duration: 1,
-                //         x: e_os.x * 1000 ,
-                //         y: e_os.y * 1000,
-                //         z: e_os.z * 1000,
-                //         onUpdate: () => {
-                //             // console.log('_G_: ', camera.position.x, camera.position.y, camera.position.z );
-                //         },
-                //         onComplete: () => {
-                //             // resolve();
-                //         }
-                //     });
-                // })
 
+                let pActiveAll = [];
+                if ( show_flyin_objs.length > 0 ){
+
+                    show_flyin_objs.forEach( e => {
+                        // console.log( '2 _show_flyin_objs: ' , e );
+                        if ( e.o_pos && e.obj  ){
+                            let o_pos = e.o_pos;
+                            let pg = gsap.to( e.obj.position, {
+                                duration: 1,
+                                delay: 1,
+                                x: o_pos.x,
+                                y: o_pos.y,
+                                z: o_pos.z,
+                                onUpdate: () => {
+                                    // console.log('_G_: ', camera.position.x, camera.position.y, camera.position.z );
+                                },
+                                onComplete: () => {
+                                    
+                                }
+                            })
+
+                            pActiveAll.push( pg );
+                            
+                            // pg.then( function( e ){
+                            //     console.log( '2 _show_flyin_objs: pg then ' , e );
+                            // });
+
+                            
+                        }
+                    })
+
+
+                }
+
+                if (show_growupin_objs.length > 0 ){
+                    show_growupin_objs.forEach( e => {
+                        if ( e.sn && e.obj  ){
+
+                            let e_os = e.obj.scale;
+                            let pg = gsap.to( e.obj.scale, {
+                                duration: 1,
+                                x: e_os.x * e.sn ,
+                                y: e_os.y * e.sn,
+                                z: e_os.z * e.sn,
+                                onUpdate: () => {
+                                    // console.log('_G_: ', camera.position.x, camera.position.y, camera.position.z );
+                                },
+                                onComplete: () => {
+                                    
+                                }
+                            });
+                            pActiveAll.push( pg );
+
+                        }
+                    })
+                        
+                }
+
+                
+                Promise.all( pActiveAll ).then( e =>{
+                    console.log( '3 _pActiveAll : pg all then ' , e );
+                    pStepMesh_resolve();
+
+                });
+
+
+            }else{
+
+                console.log(' _ToStep_model_child_check_: step data error ' , new_step );
+                pStepMesh_resolve();
             }
 
-        }
+        });
+
+        return pStepMesh;
 
     }
 

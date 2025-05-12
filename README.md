@@ -1,4 +1,30 @@
 
+
+#### 2025 05 08
+
+* 對方提出以下細節微調:
+    1. component padding
+    2. loading white
+    3. logo vertical
+    4. picsize same
+    5. copyright 2025 sticky
+    6. step text
+
+* 紀錄: 
+    1. VR: body 底色設定為 白色。不要跟 loading 有區隔 done
+    2. 直版 標題:  切齊【 使用片數 】 done
+    3. 步驟說明: 文字加上 讓 甲方 測試。 done
+    4. 手機 直版: 重頭開始 完整作品 貼邊一點 done
+    5. 平板 直版: 步驟說明文字 位置錯誤 done
+    6. 使用片數 的 scroll bar onload時候 回到 靠前 靠右 done
+    7. 平板 直版: 步驟說明文字 調大 Logo 調大 done
+    8. 平板 直版: Logo 調大 done
+    9. AR 手指操控 敏感度下調 done
+    10. AR 起始載入: 固定旋轉 2 圈  done
+    11. VR 體驗上 天鵝: 長大 大象: 飛入  done
+
+
+
 #### 2025 05 07
 
 * 在對照 使用片數 的時候。
