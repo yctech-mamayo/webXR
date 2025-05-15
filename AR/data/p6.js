@@ -114,8 +114,8 @@ let projData = {
             scenes: [
                 {
                     info: {
-                        id: "d7abbd10-5796-4c70-8054-e83cbbebf567",
-                        name: "Untitled 1",
+                        id: "00000006-5796-4c70-8054-e83cbbebf567",
+                        name: "p6",
                         size: 395345,
                         type: "ar"
                     },
@@ -186,7 +186,7 @@ let projData = {
                                 "transform": [
                                     "0,0,0",
                                     "0,0,0,1",
-                                    "6,6,6"
+                                    "4,4,4"
                                 ],
                                 "rect_transform": [
                                     {
@@ -372,8 +372,8 @@ let projData = {
                                     trans: true, 
                                     color: [ 204, 204, 204 ], 
                                     opacity: 0.5, 
-                                    roughness: 0.6, 
-                                    metalness: 0.3,
+                                    roughness: 0.5, 
+                                    metalness: 0.15,
                                     depthWrite: false,
                                     names:[
                                         '40-1','42-1','28-1','44-1',
@@ -453,6 +453,6 @@ let projData = {
 
 }
 
-console.log('p1.js: _projData', projData);
+console.log('p6.js: _projData', projData);
 
 export default projData;

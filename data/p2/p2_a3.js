@@ -296,8 +296,8 @@ let projData = {
                                 trans: true, 
                                 color: [ 204, 204, 204 ], 
                                 opacity: 0.5, 
-                                roughness: 0.6, 
-                                metalness: 0.3,
+                                roughness: 0.5, 
+                                metalness: 0.15,
                                 depthWrite: false,
                                 names:[
                                     '12_1','58_1','06_1','09_1','07_1',

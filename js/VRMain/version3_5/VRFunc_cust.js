@@ -330,13 +330,13 @@ import net from './networkAgent.js';
                                         }
 
                                         //// 測試用 客製化的 方塊物件 對位置使用
-                                        let geometry = new THREE.BoxGeometry( 1, 1, 1 ); 
-                                        let material = new THREE.MeshBasicMaterial( {color: 0x00ff00} ); 
-                                        let tcube = new THREE.Mesh( geometry, material ); 
-                                        tcube.scale.set( 0.02, 0.02, 0.02 );
+                                        // let geometry = new THREE.BoxGeometry( 1, 1, 1 ); 
+                                        // let material = new THREE.MeshBasicMaterial( {color: 0x00ff00} ); 
+                                        // let tcube = new THREE.Mesh( geometry, material ); 
+                                        // tcube.scale.set( 0.02, 0.02, 0.02 );
 
-                                        tcube.position.copy( model.object3D.makarCenter );
-                                        model.object3D.add( tcube );
+                                        // tcube.position.copy( model.object3D.makarCenter );
+                                        // model.object3D.add( tcube );
 
                                     }
                                 });

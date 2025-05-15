@@ -101,8 +101,8 @@ let projData = {
                 has_anim: false
             },
             //// 客製化 直接指定類型 位址 
-            "9bd689f7-2fe3-4a05-b7ba-5dade414cadc":{
-                res_id: "9bd689f7-2fe3-4a05-b7ba-5dade414cadc",
+            "00000003-2fe3-4a05-b7ba-5dade414cadc":{
+                res_id: "00000003-2fe3-4a05-b7ba-5dade414cadc",
                 res_name: "dinosaur",
                 res_url: "../resource/model/dinosaur/恐龍(a1).glb",
                 main_type: "model",
@@ -124,8 +124,8 @@ let projData = {
             scenes: [
                 {
                     info: {
-                        id: "d7abbd10-5796-4c70-8054-e83cbbebf567",
-                        name: "Untitled 1",
+                        id: "00000003-5796-4c70-8054-e83cbbebf567",
+                        name: "p3",
                         size: 395345,
                         type: "ar"
                     },
@@ -170,7 +170,7 @@ let projData = {
                             //// 客製化 直接指定類型 位址 
                             behav:[{type:'showData'}],
                             //// 素材 id 要回歸 素材字典 尋找
-                            res_id: "9bd689f7-2fe3-4a05-b7ba-5dade414cadc", 
+                            res_id: "00000003-2fe3-4a05-b7ba-5dade414cadc", 
                             typeAttr: {
                                 render_queue: 3000
                             },
@@ -196,7 +196,7 @@ let projData = {
                                 "transform": [
                                     "0 , 0 , 0",
                                     "0, -0.7071 , 0 , 0.7071 ",
-                                    "6,6,6"
+                                    "4.5,4.5,4.5"
                                 ],
                                 "rect_transform": [
                                     {
@@ -367,8 +367,8 @@ let projData = {
                                     trans: true, 
                                     color: [ 204, 204, 204 ], 
                                     opacity: 0.5, 
-                                    roughness: 0.6, 
-                                    metalness: 0.3,
+                                    roughness: 0.5, 
+                                    metalness: 0.15,
                                     depthWrite: false,
                                     names:[
                                         '01-1','04-1','06-1','07-1',
@@ -446,6 +446,6 @@ let projData = {
 
 }
 
-console.log('p1.js: _projData', projData);
+console.log('p3.js: _projData', projData);
 
 export default projData;

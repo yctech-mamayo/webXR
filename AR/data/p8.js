@@ -102,8 +102,8 @@ let projData = {
                 has_anim: false
             },
             //// 客製化 直接指定類型 位址 
-            "9bd689f7-2fe3-4a05-b7ba-5dade414cadc":{
-                res_id: "9bd689f7-2fe3-4a05-b7ba-5dade414cadc",
+            "00000008-2fe3-4a05-b7ba-5dade414cadc":{
+                res_id: "00000008-2fe3-4a05-b7ba-5dade414cadc",
                 res_name: "forest",
                 res_url: "../resource/model/forest/樹樂園(a2).glb",
                 main_type: "model",
@@ -125,8 +125,8 @@ let projData = {
             scenes: [
                 {
                     info: {
-                        id: "d7abbd10-5796-4c70-8054-e83cbbebf567",
-                        name: "Untitled 1",
+                        id: "00000008-5796-4c70-8054-e83cbbebf567",
+                        name: "p8",
                         size: 395345,
                         type: "ar"
                     },
@@ -171,7 +171,7 @@ let projData = {
                             //// 客製化 直接指定類型 位址 
                             behav:[{type:'showData'}],
                             //// 素材 id 要回歸 素材字典 尋找
-                            res_id: "9bd689f7-2fe3-4a05-b7ba-5dade414cadc", 
+                            res_id: "00000008-2fe3-4a05-b7ba-5dade414cadc", 
                             typeAttr: {
                                 render_queue: 3000
                             },
@@ -195,9 +195,9 @@ let projData = {
                             animationAttr: [],
                             transformAttr: {
                                 "transform": [
-                                    "0,0,0",
+                                    "-0.15,0,0",
                                     "0, 0.7071 , 0 , 0.7071 ",
-                                    "6,6,6"
+                                    "5,5,5"
                                 ],
                                 "rect_transform": [
                                     {
@@ -443,6 +443,6 @@ let projData = {
 
 }
 
-console.log('p1.js: _projData', projData);
+console.log('p8.js: _projData', projData);
 
 export default projData;

@@ -91,19 +91,19 @@ let projData = {
             }
         ],
         userOnlineResDict: {
-            "672bb9116b0b1bc81266da0fba3990e5": {
-                res_id: "672bb9116b0b1bc81266da0fba3990e5",
-                res_name: "Button_Caveat",
-                res_url: "https://s3-ap-northeast-1.amazonaws.com/mifly0makar0assets/OnlineResource/Models/223ddb6994f440378f35b1350c51922bf43171c2430346beb94f03cd6853e91b.glb",
-                main_type: "model",
-                sub_type: "glb",
-                size: "48704 bytes",
-                default_shader_name: "Unlit/Color",
-                has_anim: false
-            },
+            // "672bb9116b0b1bc81266da0fba3990e5": {
+            //     res_id: "672bb9116b0b1bc81266da0fba3990e5",
+            //     res_name: "Button_Caveat",
+            //     res_url: "https://s3-ap-northeast-1.amazonaws.com/mifly0makar0assets/OnlineResource/Models/223ddb6994f440378f35b1350c51922bf43171c2430346beb94f03cd6853e91b.glb",
+            //     main_type: "model",
+            //     sub_type: "glb",
+            //     size: "48704 bytes",
+            //     default_shader_name: "Unlit/Color",
+            //     has_anim: false
+            // },
             //// 客製化 直接指定類型 位址 
-            "9bd689f7-2fe3-4a05-b7ba-5dade414cadc":{
-                res_id: "9bd689f7-2fe3-4a05-b7ba-5dade414cadc",
+            "00000002-2fe3-4a05-b7ba-5dade414cadc":{
+                res_id: "00000002-2fe3-4a05-b7ba-5dade414cadc",
                 res_name: "elephant",
                 res_url: "../resource/model/p2/elephant(無渲染A6).glb",
                 main_type: "model",
@@ -125,8 +125,8 @@ let projData = {
             scenes: [
                 {
                     info: {
-                        id: "d7abbd10-5796-4c70-8054-e83cbbebf567",
-                        name: "Untitled 1",
+                        id: "00000002-5796-4c70-8054-e83cbbebf567",
+                        name: "p2",
                         size: 395345,
                         type: "ar"
                     },
@@ -171,7 +171,7 @@ let projData = {
                             //// 客製化 直接指定類型 位址 
                             behav:[{type:'showData'}],
                             //// 素材 id 要回歸 素材字典 尋找
-                            res_id: "9bd689f7-2fe3-4a05-b7ba-5dade414cadc", 
+                            res_id: "00000002-2fe3-4a05-b7ba-5dade414cadc", 
                             typeAttr: {
                                 render_queue: 3000
                             },
@@ -197,7 +197,7 @@ let projData = {
                                 "transform": [
                                     "0,0,0",
                                     "0,0,0,1",
-                                    "6,6,6"
+                                    "4,4,4"
                                 ],
                                 "rect_transform": [
                                     {
@@ -358,8 +358,8 @@ let projData = {
                                     trans: true, 
                                     color: [ 204, 204, 204 ], 
                                     opacity: 0.5, 
-                                    roughness: 0.6, 
-                                    metalness: 0.3,
+                                    roughness: 0.5, 
+                                    metalness: 0.15,
                                     depthWrite: false,
                                     names:[
                                         '12-1','58-1','06-1','09-1',
@@ -433,6 +433,6 @@ let projData = {
 
 }
 
-console.log('p1.js: _projData', projData);
+console.log('p2.js: _projData', projData);
 
 export default projData;

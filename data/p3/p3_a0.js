@@ -281,8 +281,8 @@ let projData = {
                                 trans: true, 
                                 color: [ 204, 204, 204 ], 
                                 opacity: 0.5, 
-                                roughness: 0.6, 
-                                metalness: 0.3,
+                                roughness: 0.5, 
+                                metalness: 0.15,
                                 depthWrite: false,
                                 names:[
                                     '01-1','04-1','06-1','07-1',
@@ -441,20 +441,54 @@ let projData = {
                             obj_id: 'obj_1',
                             show_objs: [
                                 { obj_id: 'obj_1', name: '15', type: 'flyin'},
-                                { obj_id: 'obj_1', name: '16', type: 'flyin'},
-                                { obj_id: 'obj_1', name: '17', type: 'flyin'},
-                                { obj_id: 'obj_1', name: '18', type: 'flyin'},
+                                // { obj_id: 'obj_1', name: '16', type: 'flyin'},
+                                // { obj_id: 'obj_1', name: '17', type: 'flyin'},
+                                // { obj_id: 'obj_1', name: '18', type: 'flyin'},
                                 
                                 { obj_id: 'obj_1', name: '10', type: 'flyin'},
+                                // { obj_id: 'obj_1', name: '11', type: 'flyin'},
+                                // { obj_id: 'obj_1', name: '12', type: 'flyin'},
+                                // { obj_id: 'obj_1', name: '14', type: 'flyin'},
+
+                                // { obj_id: 'obj_1', name: '19', type: 'flyin'},
+                                // { obj_id: 'obj_1', name: '20', type: 'flyin'},
+                                // { obj_id: 'obj_1', name: '21', type: 'flyin'},
+                                // { obj_id: 'obj_1', name: '22', type: 'flyin'},
+                                // { obj_id: 'obj_1', name: '24', type: 'flyin'},
+                                // { obj_id: 'obj_1', name: '25', type: 'flyin'},
+
+                            ],
+                            
+
+                        },
+                        {
+                            id:'step_3', //// 必須為 專案內唯一
+                            name:{
+                                tw:'步驟 3',
+                                en:'Step 3'
+                            },
+                            des:{
+                                tw:'身體先做好，再放腳上',
+                                en:'Step description: 3 ',
+                            },
+                            scene_id:'s1',
+                            obj_id: 'obj_1',
+                            show_objs: [
+                                // { obj_id: 'obj_1', name: '15', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '16', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '17', type: 'flyin'},
+                                // { obj_id: 'obj_1', name: '18', type: 'flyin'},
+                                
+                                // { obj_id: 'obj_1', name: '10', type: 'flyin'},
                                 { obj_id: 'obj_1', name: '11', type: 'flyin'},
-                                { obj_id: 'obj_1', name: '12', type: 'flyin'},
+                                // { obj_id: 'obj_1', name: '12', type: 'flyin'},
                                 { obj_id: 'obj_1', name: '14', type: 'flyin'},
 
                                 { obj_id: 'obj_1', name: '19', type: 'flyin'},
-                                { obj_id: 'obj_1', name: '20', type: 'flyin'},
-                                { obj_id: 'obj_1', name: '21', type: 'flyin'},
-                                { obj_id: 'obj_1', name: '22', type: 'flyin'},
-                                { obj_id: 'obj_1', name: '24', type: 'flyin'},
+                                // { obj_id: 'obj_1', name: '20', type: 'flyin'},
+                                // { obj_id: 'obj_1', name: '21', type: 'flyin'},
+                                // { obj_id: 'obj_1', name: '22', type: 'flyin'},
+                                // { obj_id: 'obj_1', name: '24', type: 'flyin'},
                                 { obj_id: 'obj_1', name: '25', type: 'flyin'},
 
 
@@ -463,7 +497,39 @@ let projData = {
 
                         },
                         {
-                            id:'step_3', //// 必須為 專案內唯一
+                            id:'step_4', //// 必須為 專案內唯一
+                            name:{
+                                tw:'步驟 4',
+                                en:'Step 4'
+                            },
+                            des:{
+                                tw:'身體先做好，再放腳上',
+                                en:'Step description: 2 ',
+                            },
+                            scene_id:'s1',
+                            obj_id: 'obj_1',
+                            show_objs: [
+                                // { obj_id: 'obj_1', name: '15', type: 'flyin'},
+                                // { obj_id: 'obj_1', name: '16', type: 'flyin'},
+                                // { obj_id: 'obj_1', name: '17', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '18', type: 'flyin'},
+                                
+                                // { obj_id: 'obj_1', name: '10', type: 'flyin'},
+                                // { obj_id: 'obj_1', name: '11', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '12', type: 'flyin'},
+                                // { obj_id: 'obj_1', name: '14', type: 'flyin'},
+
+                                // { obj_id: 'obj_1', name: '19', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '20', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '21', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '22', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '24', type: 'flyin'},
+                                // { obj_id: 'obj_1', name: '25', type: 'flyin'},
+
+                            ]
+                        },
+                        {
+                            id:'step_5', //// 必須為 專案內唯一
                             name:{
                                 tw:'步驟 3',
                                 en:'Step 3'
@@ -485,7 +551,7 @@ let projData = {
 
                         },
                         {
-                            id:'step_4', //// 必須為 專案內唯一
+                            id:'step_6', //// 必須為 專案內唯一
                             name:{
                                 tw:'步驟 4',
                                 en:'Step 4'
@@ -505,7 +571,7 @@ let projData = {
 
                         },
                         {
-                            id:'step_5', //// 必須為 專案內唯一
+                            id:'step_7', //// 必須為 專案內唯一
                             name:{
                                 tw:'步驟 5',
                                 en:'Step 5'
@@ -535,7 +601,7 @@ let projData = {
 
                         },
                         {
-                            id:'step_6', //// 必須為 專案內唯一
+                            id:'step_8', //// 必須為 專案內唯一
                             name:{
                                 tw:'步驟 6',
                                 en:'Step 6'
@@ -559,7 +625,7 @@ let projData = {
 
                         },
                         {
-                            id:'step_7', //// 必須為 專案內唯一
+                            id:'step_9', //// 必須為 專案內唯一
                             name:{
                                 tw:'步驟 7',
                                 en:'Step 7'

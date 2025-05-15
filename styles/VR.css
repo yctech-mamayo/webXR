@@ -738,11 +738,11 @@
     }
 
     #detail_logo{
-        top: 12px;
-        left: calc( 50% - 125px );
+        top: 14px;
+        left: calc( 50% - 60px );
     
-        width: 250px;
-        height: 70px;
+        width: 120px;
+        height: 35px;
 
     }
 

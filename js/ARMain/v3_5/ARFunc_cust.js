@@ -228,100 +228,106 @@ import ARWrapper from './ARWrapper.js'
 					
 					console.log('_cust_proj_scene_done_: ', e );
 					//// 場景載入完成
+					//// 場景環境設定
 					if (custProject.makarUserData && custProject.makarUserData.scenesData && 
 						Array.isArray( custProject.makarUserData.scenesData.scenes) 
 					){
 						let scenes = custProject.makarUserData.scenesData.scenes;
-						scenes.forEach( scene =>{
+						scenes.forEach( ( scene , s_i ) =>{
 
-							//// 設定 環境
-							if ( scene.environment ){
-								if ( scene.environment.ambientLight && scene.environment.ambientLight.intensity ){
-									let ambientLight = document.getElementById('ambientLight');
-									if ( ambientLight ){
-										let int = scene.environment.ambientLight.intensity;
-										ambientLight.setAttribute('intensity' , int )
+							if ( window.arController && arController.cust_allow_proj == s_i + 1 ){
+								//// 設定 環境
+								if ( scene.environment ){
+									if ( scene.environment.ambientLight && scene.environment.ambientLight.intensity ){
+										let ambientLight = document.getElementById('ambientLight');
+										if ( ambientLight ){
+											let int = scene.environment.ambientLight.intensity;
+											ambientLight.setAttribute('intensity' , int )
+										}
 									}
 								}
 
+								//// 載入 場景物件
+								if ( Array.isArray(scene.objs )  ){
+									let objs = scene.objs;
+									objs.forEach( obj =>{
+										if ( obj.generalAttr && obj.generalAttr.obj_id ){
+											let obj_id = obj.generalAttr.obj_id;
+
+											let obj3D = document.getElementById( obj_id )
+											console.log( '_cust_proj_scene_done_: cust adjust model ', obj_id, obj3D );
+
+											//// 客製化 大象滾球遊樂 
+											//// 有 mesh 名稱重複，客製化調整
+											if ( location.pathname.includes( '/p2' ) ){
+												let obj_1 = document.getElementById('obj_1');
+												if ( obj_1 && obj_1.object3D ){
+													obj_1.object3D.traverse( (c,i)=>{
+														if ( c.isMesh && c.name == '50-2' ){
+															if ( c.parent && c.parent.name == '51-0' ){
+																c.name = '51-2';
+															}
+														}
+
+														if ( c.isMesh && c.name == '50-1' ){
+															if ( c.parent && c.parent.name == '51-0' ){
+																c.name = '51-1';
+															}
+														}
+
+													})
+												}
+
+											}
+
+											//// 客製化 拱門 
+											//// 有 mesh 名稱重複
+											if ( location.pathname.includes('/p7') ){
+												let obj_1 = document.getElementById('obj_1');
+												if ( obj_1 && obj_1.object3D ){
+													obj_1.object3D.traverse( (c,i)=>{
+														if ( c.isMesh && c.name == '58-2' ){
+															if ( c.parent && c.parent.name == '57' ){
+																c.name = '57-2';
+															}
+														}
+													})
+												}
+											}
+
+											//// 客製化 森林 08
+											if ( location.pathname.includes('/p8') ){
+												let obj_1 = document.getElementById('obj_1');
+												if ( obj_1 && obj_1.object3D ){
+													obj_1.object3D.traverse( (c,i)=>{
+														if ( c.type == 'Object3D' && c.name == '04-1' ){
+															if ( c.parent && c.parent.name == '樹樂園04' ){
+																c.name = '04_1';
+															}
+														}
+														if ( c.type == 'Object3D' && c.name == '04-2' ){
+															if ( c.parent && c.parent.name == '樹樂園04' ){
+																c.name = '04_2';
+															}
+														}
+													})
+												}
+											}
+
+
+										}
+									})
+								}
 							}
 
-							//// 載入 場景物件
-							if ( Array.isArray(scene.objs )  ){
-								let objs = scene.objs;
-								objs.forEach( obj =>{
-									if ( obj.generalAttr && obj.generalAttr.obj_id ){
-										let obj_id = obj.generalAttr.obj_id;
-
-										let obj3D = document.getElementById( obj_id )
-										console.log( '_oo', obj_id, obj3D );
-
-										//// 客製化 大象滾球遊樂 
-										//// 有 mesh 名稱重複，客製化調整
-										if ( location.pathname.includes( '/p2' ) ){
-											let obj_1 = document.getElementById('obj_1');
-											if ( obj_1 && obj_1.object3D ){
-												obj_1.object3D.traverse( (c,i)=>{
-													if ( c.isMesh && c.name == '50-2' ){
-														if ( c.parent && c.parent.name == '51-0' ){
-															c.name = '51-2';
-														}
-													}
-
-													if ( c.isMesh && c.name == '50-1' ){
-														if ( c.parent && c.parent.name == '51-0' ){
-															c.name = '51-1';
-														}
-													}
-
-												})
-											}
-
-										}
-
-										//// 客製化 拱門 
-			                            //// 有 mesh 名稱重複
-										if ( location.pathname.includes('/p7') ){
-											let obj_1 = document.getElementById('obj_1');
-											if ( obj_1 && obj_1.object3D ){
-												obj_1.object3D.traverse( (c,i)=>{
-													if ( c.isMesh && c.name == '58-2' ){
-														if ( c.parent && c.parent.name == '57' ){
-															c.name = '57-2';
-														}
-													}
-												})
-											}
-										}
-
-										//// 客製化 森林 08
-										if ( location.pathname.includes('/p8') ){
-											let obj_1 = document.getElementById('obj_1');
-											if ( obj_1 && obj_1.object3D ){
-												obj_1.object3D.traverse( (c,i)=>{
-													if ( c.type == 'Object3D' && c.name == '04-1' ){
-														if ( c.parent && c.parent.name == '樹樂園04' ){
-															c.name = '04_1';
-														}
-													}
-													if ( c.type == 'Object3D' && c.name == '04-2' ){
-														if ( c.parent && c.parent.name == '樹樂園04' ){
-															c.name = '04_2';
-														}
-													}
-												})
-											}
-										}
-
-
-									}
-								})
-							}
+							
 
 
 						});
 
-						
+						//// UI 控制: 隱藏「 提示掃描 」「提示文字」，顯示「 控制文字 」
+						controlUI();
+					
 						//// 執行 客製化 平移模型物件
 						setObjectOffset( custProject.makarUserData );
 
@@ -343,14 +349,38 @@ import ARWrapper from './ARWrapper.js'
 				
 
     };
+
+
+	function controlUI(){
+
+		let scan_other = document.getElementById('scan_other');
+		let scan_rect = document.getElementById('scan_rect');
+		let scan_note_text_container = document.getElementById('scan_note_text_container');
+		let control_help = document.getElementById('control_help');
+
+		if ( scan_other && scan_rect && scan_note_text_container && control_help ){
+			scan_rect.classList.add('hide');
+			scan_note_text_container.classList.add('hide');
+			scan_other.classList.add('hide');
+
+			control_help.classList.add('show');
+
+		}
+	}
 	
 	function autoRotateSceneObj(  ){
 
+		//// 只執行 當前選到的場景
+		let cS_index = 0;
+		if ( window.arController && arController.cust_allow_proj ){
+			cS_index = arController.cust_allow_proj - 1;
+		}
+
 		let projData = custProject.makarUserData;
-		if ( projData && projData.scenesData && projData.scenesData.scenes && projData.scenesData.scenes[0] && 
-			Array.isArray( projData.scenesData.scenes[0].objs)
+		if ( projData && projData.scenesData && projData.scenesData.scenes && projData.scenesData.scenes[ cS_index ] && 
+			Array.isArray( projData.scenesData.scenes[ cS_index ].objs)
 		){
-			let scene_objs = projData.scenesData.scenes[0].objs;
+			let scene_objs = projData.scenesData.scenes[ cS_index ].objs;
 			scene_objs.forEach( ( s_obj, i) => {
 				if ( s_obj.generalAttr && s_obj.generalAttr.obj_id &&
 					s_obj.cust_transform_attr && s_obj.cust_transform_attr.start
@@ -387,6 +417,8 @@ import ARWrapper from './ARWrapper.js'
 							let t_diff = 0;
 							let _r_angle_now = 0;
 
+							console.log('_autoRotateSceneObj_: start gsap', cS_index );
+
 							let tl = gsap.timeline();
 							tl.to( obj.object3D.rotation , {
 								duration: _dt,
@@ -411,7 +443,7 @@ import ARWrapper from './ARWrapper.js'
 										//// 紀錄 當前旋轉角度
 										_r_angle_now += rot_angle;
 										_root.rotateOnAxis( r_axis , rot_angle );
-										console.log( '1: ', tl._time , _r_angle_now );
+										// console.log( '1: ', tl._time , _r_angle_now );
 
 									}else{
 											
@@ -421,7 +453,7 @@ import ARWrapper from './ARWrapper.js'
 										//// 紀錄 當前旋轉角度
 										_r_angle_now += rot_angle;
 										_root.rotateOnAxis( r_axis , rot_angle );
-										console.log( '2: ', Remaining_step , _r_angle_now );
+										// console.log( '2: ', Remaining_step , _r_angle_now );
 									}
 
 								},
@@ -442,139 +474,215 @@ import ARWrapper from './ARWrapper.js'
 	}
 
 	function setObjectOffset( projData ){
-		if ( projData && projData.scenesData && projData.scenesData.scenes && projData.scenesData.scenes[0] && 
-			Array.isArray( projData.scenesData.scenes[0].objs)
+
+		
+		if ( projData && projData.scenesData && projData.scenesData.scenes && 
+			Array.isArray( projData.scenesData.scenes)
 		){
-			let scene_objs = projData.scenesData.scenes[0].objs;
-			scene_objs.forEach( (obj, i) => {
-				if ( obj.generalAttr && obj.generalAttr.obj_id &&
-					obj.transformAttr && obj.transformAttr.offsetPosition
-				){
-					let _op = obj.transformAttr.offsetPosition.p;
-					let obj_name = obj.transformAttr.offsetPosition.obj_name ;
+			let scenes = projData.scenesData.scenes;
+			scenes.forEach( (s_e , s_i )=> {
+				if ( Array.isArray(s_e.objs) ){
 
-					let op = _op.split(',');
-					if ( op.length == 3 && 
-						Number.isFinite( Number(op[0]) ) &&
-						Number.isFinite( Number(op[1]) ) &&
-						Number.isFinite( Number(op[2]) ) 
-					){
-						let _model = document.getElementById(  obj.generalAttr.obj_id );
-						if ( _model && _model.object3D){
-							// let _root = _model.getObject3D( 'mesh' );
+					//// 只執行 目前 掃描的 場景
+					if ( window.arController && arController.cust_allow_proj == s_i + 1 ){
+						let scene_objs = s_e.objs;
+						scene_objs.forEach( (obj, i) => {
+							if ( obj.generalAttr && obj.generalAttr.obj_id &&
+								obj.transformAttr && obj.transformAttr.offsetPosition
+							){
 
-							let _root = _model.object3D.getObjectByName( obj_name );
-							
-							if ( _root && _root.position  ){
-								_root.position.add( new THREE.Vector3( Number(op[0]) , Number(op[1]) , Number(op[2]) ) );
+								console.log('_setObjectOffset_: start' , s_i , s_e );
+
+								let _op = obj.transformAttr.offsetPosition.p;
+								let obj_name = obj.transformAttr.offsetPosition.obj_name ;
+
+								let op = _op.split(',');
+								if ( op.length == 3 && 
+									Number.isFinite( Number(op[0]) ) &&
+									Number.isFinite( Number(op[1]) ) &&
+									Number.isFinite( Number(op[2]) ) 
+								){
+									let _model = document.getElementById(  obj.generalAttr.obj_id );
+									if ( _model && _model.object3D){
+										// let _root = _model.getObject3D( 'mesh' );
+
+										let _root = _model.object3D.getObjectByName( obj_name );
+										
+										if ( _root && _root.position  ){
+											_root.position.add( new THREE.Vector3( Number(op[0]) , Number(op[1]) , Number(op[2]) ) );
+										}
+									}
+								}
+
+
 							}
-						}
+						})
 					}
+					
 
+					
 
 				}
 			})
+
 		}
+
+
+		// if ( projData && projData.scenesData && projData.scenesData.scenes && projData.scenesData.scenes[0] && 
+		// 	Array.isArray( projData.scenesData.scenes[0].objs)
+		// ){
+		// 	let scene_objs = projData.scenesData.scenes[0].objs;
+		// 	scene_objs.forEach( (obj, i) => {
+		// 		if ( obj.generalAttr && obj.generalAttr.obj_id &&
+		// 			obj.transformAttr && obj.transformAttr.offsetPosition
+		// 		){
+		// 			let _op = obj.transformAttr.offsetPosition.p;
+		// 			let obj_name = obj.transformAttr.offsetPosition.obj_name ;
+
+		// 			let op = _op.split(',');
+		// 			if ( op.length == 3 && 
+		// 				Number.isFinite( Number(op[0]) ) &&
+		// 				Number.isFinite( Number(op[1]) ) &&
+		// 				Number.isFinite( Number(op[2]) ) 
+		// 			){
+		// 				let _model = document.getElementById(  obj.generalAttr.obj_id );
+		// 				if ( _model && _model.object3D){
+		// 					// let _root = _model.getObject3D( 'mesh' );
+
+		// 					let _root = _model.object3D.getObjectByName( obj_name );
+							
+		// 					if ( _root && _root.position  ){
+		// 						_root.position.add( new THREE.Vector3( Number(op[0]) , Number(op[1]) , Number(op[2]) ) );
+		// 					}
+		// 				}
+		// 			}
+
+
+		// 		}
+		// 	})
+		// }
 
 	}
 	
 	function setModelMaterial( projData ){
-		if ( projData && projData.scenesData && projData.scenesData.scenes && projData.scenesData.scenes[0] && 
-			Array.isArray( projData.scenesData.scenes[0].objs)
+		if ( projData && projData.scenesData && projData.scenesData.scenes && 
+			Array.isArray(projData.scenesData.scenes) 
 		){
-			let scene_objs = projData.scenesData.scenes[0].objs;
-			scene_objs.forEach( (obj, i) => {
-				if ( obj.generalAttr && obj.generalAttr.obj_id && 
-					 obj.main_type == 'model' &&
-					Array.isArray(  obj.cust_materials ) ){
+			let scenes = projData.scenesData.scenes;
+			scenes.forEach( (s_e , s_i ) => {
 
-					let _model = document.getElementById(  obj.generalAttr.obj_id );
-					if ( _model && _model.object3D){
+				//// 只執行 目前 掃描的 場景
+				if ( window.arController && arController.cust_allow_proj == s_i + 1 ){
 
-						obj.cust_materials.forEach( (cm , cm_i)=>{
-							//// 必須要有超過一個【 名稱 】 
-							//// 拿第一個名稱來做材質的複製
-							if ( Array.isArray(cm.names) && cm.names.length > 0 ){
-								let first_material_clone = null;
-								let first_mesh_name = cm.names[0];
-								let first_mesh = _model.object3D.getObjectByName( first_mesh_name );
-								if ( first_mesh && first_mesh.material ){
-									first_material_clone = first_mesh.material.clone() ;
-									
-									first_material_clone.name = cm.id
-									if ( window.vrController ){
-										if  ( !window.vrController.cust_materials){
-											window.vrController.cust_materials = []
-										}
-										window.vrController.cust_materials.push( first_material_clone )
-									}
-									
+					
 
-									//// 顯示
-									if ( cm.hasOwnProperty('visible') ){
-										first_material_clone.visible = cm.visible;
-									}
-									//// 透明
-									if ( cm.hasOwnProperty('trans') ){
-										first_material_clone.transparent = cm.trans;
-										
-										if ( cm.trans ){
-											//// 發光顏色: 統一調整 0.2
-											first_material_clone.emissive.setRGB(0.2, 0.2, 0.2);
-										}
-									}
-									if ( cm.hasOwnProperty('opacity') ){
-										first_material_clone.opacity = cm.opacity;
-									}
-									//// 顏色
-									if ( cm.hasOwnProperty('color') ){
-										first_material_clone.color.setRGB( cm.color[0]/255, cm.color[1]/255, cm.color[2]/255 ); ;
-									}
-									
-									//// 金屬 粗糙
-									if ( cm.hasOwnProperty('metalness') ){
-										first_material_clone.metalness = cm.metalness;
-									}
-									if ( cm.hasOwnProperty('roughness') ){
-										first_material_clone.roughness = cm.roughness;
-									}
+					if ( Array.isArray(s_e.objs) ){
+						let scene_objs = s_e.objs;
 
-									//// 
-									// if ( cm.hasOwnProperty('depthWrite') ){
-									//     first_material_clone.depthWrite = cm.depthWrite;
-									// }
-									
+						scene_objs.forEach( (obj, i) => {
+							if ( obj.generalAttr && obj.generalAttr.obj_id && 
+								obj.main_type == 'model' &&
+								Array.isArray(  obj.cust_materials ) 
+							){
+								
+								console.log('_setModelMaterial_: start' , s_i , s_e  );
 
-									//// 顯示與否
-									// first_material_clone.visible = cm.visible;
 
-									cm.names.forEach( ( n_e , n_i ) => {
-										let mesh = _model.object3D.getObjectByName( n_e );
-										if ( mesh && mesh.material ){
-											mesh.material = first_material_clone;
-										}else{
-											//// 由於 模型設計師 可能 指定同樣名稱，掙扎一下
-											let gotMeshName = false;
-											if ( mesh ){
-												mesh.traverse( c => {
-													if (c.isMesh && c.name == n_e ){
-														gotMeshName = true;
-														c.material = first_material_clone;
+								let _model = document.getElementById(  obj.generalAttr.obj_id );
+								if ( _model && _model.object3D){
+
+									obj.cust_materials.forEach( (cm , cm_i)=>{
+										//// 必須要有超過一個【 名稱 】 
+										//// 拿第一個名稱來做材質的複製
+										if ( Array.isArray(cm.names) && cm.names.length > 0 ){
+											let first_material_clone = null;
+											let first_mesh_name = cm.names[0];
+											let first_mesh = _model.object3D.getObjectByName( first_mesh_name );
+											if ( first_mesh && first_mesh.material ){
+												first_material_clone = first_mesh.material.clone() ;
+												
+												first_material_clone.name = cm.id
+												if ( window.vrController ){
+													if  ( !window.vrController.cust_materials){
+														window.vrController.cust_materials = []
+													}
+													window.vrController.cust_materials.push( first_material_clone )
+												}
+												
+
+												//// 顯示
+												if ( cm.hasOwnProperty('visible') ){
+													first_material_clone.visible = cm.visible;
+												}
+												//// 透明
+												if ( cm.hasOwnProperty('trans') ){
+													first_material_clone.transparent = cm.trans;
+													
+													if ( cm.trans ){
+														//// 發光顏色: 統一調整 0.2
+														first_material_clone.emissive.setRGB(0.2, 0.2, 0.2);
+													}
+												}
+												if ( cm.hasOwnProperty('opacity') ){
+													first_material_clone.opacity = cm.opacity;
+												}
+												//// 顏色
+												if ( cm.hasOwnProperty('color') ){
+													first_material_clone.color.setRGB( cm.color[0]/255, cm.color[1]/255, cm.color[2]/255 ); ;
+												}
+												
+												//// 金屬 粗糙
+												if ( cm.hasOwnProperty('metalness') ){
+													first_material_clone.metalness = cm.metalness;
+												}
+												if ( cm.hasOwnProperty('roughness') ){
+													first_material_clone.roughness = cm.roughness;
+												}
+
+												//// 
+												// if ( cm.hasOwnProperty('depthWrite') ){
+												//     first_material_clone.depthWrite = cm.depthWrite;
+												// }
+												
+
+												//// 顯示與否
+												// first_material_clone.visible = cm.visible;
+
+												cm.names.forEach( ( n_e , n_i ) => {
+													let mesh = _model.object3D.getObjectByName( n_e );
+													if ( mesh && mesh.material ){
+														mesh.material = first_material_clone;
+													}else{
+														//// 由於 模型設計師 可能 指定同樣名稱，掙扎一下
+														let gotMeshName = false;
+														if ( mesh ){
+															mesh.traverse( c => {
+																if (c.isMesh && c.name == n_e ){
+																	gotMeshName = true;
+																	c.material = first_material_clone;
+																}
+															})
+														}
+														if (!gotMeshName){
+															console.warn('VRFunc_cust.js: _setModelMaterial: No Mesh ', n_e );
+														}
+														
 													}
 												})
-											}
-											if (!gotMeshName){
-												console.warn('VRFunc_cust.js: _setModelMaterial: No Mesh ', n_e );
-											}
-											
+											}                                    
 										}
 									})
-								}                                    
+								}
 							}
 						})
+
 					}
+
 				}
-			})
+			});
+
+
+			
 		}
 	}
 

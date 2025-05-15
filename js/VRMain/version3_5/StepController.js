@@ -555,7 +555,7 @@ class StepController {
                                             //// 模型放在 環圈上面的 本地座標位置
                                             m_p_local = c.parent.worldToLocal( p_w_r.clone() ); 
 
-                                            console.log(' _fliyin:  ', c.name  , m_p_local , p_w_r );
+                                            // console.log(' _fliyin:  ', c.name  , m_p_local , p_w_r );
 
                                         }
                                         

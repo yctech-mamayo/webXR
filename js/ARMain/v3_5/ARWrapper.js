@@ -1213,6 +1213,11 @@ class ARWrapper {
                     
                     // console.log(' _getNFTMarkerDraw_ ' , marker , self.sceneTargetList[marker.id] );
     
+                    if ( self.cust_allow_proj != self.sceneTargetList[marker.id].sceneIndex + 1 ){
+                        
+                        return;
+                    }
+                    
     
                     let obj =    this.aframeNFTMarkers[  self.sceneTargetList[marker.id].sceneIndex ];
     
@@ -1434,6 +1439,12 @@ class ARWrapper {
     
                                 //// 紀錄「辨識圖狀態」, 0: lost, 1: recognize, 2: tracking.
                                 obj.targetState = 2;
+
+                                //// 紀錄一下 2025 0515 客製化流程中 發現假如一載入完成 AR 就看到辨識圖。
+                                //// 會在 辨認 part 不會進到重設 場景物件 位置旋轉大小。 這邊修正 
+                                if ( obj.object3D ){
+                                    obj.object3D.matrixAutoUpdate = false;
+                                }
 
                                 // let scenes = [];
                                 // scenes = VC.getScenes( self.scenesData );

@@ -286,8 +286,8 @@ let projData = {
                                 trans: true, 
                                 color: [ 204, 204, 204 ], 
                                 opacity: 0.5, 
-                                roughness: 0.6, 
-                                metalness: 0.3,
+                                roughness: 0.5, 
+                                metalness: 0.15,
                                 depthWrite: false,
                                 names:[
                                     '2-1','6-1','10-1',
@@ -506,12 +506,12 @@ let projData = {
                                 { obj_id: 'obj_1', name: '20', type: 'flyin'},
                                 { obj_id: 'obj_1', name: '21', type: 'flyin'},
                                 { obj_id: 'obj_1', name: '22', type: 'flyin'},
-                                { obj_id: 'obj_1', name: '24', type: 'flyin'},
-                                { obj_id: 'obj_1', name: '25', type: 'flyin'},
+                                // { obj_id: 'obj_1', name: '24', type: 'flyin'},
+                                // { obj_id: 'obj_1', name: '25', type: 'flyin'},
 
-                                { obj_id: 'obj_1', name: '26', type: 'flyin'},
-                                { obj_id: 'obj_1', name: '27', type: 'flyin'},
-                                { obj_id: 'obj_1', name: '28', type: 'flyin'},
+                                // { obj_id: 'obj_1', name: '26', type: 'flyin'},
+                                // { obj_id: 'obj_1', name: '27', type: 'flyin'},
+                                // { obj_id: 'obj_1', name: '28', type: 'flyin'},
 
                             ],
                             // cameraAttr:{
@@ -528,8 +528,70 @@ let projData = {
                                 en:'Step 6'
                             },
                             des:{
-                                tw:'正三角形＋方形，滑梯有坡度',
+                                tw:'左右挖空蓋ㄇ字，滾球能穿過大樓',
                                 en:'Step description: 6 ',
+                            },
+                            scene_id:'s1',
+                            obj_id: 'obj_1',
+                            show_objs: [
+                                // { obj_id: 'obj_1', name: '20', type: 'flyin'},
+                                // { obj_id: 'obj_1', name: '21', type: 'flyin'},
+                                // { obj_id: 'obj_1', name: '22', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '24', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '25', type: 'flyin'},
+
+                                // { obj_id: 'obj_1', name: '26', type: 'flyin'},
+                                // { obj_id: 'obj_1', name: '27', type: 'flyin'},
+                                // { obj_id: 'obj_1', name: '28', type: 'flyin'},
+
+                            ],
+                            // cameraAttr:{
+                            //     p: [ 1.16, 4.51,  -6.80],
+                            //     target:[ 0 , 0 , 0 ],
+                            //     t: 1,
+                            // }
+
+                        },
+                        {
+                            id:'step_7', //// 必須為 專案內唯一
+                            name:{
+                                tw:'步驟 7',
+                                en:'Step 7'
+                            },
+                            des:{
+                                tw:'正三角形＋方形，滑梯有坡度',
+                                en:'Step description: 7 ',
+                            },
+                            scene_id:'s1',
+                            obj_id: 'obj_1',
+                            show_objs: [
+                                // { obj_id: 'obj_1', name: '20', type: 'flyin'},
+                                // { obj_id: 'obj_1', name: '21', type: 'flyin'},
+                                // { obj_id: 'obj_1', name: '22', type: 'flyin'},
+                                // { obj_id: 'obj_1', name: '24', type: 'flyin'},
+                                // { obj_id: 'obj_1', name: '25', type: 'flyin'},
+
+                                { obj_id: 'obj_1', name: '26', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '27', type: 'flyin'},
+                                { obj_id: 'obj_1', name: '28', type: 'flyin'},
+
+                            ],
+                            // cameraAttr:{
+                            //     p: [ 1.16, 4.51,  -6.80],
+                            //     target:[ 0 , 0 , 0 ],
+                            //     t: 1,
+                            // }
+
+                        },
+                        {
+                            id:'step_8', //// 必須為 專案內唯一
+                            name:{
+                                tw:'步驟 8',
+                                en:'Step 8'
+                            },
+                            des:{
+                                tw:'小斜坡一層一個，左右交替',
+                                en:'Step description: 8 ',
                             },
                             scene_id:'s1',
                             obj_id: 'obj_1',
@@ -550,14 +612,14 @@ let projData = {
 
                         },
                         {
-                            id:'step_7', //// 必須為 專案內唯一
+                            id:'step_9', //// 必須為 專案內唯一
                             name:{
-                                tw:'步驟 7',
-                                en:'Step 7'
+                                tw:'步驟 9',
+                                en:'Step 9'
                             },
                             des:{
-                                tw:'左右挖空蓋ㄇ字，滾球能穿過大樓',
-                                en:'Step description: 7 ',
+                                tw:'第4層，別忘了每層背後都有翅膀',
+                                en:'Step description: 9 ',
                             },
                             scene_id:'s1',
                             obj_id: 'obj_1',
@@ -578,14 +640,14 @@ let projData = {
 
                         },
                         {
-                            id:'step_8', //// 必須為 專案內唯一
+                            id:'step_10', //// 必須為 專案內唯一
                             name:{
-                                tw:'步驟 8',
-                                en:'Step 8'
+                                tw:'步驟 10',
+                                en:'Step 10'
                             },
                             des:{
-                                tw:'小斜坡一層一個，左右交替',
-                                en:'Step description: 8 ',
+                                tw:'蓋5層，有5個小斜坡',
+                                en:'Step description: 10 ',
                             },
                             scene_id:'s1',
                             obj_id: 'obj_1',
@@ -605,14 +667,14 @@ let projData = {
 
                         },
                         {
-                            id:'step_9', //// 必須為 專案內唯一
+                            id:'step_11', //// 必須為 專案內唯一
                             name:{
-                                tw:'步驟 9',
-                                en:'Step 9'
+                                tw:'步驟 11',
+                                en:'Step 11'
                             },
                             des:{
-                                tw:'第4層，別忘了每層背後都有翅膀',
-                                en:'Step description: 9 ',
+                                tw:'蓋尖屋頂，滾球出發!',
+                                en:'Step description: 11 ',
                             },
                             scene_id:'s1',
                             obj_id: 'obj_1',
@@ -625,40 +687,7 @@ let projData = {
                             ],
 
                         },
-                        {
-                            id:'step_10', //// 必須為 專案內唯一
-                            name:{
-                                tw:'步驟 10',
-                                en:'Step 10'
-                            },
-                            des:{
-                                tw:'蓋5層，有5個小斜坡',
-                                en:'Step description: 10 ',
-                            },
-                            scene_id:'s1',
-                            obj_id: 'obj_1',
-                            show_objs: [
-
-                            ],
-
-                        },
-                        {
-                            id:'step_11', //// 必須為 專案內唯一
-                            name:{
-                                tw:'步驟 11',
-                                en:'Step 91'
-                            },
-                            des:{
-                                tw:'蓋尖屋頂，滾球出發！',
-                                en:'Step description: 11 ',
-                            },
-                            scene_id:'s1',
-                            obj_id: 'obj_1',
-                            show_objs: [
-
-                            ],
-
-                        },
+                        
                         
                     ],
                 },

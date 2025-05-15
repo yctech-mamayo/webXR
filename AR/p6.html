@@ -12,20 +12,20 @@
 	<script>
 		
 		//// 增加預先載入圖片功能，目前只做用在「載入中圖片」
-		let imageBase = 'https://mifly0makar0assets.s3.ap-northeast-1.amazonaws.com/DefaultResource/2D/Loading_20220630/Loading_An000';
-		for (let i = 0; i < 30; i++ ){
-			let strIndex = '';
-			if (i < 10){
-				strIndex = String( '0'+ i ) ;
-			}else{
-				strIndex = String( i );
-			}
-			let linkElement = document.createElement('link');
-			linkElement.setAttribute('as', 'image');
-			linkElement.setAttribute('rel', 'preload');
-			linkElement.setAttribute('href', imageBase + strIndex + '.png' );
-			document.head.appendChild( linkElement );
-		}
+		// let imageBase = 'https://mifly0makar0assets.s3.ap-northeast-1.amazonaws.com/DefaultResource/2D/Loading_20220630/Loading_An000';
+		// for (let i = 0; i < 30; i++ ){
+		// 	let strIndex = '';
+		// 	if (i < 10){
+		// 		strIndex = String( '0'+ i ) ;
+		// 	}else{
+		// 		strIndex = String( i );
+		// 	}
+		// 	let linkElement = document.createElement('link');
+		// 	linkElement.setAttribute('as', 'image');
+		// 	linkElement.setAttribute('rel', 'preload');
+		// 	linkElement.setAttribute('href', imageBase + strIndex + '.png' );
+		// 	document.head.appendChild( linkElement );
+		// }
 
 	</script>
 
@@ -33,9 +33,143 @@
 <body>
 
 	<script type="module">
-		import projData from "./data/p6.js";		
-		window.custProject = projData;
+		import projData_1 from "./data/p1.js";		
+		import projData_2 from "./data/p2.js";
+		import projData_3 from "./data/p3.js";
+		import projData_4 from "./data/p4.js";
+		import projData_5 from "./data/p5.js";
+		import projData_6 from "./data/p6.js";
+		import projData_7 from "./data/p7.js";
+		import projData_8 from "./data/p8.js";
+
+		window.projData_1 = projData_1;
+		window.projData_2 = projData_2;
+		window.projData_3 = projData_3;
+		window.projData_4 = projData_4;
+		window.projData_5 = projData_5;
+		window.projData_6 = projData_6;
+		window.projData_7 = projData_7;
+		window.projData_8 = projData_8;
+
+		//// 整合所有場景:
+		let projData_all = JSON.parse(JSON.stringify( projData_1 ));
+		[ projData_2 , projData_3 , projData_4 , projData_5 , projData_6 , projData_7 , projData_8 ].forEach( e=>{
+			if ( projData_all.makarUserData && projData_all.makarUserData.scenesData && 
+				Array.isArray( projData_all.makarUserData.scenesData.scenes ) && 
+				Array.isArray( projData_all.makarUserData.targetList ) &&
+				e && e.makarUserData && e.makarUserData.scenesData && e.makarUserData.scenesData.scenes && 
+				e.makarUserData.scenesData.scenes[0] && 
+				e.makarUserData.targetList && e.makarUserData.targetList[0]
+			){
+				//// 場景
+				projData_all.makarUserData.scenesData.scenes.push(
+					e.makarUserData.scenesData.scenes[0]
+				)
+
+				//// 辨識圖
+				projData_all.makarUserData.targetList.push(
+					e.makarUserData.targetList[0]
+				)
+
+				//// 素材
+				if ( projData_all.makarUserData.userOnlineResDict && e.makarUserData.userOnlineResDict ){
+					let res_e_keys = Object.keys( e.makarUserData.userOnlineResDict );
+					let res_all_keys = Object.keys( projData_all.makarUserData.userOnlineResDict );
+					res_e_keys.forEach( res_e =>{
+						projData_all.makarUserData.userOnlineResDict[ res_e ] = e.makarUserData.userOnlineResDict[res_e]
+					})	
+				}
+			}
+		});
+
+		window.projData_all = projData_all;
+
+		window.custProject = projData_all;
+		// window.custProject = projData_1;
 		
+		import productsData from "./data/all_product.js";	
+		window.productsData = productsData;
+
+		window.addEventListener( 'load', windowLoaded );
+		function windowLoaded( e ){
+			let gallery = document.getElementById('all_product_gallery');
+			let scan_text = document.getElementById('scan_text');
+			let all_product_popup = document.getElementById('all_product_popup');
+
+			if ( gallery && Array.isArray(productsData) && scan_text && all_product_popup ){
+				productsData.forEach( ( e , i ) =>{
+
+					let galleryItem = document.createElement('div');
+					galleryItem.classList.add('gallery-item');
+					
+					let gImg = document.createElement('img');
+					gImg.classList.add('gImg');
+					gImg.src = e.img;
+
+					let gtc = document.createElement('div');
+					gtc.classList.add('gtc');
+
+					let gittw = document.createElement('p');
+					gittw.classList.add('gittw');
+					gittw.textContent = e.name_tw;
+
+					// let giten = document.createElement('p');
+					// giten.classList.add('giten');
+					// giten.textContent = e.name_en;
+
+					// let hr1 = document.createElement('hr');
+					// hr1.classList.add('gallery-hr-dashed');
+
+					// let diff = document.createElement('div');
+					// diff.classList.add('difficulty');
+					// diff.textContent = e.diff;
+
+					// let hr2 = document.createElement('hr');
+					// hr2.classList.add('gallery-hr-dashed');
+					
+					gtc.appendChild(gittw);
+					// gtc.appendChild(giten);
+					// gtc.appendChild(hr1);
+					// gtc.appendChild(diff);
+					// gtc.appendChild(hr2);
+
+					galleryItem.appendChild( gImg );
+					galleryItem.appendChild( gtc );
+
+					gallery.appendChild( galleryItem );
+
+					galleryItem.onclick = function(){
+						let t_all = `相機對準手冊 ` + e.name_tw + ` 圖案
+						AR磁力片就出現啦`;
+						scan_text.textContent = t_all;
+						all_product_popup.classList.remove('show');
+
+						if ( window.arController ){
+							//// 設定 可掃描的 圖片
+							arController.cust_allow_proj = i + 1;
+							//// 開啟掃描
+							setTimeout( function(){
+								arController.enableTracking = true;
+							}, 500 )
+
+						}
+
+
+					}
+					
+					// <div class='gallery-textContainer'>
+					// 	<p class="gallery-item-title-tw">天鵝</p>
+					// 	<p class="gallery-item-title-en">Swan</p>
+					// 	<hr class="gallery-hr-dashed">
+					// 	<div class="difficulty">難度：★★★★☆</div>	
+					// 	<hr class="gallery-hr-dashed">
+					// </div>
+				});
+
+			}
+
+		}
+
 	</script>
 
 <div id = 'interactDMPBG'>
@@ -126,8 +260,65 @@
 <!-- 為了 SEO 跟 正規化網頁的內容，包含 Logo, Header, 等 -->
 <section id = 'main_section'>
 
-	<div id = 'footer_'></div>
+	<div id='main_logo_container'>
+		<div id = 'main_logo_mask'></div>
+	</div>
+
+	<div id = 'scan_rect'>
+		<span class="top-left"></span>
+		<span class="top-right"></span>
+		<span class="bottom-left"></span>
+		<span class="bottom-right"></span>
+	</div>
+	
+	<div id = 'scan_note_text_container'>
+		<div id = 'scan_text'>相機對準手冊 火車 圖案
+			AR磁力片就出現啦
+		</div>
+	</div>
+	
+	<div id = 'control_help'> 
+		<div id = 'control_help_text'> 用單指旋轉可 360 瀏覽作品
+			雙指張開放大縮小
+		</div>
+	</div>
+
+	<div id = 'bottom_container'>
+		<div id = 'bottom_container_main'>
+			
+
+			<div id = 'scan_other'>
+				<h2 id = 'scan_other_text'>掃描其他圖</h2>
+			</div>
+
+			<a href = "../detail/p1.html" target="_self" id = 'all_product_btn_link' >
+				<div id = 'check_teach'>
+					<h2 id = 'check_teach_text'>查看教學</h2>
+				</div>
+			</a>
+
+			<a href = "../list.html" target="_self" id = 'all_product_btn_link' >
+				<div id = 'all_product'>
+					<h2 id = 'all_product_text'>所有作品</h2>
+				</div>				
+			</a>
+
+		</div>
+	</div>
+
+	<div id = 'all_product_popup'>
+		<div id = 'all_product_popup_close'></div>
+		<div id = 'all_product_gallery'></div>
+	</div>
+
+
+	<div id = 'footer_privacy'> Copyright mamayo 2025 </div>
 </section>
+
+
+<div id = 'resolutionWarningDiv'  > 
+	<div id = 'rwText'> 請將裝置改為直放 </div> 
+</div>
 
 
 <!-- 起始載入頁面 -->
@@ -313,65 +504,158 @@
 
 	window.onload = function(){
 
-		setTimeout(function(){
-
-			console.log("makarAR.html: window onload ");
-			// var mdb = window.mdb = new mIndexedDB(); //// 為了括括卡 集點卡，假如直接執行此頁面，則需要，假如從 官方界面呼叫 iframe 則不用。
-			if (getDMP == true){
-				interactDMPBG.style.display = "none";
-
-				// startARProcess();
-				startARWithVersionControl();
-
-				// startLoaingPage();
-
-			}else{
-				
-				interactDMPBG.style.display = "block";
-				homeStartButton.addEventListener("click", function(){
-					console.log("makarVR_directUrl.html: call requestDMP");
-					requestDeviceMotionPermission( function(){
-						interactDMPBG.style.display = "none";
-
-						// startARProcess();
-						startARWithVersionControl();
-
-						// startLoaingPage();
-					} );
-
-				});
+		//// 手機版面，強迫只能 直版
+		if (window.Browser && (Browser.mobile == true || Browser.iOS == true || navigator.platform.includes('armv8l') == true ) ){
+			console.log(' 111 ');
+			//// 起始判斷直橫板
+	        let dc = deviceWHCheck();
+			if ( dc ){
+				console.log(' 111 ');
+				start_AR_process();
+			} else {
+				console.log(' 222 ');
 			}
 
+		}else{
+			console.log(' 333 ');
+			start_AR_process();
+		}
+
+		function start_AR_process(){
+			setTimeout(function(){
+
+				console.log("makarAR.html: window onload ");
+				// var mdb = window.mdb = new mIndexedDB(); //// 為了括括卡 集點卡，假如直接執行此頁面，則需要，假如從 官方界面呼叫 iframe 則不用。
+				if (getDMP == true){
+					interactDMPBG.style.display = "none";
+
+					// startARProcess();
+					startARWithVersionControl();
+
+					// startLoaingPage();
+
+				}else{
+					
+					interactDMPBG.style.display = "block";
+					homeStartButton.addEventListener("click", function(){
+						console.log("makarVR_directUrl.html: call requestDMP");
+						requestDeviceMotionPermission( function(){
+							interactDMPBG.style.display = "none";
+
+							// startARProcess();
+							startARWithVersionControl();
+
+							// startLoaingPage();
+						} );
+
+					});
+				}
+
+				//// 監聽到「 完成起始 」之後再打開 UI 介面
+				let tID = setInterval( function(){
+					if ( window.arController && window.arController.enableARRendering == true ){
+						clearInterval( tID );
+						let main_section = document.getElementById('main_section');
+						main_section.classList.add('active');
+
+						//// 設定當前可以掃描的專案 火車 6
+						arController.cust_allow_proj = 6;
+
+					}
+				}, 50 )
 
 			}, 500 );
 
+
+			//// UI 控制:
+			let scan_other = document.getElementById('scan_other');
+			let all_product_popup = document.getElementById('all_product_popup');
+			let all_product_popup_close = document.getElementById('all_product_popup_close')
+			if ( all_product_popup && scan_other && all_product_popup_close ){
+				scan_other.onclick = function(){
+					all_product_popup.classList.add('show');
+
+					//// 關閉掃描功能
+					if ( window.arController ){
+						arController.enableTracking = false;
+					}
+				}
+
+				all_product_popup_close.onclick = function(){
+					all_product_popup.classList.remove('show');
+
+					//// 開啟掃描功能
+					if ( window.arController ){
+						setTimeout( function(){
+							arController.enableTracking = true;
+						}, 500 );
+
+					}
+				}
+			}
+
 		}
 
 
-		window.addEventListener("resize", checkWindowSize ); 
-		function checkWindowSize(){
-			console.log('_checkWindowSize_: ', window.innerWidth, window.innerHeight );
+		
+		
+	}
 
-		}
 
-		if ( window.top != window.self  ){ //// check if in iframe
-			window.makarID = parent.selectedProject.user_id; //// must be the only one place to set window.makarID, if remove it, the process will not work.
-			// window.makarID = "fefe";
+	//// 檢查裝置旋轉
+    // //// 檢查裝置是否為手機，判斷橫板不給執行
+    function deviceWHCheck(){
+    	//// 寬高判斷，假如擺放為直板，提醒不能使用
+    	console.log(' _deviceWHCheck: ', document.documentElement.clientWidth , document.documentElement.clientHeight );
+      	let resolutionWarningDiv = document.getElementById( 'resolutionWarningDiv' );
+      	// if ( document.documentElement.clientWidth < document.documentElement.clientHeight || document.documentElement.clientHeight >= 768 ){
+      	if ( document.documentElement.clientWidth < document.documentElement.clientHeight ){
+			resolutionWarningDiv.style.visibility = 'hidden';
+    		return true;
+    	} else {
+       		resolutionWarningDiv.style.visibility = 'visible';
+    		return false;
+    	}
 
-			// Get the modal
-			let projectModal = document.getElementById("projectModal");
-			// Get the <span> element that closes the modal
-			let span = document.getElementsByClassName("close")[0];
-			// When the user clicks on <span> (x), close the modal
-			span.addEventListener("click", function(){
-				projectModal.style.display = "none";
-			});
+    }
 
-		} else {
-			window.makarID = "fefe";
-			// window.makarID = "thonsha";
-			// window.makarID = "df7693bb-c7b7-4b61-baad-9ae517531c6f";
-		}
+	window.addEventListener("orientationchange", checkOrientationChange ); 
+	function checkOrientationChange(){
+		console.log('_checkOrientationChange_: ', window.innerWidth, window.innerHeight );
+
+		document.documentElement.style.height = 'initial';
+		setTimeout( function(){
+			document.body.style.transform = 'scale(1)';
+			document.documentElement.style.height = '100vh';
+			window.scrollTo( 0 , 0 );
+			setTimeout( function(){
+				window.scrollTo( 0 , 0 );
+				dc = deviceWHCheck();
+			}, 300 )
+
+		}, 300 )
+		
+		 
+	}
+
+	if ( window.top != window.self  ){ //// check if in iframe
+		window.makarID = parent.selectedProject.user_id; //// must be the only one place to set window.makarID, if remove it, the process will not work.
+		// window.makarID = "fefe";
+
+		// Get the modal
+		let projectModal = document.getElementById("projectModal");
+		// Get the <span> element that closes the modal
+		let span = document.getElementsByClassName("close")[0];
+		// When the user clicks on <span> (x), close the modal
+		span.addEventListener("click", function(){
+			projectModal.style.display = "none";
+		});
+
+	} else {
+		window.makarID = "fefe";
+		// window.makarID = "thonsha";
+		// window.makarID = "df7693bb-c7b7-4b61-baad-9ae517531c6f";
+	}
 
 
 
