@@ -8,13 +8,13 @@ let productsData = [
     },
     {
         name_tw: '大象',
-        name_en: 'Elenphant',
+        name_en: 'Elephant',
         img: '../images/art/20250503/大象.jpg',
         diff: '難度：★★★★☆',
     },
     {
         name_tw: '恐龍',
-        name_en: 'Dinorsaur',
+        name_en: 'Dinosaur',
         img: '../images/art/20250503/恐龍.jpg',
         diff: '難度：★★★★☆',
     },

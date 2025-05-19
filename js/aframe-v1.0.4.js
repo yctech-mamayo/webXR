@@ -71850,7 +71850,7 @@ module.exports.Component = registerComponent('device-orientation-permission-ui',
         // 'This immersive website requires access to your device motion sensors.',
         // '請點擊畫面來啟動動作感應器',
         // 'MAKAR Web XR 想要取用您的動作和方向',
-        'MAKAR Web XR requires access to your device motion sensors',
+        '請同意此網頁使用您的動作感應器',
 //[end---20201125- fei -0001-mod]//
         self.onDeviceMotionDialogAllowClicked,
         self.onDeviceMotionDialogDenyClicked);

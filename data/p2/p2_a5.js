@@ -176,6 +176,8 @@ let projData = {
                                 names:[ 
                                     '08-1','08-2',
                                     '29-1','29-2',
+                                    '78_0','78_1',
+                                    '80_0','80_1',
                                 ]
                             },
                             //// 磁力片 磁鐵 金屬 棒
@@ -203,9 +205,9 @@ let projData = {
                                 id:'trans_tube', 
                                 trans: true, 
                                 opacity: 0.5, 
-                                color: [230, 230, 230], 
+                                color: [ 200, 200, 200], 
                                 roughness: 0.2, 
-                                metalness: 0.17,
+                                metalness: 0.2,
                                 depthWrite: false,
                                 names:[
                                     '46-1','46-2',
@@ -321,7 +323,7 @@ let projData = {
                                 roughness: 0.5, 
                                 metalness: 0.5,
                                 names:[
-                                    '77_0','78_0',
+                                    '77_0',
                                     '80_0','79_0',
                                 ]
                             },
@@ -334,7 +336,7 @@ let projData = {
                                 roughness: 0.5, 
                                 metalness: 0.5,
                                 names:[
-                                    '77_1','78_1',
+                                    '77_1',
                                     '79_1','80_1',
                                 ]
                             },
@@ -443,7 +445,7 @@ let projData = {
                                 en:'Step 1'
                             },
                             des:{
-                                tw:'兩片著地，前面加一片膝蓋就不倒',
+                                tw:'兩片著地，第二層蓋四面就不倒',
                                 en:'Step description: 1 ',
                             },
                             scene_id:'s1',
@@ -540,7 +542,7 @@ let projData = {
 
                                 { obj_id: 'obj_1', name: '56', type: 'flyin'},
                                 { obj_id: 'obj_1', name: '77', type: 'flyin'},
-                                { obj_id: 'obj_1', name: '78', type: 'flyin'},
+                                // { obj_id: 'obj_1', name: '78', type: 'flyin'},
                                 { obj_id: 'obj_1', name: '55', type: 'flyin'},
                             ],
 
@@ -621,7 +623,7 @@ let projData = {
                                 { obj_id: 'obj_1', name: '10', type: 'flyin'},
                                 { obj_id: 'obj_1', name: '11', type: 'flyin'},
                                 { obj_id: 'obj_1', name: '79', type: 'flyin'},
-                                { obj_id: 'obj_1', name: '80', type: 'flyin'},
+                                // { obj_id: 'obj_1', name: '80', type: 'flyin'},
                                 
 
 
@@ -635,7 +637,7 @@ let projData = {
                                 en:'Step 8'
                             },
                             des:{
-                                tw:'把4段軌道接好再一起裝到大小象身上',
+                                tw:'把4段軌道接好再一起扣到大小象身上',
                                 en:'Step description: 8 ',
                             },
                             scene_id:'s1',

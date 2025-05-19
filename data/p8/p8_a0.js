@@ -574,7 +574,7 @@ let projData = {
                                 en:'Step 8'
                             },
                             des:{
-                                tw:'樹頂貼2片小三角並裝飾小配件，樂園開張！',
+                                tw:'樹頂貼2片小三角並裝飾小配件',
                                 en:'Step description: 8',
                             },
                             scene_id:'s1',

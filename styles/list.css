@@ -1,16 +1,16 @@
 
 html, body{
-    background-color: #E4C050;
+    background-color: #feeebd;
     min-height: 100vh;
 }
 
 #main{
-    background-color: #E4C050;
+    background-color: #feeebd;
     text-align: center;
 }
 
 #header{
-    background-color: #E1A64A;
+    background-color: #ffffff;
     color: white;
     padding: 1rem;
     display: flex;
@@ -20,9 +20,11 @@ html, body{
 }
 
 #header_title {
-    font-size: 22px;
+    color: #42bed4;
+    font-size: 20px;
     margin: 0;
     width: 100%;
+    padding: 4px;
 }
 
 
@@ -48,7 +50,7 @@ html, body{
     border-radius: 12px;
 }
 
-#main_logo_mask{
+/* #main_logo_mask{
 
     width: 50%;
     height: 120px;
@@ -62,17 +64,40 @@ html, body{
     mask-size: contain;
 
     background-color: white;
+} */
+
+
+#main_logo_mask{
+
+    width: 50%;
+    height: 120px;
+
+    background-image: url("../images/icon/mamayoLogo-color-white-border.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;    
+
+    /* -webkit-mask: url("../images/icon/app素材-09.png") no-repeat center center;
+    -webkit-mask-position: center;
+    -webkit-mask-size: contain;
+
+    mask: url("../images/icon/app素材-09.png") no-repeat center center;
+    mask-position: center;
+    mask-size: contain;
+
+    background-color: white; */
+
 }
 
 
 #main_description{
     margin-top: 0px;
     
-    font-size: 18px;
+    font-size: 16px;
     text-align: center;
     white-space: pre-line;
 
-    color: white;
+    color: #4c4a4a;
 }
 
 .gallery {
@@ -124,6 +149,9 @@ html, body{
 }
 
 .gallery-textContainer{
+
+    color: #4c4a4a;
+
     flex-grow: 0;
     flex-shrink: 0;
     flex-basis: auto;
@@ -164,7 +192,7 @@ html, body{
     margin-top: 6px;
     margin-bottom: 6px;
     font-size: 18px;
-    color: white;
+    /* color: white; */
 }
 
 

@@ -408,7 +408,7 @@ let projData = {
                                 en:'Step 1'
                             },
                             des:{
-                                tw:'鋪上喜歡的草地',
+                                tw:'鋪草地，讓高樓地基更穩',
                                 en:'Step description: 1 ',
                             },
                             scene_id:'s1',
@@ -436,7 +436,7 @@ let projData = {
                                 en:'Step 2'
                             },
                             des:{
-                                tw:'蓋高樓前每層背後要有2片磁力片支撐才穩',
+                                tw:'蓋高樓前每層背後要有2片磁力片支撐',
                                 en:'Step description: 2 ',
                             },
                             scene_id:'s1',
@@ -458,7 +458,7 @@ let projData = {
                                 en:'Step 3'
                             },
                             des:{
-                                tw:'貼著支蓋2片，一樓就完成',
+                                tw:'貼著支架蓋2片，一樓完成',
                                 en:'Step description: 3 ',
                             },
                             scene_id:'s1',
@@ -477,7 +477,7 @@ let projData = {
                                 en:'Step 4'
                             },
                             des:{
-                                tw:'蓋二樓前先蓋背後的兩片支撐',
+                                tw:'正三角型＋方形，滑梯有坡度',
                                 en:'Step description: 4 ',
                             },
                             scene_id:'s1',
@@ -497,7 +497,7 @@ let projData = {
                                 en:'Step 5'
                             },
                             des:{
-                                tw:'2片吸上去',
+                                tw:'蓋2樓前先蓋背後兩片支撐',
                                 en:'Step description: 5 ',
                             },
                             scene_id:'s1',
@@ -528,7 +528,7 @@ let projData = {
                                 en:'Step 6'
                             },
                             des:{
-                                tw:'左右挖空蓋ㄇ字，滾球能穿過大樓',
+                                tw:'左右挖空不蓋，滾球能穿過大樓',
                                 en:'Step description: 6 ',
                             },
                             scene_id:'s1',
@@ -559,7 +559,7 @@ let projData = {
                                 en:'Step 7'
                             },
                             des:{
-                                tw:'正三角形＋方形，滑梯有坡度',
+                                tw:'小斜坡一層一個，左右交替',
                                 en:'Step description: 7 ',
                             },
                             scene_id:'s1',
@@ -590,7 +590,7 @@ let projData = {
                                 en:'Step 8'
                             },
                             des:{
-                                tw:'小斜坡一層一個，左右交替',
+                                tw:'三樓也別忘了先蓋背後的支撐',
                                 en:'Step description: 8 ',
                             },
                             scene_id:'s1',
@@ -618,7 +618,7 @@ let projData = {
                                 en:'Step 9'
                             },
                             des:{
-                                tw:'第4層，別忘了每層背後都有翅膀',
+                                tw:'蓋到4樓，有背後支撐依舊穩固',
                                 en:'Step description: 9 ',
                             },
                             scene_id:'s1',
@@ -646,7 +646,7 @@ let projData = {
                                 en:'Step 10'
                             },
                             des:{
-                                tw:'蓋5層，有5個小斜坡',
+                                tw:'蓋到5層，有5個小斜坡',
                                 en:'Step description: 10 ',
                             },
                             scene_id:'s1',

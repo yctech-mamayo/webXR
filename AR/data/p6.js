@@ -205,7 +205,7 @@ let projData = {
                                     duration: 6,
                                     delay: 0.5,
                                     repeat: 0,
-                                    axis:[ 0.15 , 1 , 0],
+                                    axis:[ 0 , 1 , 0],
                                     angle: 6.2831,
                                 }
                             },

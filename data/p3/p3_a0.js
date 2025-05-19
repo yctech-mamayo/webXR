@@ -434,7 +434,7 @@ let projData = {
                                 en:'Step 2'
                             },
                             des:{
-                                tw:'身體先做好，再放腳上',
+                                tw:'菱形的肚子由下往上一片片蓋',
                                 en:'Step description: 2 ',
                             },
                             scene_id:'s1',
@@ -468,7 +468,7 @@ let projData = {
                                 en:'Step 3'
                             },
                             des:{
-                                tw:'身體先做好，再放腳上',
+                                tw:'懸空的磁力片靠橫向磁力片連結',
                                 en:'Step description: 3 ',
                             },
                             scene_id:'s1',
@@ -503,7 +503,7 @@ let projData = {
                                 en:'Step 4'
                             },
                             des:{
-                                tw:'身體先做好，再放腳上',
+                                tw:'菱形肚子有了雙腳支撐可以立在桌上',
                                 en:'Step description: 2 ',
                             },
                             scene_id:'s1',
@@ -531,12 +531,12 @@ let projData = {
                         {
                             id:'step_5', //// 必須為 專案內唯一
                             name:{
-                                tw:'步驟 3',
-                                en:'Step 3'
+                                tw:'步驟 5',
+                                en:'Step 5'
                             },
                             des:{
                                 tw:'做個沒有底的方塊接在身體上',
-                                en:'Step description: 3 ',
+                                en:'Step description: 5 ',
                             },
                             scene_id:'s1',
                             obj_id: 'obj_1',
@@ -553,12 +553,12 @@ let projData = {
                         {
                             id:'step_6', //// 必須為 專案內唯一
                             name:{
-                                tw:'步驟 4',
-                                en:'Step 4'
+                                tw:'步驟 6',
+                                en:'Step 6'
                             },
                             des:{
                                 tw:'恐龍抬頭！背後兩片三角，中間吸起來',
-                                en:'Step description: 4 ',
+                                en:'Step description: 6 ',
                             },
                             scene_id:'s1',
                             obj_id: 'obj_1',
@@ -573,12 +573,12 @@ let projData = {
                         {
                             id:'step_7', //// 必須為 專案內唯一
                             name:{
-                                tw:'步驟 5',
-                                en:'Step 5'
+                                tw:'步驟 7',
+                                en:'Step 7'
                             },
                             des:{
                                 tw:'用大小三角加上背後威風的刺',
-                                en:'Step description: 5 ',
+                                en:'Step description: 7 ',
                             },
                             scene_id:'s1',
                             obj_id: 'obj_1',
@@ -603,12 +603,12 @@ let projData = {
                         {
                             id:'step_8', //// 必須為 專案內唯一
                             name:{
-                                tw:'步驟 6',
-                                en:'Step 6'
+                                tw:'步驟 8',
+                                en:'Step 8'
                             },
                             des:{
                                 tw:'頭有三面，加上眼睛',
-                                en:'Step description: 6 ',
+                                en:'Step description: 8 ',
                             },
                             scene_id:'s1',
                             obj_id: 'obj_1',
@@ -627,12 +627,12 @@ let projData = {
                         {
                             id:'step_9', //// 必須為 專案內唯一
                             name:{
-                                tw:'步驟 7',
-                                en:'Step 7'
+                                tw:'步驟 9',
+                                en:'Step 9'
                             },
                             des:{
-                                tw:'也別忘了兩隻小短手喔！',
-                                en:'Step description: 7 ',
+                                tw:'加上手和尾巴，橫向吸一片更穩固',
+                                en:'Step description: 9 ',
                             },
                             scene_id:'s1',
                             obj_id: 'obj_1',

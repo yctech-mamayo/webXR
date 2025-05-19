@@ -517,7 +517,7 @@ let projData = {
                                 en:'Step 5'
                             },
                             des:{
-                                tw:'三角形、方形輪流蓋，慢慢蓋到中間',
+                                tw:'站在拱門背面操作，方便調整結構',
                                 en:'Step description: 5',
                             },
                             scene_id:'s1',

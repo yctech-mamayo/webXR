@@ -564,7 +564,7 @@ let projData = {
                                 en:'Step 5'
                             },
                             des:{
-                                tw:'獨棟樓口字型底座開扇門',
+                                tw:'獨棟樓ㄇ字型底座開扇門',
                                 en:'Step description: 5 ',
                             },
                             scene_id:'s1',

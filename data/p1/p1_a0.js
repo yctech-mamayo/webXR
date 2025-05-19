@@ -161,9 +161,9 @@ let projData = {
                                 id:'trans_tube', 
                                 trans: true, 
                                 opacity: 0.5, 
-                                color: [235, 235, 235], 
+                                color: [ 200, 200, 200 ], 
                                 roughness: 0.2, 
-                                metalness: 0.1,
+                                metalness: 0.15,
                                 depthWrite: false,
                                 names:[
                                     '12-1','12-2','11-1','11-2','15-1','15-2',
@@ -457,7 +457,7 @@ let projData = {
                                 en:'Step 4'
                             },
                             des:{
-                                tw:'半圓軌道軌道先扣一邊，再接脖子才會穩',
+                                tw:'半圓軌道軌道先扣一邊再接脖子才會穩',
                                 en:'Step description: 4 ',
                             },
                             scene_id:'s1',

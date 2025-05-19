@@ -274,7 +274,7 @@
 }
 
 
-#all_product_btn_link , #buy_btn_link {
+#all_product_btn_link , #buy_btn_link , #vr_btn_link {
     text-decoration: none;
     color: rgb(254, 62, 129);
     pointer-events: all;

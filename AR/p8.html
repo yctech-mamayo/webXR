@@ -95,6 +95,7 @@
 			let gallery = document.getElementById('all_product_gallery');
 			let scan_text = document.getElementById('scan_text');
 			let all_product_popup = document.getElementById('all_product_popup');
+			let vr_btn_link = document.getElementById('vr_btn_link');
 
 			if ( gallery && Array.isArray(productsData) && scan_text && all_product_popup ){
 				productsData.forEach( ( e , i ) =>{
@@ -144,6 +145,8 @@
 						scan_text.textContent = t_all;
 						all_product_popup.classList.remove('show');
 
+						vr_btn_link.href = '../detail/p' + (i + 1) +'.html';
+
 						if ( window.arController ){
 							//// 設定 可掃描的 圖片
 							arController.cust_allow_proj = i + 1;
@@ -177,7 +180,7 @@
 	<div id = 'interactDMPMain'>
 		<div id = 'interactDMPTextDiv'>
 			<div id = 'interactDMPText'>
-				MAKAR WEB AR 想要取得您的動作和方向
+				請同意此網頁使用您的動作和方向
 			</div>
 		</div>
 
@@ -291,7 +294,7 @@
 				<h2 id = 'scan_other_text'>掃描其他圖</h2>
 			</div>
 
-			<a href = "../detail/p1.html" target="_self" id = 'all_product_btn_link' >
+			<a href = "../detail/p8.html" target="_self" id = 'vr_btn_link' >
 				<div id = 'check_teach'>
 					<h2 id = 'check_teach_text'>查看教學</h2>
 				</div>
@@ -312,7 +315,7 @@
 	</div>
 
 
-	<div id = 'footer_privacy'> Copyright mamayo 2025 </div>
+	<div id = 'footer_privacy'> © 2025 Mamayo 媽媽友. 版權所有．禁止未經授權使用 </div>
 </section>
 
 

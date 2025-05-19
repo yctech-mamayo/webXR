@@ -19745,7 +19745,7 @@ module.exports.Component = registerComponent('device-orientation-permission-ui',
     },
     deviceMotionMessage: {
       // default: 'This immersive website requires access to your device motion sensors.'
-      default: 'MAKAR Web XR requires access to your device motion sensors'
+      default: '請同意此網頁使用您的動作感應器'
     },
     httpsMessage: {
       default: 'Access this site over HTTPS to enter VR mode and grant access to the device sensors.'

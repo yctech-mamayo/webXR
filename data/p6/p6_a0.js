@@ -596,7 +596,7 @@ let projData = {
                                 en:'Step 7'
                             },
                             des:{
-                                tw:'車尾蓋蓋子，前面兩片可以讓下一步更穩固',
+                                tw:'車身前面加兩片，穩固下一步的梯形車頭',
                                 en:'Step description: 7',
                             },
                             scene_id:'s1',
