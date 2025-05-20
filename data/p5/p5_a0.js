@@ -575,11 +575,11 @@ let projData = {
                                 { obj_id: 'obj_1', name: '66', type: 'flyin'},
                                 { obj_id: 'obj_1', name: '68', type: 'flyin'},
                             ],
-                            // cameraAttr:{
-                            //     p: [ 7 , 4.7 , -2.8 ],
-                            //     target:[ -1.1 , 2.1 , 0.8 ],
-                            //     t: 1,
-                            // }
+                            cameraAttr:{
+                                p: [ 9.91 , 6.71 , 1.86 ],
+                                target:[ -2.14 , 3.046 , -0.167 ],
+                                t: 1,
+                            }
 
                         },
                         {

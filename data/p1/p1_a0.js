@@ -106,7 +106,8 @@ let projData = {
                     {
                         main_type: 'model',
                         sub_type:'glb',
-                        res_url:'../resource/model/swan/天鵝(A3).glb',
+                        // res_url:'../resource/model/swan/天鵝(A3).glb',
+                        res_url:'https://cust-mamayo.s3.ap-northeast-1.amazonaws.com/resource/model/%E5%A4%A9%E9%B5%9D(A3).glb',
                         behav:[{type:'showData'}],
                         generalAttr: {
                             logic: false,
@@ -487,11 +488,12 @@ let projData = {
                                 { obj_id: 'obj_1', name: '24', type: 'flyin', lp:[ -220 , -450 , -20 ] },
                                 
                             ],
-                            // cameraAttr:{
-                            //     p: [ 1.16, 4.51,  -6.80],
-                            //     target:[ 0 , 0 , 0 ],
-                            //     t: 1,
-                            // }
+                            cameraAttr:{
+                                p: [ -7.52 , 6.33 , -2.26 ],
+                                target:[ 0.5 , 2.74 , 0.23 ],
+                                t: 1,
+                                
+                            }
 
                         },
                         {

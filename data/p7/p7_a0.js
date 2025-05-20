@@ -559,6 +559,11 @@ let projData = {
                                 { obj_id: 'obj_1', name: '56', type: 'flyin'},
 
                             ],
+                            cameraAttr:{
+                                p: [ 12.47, 6.68,  -2.94 ],
+                                target:[ -3.02 , 2.78 , 0.65 ],
+                                t: 1,
+                            }
 
                         },
                         {

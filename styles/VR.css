@@ -477,6 +477,14 @@
     top: 6px;
 }
 
+#step_to_head{
+    margin-right: 3px;
+}
+
+#step_to_end{
+    margin-left: 3px;
+}
+
 #step_to_head , #step_to_end{
     border-radius: 50px;
     /* border: 1px solid black; */
