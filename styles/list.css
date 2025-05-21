@@ -60,7 +60,9 @@ html, body{
 
 #footer_title {
     color: #42bed4;
-    font-size: 11px;
+    font-size: 13px;
+    white-space: nowrap;
+    
     margin: 0;
     width: 100%;
     padding: 4px;

@@ -107,7 +107,7 @@ let projData = {
                         main_type: 'model',
                         sub_type:'glb',
                         // res_url:'../resource/model/swan/天鵝(A3).glb',
-                        res_url:'https://cust-mamayo.s3.ap-northeast-1.amazonaws.com/resource/model/%E5%A4%A9%E9%B5%9D(A3).glb',
+                        res_url:'https://cust-mamayo.s3-accelerate.amazonaws.com/resource/model/%E5%A4%A9%E9%B5%9D(A3).glb',
                         behav:[{type:'showData'}],
                         generalAttr: {
                             logic: false,

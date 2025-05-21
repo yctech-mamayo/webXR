@@ -264,11 +264,17 @@ class StepController {
                 let tp = new_step.cameraAttr.target;
                 oCamera.components['orbit-controls'].target.set( tp[0], tp[1], tp[2] );
 
-                // oCamera.components['orbit-controls'].controls.enabled=false;
+                //// 禁止點擊畫面
+                if ( oCamera.components['orbit-controls'].controls.domElement ){
+                    oCamera.components['orbit-controls'].controls.domElement.style.pointerEvents = 'none';
+                }
 
                 this.GsapZoomInOutCamera(new THREE.Vector3( p[0], p[1], p[2] ) , t ).then(() => { 
 
-                    // oCamera.components['orbit-controls'].controls.enabled = true;
+                    //// 開放點擊畫面
+                    if ( oCamera.components['orbit-controls'].controls.domElement ){
+                        oCamera.components['orbit-controls'].controls.domElement.style.pointerEvents = '';
+                    }
 
                     // console.log(' has stepCamra done ,  ' , isStepModelDone );
                     //// 相機 設定 動畫 完成

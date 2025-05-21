@@ -426,9 +426,10 @@
     width: 90%;
     height: 20px;
     text-align: center;
-    font-size: 11px;
+    font-size: 13px;
     color: white;
-
+    white-space: nowrap;
+    
     z-index: -1;
 }
 
