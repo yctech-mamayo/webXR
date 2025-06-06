@@ -1,0 +1,664 @@
+<!doctype html>
+<html lang="zh">
+<head>
+	<title> 媽媽友 磁力片 AR 大象 包裝 </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=1">
+	<link rel="icon" type="image/png" href="../favicon.jpg" />
+
+	<link href="../styles_AR/style.css" rel="stylesheet" type="text/css">
+	<link href="../styles_AR/dragon.css" rel="stylesheet" type="text/css">
+	<link href="../styles_AR/AR.css" rel="stylesheet" type="text/css">
+
+	<script>
+		
+		//// 增加預先載入圖片功能，目前只做用在「載入中圖片」
+		// let imageBase = 'https://mifly0makar0assets.s3.ap-northeast-1.amazonaws.com/DefaultResource/2D/Loading_20220630/Loading_An000';
+		// for (let i = 0; i < 30; i++ ){
+		// 	let strIndex = '';
+		// 	if (i < 10){
+		// 		strIndex = String( '0'+ i ) ;
+		// 	}else{
+		// 		strIndex = String( i );
+		// 	}
+		// 	let linkElement = document.createElement('link');
+		// 	linkElement.setAttribute('as', 'image');
+		// 	linkElement.setAttribute('rel', 'preload');
+		// 	linkElement.setAttribute('href', imageBase + strIndex + '.png' );
+		// 	document.head.appendChild( linkElement );
+		// }
+
+	</script>
+
+</head>
+<body>
+
+	<script type="module">
+		import projData_2 from "./data/p2_pack.js";
+		import projData_7 from "./data/p7_pack.js";
+
+		window.projData_2 = projData_2;
+		window.projData_7 = projData_7;
+
+		//// 整合所有場景:
+		let projData_all = JSON.parse(JSON.stringify( projData_2 ));
+		[ projData_7  ].forEach( e=>{
+			if ( projData_all.makarUserData && projData_all.makarUserData.scenesData && 
+				Array.isArray( projData_all.makarUserData.scenesData.scenes ) && 
+				Array.isArray( projData_all.makarUserData.targetList ) &&
+				e && e.makarUserData && e.makarUserData.scenesData && e.makarUserData.scenesData.scenes && 
+				e.makarUserData.scenesData.scenes[0] && 
+				e.makarUserData.targetList && e.makarUserData.targetList[0]
+			){
+				//// 場景
+				projData_all.makarUserData.scenesData.scenes.push(
+					e.makarUserData.scenesData.scenes[0]
+				)
+
+				//// 辨識圖
+				projData_all.makarUserData.targetList.push(
+					e.makarUserData.targetList[0]
+				)
+
+				//// 素材
+				if ( projData_all.makarUserData.userOnlineResDict && e.makarUserData.userOnlineResDict ){
+					let res_e_keys = Object.keys( e.makarUserData.userOnlineResDict );
+					let res_all_keys = Object.keys( projData_all.makarUserData.userOnlineResDict );
+					res_e_keys.forEach( res_e =>{
+						projData_all.makarUserData.userOnlineResDict[ res_e ] = e.makarUserData.userOnlineResDict[res_e]
+					})	
+				}
+			}
+		});
+
+		window.projData_all = projData_all;
+
+		window.custProject = projData_all;
+		// window.custProject = projData_1;
+		
+		import productsData from "./data/all_product_pack.js";	
+		window.productsData = productsData;
+
+		window.addEventListener( 'load', windowLoaded );
+		function windowLoaded( e ){
+			let gallery = document.getElementById('all_product_gallery');
+			let scan_text = document.getElementById('scan_text');
+			let all_product_popup = document.getElementById('all_product_popup');
+			let vr_btn_link = document.getElementById('vr_btn_link');
+
+			if ( gallery && Array.isArray(productsData) && scan_text && all_product_popup ){
+				productsData.forEach( ( e , i ) =>{
+
+					let galleryItem = document.createElement('div');
+					galleryItem.classList.add('gallery-item');
+					
+					let gImg = document.createElement('img');
+					gImg.classList.add('gImg');
+					gImg.src = e.img;
+
+					let gtc = document.createElement('div');
+					gtc.classList.add('gtc');
+
+					let gittw = document.createElement('p');
+					gittw.classList.add('gittw');
+					gittw.textContent = e.name_tw;
+
+					// let giten = document.createElement('p');
+					// giten.classList.add('giten');
+					// giten.textContent = e.name_en;
+
+					// let hr1 = document.createElement('hr');
+					// hr1.classList.add('gallery-hr-dashed');
+
+					// let diff = document.createElement('div');
+					// diff.classList.add('difficulty');
+					// diff.textContent = e.diff;
+
+					// let hr2 = document.createElement('hr');
+					// hr2.classList.add('gallery-hr-dashed');
+					
+					gtc.appendChild(gittw);
+					// gtc.appendChild(giten);
+					// gtc.appendChild(hr1);
+					// gtc.appendChild(diff);
+					// gtc.appendChild(hr2);
+
+					galleryItem.appendChild( gImg );
+					galleryItem.appendChild( gtc );
+
+					gallery.appendChild( galleryItem );
+
+					galleryItem.onclick = function(){
+						let t_all = `相機對準包裝 ` + e.name_tw + ` 圖案
+						AR磁力片就出現啦`;
+						scan_text.textContent = t_all;
+						all_product_popup.classList.remove('show');
+
+						vr_btn_link.href = e.vr_url ;
+
+						if ( window.arController ){
+							//// 設定 可掃描的 圖片
+							arController.cust_allow_proj = i + 1;
+							//// 開啟掃描
+							setTimeout( function(){
+								arController.enableTracking = true;
+							}, 500 )
+
+						}
+
+
+					}
+					
+					// <div class='gallery-textContainer'>
+					// 	<p class="gallery-item-title-tw">天鵝</p>
+					// 	<p class="gallery-item-title-en">Swan</p>
+					// 	<hr class="gallery-hr-dashed">
+					// 	<div class="difficulty">難度：★★★★☆</div>	
+					// 	<hr class="gallery-hr-dashed">
+					// </div>
+				});
+
+			}
+
+		}
+
+	</script>
+
+<div id = 'interactDMPBG'>
+	
+	<div id = 'interactDMPMain'>
+		<div id = 'interactDMPTextDiv'>
+			<div id = 'interactDMPText'>
+				請同意此網頁使用您的動作和方向
+			</div>
+		</div>
+
+		<div id = "homeStartButton"> 
+			<p id="homeStartP">
+				允許
+			</p>
+		</div>
+	</div>
+
+</div>
+
+<script src="../js/vconsole.min.js"></script>
+<script>
+	if ( window.navigator.userAgent.toLowerCase().indexOf("mobile") >= 0){
+		// var vConsole = new VConsole();	
+		console.log("The system is mobile: ", window.navigator.userAgent.toLowerCase() );
+	}else{
+		console.log("The system is PC: ", window.navigator.userAgent.toLowerCase() );
+		// switchLens.style.display = "none";
+	}
+</script>
+
+<!-- choose the develop or release version -->
+<script src="../lib/makarWebAR.min.js"></script>
+<!-- <script src="../build/artoolkit.min.js"></script> -->
+
+<script> 
+	//////
+	////// set the version of server, will also change the function in networkAgent.js
+	//////
+	window.serverVersion = "3.0.0";
+	window.webARVersion = "3.1.3"; ////// 作為 webAR 的版本控管，20200812 開始，目前用於溝通後端   
+
+	switch(serverVersion){
+		case "3.0.0":
+				// window.serverUrl = "https://ssl-api-makar-v3-apps.miflyservice.com:8081/Makar/"; // official V3 makar server.
+				// window.serverUrl = "https://ssl-api-makar-v3-apps.miflyservice.com/Makar/"; // official V3 makar server.
+				window.serverUrl = "https://test1.makar.app/Makar/"; // AWS test V3 makar server.
+				// window.serverUrl = "https://makar.app/Makar/";	// local test server 20200316
+		break;
+	}
+
+	//// 從「 母頁面取得 MAKAR server api 位址」
+	if ( parent && parent.serverUrl ){
+		console.log(' makarAR.html: use parent server url ', parent.serverUrl );
+		window.serverUrl = parent.serverUrl;
+	}
+
+	var getDMP = false;
+	window.getDMP = getDMP;
+
+	window.requestDeviceMotionPermission = function ( cb ){
+		console.log("makarAR.html: requestDeviceMotionPermission  " , typeof(DeviceMotionEvent)  );
+		if (typeof(DeviceMotionEvent) !== 'undefined' && typeof(DeviceMotionEvent.requestPermission) === 'function') {
+			DeviceMotionEvent.requestPermission().then(response => {
+				console.log("makarAR.html: requestPermission response =", response );
+				if ( cb ){
+					cb( response );
+				}
+				if (response == 'granted') {
+					getDMP = true;
+					window.addEventListener('devicemotion', (e) => {
+						// but.style.visibility='hidden';
+					})
+				}
+			}).catch(console.error)
+		}else {
+			// alert('DeviceMotionEvent is not defined');
+			console.log("makarAR.html: requestPermission: DeviceMotionEvent is not defined "  );
+			getDMP = true;
+		}
+	}
+	requestDeviceMotionPermission();
+
+
+
+</script>
+
+<!-- 為了 SEO 跟 正規化網頁的內容，包含 Logo, Header, 等 -->
+<section id = 'main_section'>
+
+	<div id='main_logo_container'>
+		<div id = 'main_logo_mask'></div>
+	</div>
+
+	<div id = 'scan_rect'>
+		<span class="top-left"></span>
+		<span class="top-right"></span>
+		<span class="bottom-left"></span>
+		<span class="bottom-right"></span>
+	</div>
+	
+	<div id = 'scan_note_text_container'>
+		<div id = 'scan_text'>相機對準包裝 大象 圖案
+			AR磁力片就出現啦
+		</div>
+	</div>
+	
+	<div id = 'control_help'> 
+		<div id = 'control_help_text'> 用單指旋轉可 360 瀏覽作品
+			雙指張開放大縮小
+		</div>
+	</div>
+
+	<div id = 'bottom_container'>
+		<div id = 'bottom_container_main'>
+			
+
+			<div id = 'scan_other'>
+				<h2 id = 'scan_other_text'>掃描其他圖</h2>
+			</div>
+
+			<a href = "../detail/p2.html" target="_self" id = 'vr_btn_link' >
+				<div id = 'check_teach'>
+					<h2 id = 'check_teach_text'>查看教學</h2>
+				</div>
+			</a>
+
+			<a href = "../list.html" target="_self" id = 'all_product_btn_link' >
+				<div id = 'all_product'>
+					<h2 id = 'all_product_text'>所有作品</h2>
+				</div>				
+			</a>
+
+		</div>
+	</div>
+
+	<div id = 'all_product_popup'>
+		<div id = 'all_product_popup_close'></div>
+		<div id = 'all_product_gallery'></div>
+	</div>
+
+
+	<div id = 'footer_privacy'> © 2025 Mamayo 媽媽友. 版權所有．禁止未經授權使用 </div>
+</section>
+
+
+<div id = 'resolutionWarningDiv'  > 
+	<div id = 'rwText'> 請將裝置改為直放 </div> 
+</div>
+
+
+<!-- 起始載入頁面 -->
+<div id = "homePage" style = "display: flex;">
+	<img id = 'loading_img'  src="../images/icon/app素材-09.png" alt="loading">
+
+	<div id = 'loading_text'>手握磁力片，創造大世界！</div>
+
+	<div id="dot_container">
+		<div></div>
+		<div></div>
+		<div></div>
+	</div>
+</div>
+
+
+<div id="freeUserWarnDiv">
+	<div id = 'freeUserWarnContent'>
+		<p id="pUserInfo" >  info  </p>
+		<div id = "leaveIframe">
+			返回
+		</div>
+	</div>
+</div>
+
+
+<div id="warnModal" >
+	<div id="warnModalContent"  >
+		<p id = "warnModalInfo"> 
+			GPS info
+		</p>
+		<div id = "warnModalButton">
+			<p id = "warnButtonTitle"> 確認 </p>
+		</div>
+
+	</div>
+</div>
+
+<div id = "clickToPlayAudio">
+	請點擊畫面來播放聲音
+</div>
+
+
+<div id = "timerDiv"  style="display: none" >
+	<p id = "timerContent" class="centerText"> 答題計時 </p>
+</div>
+
+<div id = "tipButtonDiv"  style="display: none" >
+	<p id = "tipButtonContent" class="centerText"> 提示 </p>
+</div>
+
+<div id = "tipDiv" class="modal" style="display: none">
+	<div id="tipModalContent" class="modal-content" >
+		<div id="tipContentDiv">
+			<p id = "tipContent" class="centerText"> 提示內文 </p>
+		</div>
+		<div id = "tipConfirmButton">
+			<p id = "tipConfirmConetent" class="centerText"> 確認 </p>
+		</div>
+	</div>
+</div>
+
+
+
+<script>
+	//// set loading page.
+	// var bgcanvas = document.getElementById("bgcanvas");
+	// bgcanvas.style.display = "inline";
+	// var ctx = bgcanvas.getContext("2d");
+	// //// image part
+	// var img = new Image(); 
+	// img.onload = function(){
+	// 	if (window.Browser){
+	// 		if (window.Browser.mobile){
+	// 			console.log("makarAR.html: Browse.mobiler=", img.width, img.height, innerWidth, innerHeight );
+	// 			var w = window.innerWidth;
+	// 			var h = (window.innerWidth/480) * 640;
+				
+	// 			var w = window.innerWidth;
+	// 			var h = window.innerHeight;
+				
+	// 			bgcanvas.width = w;
+	// 			bgcanvas.height = h;
+	// 			// ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, w, h );
+	// 			// ctx.drawImage(img, 0, (img.height-img.width/480*640)/2 , img.width, img.width/480*640 , 0, 0, w, h );
+	// 			ctx.drawImage(img, 0, 50 , img.width, img.width/w*h , 0, 0, w, h );
+
+	// 		}
+	// 		if (window.Browser.desktop){
+	// 			// console.log("nft_MAKAR.html: Browse.desktop=", window.Browser , img.width, img.height);
+	// 			bgcanvas.width = 640;
+	// 			bgcanvas.height = 480;
+	// 			ctx.drawImage(img, 0, 400, 720, 600, 0, 0, 640, 480 );
+	// 		}
+	// 	}
+	// }
+	// img.src =  "https://s3-ap-northeast-1.amazonaws.com/makar.webar.defaultobject/makar_default_objects/2D/makar-v3-loading.png";
+	
+	//// set webGL canvas.
+	// var mycanvas = document.getElementById("mycanvas");
+	// mycanvas.style.display = "none";
+
+	
+
+</script>
+
+<!-- develop aframe -->
+<!-- <script src="../js/aframe-v1.0.4.js"></script>
+<script src = "../js/aframe-gif-shader.js"></script>
+<script src = "../js/aframe-extras.js"></script> -->
+
+<!-- release aframe -->
+<script src="../lib/webpack/aframe-v1.0.4.min.js"></script>
+
+<!-- develop GSAP -->
+<script src = "../lib/GSAP/gsap.js"></script>
+<script src = "../lib/GSAP/ScrollTrigger.js"></script>
+<script src = "../lib/GSAP/ScrollToPlugin.js"></script>
+<script src = "../lib/GSAP/TextPlugin.js"></script>
+
+<!-- release GSAP 建議不用使用 -->
+<!-- <script src="../lib/webpack/GSAP.min.js"></script> -->
+
+
+<!-- develop three and AR -->
+<!-- <script src = "../js/scratchCard.js"></script>
+<script src="../js/checkBrowser.js"></script>
+<script src="../js/networkAgent.js"></script>
+<script src="../js/artoolkit.proxy.js"></script>
+<script src="../js/gif-animator.js"></script>
+<script src="../lib/orbitControls_customize.js"></script>
+
+<script src = '../lib/TGALoader.js'></script>
+<script src="../lib/chromaShader.js"></script>
+<script src="../lib/ObjectControls.js"></script> -->
+<script src = "../lib/anime/anime.min.js"></script>
+
+
+
+<!-- release three and AR -->
+<script src="../lib/webpack/appAR.module.min.js"></script>
+
+
+
+<!-- 轉入 版本控制之後載入 -->
+<!-- <script src="../js/artoolkit.three.js"></script> -->
+
+
+
+<!-- develop 版本控制流程 -->
+<script type="module" src="../js/ARMain/arVersionControl.js"></script>	
+
+<!-- release 版本控制流程 -->
+<!-- <script type="module" src="../lib/webpack/arIndex.min.js"></script>	 -->
+
+
+
+
+<script src = "../lib/logicSystem/logicSystem.js"></script>
+<script src = "../lib/logicSystem/transform.js"></script>
+<script src = "../lib/logicSystem/actions.js"></script>
+<script src = "../lib/logicSystem/controls.js"></script>
+<script src = "../lib/logicSystem/operators.js"></script>
+<script src = "../lib/logicSystem/items.js"></script>
+<script src = "../lib/logicSystem/data.js"></script>
+<script src = "../lib/logicSystem/variables.js"></script>
+<script src = "../lib/logicSystem/event.js"></script>
+<script src = "../lib/logicSystem/debug.js"></script> 
+
+<!-- <script src="../lib/webpack/logicAR.min.js"></script> -->
+
+
+<!-- all in one  -->
+<!-- <script src="../lib/appAR.module.min.js"></script>
+<script src="../lib/logicAR.min.js"></script> -->
+
+
+
+<script>
+
+
+	/////// do something when document ready
+
+	window.onload = function(){
+
+		//// 手機版面，強迫只能 直版
+		if (window.Browser && (Browser.mobile == true || Browser.iOS == true || navigator.platform.includes('armv8l') == true ) ){
+			console.log(' 111 ');
+			//// 起始判斷直橫板
+	        let dc = deviceWHCheck();
+			if ( dc ){
+				console.log(' 111 ');
+				start_AR_process();
+			} else {
+				console.log(' 222 ');
+			}
+
+		}else{
+			console.log(' 333 ');
+			start_AR_process();
+		}
+
+		function start_AR_process(){
+			setTimeout(function(){
+
+				console.log("makarAR.html: window onload ");
+				// var mdb = window.mdb = new mIndexedDB(); //// 為了括括卡 集點卡，假如直接執行此頁面，則需要，假如從 官方界面呼叫 iframe 則不用。
+				if (getDMP == true){
+					interactDMPBG.style.display = "none";
+
+					// startARProcess();
+					startARWithVersionControl();
+
+					// startLoaingPage();
+
+				}else{
+					
+					interactDMPBG.style.display = "block";
+					homeStartButton.addEventListener("click", function(){
+						console.log("makarVR_directUrl.html: call requestDMP");
+						requestDeviceMotionPermission( function(){
+							interactDMPBG.style.display = "none";
+
+							// startARProcess();
+							startARWithVersionControl();
+
+							// startLoaingPage();
+						} );
+
+					});
+				}
+
+				//// 監聽到「 完成起始 」之後再打開 UI 介面
+				let tID = setInterval( function(){
+					if ( window.arController && window.arController.enableARRendering == true ){
+						clearInterval( tID );
+						let main_section = document.getElementById('main_section');
+						main_section.classList.add('active');
+
+						//// 設定當前可以掃描的專案 大象 
+						arController.cust_allow_proj = 1;
+
+					}
+				}, 50 )
+
+			}, 500 );
+
+
+			//// UI 控制:
+			let scan_other = document.getElementById('scan_other');
+			let all_product_popup = document.getElementById('all_product_popup');
+			let all_product_popup_close = document.getElementById('all_product_popup_close')
+			if ( all_product_popup && scan_other && all_product_popup_close ){
+				scan_other.onclick = function(){
+					all_product_popup.classList.add('show');
+
+					//// 關閉掃描功能
+					if ( window.arController ){
+						arController.enableTracking = false;
+					}
+				}
+
+				all_product_popup_close.onclick = function(){
+					all_product_popup.classList.remove('show');
+
+					//// 開啟掃描功能
+					if ( window.arController ){
+						setTimeout( function(){
+							arController.enableTracking = true;
+						}, 500 );
+
+					}
+				}
+			}
+
+		}
+
+
+		
+		
+	}
+
+
+	//// 檢查裝置旋轉
+    // //// 檢查裝置是否為手機，判斷橫板不給執行
+    function deviceWHCheck(){
+    	//// 寬高判斷，假如擺放為直板，提醒不能使用
+    	console.log(' _deviceWHCheck: ', document.documentElement.clientWidth , document.documentElement.clientHeight );
+      	let resolutionWarningDiv = document.getElementById( 'resolutionWarningDiv' );
+      	// if ( document.documentElement.clientWidth < document.documentElement.clientHeight || document.documentElement.clientHeight >= 768 ){
+      	if ( document.documentElement.clientWidth < document.documentElement.clientHeight ){
+			resolutionWarningDiv.style.visibility = 'hidden';
+    		return true;
+    	} else {
+       		resolutionWarningDiv.style.visibility = 'visible';
+    		return false;
+    	}
+
+    }
+
+	window.addEventListener("orientationchange", checkOrientationChange ); 
+	function checkOrientationChange(){
+		console.log('_checkOrientationChange_: ', window.innerWidth, window.innerHeight );
+
+		document.documentElement.style.height = 'initial';
+		setTimeout( function(){
+			document.body.style.transform = 'scale(1)';
+			document.documentElement.style.height = '100vh';
+			window.scrollTo( 0 , 0 );
+			setTimeout( function(){
+				window.scrollTo( 0 , 0 );
+				dc = deviceWHCheck();
+			}, 300 )
+
+		}, 300 )
+		
+		 
+	}
+
+	if ( window.top != window.self  ){ //// check if in iframe
+		window.makarID = parent.selectedProject.user_id; //// must be the only one place to set window.makarID, if remove it, the process will not work.
+		// window.makarID = "fefe";
+
+		// Get the modal
+		let projectModal = document.getElementById("projectModal");
+		// Get the <span> element that closes the modal
+		let span = document.getElementsByClassName("close")[0];
+		// When the user clicks on <span> (x), close the modal
+		span.addEventListener("click", function(){
+			projectModal.style.display = "none";
+		});
+
+	} else {
+		window.makarID = "fefe";
+		// window.makarID = "thonsha";
+		// window.makarID = "df7693bb-c7b7-4b61-baad-9ae517531c6f";
+	}
+
+
+
+</script>
+
+<div id = 'gsapEmpty'></div>
+<a href = "tel:666666" id ="phoneCall"></a>
+<a href = "https://www.miflydesign.com" id ="openWebBrowser" target="_blank" ></a>
+<a href="mailto:infomakar@miflydesign.com" id ="sendEmail"></a>
+
+
+<!-- <p>&larr; <a href="../index.html">Back to examples</a> &rarr; </p> -->
+<!-- <br> -->
+</body>
+</html>

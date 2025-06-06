@@ -118,7 +118,8 @@ html, body{
     width: 50%;
     height: 120px;
 
-    background-image: url("../images/icon/mamayoLogo-color-white-border.png");
+    /* background-image: url("../images/icon/mamayoLogo-color-white-border.png"); */
+    background-image: url("../images/icon/20250606/logo_en_tw.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;    
