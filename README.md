@@ -6,6 +6,13 @@
 3. 首頁 UI 更新
 4. 新增 2D 專案頁面 ( detail2D/ )
 
+目前已經上線 大象 跟 拱門的包裝 AR 。同時修改首頁的 Logo
+大象: https://yctech-mamayo.github.io/webXR/AR/q2.html?openExternalBrowser=1
+拱門: https://yctech-mamayo.github.io/webXR/AR/q7.html?openExternalBrowser=1
+
+下周二以前會更新完剩下部分
+
+
 
 #### 2025 06 02
 1. 增加 3 AR 專案。置換辨識圖

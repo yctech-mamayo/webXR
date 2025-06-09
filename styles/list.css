@@ -74,6 +74,81 @@ html, body{
     padding: 4px;
 }
 
+
+#scrollTopBtn{
+    position: fixed;
+    display: none;
+
+    bottom: 35px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: #B3B6C4;
+    opacity: 0.7;
+
+    border-radius: 100%;
+
+    box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    cursor: pointer;
+}
+#scrollTopBtn.active{
+    display: block;
+}
+
+#scrollTopBtnIcon{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 24px;
+    height: 24px;
+    transform: translate(-50%, -50%);
+
+
+    background-color: white;
+    mask-repeat: no-repeat;
+    -webkit-mask-repeat: no-repeat;
+    mask-position: center;
+    -webkit-mask-position: center;
+    mask-size: contain;
+    -webkit-mask-size: contain;
+  
+    mask-image: url("../images/icon/icon_up@2x.png");
+    -webkit-mask-image: url("../images/icon/icon_up@2x.png");
+}
+
+#main_header_container{
+    margin-top: 5px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+#main_header_VR , #main_header_2D , #main_header_new_introduction{
+    position: relative;
+    padding: 5px 17px 5px 17px ;
+    
+    border-radius: 50px;
+    font-size: 16px;
+    letter-spacing: 3px;
+
+    color: black;
+    background-color: rgb(255, 255, 255);
+}
+
+#main_header_VR.active , 
+#main_header_2D.active , 
+#main_header_new_introduction.active {
+    color: white;
+    background-color: #42bed4;
+}
+
 #main_logo_img{
     margin-top: 5px;
 
@@ -227,8 +302,17 @@ html, body{
     color: white;
 }
 
+.color_black{
+    color: black;
+}
+
+.color_pink{
+    color: #e684ab;
+}
+
 .gallery-hr-solid {
-    border-style: solid;
+    border-style: solid none none none ;
+    /* border-top-style: solid; */
 }
 
 .gallery-hr-dashed {
@@ -242,6 +326,150 @@ html, body{
     /* color: white; */
 }
 
+/* 新品 start */
+
+#gallery_new_intro{
+    gap: 5px;
+    padding-bottom: 3px;
+}
+
+.new_intro_title_1{
+    font-weight: bold;
+    font-size: 22px;
+    width: 400px;
+    max-width: 90%;
+    text-align: left;
+}
+
+.new_intro_title_2 {
+    font-weight: bold;
+    font-size: 20px;
+    width: 400px;
+    max-width: 90%;
+
+    text-align: center;
+}
+
+.new_intro_info_container {
+    width: 400px;
+    max-width: 90%;
+
+    text-align: left;
+
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: auto;
+}
+
+.new_intro_info_title{
+    width: fit-content;
+    background-color: #474b4a;
+    border-radius: 50px;
+    padding: 4px 16px 4px 16px ;
+    font-size: 20px;
+}
+
+.new_intro_info_text{
+    font-size: 16px;
+    padding-left: 16px;
+    margin-top: 8px;
+    margin-bottom: 4px;
+}
+
+#gallery_new_intro_header_1 {
+
+    position: relative;
+
+    color: white;
+    overflow: hidden;
+    text-align: center;
+    padding: 2px;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    /* align-content: flex-start; */
+    align-items: center;
+
+    gap: 7px;
+}
+
+#gallery_new_intro_header_2 {
+
+    position: relative;
+    margin-bottom: 10px;
+
+    color: white;
+    overflow: hidden;
+    text-align: center;
+    padding: 2px;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    /* align-content: flex-start; */
+    align-items: center;
+
+    gap: 7px;
+}
+
+.gallery_item_new_intro_0 {
+    position: relative;
+
+    color: white;
+    overflow: hidden;
+    text-align: center;
+    padding: 2px;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    /* align-content: flex-start; */
+    align-items: center;
+
+    gap: 7px;
+}
+
+.gallery_item_new_intro_0.productItem  {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.gallery_item_new_intro_0 img{
+    width: 200px;
+    max-width: 46%;
+    height: auto; /* ✅ 限制圖片高度 */
+    object-fit: contain; /* ✅ 確保圖片裁切填滿區塊 */
+    object-position: center;
+
+    border-radius: 12px;
+}
+
+.gallery_item_new_intro_text_tw {
+    font-size: 26px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    letter-spacing: 3px;
+}
+
+.gallery_item_new_intro_text_a{
+    background-color: #e684ab;
+
+    font-size: 20px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    letter-spacing: 3px;
+    margin-top: 10px;
+    padding: 10px 22px 10px 22px;
+    border-radius: 50px;
+}
+
+#proj_new_intro_hr_end{
+    padding-bottom: 20px;
+}
 
 
 /* 橫版 手機 */
@@ -258,7 +486,26 @@ html, body{
         max-width: 900px;
     }
 
-    .gallery-img , .gallery-item img{
+    #gallery_new_intro{
+        /* grid-template-rows: 50px repeat(5, 50px); */
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-areas: 
+        "header1 header1"
+        "header2 header2"
+        ;
+    }
+
+    #gallery_new_intro_header_1 {
+        grid-area: header1;
+    }
+    #gallery_new_intro_header_2 {
+        grid-area: header2;
+    }
+
+    .gallery-img , 
+    .gallery-item img , 
+    .gallery_item_new_intro_0 img
+    {
         max-width: 50%;
     }
 

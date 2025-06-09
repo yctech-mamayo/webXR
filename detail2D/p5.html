@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="zh">
+<head>
+	<title> 媽媽友 磁力片 貓頭鷹 </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=1">
+	<link rel="icon" type="image/jpg" href="../favicon.jpg" />
+
+	<link href="../styles/style.css" rel="stylesheet" type="text/css">
+	<link href="../styles/VR.css" rel="stylesheet" type="text/css">
+	<link href="../styles/dragon.css" rel="stylesheet" type="text/css">
+	<link href="../styles/step.css" rel="stylesheet" type="text/css">
+
+	<script>
+		
+
+	</script>
+
+</head>
+<body>
+	<script src="../lib/vconsole.min.js"></script>
+
+	<script type="module">
+		import projData from "../data/p1/p1_a0.js";
+		// import projData from "../data/p1/p1_a0_flyin.js";
+		// import projData from "../data/p1/p1_a0_grow.js";
+		window.custProject = projData;
+		
+	</script>
+
+	<script>
+		if ( window.navigator.userAgent.toLowerCase().indexOf("mobile") >= 0 && window.navigator.userAgent.toLowerCase().indexOf("chrome") < 0 ){
+            // var vConsole = new VConsole();
+            console.log("The system is mobile: ", window.navigator.userAgent.toLowerCase() );
+		}else{
+            console.log("The system is PC: ", window.navigator.userAgent.toLowerCase() );
+		}
+	</script>
+
+
+	<!-- <div id="freeUserWarnDiv">
+		<div id = 'freeUserWarnContent'>
+			<p id="pUserInfo" >  info  </p>
+			<div id = "leaveIframe">
+				返回
+			</div>
+		</div>
+	</div> -->
+
+	<script>
+		
+		window.serverVersion = "3.0.0";
+		switch(serverVersion){
+			case "2.0.0":
+				window.serverUrl = "https://ssl-api-makar-apps.miflyservice.com/Makar/"; // makar V2 server Amazon 
+			break;			
+			case "3.0.0":
+					window.serverUrl = "https://ssl-api-makar-v3-apps.miflyservice.com/Makar/"; // official V3 makar server.
+			break;			
+		}
+
+		var getRandom = function(){
+			return Math.random();
+		}
+
+//20200102-start-thonsha-add
+		window.requestDeviceMotionPermission = function (){
+            console.log("makarVR.html: requestDeviceMotionPermission  " );
+            if (typeof(DeviceMotionEvent) !== 'undefined' && typeof(DeviceMotionEvent.requestPermission) === 'function') {
+                DeviceMotionEvent.requestPermission().then(response => {
+                    console.log("makarVR.html: requestPermission response =", response );
+                    // alert('Orientation tracking '+ response);
+                    if (response == 'granted') {
+                        window.addEventListener('devicemotion', (e) => {
+                            // but.style.visibility='hidden';
+                        })
+                    }
+                }).catch(console.error)
+            }else {
+                // alert('DeviceMotionEvent is not defined');
+                console.log("makarVR.html: requestPermission: DeviceMotionEvent is not defined " );
+            }
+		}
+//20200102-end-thonsha-add
+	</script>
+
+	<!-- 為了 SEO 跟 正規化網頁的內容，包含 Logo, Header, 等 -->
+	<section id = 'main_section'>
+
+		<div id = 'help_container'>
+			<img id = 'help_img_arrow' src = '../images/icon/app素材-01.png' alt="arrow" >
+			<div id = 'help_text_1'> 可直接用單指旋轉及雙指平移縮放模型
+				即可以360度來瀏覽磁力片作品
+			</div>
+			<img id = 'help_img_confirm' src = '../images/icon/app素材-08.png'>
+		</div>
+
+		<h1  id = 'detail_h1' > 媽媽友 磁力片 貓頭鷹 圖片 </h1>
+		<div id = 'detail_logo' ></div>
+
+		<div id = 'page_name'>
+			<h1 > 貓頭鷹 </h1>
+			<h1 > Owl </h1>
+		</div>
+
+		<div id = 'element_container'>
+			<div id = 'element_title'>
+				使用片數
+			</div>
+
+			<div id = 'element_square_container'>
+				<div id = 'element_square_img' alt='正方形' ></div>
+				<div id = 'element_square_number'> 6 </div>
+			</div>
+
+			<div class = 'element_entity_container'>
+				<div id = 'element_triangle_5_img' alt='等腰直角三角形' ></div>
+				<div class = 'element_entity_number'> 4 </div>
+			</div>
+
+			<div id = 'element_triangle_1_container'>
+				<div id = 'element_triangle_1_img' alt='正三角形' ></div>
+				<div id = 'element_triangle_1_number'> 2 </div>
+			</div>
+
+			<div id = 'element_triangle_2_container'>
+				<div id = 'element_triangle_2_img' alt='等腰三角形 大角度' ></div>
+				<div id = 'element_triangle_2_number'> 4 </div>
+			</div>
+
+			<div id = 'element_eyes_container'>
+				<div id = 'element_eyes_img' alt='眼睛' ></div>
+				<div id = 'element_eyes_number'> 2 </div>
+			</div>
+
+			<!-- <div id = 'element_triangle_3_container'>
+				<div id = 'element_triangle_3_img' alt='等腰三角形 小角度' ></div>
+				<div id = 'element_triangle_3_number'> 4 </div>
+			</div> -->
+
+			<!-- <div id = 'element_triangle_4_container'>
+				<div id = 'element_triangle_4_img' alt='直角三角形 5 12 13' ></div>
+				<div id = 'element_triangle_4_number'> 2 </div>
+			</div> -->
+
+			<!-- <div id = 'element_rectangle_container'>
+				<div id = 'element_rectangle_img' alt='長方形' ></div>
+				<div id = 'element_rectangle_number'> 4 </div>
+			</div> -->
+
+			<!-- <div id = 'element_square_hole_container'>
+				<div id = 'element_square_hole_img' alt='方形 中間有圓洞' ></div>
+				<div id = 'element_square_hole_number'> 4 </div>
+			</div> -->
+
+			<!-- <div id = 'element_eyes_container'>
+				<div id = 'element_eyes_img' alt='眼睛' ></div>
+				<div id = 'element_eyes_number'> 1 </div>
+			</div> -->
+
+			<!-- <div id = 'element_tube_1_container'>
+				<div id = 'element_tube_1_img' alt='透明管 直短' ></div>
+				<div id = 'element_tube_1_number'> 4 </div>
+			</div> -->
+
+			<!-- <div id = 'element_tube_2_container'>
+				<div id = 'element_tube_2_img' alt='透明管 直長' ></div>
+				<div id = 'element_tube_2_number'> 2 </div>
+			</div> -->
+
+			<!-- <div id = 'element_tube_3_container'>
+				<div id = 'element_tube_3_img' alt='透明管 彎1/4' ></div>
+				<div id = 'element_tube_3_number'> 2 </div>
+			</div>
+
+			<div id = 'element_tube_4_container'>
+				<div id = 'element_tube_4_img' alt='透明管 彎1/2' ></div>
+				<div id = 'element_tube_4_number'> 2 </div>
+			</div>
+
+			<div id = 'element_tube_5_container'>
+				<div id = 'element_tube_5_img' alt='透明管 彎斜' ></div>
+				<div id = 'element_tube_5_number'> 2 </div>
+			</div> -->
+
+		</div>
+
+		<div id = 'main_background'>
+			<img id = 'main_background_img'  src="../images/art/20250605_page/05.貓頭鷹.jpg" alt="loading">
+		</div>
+
+
+		<a href = "https://www.mamayo.tw/" 
+			target="_blank" id = 'buy_btn_link' >
+			<div id = 'buy_btn'>
+				<p> 購買磁力片 </p>
+			</div>
+		</a>
+
+		<a href = "../list.html" target="_self" id = 'all_product_btn_link' >
+			<div id = 'all_product_btn'>			
+				<p> < 所有作品 </p>
+			</div>
+		</a>
+
+		<!-- <div id = 'stepTextContainer'>
+			<h3 id = 'stepTextMain'>
+				步驟流程說明
+			</h3>
+		</div>
+
+		<div id = 'stepContainer_all'>
+			<div id = 'stepContainer_main'>
+				<div id = 'stepContainer_bg'></div>
+
+				<div id = 'step_to_head'>
+					重頭開始
+				</div>
+
+				<div id = 'step_left_container'>
+					<div id = 'left_triangle'></div>
+				</div>
+
+				<div id = 'step_text_container'>
+					<div id = 'step_text_title'> 步驟 </div>
+					<div id = 'step_text_now'> 1/9 </div>
+				</div>
+				
+				<div id = 'step_right_container'>
+					<div id = 'right_triangle'></div>
+				</div>
+
+				<div id = 'step_to_end'>
+					完整作品
+				</div>
+
+			</div>
+
+		</div> -->
+
+
+	</section>
+
+	<!-- 跳轉到其他連結的區域 -->
+	<nav class="menu">
+
+	</nav>
+
+
+	<div id = "homePage" style = "display: flex;">
+		<img id = 'loading_img'  src="../images/icon/app素材-09.png" alt="loading">
+
+		<div id = 'loading_text'>手握磁力片，創造大世界！</div>
+
+		<div id="dot_container">
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<!-- <div id = 'homeImageContainer'></div> -->
+	</div>
+
+	<div id = "loadPage">
+		<!-- <img id = "loadImg" src = "https://mifly0makar0assets.s3-ap-northeast-1.amazonaws.com/DefaultResource/2D/VR/page/loading.png"></img> -->
+		<!-- <div id = 'loadingImageContainer'></div> -->
+		<div class="centerText"> 
+			Loading
+			<div class="lds-ellipsis">
+				<div>.</div><div>.</div><div>.</div><div>.</div><div>.</div>
+			</div>
+		</div>
+	</div>
+
+	<div id = "clickToPlayAudio">
+		請點擊畫面來播放聲音
+	</div>
+
+	<div id = "clickToUnMuteVideo">
+		請點擊來播放影片聲音
+	</div>
+	
+
+	<script> 
+		/////// start the pop note when document ready
+
+		let homeTickOn = true;
+
+
+		window.onload = function(){
+			setTimeout(function(){
+
+				console.log("makarVR.html: document is ready");
+
+				// showVRProjListWithVersionControl()
+
+				let homePage = document.getElementById( 'homePage' );
+				homePage.style.display = 'none';
+
+			}, 50 );
+		}
+
+		window.addEventListener("resize", checkWindowSize ); 
+		function checkWindowSize(){
+			console.log('_checkWindowSize_: ', window.innerWidth, window.innerHeight );
+			let element_container = document.getElementById('element_container');
+			if ( element_container ){
+				element_container.scrollTo( 0, 0 );
+			}
+		}
+
+		//// 判斷是否看過 【 介紹視窗 】，
+		let help_container = document.getElementById("help_container");
+		let help_img_confirm = document.getElementById("help_img_confirm");
+		let page_name = document.getElementById("page_name");
+
+		let isWatchhelper = localStorage.getItem("isWatchhelper") ;
+		if ( isWatchhelper == 1 ){
+
+		}else{
+			
+			help_container.classList.add('active');
+			help_img_confirm.onclick = function(){
+				help_container.classList.remove('active');
+				localStorage.setItem("isWatchhelper", 1 );
+			}
+		}
+
+		
+
+
+	</script>
+
+	<div id = 'gsapEmpty'></div>
+	<a href = "tel:666666" id ="phoneCall"></a>
+	<a href = "https://www.miflydesign.com" id ="openWebBrowser" target="_blank" ></a>
+
+	<a href="mailto:infomakar@miflydesign.com" id ="sendEmail"></a>
+
+</body>
+</html>

@@ -221,6 +221,7 @@
     flex-basis: auto;
 }
 
+.element_entity_container , 
 #element_square_container , #element_window_container ,
 #element_triangle_1_container , #element_triangle_2_container , 
 #element_triangle_3_container , #element_triangle_4_container ,
@@ -254,7 +255,9 @@
 #element_tube_5_img ,
 #element_fence_img ,
 #element_square_border_img ,
-#element_basis_img
+#element_basis_img , 
+#element_door_img ,
+#element_triangle_5_img 
 {
     position: absolute;
     width: 100%;
@@ -299,7 +302,7 @@
 }
 /* 眼睛 */
 #element_eyes_img{
-    background-image: url("../images/icon/20250506/磁力片素材-12.png");
+    background-image: url("../images/icon/20250506/磁力片素材-20.png");
 }
 /* 透明管 直短 */
 #element_tube_1_img{
@@ -332,6 +335,16 @@
 /* 基底 物件 */
 #element_basis_img{
     background-image: url("../images/icon/20250506/磁力片素材-19.png");
+}
+
+/* 城門 中間有洞 */
+#element_door_img{
+    background-image: url("../images/icon/20250506/磁力片素材-08.png");
+}
+
+/* 等腰直角三角形 */
+#element_triangle_5_img{
+    background-image: url("../images/icon/20250506/磁力片素材-21.png");
 }
 
 
@@ -373,6 +386,7 @@
     mask: url("../images/icon/app素材-06.png");
 } */
 
+.element_entity_number , 
 #element_square_number , #element_window_number ,
 #element_triangle_1_number , #element_triangle_2_number , 
 #element_triangle_3_number , #element_triangle_4_number , 
@@ -393,6 +407,22 @@
     font-size: 12px;
 }
 
+
+#main_background{
+    position: relative;
+    width: 100%;
+    top: 150px;
+    height: calc( 100% - 150px - 20px );
+
+    pointer-events: all;
+}
+
+#main_background_img{
+
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+}
 
 #buy_btn , #all_product_btn {
     position: absolute;
@@ -654,6 +684,12 @@
     #element_triangle_container{}  
     #element_rectangle_container{}
 
+    #main_background{
+        top: 20px;
+        left: calc( 60px + 80px );
+        width: calc( 100% - 120px - 160px );        
+        height: calc( 100% - 40px );
+    }
 
     #buy_btn{
         top: 100px;
