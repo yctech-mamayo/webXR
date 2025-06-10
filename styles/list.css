@@ -118,6 +118,10 @@ html, body{
 }
 
 #main_header_container{
+    position: fixed;
+    z-index: 1;
+
+    top: 70px;
     margin-top: 5px;
     width: 100%;
     text-align: center;
@@ -149,8 +153,15 @@ html, body{
     background-color: #42bed4;
 }
 
+
+#main_header_VR:hover , 
+#main_header_2D:hover , 
+#main_header_new_introduction:hover {
+    cursor: pointer;
+}
+
 #main_logo_img{
-    margin-top: 5px;
+    margin-top: 40px;
 
     width: 100%;
     text-align: center;
