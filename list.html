@@ -15,6 +15,7 @@
 
 	<div id = 'header' >
 		<a id = 'header_link' href="https://www.mamayo.tw/">
+			<div id = 'header_icon'></div>
 			<header id = 'header_title'> 磁力片新品上市，官網限時優惠中 </header>
 		</a>
 	</div>
@@ -405,6 +406,11 @@
 		let proj_2d_hr = document.getElementById('proj_2d_hr');
 		let scrollTopBtn = document.getElementById('scrollTopBtn');
 
+		//// 上方固定的 header 部分 因應 scroll 調整
+		let main_header_container = document.getElementById('main_header_container');
+		let header_title = document.getElementById('header_title');
+		let header = document.getElementById('header');
+
 		let last_3D;
 		if ( gallery_3D_VR.children && gallery_3D_VR.children.length > 1 ){
 			let _temp = gallery_3D_VR.children[ gallery_3D_VR.children.length - 1 ];
@@ -441,7 +447,7 @@
 
 		//// 控制 「 返回最上面 」顯示與否
 		window.onscroll = function(){
-			// console.log( '_scrollY_: ', window.scrollY );
+			console.log( '_scrollY_: ', window.scrollY );
 
 			if ( document && document.documentElement && 
 				Number.isFinite(document.documentElement.scrollHeight) &&
@@ -452,6 +458,17 @@
 				}else{
 					scrollTopBtn.classList.remove('active')
 				}
+
+				if ( window.scrollY > 40 ){
+					main_header_container.classList.add('fill');
+					header.classList.add('fill');
+					header_title.classList.add('fill');
+				}else{
+					main_header_container.classList.remove('fill');
+					header.classList.remove('fill');
+					header_title.classList.remove('fill');
+				}
+
 			}
 		}
 

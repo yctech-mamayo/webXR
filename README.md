@@ -1,4 +1,24 @@
 
+
+#### 2025 06 11
+
+* Q: 
+    1. 如果我們要直接分享VR網址給客人 
+    是直接分享這串就好了嗎?
+    https://yctech-mamayo.github.io/webXR
+    A: 假如透過 Line 分享，建議加上「 ?openExternalBrowser=1 」。
+    網址建議給完整( .html 結尾 )
+    https://yctech-mamayo.github.io/webXR/list.html?openExternalBrowser=1
+
+
+    2. 關於往下滑動至頂的樣式 不知道是否能做一下調整
+    讓他往下滑動的時候 樣式變成以下
+    A: 我今天加上
+
+    3. 頂部標題小 icon
+    A: 我今天加上
+
+
 #### 2025 06 06
 今日預計製作:
 1. 新增 兩個 AR 專案。恐龍、拱門
