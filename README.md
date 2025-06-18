@@ -1,4 +1,22 @@
 
+#### 2025 06 18
+
+    置頂超連結可以改掛
+    https://www.mamayo.tw/products/mama-mag
+
+    下方個別商品連結可以掛
+    【mamayo】星鑽磁力片-彩虹樂園豪華組(103pcs)
+    https://www.mamayo.tw/products/mama-mag-rainbow
+
+    【mamayo】星鑽磁力片-滾球軌道魔法組(79pcs)
+    https://www.mamayo.tw/products/mama-mag-tubetrack
+
+
+    【mamayo】星鑽磁力片-台灣動物探險組(48pcs)
+    https://www.mamayo.tw/products/mama-mag-twanimal
+
+    迷你磁力片
+    https://www.mamayo.tw/products/mama-mag-mini
 
 #### 2025 06 11
 
@@ -454,3 +472,8 @@ VR 範例:
 
 磁力片 設計 顏色 步驟:
     https://drive.google.com/drive/folders/1bxoyqyHdGC8MJ_tDJL_SkH4PfImQlJdC
+
+# 本地開發
+    使用 http-server -S -C conf/cert.pem -K conf/key.pem 啟動本地服務
+
+
